@@ -3,7 +3,7 @@ package com.sist.vo;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.*;
-/*  ÀÌ¸§                 NULL?       À¯Çü             
+/*  ì´ë¦„              NULL?       íƒ€ì…             
 ----------- -------- -------------- 
 NO          NOT NULL NUMBER         
 TITLE       NOT NULL VARCHAR2(1000) 

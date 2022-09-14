@@ -16,15 +16,7 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	<!-- 
-	     @WebServlet("*.do")
-	 -->
-	<!-- 
-	    request/response 미사용 = 한글 변환 
-	 -->
-	 <!-- 
-	    request.setCharacterEncoding("UTF-8")을 대신하는 코드  
-	  -->
+
      <filter>
 		  <filter-name>encodingFilter</filter-name>
 		  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

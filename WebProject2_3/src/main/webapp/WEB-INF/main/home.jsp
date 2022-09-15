@@ -48,14 +48,8 @@
     </div>
   </div>
   <div class="col-sm-4">
-    <div class="box">
-      <p>Some text..</p>
-    </div>
-    <div class="box">
-       <p>Upcoming Events..</p>
-    </div>
-    <div class="box">
-       <p>Visit Our Blog</p>
+    <div class="box" style="height: 300px;">
+      <p>로그인 영역</p>
     </div>
   </div>
 </div>
@@ -66,28 +60,14 @@
   <h3>What We Do</h3>
   <br>
   <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Current Project</p>
+    <div class="col-sm-7"> 
+     <div class="well" style="height: 300px;">
+      <p>도서정보</p>
+     </div>    
     </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Project 2</p>    
-    </div>
-    <div class="col-sm-3">
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-      <div class="well">
-       <p>Some text..</p>
+    <div class="col-sm-5">
+      <div class="well" style="height:300px;">
+       <p>열람실 정보</p>
       </div>
     </div>  
   </div>
@@ -95,7 +75,7 @@
 </div>
 
 <div class="container text-center">    
-  <h3>Our Partners</h3>
+  <h3>Quick menu</h3>
   <br>
   <div class="row">
     <div class="col-sm-2">
@@ -120,7 +100,7 @@
     </div>     
     <div class="col-sm-2"> 
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Partner 6</p>
+      <p>Partner 6</p>	
     </div> 
   </div>
 </div><br>

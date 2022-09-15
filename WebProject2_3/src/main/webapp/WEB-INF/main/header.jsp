@@ -9,7 +9,7 @@
 <body>
 <div style="height: 15px"></div>
 <div class="row" style="height: 70px;">
-   <img src="img/logo.png" style="margin-left: 35px; display: inline;">
+   <img src="../img/logo.png" style="margin-left: 35px; display: inline;">
   <div class="wrapper" style="position: relative; top: -143px;">
     <div class="searchBar">
       <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="통합검색" value="" />

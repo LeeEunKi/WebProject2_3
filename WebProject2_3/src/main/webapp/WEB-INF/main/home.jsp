@@ -165,13 +165,7 @@
                 </div>
 
                 <!--
-
-
-
                   로그인 하단 박스
-
-
-
                 -->
                 <div class="box" style="height: 180px;">
                   <p>Some text..</p>

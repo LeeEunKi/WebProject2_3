@@ -189,9 +189,9 @@
         <img src="icon/1.png" style="margin: 10px;display:inline-flex; width: 150px; height: 150px;">
        </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 text-center">
       <div class="well" style="height: 250px;background-color: #fff;">
-       <p>Some text..</p>
+       <jsp:include page="room_reserve.jsp"></jsp:include>
       </div>
     </div>  
   </div>

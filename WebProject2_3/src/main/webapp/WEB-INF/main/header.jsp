@@ -9,7 +9,7 @@
 <body>
 <div style="height: 15px"></div>
 <div class="row" style="height: 70px;">
-   <img src="../img/logo.png" style="margin-left: 35px; display: inline;">
+   <img src="img/logo.png" style="margin-left: 35px; display: inline;">
   <div class="wrapper" style="position: relative; top: -143px;">
     <div class="searchBar">
       <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="통합검색" value="" />
@@ -23,7 +23,7 @@
 <div style="height: 15px"></div>
 
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inner" style="margin-bottom: 0px;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -31,7 +31,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">

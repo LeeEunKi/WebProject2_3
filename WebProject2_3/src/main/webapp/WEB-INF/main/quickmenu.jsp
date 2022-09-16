@@ -5,37 +5,52 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+@font-face {
+    font-family: 'EF_hyunygothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/EF_hyunygothic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.quick-menu p{
+	margin-top: 10px;
+	font-family: 'EF_hyunygothic';
+	font-size: 16px;
+	color: darksalmon;
+}
+.quick-menu img{
+	width:80px;
+}
+</style>
 </head>
 <body>
-<div class="container text-center">    
   <h3>Quick Menu</h3>
   <br>
-  <div class="row">
+  <div class="row quick-menu">
     <div class="col-sm-2">
-      <img src="../img/book_find.png" style="width:100px" alt="Image">
+      <img src="../img/book_find.png">
       <p>도서 검색</p>
     </div>
     <div class="col-sm-2">
-      <img src="../img/book_recommend.png" style="width:100px" alt="Image">
+      <img src="../img/book_recommend.png">
       <p>도서 추천</p>
     </div>
     <div class="col-sm-2"> 
-      <img src="../img/room_reserve.png" style="width:100px" alt="Image">
+      <img src="../img/room_reserve.png">
       <p>열람실 예약</p>    
     </div>
     <div class="col-sm-2"> 
-      <img src="../img/book_mall.png" style="width:100px" alt="Image">
+      <img src="../img/book_mall.png">
       <p>중고서적 온라인몰</p>
     </div>
     <div class="col-sm-2"> 
-      <img src="../img/community.png" style="width:100px" alt="Image">
+      <img src="../img/community.png">
       <p>커뮤니티</p>
     </div> 
     <div class="col-sm-2"> 
-      <img src="../img/mypage.png" style="width:100px" alt="Image">
+      <img src="../img/mypage.png">
       <p>마이페이지</p>
     </div> 
   </div>
-</div>
 </body>
 </html>

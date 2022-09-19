@@ -161,7 +161,7 @@
             </div>
           </div>
           <div class="box" style="height: 180px;">
-            <p>Some text..</p>
+            <p>Some text...</p>
           </div>
         </div>
     </div>

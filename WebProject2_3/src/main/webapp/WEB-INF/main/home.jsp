@@ -47,7 +47,7 @@
 		 	<div class="slide_viewer" style="height: 435px;">
 			    <ul class="slides">
 			      <li>
-			        <img src="../img/sample1.jpg"> <!-- random image -->
+			        <img src="../img/sample1.jpg"> <!-- random images -->
 			      </li>
 			      <li>
 			        <img src="../img/sample2.jpg"> <!-- random image -->

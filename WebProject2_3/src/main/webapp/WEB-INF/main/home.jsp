@@ -119,7 +119,7 @@
               </div>
             </div>
           </div>
-        </div><!-- End // .slider -->
+        </div><!-- End // .slider  -->
         <div class="slide_buttons" style="margin-top: 25px;">
         </div>
         

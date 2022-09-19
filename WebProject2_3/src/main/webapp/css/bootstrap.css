@@ -3,7 +3,18 @@
 /* 
 서치바
 */
-
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'yangjin';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .wrapper {
 
   max-width: 31.25rem;
@@ -188,7 +199,7 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.15);
 }
 .box input {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
   outline: 0 !important;
   background: #f2f2f2 !important;
   width: 100% !important;
@@ -199,7 +210,7 @@
   font-size: 14px !important;
 }
 .box button {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
   text-transform: uppercase !important; 
   outline: 0 !important;
   background: #405173 !important;
@@ -302,7 +313,7 @@ Book stuff
 }
 /* star button */
 .book:after {
-  font-family: FontAwesome;
+  font-family: 'Pretendard-Regular';/*FontAwesome;*/
   /*content: url("../img/heart(1)");*/
   font-size: 35px;
   position: relative;
@@ -625,7 +636,7 @@ textarea {
 
 body {
   margin: 0;
-  font-family: 'Cabin', Verdana, sans-serif;
+  font-family: 'Pretendard-Regular';/*'Cabin', Verdana, sans-serif;*/
   font-size: 14px;
   line-height: 20px;
   color: #1d1d1f;
@@ -1145,12 +1156,13 @@ h4,
 h5,
 h6 {
   margin: 10px 0;
-  font-family: 'Lobster', cursive;
+  font-family: 'yangjin';/*'Lobster', cursive;*/
   font-weight: normal;
   line-height: 20px;
   color: inherit;
   text-rendering: optimizelegibility;
 }
+
 
 h1 small,
 h2 small,
@@ -1378,7 +1390,7 @@ address {
 code,
 pre {
   padding: 0 3px 2px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: 'Pretendard-Regular'; /*Menlo, Monaco, Consolas, "Courier New", monospace;*/
   font-size: 12px;
   color: #444444;
   -webkit-border-radius: 3px;
@@ -1471,7 +1483,7 @@ input,
 button,
 select,
 textarea {
-  font-family: 'Cabin', Verdana, sans-serif;
+  font-family: 'Pretendard-Regular';/*'Cabin', Verdana, sans-serif;*/
 }
 
 label {
@@ -4925,7 +4937,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
   padding: 4px 14px;
   margin-bottom: 0;
-  font-family: 'Cabin', Verdana, sans-serif;
+  font-family: 'Pretendard-Regular';/*'Cabin', Verdana, sans-serif;*/
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
@@ -6582,7 +6594,7 @@ h3 small,
 h4 small,
 h5 small,
 h6 small {
-  font-family: 'Cabin', Verdana, sans-serif;
+  font-family: 'Pretendard-Regular';/*'Cabin', Verdana, sans-serif;*/
   color: #1d1d1f;
 }
 
@@ -6646,7 +6658,7 @@ hr {
 
 .navbar .brand {
   padding: 15px 20px 14px;
-  font-family: 'Lobster', cursive;
+  font-family: 'Pretendard-Regular';/*'Lobster', cursive;*/
   font-size: 24px;
   font-weight: normal;
 }
@@ -7252,7 +7264,7 @@ div.subnav-fixed {
 }
 
 legend {
-  font-family: 'Lobster', cursive;
+  font-family: 'Pretendard-Regular';/*'Lobster', cursive;*/
 }
 
 legend,
@@ -7708,3 +7720,4 @@ code {
 .affix {
   position: fixed;
 }
+

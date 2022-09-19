@@ -6,15 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-@font-face {
-    font-family: 'EF_hyunygothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/EF_hyunygothic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
 .quick-menu p{
 	margin-top: 10px;
-	font-family: 'EF_hyunygothic';
 	font-size: 16px;
 	color: darksalmon;
 }

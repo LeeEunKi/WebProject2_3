@@ -4,65 +4,135 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<title></title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+</script>
 <style type="text/css">
-.container-fluid{
-	margin-top: 50px;
+.subject{
+	position: relative;
+    color: rgb(103, 114, 148);
+    font-size: 18px;
+    font-family: Medium, sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.45px;
+     margin-bottom: 15px; 
 }
-.row1{
-	margin: 0px auth;
-	width: 100%;
+.side{
+    width: 200px;
+    border-right-style: inherit;
+    border-right-width: thin;
+    border-right-color: graytext;
 }
-.images:hover{
-	cursor: pointer;
-	
+.active_a{
+   font-weight: bold;
+   color: #2964D9;
 }
 </style>
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row row1">
-      <div class="col-sm-8">
-       
-         <div class="col-md-4" v-for="vo in book_data">
-		    <div class="thumbnail">
-		        <img :src="vo.img" alt="Lights" style="width:100%" class="images" v-on:click="detailData(vo.no)">
-     									<!-- 
-     										 v-on:click = @click
-     										 v-bind:src = :src :Vue의 변수(data)와 매칭을 시켜주는 것이 bind 
-     										 v-model : 양방향 통신을 할 수있게 한다
-     										 
-     										 Vue / React  :react는 단방향은 지원 x
-     										 --- 양뱡향,단반향 둘 다 가능하지만
-     									-->
-		        <div class="caption">
-		          <p>{{vo.title }}</p>
-		        </div>
-		    </div>
-		  </div>
-	   
-      <div style="height: 20px"></div>
-        <div class="text-center">
-          <button class="btn btn-sm btn-info" v-on:click="prev()">이전</button>
-            {{curpage}} page / {{totalpage}} pages
-          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
-        </div>
-      </div>
-    
-      <!-- 
-      <div class="col-sm-4" v-show="isShow" v-if="isShow===true">
-      
-      </div>
-       -->
-       
-     
-    </div>
-  </div>
+
+<div class="section" style="padding-bottom:0px">
+		<div class="container">
+			<div class="row text-left mb-5">
+				<div class="col-12">
+					<h2 class="font-weight-bold heading text-primary mb-4">도서검색</h2>
+					<hr>
+				</div>
+			</div>
+
+		</div>
+</div>
+
+<div class="section pt-0">
+	<div class="container">
+		<div class="row justify-content-between mb-5">
+				<div class="col-lg-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
+         			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+         			   <h3 class="subject">통합자료검색</h3>
+            			
+          			</div>
+          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+         			   <h3 class="subject">인기도서</h3>
+            			
+          			</div>
+          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+         			   <h3 class="subject">주제별검색</h3>
+            			
+          			</div>
+			    </div>
+		     	<div class="col-lg-5 row1">
+				  <table class="table"> 
+				    <tr> 
+				      <th width="15%" class="text-center">검색 결과</th>
+				      <th width="60%"></th>
+				      <th width="25%"></th>
+				    </tr>
+				    <tr style="vertical-align:middle">
+				      <td class="text-center">
+				       <a href="#"><img :src="img" style="width:160px; height:220px"></a>   
+				      </td>	  
+				      <td colspan="2">
+				        <h3>도서이름입니다&nbsp;&nbsp;</h3><h4><span style="color: orange;">{{score}}</span></h4>
+				        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
+				         <li>저자명입니다</li>
+				         <li>출판사입니다</li>
+				         <li>출판일자입니다</li>
+				         <li>대출횟수: ...</li>
+				        </ul>
+				      </td>
+				    </tr>
+	    		</table>
+				   
+			      <div style="height: 20px"></div>
+			        <div class="text-center">
+			          <button class="btn btn-sm btn-info" v-on:click="prev()">이전</button>
+			            {{curpage}} page / {{totalpage}} pages
+			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
+			        </div>
+			   </div>
+			   <div class="col-sm-4" v-show="isShow" v-if="isShow===true">
+		        <table class="table">
+		          <tr>
+		            <td class="text-center" v-for="img in #_detail.img" align="center">
+		              <img :src="img" style="width: 100%">
+		            </td>
+		          </tr>
+		        </table>
+		          <div style="height: 10px"></div>
+		          <table class="table">
+		            <tr>
+		              <td colspan="2">
+		                <h3>{{#_detail.name}}&nbsp;&nbsp;<span style="color: orange;">{{#_detail.score}}</span></h3>
+		              </td>
+		            </tr>
+		            <tr>
+		              <td style="width: 20%">주소</td>
+		              <td style="width: 80%">{{#_detail.address}}</td>
+		            </tr>
+		            <tr v-if="food_detail.tel!=='no'">
+		              <td style="width: 20%">전화</td>
+		              <td style="width: 80%">{{#_detail.tel}}</td>
+		            </tr>
+		            <tr>
+		              <td style="width: 20%">책소개</td>
+		              <td style="width: 80%">{{#_detail.type}}</td>
+		            </tr>
+		            <tr v-if="food_detail.menu!=='no'">
+		              <td style="width: 20%">메뉴</td>
+		              <td style="width: 80%">
+		                <a href="#" class="btn btn-sm btn-info"style="float: right">도서 예약</a>
+		              </td>
+		            </tr>
+		          </table>
+                </div>
+		 </div>
+		</div>
+	</div>
+ 
   <script type="text/javascript">
     new Vue({
-    	el:'.row',
+    	el:'.row1',
     	data:{
     		curpage:1,
     		totalpage:0,
@@ -77,6 +147,7 @@
     			}
     		}).then(function(result){
     			console.log("function=>this:"+_this); // Window가 가지고 있는 this
+    			console.log(result.data);
     			_this.book_data=result.data;
     			_this.curpage=result.data[0].curpage;
     			_this.totalpage=result.data[0].totalpage;

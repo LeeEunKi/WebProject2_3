@@ -151,5 +151,9 @@
   	<div class="container text-center"> 
 		<jsp:include page="quickmenu.jsp"></jsp:include>
 	</div>
+	
+	<div class="container-fluid">
+	    <jsp:include page="books.jsp"></jsp:include>
+	</div>
 </body>
 </html>

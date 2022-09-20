@@ -201,7 +201,7 @@
 .box input {
   font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
   outline: 0 !important;
-  background: #f2f2f2 !important;
+  background: #FFF !important;
   width: 100% !important;
   border: 0 !important;
   margin: 0 0 15px !important;
@@ -640,7 +640,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #1d1d1f;
-  background-color: #F2F2F2
+  background-color: #FFF
 }
 
 a {
@@ -2414,7 +2414,7 @@ legend + .control-group {
 
 table {
   max-width: 100%;
-  background-color: #1ba7b4;
+  background-color: #FFF;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -2430,7 +2430,7 @@ table {
   line-height: 20px;
   text-align: left;
   vertical-align: top;
-  border-top: 1px solid #1cafbd;
+  border-top: 1px solid;
 }
 
 .table th {
@@ -2451,11 +2451,11 @@ table {
 }
 
 .table tbody + tbody {
-  border-top: 2px solid #1cafbd;
+  border-top: 2px solid ;
 }
 
 .table .table {
-  background-color: #F2F2F2
+  background-color: #FFF
 }
 
 .table-condensed th,
@@ -2475,7 +2475,7 @@ table {
 
 .table-bordered th,
 .table-bordered td {
-  border-left: 1px solid #1cafbd;
+  border-left: 1px solid ;
 }
 
 .table-bordered caption + thead tr:first-child th,
@@ -2556,10 +2556,6 @@ table {
   -moz-border-radius-topright: 0;
 }
 
-.table-striped tbody > tr:nth-child(odd) > td,
-.table-striped tbody > tr:nth-child(odd) > th {
-  background-color: #1ebccb;
-}
 
 .table-hover tbody tr:hover > td,
 .table-hover tbody tr:hover > th {
@@ -3530,7 +3526,7 @@ table th[class*="span"],
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  background-color: #F2F2F2;
+  background-color: #FFF;
   border: 1px solid #32a1ac;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
@@ -4503,7 +4499,7 @@ input[type="submit"].btn.btn-mini {
 .nav-tabs > .active > a:focus {
   color: #555555;
   cursor: default;
-  background-color: #F2F2F2
+  background-color: #FFF
   border: 1px solid #ddd;
   border-bottom-color: transparent;
 }
@@ -5418,7 +5414,7 @@ input[type="submit"].btn.btn-mini {
   padding: 4px 12px;
   line-height: 20px;
   text-decoration: none;
-  background-color: #F2F2F2;
+  background-color: #FFF;
   border: 1px solid transparent;
   border-left-width: 0;
 }
@@ -6542,7 +6538,7 @@ a.badge:focus {
   font-weight: 200;
   line-height: 30px;
   color: inherit;
-  background-color: #F2F2F2;
+  background-color: #FFF;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -6855,7 +6851,7 @@ div.subnav-fixed {
 }
 
 .nav-tabs > li > a {
-  background-color: #F2F2F2;
+  background-color: #FFF;
 }
 
 .nav-tabs.nav-stacked li > a:first-child,
@@ -6906,7 +6902,7 @@ div.subnav-fixed {
 }
 
 .breadcrumb {
-  background-color: #F2F2F2;
+  background-color: #FFF;
   background-image: none;
 }
 
@@ -6924,7 +6920,7 @@ div.subnav-fixed {
 }
 
 .pagination ul {
-  background-color: #F2F2F2;
+  background-color: #FFF;
   background-image: none;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
@@ -6959,7 +6955,7 @@ div.subnav-fixed {
 }
 
 .pager li > a {
-  background-color: #F2F2F2;
+  background-color: #FFF;
 }
 
 .pager li > a:hover {
@@ -6969,7 +6965,7 @@ div.subnav-fixed {
 .pager .disabled a,
 .pager .disabled a:hover {
   color: #FAFAFA;
-  background-color: #F2F2F2;
+  background-color: #FFF;
 }
 
 .btn {
@@ -7679,7 +7675,7 @@ code {
 }
 
 .modal-body {
-  background-color: #F2F2F2;
+  background-color: #FFF;
 }
 
 .popover {

@@ -28,6 +28,70 @@
         display: none; 
       }
     }
+    /* Studios Page Custom CSS */
+.card-container {
+  position: relative;
+  width: 100%;
+  margin: 20px 0 0 20px;
+}
+.card {
+  height: 200px;
+  min-height: 100%;
+  width: 100%;
+  background-color: #FFF;
+  color: #FFF;
+  text-align: center;
+  margin: auto;
+
+}
+.card-subtitle {
+  text-transform: uppercase;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  padding: 7px 0 10px 0;
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+.card-section {
+  border: 0px;
+  width: 250px;
+  float: left;
+  margin: 10px;
+}
+.card-section img {
+  width: 100%;
+  height: 330px;
+}
+.card-description {
+  height: 20px;
+  color: #4C4C4C;
+  text-align: left;
+  margin: 0;
+  padding: 5px 30px 15px 30px;
+}
+.card-title {
+  font-size: 30px;
+  color: #2B2B2B;
+  text-align:center;
+  font-weight: bold;
+  margin: 0;
+  padding: 15px 30px 5px 30px;
+}
+.card hr {
+  width: 50px;
+}
+.card-button {
+  border: 1px solid #CDBB00;
+  background-color: transparent;
+  color: #CDBB00;
+  text-align: center;
+  width: 110px;
+  padding: 10px;
+  margin-top:10px;
+  margin-bottom: 15px;
+}
   </style>
 <title>Insert title here</title>
 </head>
@@ -35,7 +99,6 @@
  <div class="container">
   <tiles:insertAttribute name="header"/>
   <tiles:insertAttribute name="content"/>
-  <tiles:insertAttribute name="books"/>
   <tiles:insertAttribute name="footer"/>
  </div> 
 </body>

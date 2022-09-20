@@ -21,7 +21,7 @@ TYPE                 VARCHAR2(100)
 TITLE                VARCHAR2(1000) */
 @Getter
 @Setter
-public class UsedBookVO {
+public class ShopVO {
 	private int book_no, no, price, state, discount;
 	private String title, author, type, publisher, img, description, dbday;
 	private String condition;

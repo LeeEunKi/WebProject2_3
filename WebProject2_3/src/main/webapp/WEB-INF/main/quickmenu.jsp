@@ -33,8 +33,10 @@
       <p>열람실 예약</p>    
     </div>
     <div class="col-sm-2"> 
+    <a href="../shop/list.do">
       <img src="../img/book_mall.png">
       <p>중고서적 온라인몰</p>
+    </a>
     </div>
     <div class="col-sm-2"> 
       <img src="../img/community.png">

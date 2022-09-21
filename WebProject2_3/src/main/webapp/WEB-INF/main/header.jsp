@@ -5,6 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.body{
+	width: 100%;
+}
+nav, 
+nav .nav-wrapper i, 
+nav a.sidenav-trigger, 
+nav a.sidenav-trigger i {
+    height: 50px !important;
+    line-height: 64px;
+}
+</style>
 </head>
 <body>
 <div style="height: 15px"></div>
@@ -35,7 +47,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="../book/search.do">도서검색</a></li>
+        <li><a href="../book/search.do" style="list-style: none;">도서검색</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="../board/list.do">게시판(Test)</a></li>

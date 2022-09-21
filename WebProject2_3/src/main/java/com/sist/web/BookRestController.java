@@ -30,7 +30,7 @@ public class BookRestController {
 		int curpage=Integer.parseInt(page);
 		
 		Map map=new HashMap();
-		int rowSize=12;
+		int rowSize=10;
 		int start=(rowSize*curpage)-(rowSize-1);
 		int end=rowSize*curpage;
 		
@@ -68,6 +68,32 @@ public class BookRestController {
 		}
 		result=arr.toJSONString();
 		
+		return result;
+	}
+	
+	@GetMapping(value = "book/detail_vue.do",produces = "text/plain;charset=UTF-8")
+	public String detail_vue(int no)
+	{
+		String result="";
+		try
+		{
+			/*
+			 * no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description
+			 */
+			BookVO vo=dao.bookDetailData(no);
+			JSONObject obj=new JSONObject();
+			obj.put("no", no);
+			obj.put("title", vo.getTitle());
+			obj.put("author", vo.getAuthor());
+			obj.put("type", vo.getType());
+			obj.put("publisher", vo.getPublisher());
+			obj.put("img", vo.getImg());
+			obj.put("dbday", vo.getDbday());
+			obj.put("description", vo.getDescription());
+			
+			result=obj.toJSONString();
+		}
+		catch (Exception e) {}
 		return result;
 	}
 }

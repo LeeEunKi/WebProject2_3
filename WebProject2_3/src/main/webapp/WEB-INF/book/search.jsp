@@ -5,9 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
 .subject{
 	position: relative;
@@ -27,6 +26,21 @@
 .active_a{
    font-weight: bold;
    color: #2964D9;
+}
+.table>tbody>tr>td,
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+    padding: 8px;
+    vertical-align: top;
+    border-top: none !important;  
+}
+.images:hover{
+	cursor: pointer;
+	
 }
 </style>
 </head>
@@ -68,16 +82,16 @@
 				      <th width="60%"></th>
 				      <th width="25%"></th>
 				    </tr>
-				    <tr style="vertical-align:middle">
+				    <tr style="vertical-align:middle" v-for="vo in book_data">
 				      <td class="text-center">
-				       <a href="#"><img :src="img" style="width:160px; height:220px"></a>   
+				       <img :src="vo.img" style="width:160px; height:220px" class="images" v-on:click="detailData(vo.no)">  
 				      </td>	  
 				      <td colspan="2">
-				        <h3>도서이름입니다&nbsp;&nbsp;</h3><h4><span style="color: orange;">{{score}}</span></h4>
+				        <h3>{{vo.title}}&nbsp;&nbsp;</h3><h4><span style="color: orange;">score</span></h4>
 				        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
-				         <li>저자명입니다</li>
-				         <li>출판사입니다</li>
-				         <li>출판일자입니다</li>
+				         <li>{{vo.author}}</li>
+				         <li>{{vo.publisher}}</li>
+				         <li>{{vo.dbday}}</li>
 				         <li>대출횟수: ...</li>
 				        </ul>
 				      </td>
@@ -94,7 +108,7 @@
 			   <div class="col-sm-4" v-show="isShow" v-if="isShow===true">
 		        <table class="table">
 		          <tr>
-		            <td class="text-center" v-for="img in #_detail.img" align="center">
+		            <td class="text-center"  v-for="img in book_detail>
 		              <img :src="img" style="width: 100%">
 		            </td>
 		          </tr>
@@ -103,22 +117,22 @@
 		          <table class="table">
 		            <tr>
 		              <td colspan="2">
-		                <h3>{{#_detail.name}}&nbsp;&nbsp;<span style="color: orange;">{{#_detail.score}}</span></h3>
+		                <h3>{{}}&nbsp;&nbsp;<span style="color: orange;">{{}}</span></h3>
 		              </td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%">주소</td>
-		              <td style="width: 80%">{{#_detail.address}}</td>
+		              <td style="width: 20%">0000</td>
+		              <td style="width: 80%">{{}}</td>
 		            </tr>
-		            <tr v-if="food_detail.tel!=='no'">
-		              <td style="width: 20%">전화</td>
-		              <td style="width: 80%">{{#_detail.tel}}</td>
+		            <tr >
+		              <td style="width: 20%">00000</td>
+		              <td style="width: 80%">{{}}</td>
 		            </tr>
 		            <tr>
 		              <td style="width: 20%">책소개</td>
-		              <td style="width: 80%">{{#_detail.type}}</td>
+		              <td style="width: 80%">{{}}</td>
 		            </tr>
-		            <tr v-if="food_detail.menu!=='no'">
+		            <tr >
 		              <td style="width: 20%">메뉴</td>
 		              <td style="width: 80%">
 		                <a href="#" class="btn btn-sm btn-info"style="float: right">도서 예약</a>
@@ -130,7 +144,7 @@
 		</div>
 	</div>
  
-  <script type="text/javascript">
+<script type="text/javascript">
     new Vue({
     	el:'.row1',
     	data:{
@@ -179,7 +193,10 @@
         			_this.curpage=result.data[0].curpage;
         			_this.totalpage=result.data[0].totalpage;
         		})
-    		}
+    		},
+    		
+    		detailData:function(no){
+    		
     	}
     })
   </script>

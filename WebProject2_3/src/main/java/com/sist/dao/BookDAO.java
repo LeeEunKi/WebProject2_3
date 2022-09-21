@@ -26,4 +26,9 @@ public class BookDAO {
 		return mapper.bookTotalPage();
 	}
 	
+	public BookVO bookDetailData(int no)
+	{
+		return mapper.bookDetailData(no);
+	}
+	
 }

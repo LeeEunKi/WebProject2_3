@@ -141,11 +141,15 @@
           </div>
         </div><!-- End // .directional_nav -->
     </div>
+    
     <div class="col-sm-4 text-center">
-      <div class="well" style="height: 250px;background-color: #fff;">
-       <jsp:include page="room_reserve.jsp"></jsp:include>
-      </div>
+	    <div class="box">
+		      <div class="well" style="background-color: #fff;">
+		       <jsp:include page="room_reserve.jsp"></jsp:include>
+		      </div>
+	     </div>
     </div>  
+    
   </div>
   <hr>
   	<div class="container text-center"> 

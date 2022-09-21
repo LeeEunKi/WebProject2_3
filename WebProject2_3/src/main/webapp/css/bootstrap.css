@@ -2415,6 +2415,7 @@ legend + .control-group {
 table {
   max-width: 100%;
   background-color: #FFF;
+  border: none;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -2422,6 +2423,7 @@ table {
 .table {
   width: 100%;
   margin-bottom: 20px;
+  border: none;
 }
 
 .table th,
@@ -2430,7 +2432,7 @@ table {
   line-height: 20px;
   text-align: left;
   vertical-align: top;
-  border-top: 1px solid;
+  border: none;
 }
 
 .table th {

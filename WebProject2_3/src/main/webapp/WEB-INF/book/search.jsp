@@ -150,7 +150,9 @@
     	data:{
     		curpage:1,
     		totalpage:0,
-    		book_data:[]
+    		book_data:[],
+    		book_detail:{},
+    		no
     	},
     	mounted:function(){
     		console.log("VueJS=>this:"+this); //Vue(Object)
@@ -196,7 +198,8 @@
     		},
     		
     		detailData:function(no){
-    		
+    			let _this=this;
+    			_this.isShow=true;
     	}
     })
   </script>

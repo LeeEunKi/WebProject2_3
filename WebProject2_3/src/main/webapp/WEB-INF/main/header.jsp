@@ -53,7 +53,8 @@ nav a.sidenav-trigger i {
         <li><a href="../board/list.do">게시판(Test)</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+       <li><a href="../member/join.do"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
+	      <li><a href="../member/login.do"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
       </ul>
     </div>
   </div>

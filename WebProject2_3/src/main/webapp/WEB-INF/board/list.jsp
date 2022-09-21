@@ -7,18 +7,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.row1{
+.row2{
 	width:960px;
 	height: 650px;
+	background-color: white;
 }
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 	<div class="container">
-		<h1 class="text-center">VueJS를 이용한 목록 출력</h1>
-		<div class="row row1">
+		<h1 class="text-center">자유게시판</h1>
+		<div class="row row2">
 			<table class="table">
 			<tr>
 				<td>

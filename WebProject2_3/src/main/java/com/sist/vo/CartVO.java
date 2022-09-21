@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CartVO {
-	private int no, total;
-	private String name, poster, price;
+	private int no, total, price;
+	private String name, poster;
 }

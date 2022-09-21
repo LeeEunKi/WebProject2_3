@@ -39,7 +39,7 @@
 							 <a :href="'../shop/detail_before.do?no='+vo.no"> <!-- 쿠키를 넣을까말까-->
 								<img :src="vo.img" style="width:150px;height:250px;" class="images">
 								<div class="caption">
-									<p>[{{vo.condition}}]{{vo.title }}</p>
+									<b><p>[{{vo.condition}}]{{vo.title }}</p></b>
 									<p>{{vo.author}}&nbsp;|&nbsp;{{vo.publisher}}</p>
 									<p>{{vo.discount}} {{vo.type}}</p>
 								</div>
@@ -47,10 +47,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div style="height:20px"></div>
-			<div class="row" id="seoul_cookie">
-				<img :src="c.img" style="width:60px;height:100px;margin-left:5px" v-for="c in cookie_list">
 			</div>
 			<div style="height:20px"></div>
 		</div>

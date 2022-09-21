@@ -58,10 +58,15 @@ public class ShopRestController {
 			if(author.length()>10) {
 				author = author.substring(0,10)+"..";
 			}
+			//출판사 길이 자르기
+			String publisher = vo.getPublisher();
+			if(publisher.length()>10) {
+				publisher = publisher.substring(0,10)+"..";
+			}
 			obj.put("title",title);
 			obj.put("img",vo.getImg());
 			obj.put("author",author);
-			obj.put("publisher",vo.getPublisher());
+			obj.put("publisher",publisher);
 			obj.put("discount",vo.getDiscount());
 			obj.put("type",vo.getType());
 			if(k==0) {
@@ -84,6 +89,7 @@ public class ShopRestController {
 		obj.put("book_no",vo.getBook_no());
 		obj.put("no",no);
 		obj.put("title",vo.getTitle());
+		obj.put("condition",vo.getCondition());
 		obj.put("img",vo.getImg());
 		obj.put("author",vo.getAuthor());
 		obj.put("publisher",vo.getPublisher());
@@ -113,12 +119,16 @@ public class ShopRestController {
 		}
 		//list -> JSON
 		JSONArray arr = new JSONArray();
+		int k=0;
 		for(ShopVO vo:list) {
+			if(k>4)//쿠키 최대 5개까지만!
+				break;
 			JSONObject obj = new JSONObject();
 			obj.put("no",vo.getNo());
 			obj.put("title",vo.getTitle());
 			obj.put("img",vo.getImg());
 			arr.add(obj);
+			k++;
 		}
 		result = arr.toJSONString();
 		return result;

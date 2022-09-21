@@ -21,7 +21,7 @@ nav a.sidenav-trigger i {
 <body>
 <div style="height: 15px"></div>
 <div class="row" style="height: 70px;">
-   <img src="../img/logo.png" style="margin-left: 35px; display: inline;">
+   <a href="../main/main.do"><img src="../img/logo.png" style="margin-left: 35px; display: inline;"></a>
   <div class="wrapper" style="position: relative; top: -143px;">
     <div class="searchBar">
       <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="통합검색" value="" />
@@ -46,7 +46,7 @@ nav a.sidenav-trigger i {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="../main/main.do">Home</a></li>
         <li><a href="../book/search.do" style="list-style: none;">도서검색</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>

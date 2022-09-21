@@ -116,7 +116,7 @@
          0
      </p>
      <p style="padding-top: 10px; text-align: right !important; width: 82%;" >
-      <a href="#">열람실 좌석 예약 바로가기▷</a>
+      <a href="../study/room_list.do">열람실 좌석 예약 바로가기▷</a>
      </p> 
    </div>
 </body>

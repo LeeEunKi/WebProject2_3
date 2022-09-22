@@ -18,11 +18,14 @@ public interface StudyMapper {
 			+ "FROM room_3 "
 			+ "WHERE no=#{no}")
 	public RoomVO roomListData(int no);
+	// 열람실 좌석 상세
+	@Select("SELECT no,state,room_no "
+			+ "FROM seat_3 "
+			+ "WHERE room_no=#{room_no}")
+	public List<SeatVO> seatInfoData(int room_no);
 	
-	//열람실 좌석 만들기
-	@SelectKey(keyProperty = "no", resultType = int.class, before=true,
-			statement = "SELECT NVL(MAX(no)+1,1) as no FROM seat_3")
+	//열람실 좌석 만들  기
 	@Insert("insert into seat_3(no,state,room_no) "
-			+ "values(#{no},'remained',#{room_no})")
+			+ "values((SELECT NVL(MAX(no)+1,1) as no FROM seat_3 WHERE room_no=#{room_no}),'remained',#{room_no})")
 	public void createRoomSeat(int room_no);
 }

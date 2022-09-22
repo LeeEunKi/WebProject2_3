@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/room_style.css">
 <style type="text/css">
 .row1{
 	margin: 0px auto;
@@ -21,30 +23,32 @@ $(function(){
 			$('#id').focus();
 			return;
 		}
+		let pwd=$('#pwd').val();
 		if(pwd.trim()==="")
 		{
 			$('#pwd').focus();
 			return;
 		}
+		let ck=$("#ck").is(":checked");
 		$.ajax({
 			type:'post',
 			url:'../member/login_ok.do',
-			data:{"id":id,"pwd":pwd},
+			data:{"id":id,"pwd":pwd,"ck":ck},
 			success:function(result)
 			{
 				let res=result.trim();
 				if(res==='NOID')
 				{
-					alert("아이디가 존재하지 않습니다.");
-					$('#id').val();
-					$('#pwd').val();
+					alert("아이디 존재하지 않습니다!!");
+					$('#id').val("");
+					$('#pwd').val("");
 					$('#id').focus();
 				}
 				else if(res==='NOPWD')
 				{
-					alert("비밀번호가 틀립니다.");
-					$('#pwd').val();
-					$('#id').focus();
+					alert("비밀번호가 틀립니다!!");
+					$('#pwd').val("");
+					$('#pwd').focus();
 				}
 				else
 				{
@@ -64,7 +68,7 @@ $(function(){
 				<tr>
 					<th width=30% class="text-right">ID</th>
 					<td width=65%>
-						<input type=text id="id" size=15 class="input-sm">
+						<input type=text id="id" size=15 class="input-sm" value="${id }">
 					</td>
 				</tr>
 				<tr>
@@ -75,7 +79,7 @@ $(function(){
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type=checkbox id="ck" value="true">로그인 상태 유지 
+						<input type=checkbox id="ck">아이디 저장
 					</td>
 				</tr>
 				<tr>

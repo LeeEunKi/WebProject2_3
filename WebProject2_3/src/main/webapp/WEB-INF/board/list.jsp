@@ -6,11 +6,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/room_style.css">
 <style type="text/css">
-.row2{
-	width:960px;
-	height: 650px;
-	background-color: white;
+body { 
+  font-size: 140%; 
+}
+
+h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+table caption {
+  padding: .5em 0;
+}
+
+table.dataTable th,
+table.dataTable td {
+  white-space: nowrap;
+}
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
 }
 
 </style>
@@ -18,42 +38,41 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
+<hr>
+<h2>자유게시판</h2>
+<hr>
 	<div class="container">
-		<h1 class="text-center">자유게시판</h1>
-		<div class="row row2">
-			<table class="table">
-			<tr>
-				<td>
-					<a href="../board/insert.do" class="btn btn-sm btn-primary">새글</a>
-				</td>
-			</tr>
-				<tr>
-					<th width=10% class="text-center">번호</th>
-					<th width=45% class="text-center">제목</th>
-					<th width=15% class="text-center">이름</th>
-					<th width=20% class="text-center">작성일</th>
-					<th width=10% class="text-center">조회수</th>
-				</tr>
-				<!-- VueJS의 for문 -->
-				<tr v-for="vo in board_list">
-					<th width=10% class="text-center">{{vo.no}}</th>
-					<th width=45%><a :href="'../board/detail.do?no='+vo.no">{{vo.subject}}</a></th>
-					<th width=15% class="text-center">{{vo.name}}</th>
-					<th width=20% class="text-center">{{vo.dbday}}</th>
-					<th width=10% class="text-center">{{vo.hit}}</th>
-				</tr>
-			</table>
-			<table class="table">
-				<tr>
-					<td class="text-center">
-						<input type=button value="이전" class="btn btn-sm btn-danger">
-						{{curpage}} page / {{totalpage}} pages
-						<input type=button value="다음" class="btn btn-sm btn-danger">
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">
+        <thead>
+          <tr>
+            <th width=10% class="text-center">번호</th>
+						<th width=45% class="text-center">제목</th>
+						<th width=15% class="text-center">아이디</th>
+						<th width=20% class="text-center">작성일</th>
+						<th width=10% class="text-center">조회수</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="vo in board_list">
+						<th width=10% class="text-center">{{vo.no}}</th>
+						<th width=45%><a :href="'../board/detail.do?no='+vo.no">{{vo.subject}}</a></th>
+						<th width=15% class="text-center">{{vo.name}}</th>
+						<th width=20% class="text-center">{{vo.dbday}}</th>
+						<th width=10% class="txt_org text-center">{{vo.hit}}</th>
+					</tr>
+          
+        </tbody>
+        <tfoot>
+          <tr>
+          <!-- 버튼 자리 -->
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
 	<script>
 		new Vue({
 			//el : 관리 영역 지정 => container

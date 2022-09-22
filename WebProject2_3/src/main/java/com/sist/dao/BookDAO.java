@@ -31,4 +31,16 @@ public class BookDAO {
 		return mapper.bookDetailData(no);
 	}
 	
+	//도서명 검색 
+	public List<BookVO> bookNameFindData(Map map)
+	{
+		return mapper.bookNameFindData(map);
+	}
+	
+	
+	public int bookNameTotalpage(String title)
+	{
+		return mapper.bookNameTotalpage(title);
+	}
+	
 }

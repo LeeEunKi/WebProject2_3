@@ -36,18 +36,24 @@
 .table>thead>tr>th {
     padding: 8px;
     vertical-align: top;
-    border-top: none !important;  
+    border-top: 1px !important;  
+    border-top-color: #f2f2f2;
 }
 .images:hover{
 	cursor: pointer;
 	
+}
+
+.thumbnail>img {
+    margin-right: auto;
+    margin-left: auto;
 }
 </style>
 </head>
 <body>
 
 <div class="section" style="padding-bottom:0px">
-		<div class="container">
+
 			<div class="row text-left mb-5">
 				<div class="col-12">
 					<h2 class="font-weight-bold heading text-primary mb-4">도서검색</h2>
@@ -55,19 +61,19 @@
 				</div>
 			</div>
 
-		</div>
+
 </div>
 
 <div class="section pt-0">
-	<div class="container">
-		<div class="row justify-content-between mb-5">
+
+		<div class="row row1 justify-content-between mb-5">
 				<div class="col-lg-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <h3 class="subject">통합자료검색</h3>
+         			   <a href="../book/totalsearch.do"><h3 class="subject">통합자료검색</h3></a>
             			
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <h3 class="subject">인기도서</h3>
+         			   <h3 class="subject" style="font-weight: 700;">인기도서</h3>
             			
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
@@ -75,28 +81,29 @@
             			
           			</div>
 			    </div>
-		     	<div class="col-lg-5 row1">
-				  <table class="table"> 
-				    <tr> 
-				      <th width="15%" class="text-center">검색 결과</th>
-				      <th width="60%"></th>
-				      <th width="25%"></th>
-				    </tr>
-				    <tr style="vertical-align:middle" v-for="vo in book_data">
-				      <td class="text-center">
-				       <img :src="vo.img" style="width:160px; height:220px" class="images" v-on:click="detailData(vo.no)">  
-				      </td>	  
-				      <td colspan="2">
-				        <h3>{{vo.title}}&nbsp;&nbsp;</h3><h4><span style="color: orange;">score</span></h4>
-				        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
-				         <li>{{vo.author}}</li>
-				         <li>{{vo.publisher}}</li>
-				         <li>{{vo.dbday}}</li>
-				         <li>대출횟수: ...</li>
-				        </ul>
-				      </td>
-				    </tr>
-	    		</table>
+		     	<div class="col-lg-5">
+			     	<h3 style="margin-bottom: 0px">인기도서</h3>
+					<hr style="margin-bottom: 0px">
+					  <table class="table"> 
+					    <tr style="vertical-align:middle" v-for="vo in book_data">
+					      <td class="text-center">
+					       <img :src="vo.img" style="width:160px; height:220px" class="images" v-on:click="detailData(vo.no)">  
+					      </td>	  
+					      <td colspan="2">
+					        <h3>{{vo.title}}&nbsp;&nbsp;</h3><h4><span style="color: orange;">score</span></h4>
+					        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
+					         <li>저자:&nbsp;&nbsp;{{vo.author}}</li>
+					         <li>출판사:&nbsp;&nbsp;{{vo.publisher}}</li>
+					         <li>출판일:&nbsp;&nbsp;{{vo.dbday}}</li>
+					         <li>대출횟수: ...</li>
+					        </ul>
+					        <button style="float: right;margin-bottom: 5px" v-on:click="detailData(vo.no)">상세보기</button>
+					        <hr style="width: 100%;background-color: rgb(231, 234, 238);">
+					      </td>
+					    </tr>
+		    		</table>
+	    		  <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+	    		
 				   
 			      <div style="height: 20px"></div>
 			        <div class="text-center">
@@ -105,44 +112,49 @@
 			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
 			        </div>
 			   </div>
-			   <div class="col-sm-4" v-show="isShow" v-if="isShow===true">
-		        <table class="table">
+			   <div class="col-sm-4" v-show="isShow" v-if="isShow===true" style="background-color: #f2f2f2">
+		        <table class="table" style="background-color: #f2f2f2">
 		          <tr>
-		            <td class="text-center"  v-for="img in book_detail>
-		              <img :src="img" style="width: 100%">
-		            </td>
+		            <td class="text-center thumbnail" colspan="3" style="margin-bottom: 0px">
+		              <img :src="book_detail.img" style="width: 50%;">
+<!-- 		            </td> -->
 		          </tr>
 		        </table>
-		          <div style="height: 10px"></div>
 		          <table class="table">
 		            <tr>
 		              <td colspan="2">
-		                <h3>{{}}&nbsp;&nbsp;<span style="color: orange;">{{}}</span></h3>
+		                <h3>{{book_detail.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{book_detail.type}}</span></h3>
 		              </td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%">0000</td>
-		              <td style="width: 80%">{{}}</td>
+		              <td style="width: 20%">저자명</td>
+		              <td style="width: 80%">{{book_detail.author}}</td>
 		            </tr>
-		            <tr >
-		              <td style="width: 20%">00000</td>
-		              <td style="width: 80%">{{}}</td>
+		            <tr>
+		              <td style="width: 20%">출판사</td>
+		              <td style="width: 80%">{{book_detail.publisher}}</td>
+		            </tr>
+		            <tr>
+		              <td style="width: 20%">출판일자</td>
+		              <td style="width: 80%">{{book_detail.dbday}}</td>
 		            </tr>
 		            <tr>
 		              <td style="width: 20%">책소개</td>
-		              <td style="width: 80%">{{}}</td>
+		              <td style="width: 80%">{{book_detail.description}}</td>
 		            </tr>
-		            <tr >
-		              <td style="width: 20%">메뉴</td>
+		            <tr>
+		              <td style="width: 20%"></td>
 		              <td style="width: 80%">
 		                <a href="#" class="btn btn-sm btn-info"style="float: right">도서 예약</a>
 		              </td>
 		            </tr>
+		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->
 		          </table>
                 </div>
+                
 		 </div>
-		</div>
-	</div>
+</div>
+
  
 <script type="text/javascript">
     new Vue({
@@ -152,7 +164,9 @@
     		totalpage:0,
     		book_data:[],
     		book_detail:{},
-    		no
+    		no:0,
+    		isShow:false
+    		
     	},
     	mounted:function(){
     		console.log("VueJS=>this:"+this); //Vue(Object)
@@ -200,6 +214,15 @@
     		detailData:function(no){
     			let _this=this;
     			_this.isShow=true;
+    			axios.get("http://localhost:8080/web/book/detail_vue.do",{
+        			params:{
+        				no:no
+        			}
+        		}).then(function(result){
+        			_this.book_detail=result.data;
+        		})
+    
+    		}
     	}
     })
   </script>

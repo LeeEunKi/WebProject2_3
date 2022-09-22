@@ -5,10 +5,10 @@ const total = document.getElementById("total");
 
 populateUI();
 
-const TICKET_PRICE = 50000;
 
 function updateSeat() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
+  const occuipedSeats = document.querySelectorAll(".row .seat.occupied");
   const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
   const selectedSeatsCount = selectedSeats.length;
 

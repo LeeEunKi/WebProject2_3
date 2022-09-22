@@ -33,10 +33,11 @@ font-family:'yangjin'
 					<td colspan="2" width="40%"><h3>{{book_detail.title}}</h3></td>
 				</tr>
 				<tr>
-					<td colspan="2" width="40%">{{book_detail.author}} 지음&nbsp;|&nbsp;{{book_detail.publisher}} 발행</td>
+					<td colspan="2" width="40%">{{book_detail.author}} 지음&nbsp;|&nbsp;
+					<a :href="'../shop/publisher_list.do?publisher='+book_detail.publisher">{{book_detail.publisher}}</a> 발행</td>
 				</tr>
 				<tr>
-					<td class="text-center" rowspan="5" width="40%">
+					<td class="text-center" rowspan="6" width="40%">
 						<img :src="book_detail.img" style="width:400px; height:550px;">
 					</td>
 				</tr>
@@ -51,19 +52,29 @@ font-family:'yangjin'
 				</tr>
 				<tr>
 					<td>
-						<a :href="'../shop/cart_insert.do?no='+book_detail.no" class="btn btn-lg btn-primary">장바구니 담기</a>
+						<a class="btn btn-primary" :href="'../shop/cart_insert.do?no='+book_detail.no">
+							<img src="../img/cart.png" style="width:20px;">&nbsp;장바구니 담기
+						</a>
+						<a class="btn btn-primary" href="#">
+							<img src="../img/book_find.png" style="width:20px;">&nbsp;빌려읽기
+						</a>
+						<a href="../shop/list.do" class="btn btn-primary" @click="javascript:history.back()">
+							<img src="../img/list.png" style="width:20px;">&nbsp;목록으로
+						</a>
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align:right">
-						<a href="../shop/list.do" class="btn btn-xs btn-primary" @click="javascript:history.back()">이전</a>
+						
 					</td>
 				</tr>
 			</table>
 		<div stlye="height:20px"></div>
 		<h3>최근 본 책</h3>
 		<div class="row" id="cookie_list">
-			<img :src="c.img" style="width:60px;height:100px;margin-left:5px" v-for="c in cookie_list">
+			<a :href="'../shop/detail.do?no='+c.no" v-for="c in cookie_list">
+				<img :src="c.img" style="width:60px;height:60px;margin-left:5px">
+			</a>
 		</div>
 		<div style="height:20px"></div>
 		</div>

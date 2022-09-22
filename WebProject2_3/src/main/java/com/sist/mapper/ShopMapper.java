@@ -9,7 +9,7 @@ public interface ShopMapper {
 	@Select("SELECT book_no, no, title, type, condition, price, discount, state, img, publisher, author, num "
 			+ "FROM (SELECT book_no, no, title, type, condition, price, discount, state, img, publisher, author, rownum as num "
 			+ "FROM (SELECT book_no, no, title, type, condition, price, discount, state, img, publisher, author "
-			+ "FROM used_book_3 WHERE type LIKE '%'||#{type}||'%' ORDER BY no ASC)) "
+			+ "FROM used_book_3 WHERE type LIKE '%'||#{type}||'%' ORDER BY ${order})) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<ShopVO> shopListData(Map map);
 	

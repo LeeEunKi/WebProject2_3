@@ -19,11 +19,15 @@ public class ShopRestController {
 	private ShopDAO dao;
 	
 	@GetMapping(value="shop/list_vue.do", produces="text/plain;charset=UTF-8")
-	public String shop_list_vue(String page, String type) {
+	public String shop_list_vue(String page, String type, String order) {
 		if(page==null)
 			page="1";
 		if(type==null)
 			type="";
+		if(order==null)
+			order="1";
+		int index = Integer.parseInt(order);
+		String[] orders = {"","no ASC","discount ASC","discount DESC","title"};
 		String[] types = {"","순수과학","역사","언어","총류","기술과학","종교","철학","문학","예술","사회과학"};
 		int curPage = Integer.parseInt(page);
 		Map map = new HashMap();
@@ -34,6 +38,7 @@ public class ShopRestController {
 		map.put("type",type);
 		map.put("start",start);
 		map.put("end",end);
+		map.put("order",orders[index]);
 		
 		List<ShopVO> list = dao.shopListData(map);
 		int cnt = dao.shopTotalCount(map);
@@ -50,8 +55,8 @@ public class ShopRestController {
 			
 			//제목 길이 자르기
 			String title = vo.getTitle();
-			if(title.length()>20) {
-				title = title.substring(0,20)+"..";
+			if(title.length()>15) {
+				title = title.substring(0,15)+"..";
 			}
 			//저자 길이 자르기
 			String author = vo.getAuthor();

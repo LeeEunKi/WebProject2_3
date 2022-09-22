@@ -20,11 +20,13 @@ public class ShopController {
 	@Autowired
 	private ShopDAO dao;
 	
+	//중고책 목록 출력
 	@GetMapping("shop/list.do")
 	public String shop_list() {
 		return "shop/list";
 	}
-	//쿠키용
+	
+	//쿠키 저장
 	@GetMapping("shop/detail_before.do")
 	public String shop_detail_before(int no, RedirectAttributes ra, HttpServletResponse response) {
 		Cookie cookie = new Cookie("usedbook"+no, String.valueOf(no));
@@ -35,11 +37,21 @@ public class ShopController {
 		ra.addAttribute("no",no);
 		return "redirect:../shop/detail.do";
 	}
+	
+	//중고책 상세 페이지
 	@GetMapping("shop/detail.do")
 	public String shop_detail(int no, Model model) {
 		model.addAttribute("no",no);
 		return "shop/detail";
 	}
+	
+	//출판사별 목록
+	@GetMapping("shop/publisher_list.do")
+	public String publisher_list() {
+		return "shop/publisher_list";
+	}
+	
+	//중고책 장바구니
 	@GetMapping("shop/cart_list.do")
 	public String shop_cart_list(int no, HttpSession session, Model model) {
 		List<CartVO> list = (List<CartVO>)session.getAttribute("cart");
@@ -49,7 +61,7 @@ public class ShopController {
 	}
 	@GetMapping("shop/cart_insert.do")
 	public String shop_cart_insert(int no, HttpSession session, Model model) {
-	  List <CartVO> list = (List <CartVO> ) session.getAttribute("cart");
+	  List <CartVO> list = (List <CartVO>) session.getAttribute("cart");
 	  //처음 이후에는 세션에 저장된 데이터를 불러옴 -> 맨 처음에만 메모리 할당을 하도록 한다.
 	  if (list == null) {
 	    list = new ArrayList <CartVO> ();

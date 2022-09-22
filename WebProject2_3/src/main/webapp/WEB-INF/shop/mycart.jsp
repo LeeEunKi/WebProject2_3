@@ -32,22 +32,21 @@
       </c:if>
       <c:if test="${sessionScope.cart!=null }">
         <table class="table">
-          <tr class="success">
-            <th class="text-center">번호</th>
-            <th class="text-center"></th>
-            <th class="text-center">상품명</th>
-            <th class="text-center">가격</th>
-            <th class="text-center">수량</th>
-            <th class="text-center">비고</th>
+          <tr class="warning">
+            <th width="10%" class="text-center">번호</th>
+            <th width="20%" class="text-center"></th>
+            <th width="40%" class="text-center">상품명</th>
+            <th width="10%" class="text-center">가격</th>
+            <th width="20%" class="text-center">비고</th>
           </tr>
           <c:forEach var="vo" items="${list }">
             <tr>
-              <td class="text-center">${vo.no }</td>
-              <td class="text-center">
-                <img src="${vo.poster }" style="width:30px;height:30px;"></td>
-              <td>${vo.name }</td>
-              <td class="text-center">${vo.price }</td>
-              <td class="text-center">
+              <td width="10%" class="text-center">${vo.no }</td>
+              <td width="20%" class="text-center">
+                <img src="${vo.poster }" style="width:40px;height:60px;"></td>
+              <td width="40%" >${vo.name }</td>
+              <td width="10%" class="text-center">${vo.price }</td>
+              <td width="20%" class="text-center">
                 <a href="#" class="btn btn-sm btn-success">구매</a>
                 <a href="cart_cancel.do?no=${vo.no }" class="btn btn-sm btn-danger">삭제</a>
               </td>
@@ -56,7 +55,7 @@
           <tr>
             <td colspan="6" class="text-right">
               <a href="cart_total_delete.do?no=${no }" class="btn btn-sm btn-danger">장바구니 전체삭제</a>
-              <a href="detail.do?no=${no }" class="btn btn-sm btn-danger">상품으로 돌아가기</a>
+              <a href="../shop/detail.do?no=${no }" class="btn btn-sm btn-danger">상품으로 돌아가기</a>
             </td>
           </tr>
         </table>

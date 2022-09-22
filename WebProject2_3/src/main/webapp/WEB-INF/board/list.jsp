@@ -22,10 +22,6 @@ table caption {
   padding: .5em 0;
 }
 
-table.dataTable th,
-table.dataTable td {
-  white-space: nowrap;
-}
 
 .p {
   text-align: center;
@@ -38,15 +34,18 @@ table.dataTable td {
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<hr>
-<h2>자유게시판</h2>
+
+&nbsp;&nbsp;<h2><b>자유게시판</b></h2>
 <hr>
 	<div class="container">
   <div class="row">
     <div class="col-xs-12">
+     <a href="../board/insert.do" class="btn btn-sm btn-primary">새글</a>
+     <br>
+     <br>
       <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">
         <thead>
-          <tr>
+          <tr style="background-color: #b4b4b4;">
             <th width=10% class="text-center">번호</th>
 						<th width=45% class="text-center">제목</th>
 						<th width=15% class="text-center">아이디</th>
@@ -62,13 +61,17 @@ table.dataTable td {
 						<th width=20% class="text-center">{{vo.dbday}}</th>
 						<th width=10% class="txt_org text-center">{{vo.hit}}</th>
 					</tr>
-          
         </tbody>
-        <tfoot>
-          <tr>
-          <!-- 버튼 자리 -->
-          </tr>
-        </tfoot>
+		<tr>
+		</table>
+		<table class="text-center">
+		<tr>
+          <td class="text-center">
+						<input type=button value="이전" class="btn btn-sm btn-danger">
+						{{curpage}} page / {{totalpage}} pages
+						<input type=button value="다음" class="btn btn-sm btn-danger">
+					</td>
+		</tr>
       </table>
     </div>
   </div>

@@ -7,6 +7,31 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/room_style.css">
+<style type="text/css">
+
+h1 {
+   text-align: center
+}
+body { 
+  font-size: 140%; 
+}
+
+h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+table caption {
+  padding: .5em 0;
+}
+
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
+}
+</style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery.js"></script>
@@ -82,11 +107,15 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <h1 class="text-center">회원가입</h1>
-    <div class="row">
-     <form method="post" action="../member/join_ok.do">
-      <table class="table">
+  &nbsp;&nbsp;<h2><b>회원가입 페이지</b></h2>
+<hr>
+   <div class="container">
+     <div class="row">
+      <div class="col-xs-12">
+      <form method="post" action="../member/join_ok.do">
+     <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">
+   
+     
         <tr>
           <th width=10% class="warning text-right">ID</th>
           <td width=90%>
@@ -177,15 +206,16 @@
 			</td>
 		</tr>
 		<tr>
-			<td calss="text-center" id="result"></td>
+			<td class="text-center" id="result"></td>
 		</tr>
 		<tr id="okid">
-			<td calss="text-center">
+			<td class="text-center">
 				<input type=button class="btn btn-sm btn-info" id="okBtn" value="확인">
 			</td>
 		</tr>
 	</table>
     </div>
+  </div>
   </div>
 </body>
 </html>

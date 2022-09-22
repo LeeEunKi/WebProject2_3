@@ -96,9 +96,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-  <tiles:insertAttribute name="header"/>
  <div class="container">
+  <tiles:insertAttribute name="header"/>
   <tiles:insertAttribute name="content"/>
   <tiles:insertAttribute name="footer"/>
  </div> 

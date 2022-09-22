@@ -6,24 +6,42 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/room_style.css">
 <style type="text/css">
-.row1 {
-	margin:0px auto;
-   width: 700px;
-   height: 650px;
-}
+
 h1 {
    text-align: center
+}
+body { 
+  font-size: 140%; 
+}
+
+h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+table caption {
+  padding: .5em 0;
+}
+
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
+&nbsp;&nbsp;<h2><b>상세보기 페이지</b></h2>
+<hr>
    <div class="container">
-     <h1>상세보기</h1>
-     <div class="row row1">
-      <table class="table">
+     <div class="row">
+      <div class="col-xs-12">
+     <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">
         <tr>
          <th width=20% class="text-center warning">번호</th>
          <td width=30% class="text-center">{{vo.no }}</td>
@@ -38,7 +56,7 @@ h1 {
         </tr>
         <tr>
          <th width=20% class="text-center warning">제목</th>
-         <td colspan="3">${vo.subject }</td>
+         <td colspan="3">{{vo.subject }}</td>
         </tr>
         <tr>
           <td colspan="4" class="text-left" valign="top" height="200">
@@ -53,6 +71,7 @@ h1 {
           </td>
         </tr>
       </table>
+      </div>
      </div>
    </div>
    <script>

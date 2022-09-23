@@ -17,7 +17,7 @@ DESCRIPTION          CLOB           */
 @Getter
 @Setter
 public class BookVO {
-	private int no, price;
+	private int no, price,loancnt;
 	private String title, author, type, publisher, img, description, dbday;
 	private Date pub_date;
 }

@@ -62,7 +62,7 @@
 		    </div>
 		  </div>
       
-      s
+      
       </div>
         <div class="col-lg-4" style="margin-top: 15px;">
           <div class="login-page">

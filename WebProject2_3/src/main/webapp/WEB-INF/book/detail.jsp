@@ -5,9 +5,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.subject{
+	position: relative;
+    color: rgb(103, 114, 148);
+    font-size: 18px;
+    font-family: Medium, sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.45px;
+     margin-bottom: 15px; 
+}
+.side{
+    width: 200px;
+    border-right-style: inherit;
+    border-right-width: thin;
+    border-right-color: graytext;
+}
+.active_a{
+   font-weight: bold;
+}
+.table>tbody>tr>td,
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+    padding: 8px;
+    vertical-align: top;
+    border-top: none !important;  
+}
+</style>
 </head>
 <body>
-  <div class="container">
+<div class="section" style="padding-bottom:0px">
+		<div class="container">
+			<div class="row text-left mb-5">
+				<div class="col-12">
+					<h2 class="font-weight-bold heading text-primary mb-4">도서검색</h2>
+					<hr>
+				</div>
+			</div>
+
+		</div>
+</div>
+	<div class="container con1">
 		<div class="row row1">
 				<div class="col-lg-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
@@ -33,11 +75,15 @@
 				 </div>
 
 	<div class="col-sm-9">
-				<h3 style="margin-bottom: 0px">검색 결과</h3>
-				<h5 style="margin-top: 5px">Horizontal card11s</h5>
+				<h3 style="margin-bottom: 0px">상세보기</h3>
 				<hr style="margin-bottom: 0px">
-	</div>
-	</div>
+	
+			
+			   
+			
+		    
+	  </div>
   </div>
+</div>
 </body>
 </html>

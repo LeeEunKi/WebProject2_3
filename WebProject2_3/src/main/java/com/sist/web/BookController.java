@@ -25,4 +25,11 @@ public class BookController {
 	{
 		return "book/totalsearch";
 	}
+	
+	@GetMapping("book/detail.do")
+	public String bookDetail(int no,Model model)
+	{
+		model.addAttribute("no",no);
+		return "book/detail";
+	}
 }

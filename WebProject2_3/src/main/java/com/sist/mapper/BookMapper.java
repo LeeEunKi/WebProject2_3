@@ -12,9 +12,9 @@ public interface BookMapper {
 	private String title, author, type, publisher, img, description, dbday;
 	 */
 	
-	@Select("SELECT no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday,num "
-			+ "FROM (SELECT no,title,author,type,publisher,img,pub_date,rownum AS num "
-			+ "FROM (SELECT no,title,author,type,publisher,img,pub_date "
+	@Select("SELECT no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday,loancnt,num "
+			+ "FROM (SELECT no,title,author,type,publisher,img,pub_date,loancnt,rownum AS num "
+			+ "FROM (SELECT no,title,author,type,publisher,img,pub_date,loancnt "
 			+ "FROM BOOK_3 ORDER BY no DESC)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<BookVO> bookListData(Map map);

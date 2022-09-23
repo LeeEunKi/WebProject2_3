@@ -101,7 +101,7 @@
 					         <li>저자:&nbsp;&nbsp;{{vo.author}}</li>
 					         <li>출판사:&nbsp;&nbsp;{{vo.publisher}}</li>
 					         <li>출판일:&nbsp;&nbsp;{{vo.dbday}}</li>
-					         <li>대출횟수: ...</li>
+					         <li>대출가능 권 수:&nbsp;&nbsp;{{vo.loancnt}}</li>
 					        </ul>
 					        <button style="float: right;margin-bottom: 5px" v-on:click="detailData(vo.no)">상세보기</button>
 					        <hr style="width: 100%;background-color: rgb(231, 234, 238);">
@@ -151,7 +151,7 @@
 		            <tr>
 		              <td style="width: 20%"></td>
 		              <td style="width: 80%">
-		                <a href="#" class="btn btn-sm btn-info"style="float: right">도서 예약</a>
+		                <a :href="'../book/detail.do?no='+book_detail.no" class="btn btn-sm btn-info"style="float: right">도서 예약</a>
 		              </td>
 		            </tr>
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->

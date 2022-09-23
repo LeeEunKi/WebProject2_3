@@ -58,6 +58,8 @@ public class BookRestController {
 			obj.put("publisher", vo.getPublisher());
 			obj.put("img", vo.getImg());
 			obj.put("dbday", vo.getDbday());
+			obj.put("loancnt", vo.getLoancnt());
+			
 			
 			if(k==0)
 			{

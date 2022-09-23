@@ -18,8 +18,8 @@ function updateSeat() {
     selectedSeatsCount * TICKET_PRICE
   );
 
-  count.innerText = selectedSeatsCount;
-  total.innerText = selectedSeatsCount * TICKET_PRICE;
+  //count.innerText = selectedSeatsCount;
+  //total.innerText = selectedSeatsCount * TICKET_PRICE;
 }
 
 function populateUI() {
@@ -35,8 +35,8 @@ function populateUI() {
   }
 
   if (totalPrice !== null && totalPrice > 0) {
-    total.innerText = totalPrice;
-    count.innerText = selectedSeats.length;
+    //total.innerText = totalPrice;
+    //count.innerText = selectedSeats.length;
   }
 }
 

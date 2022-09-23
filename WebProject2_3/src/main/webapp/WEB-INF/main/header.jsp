@@ -50,7 +50,7 @@ nav a.sidenav-trigger i {
         <li><a href="../main/main.do">Home</a></li>
         <li><a href="../book/search.do" style="list-style: none;">도서검색</a></li>
         <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="../study/room_list.do">열람실 예약</a></li>
         <li><a href="../board/list.do">게시판(Test)</a></li>
       </ul>
        <ul class="nav navbar-nav navbar-right">

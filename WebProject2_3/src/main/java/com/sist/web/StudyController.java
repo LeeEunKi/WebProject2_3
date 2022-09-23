@@ -21,7 +21,6 @@ public class StudyController {
 		List<RoomVO> list=dao.roomAllListData(); 
 		 for(RoomVO vo:list) {
 			 vo.setUsed_seat(vo.getTotal_seat()-vo.getRemain_seat());
-			 System.out.println("0/100="+0/100);
 			 vo.setUse(vo.getUsed_seat()/vo.getTotal_seat()*100);
 		 }
 		 

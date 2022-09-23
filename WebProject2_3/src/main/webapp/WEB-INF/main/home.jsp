@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +65,8 @@
       
       
       </div>
-        <div class="col-lg-4" style="margin-top: 15px;">
+      <div class="col-sm-4" style="margin-top: 15px;">
+        <c:if test="${sessionScope.id==null }">
           <div class="login-page">
             <div class="box">
               <form class="login-box">
@@ -77,6 +79,14 @@
               </form>
             </div>
           </div>
+          </c:if>
+          <c:if test="${sessionScope.id!=null }">
+          <div class="login-page">
+            <div class="box">
+               <h3>"${sessionScope.name}"님 반갑습니다.</h3>
+            </div>
+            </div>
+          </c:if>
           <div class="box" style="height: 180px;">
             <p>Some text...</p>
           </div>

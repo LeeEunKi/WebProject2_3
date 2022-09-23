@@ -23,4 +23,29 @@ public class MemberDAO {
     {
     	return mapper.memberJoinInfoData(id);
     }
+    //@Select("SELECT pwd FROM spring_join "
+	  //+"WHERE id=#{id}")
+	public String memberGetPassword(String id)
+	{
+		 return mapper.memberGetPassword(id);
+	}
+	
+	/*
+	*  @Select("SELECT * FROM spring_join "
+		  +"WHERE id=#{id}")
+	   public MemberVO memberUpdateData(String id);
+	*/
+	public MemberVO memberUpdateData(String id)
+	{
+		 return mapper.memberUpdateData(id);
+	}
+	/*@Update("UPADTE spring_join SET "
+		   +"name=#{name},sex=#{sex},email=#{email},"
+		   +"post=#{post},addr1=#{addr1},addr2=#{addr2},"
+		   +"tel=#{tel},content=#{content} "
+		   +"WHERE id=#{id}")*/
+	public void memberUpdate(MemberVO vo)
+	{
+		mapper.memberUpdate(vo);
+	}
 }

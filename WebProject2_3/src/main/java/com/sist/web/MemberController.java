@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.dao.*;
@@ -69,7 +71,7 @@ public class MemberController {
    //현재 떠있는창(로그인창)에 결과값만 보내기
    @ResponseBody
    //HttpSession session => 아이디 세션에 저장
-   public String member_login_ok(String id, String pwd,HttpSession session)
+   public String member_login_ok(String id, String pwd,boolean ck,HttpSession session,HttpServletResponse response)
    {
 	   String result="";
 	   int count=dao.memberIdCheck(id);
@@ -80,12 +82,28 @@ public class MemberController {
 	   else
 	   {
 		   MemberVO vo=dao.memberJoinInfoData(id);
-		   //pwd와 암호화된 pwd(vo.getPwd)를 매칭(서로 같은지 확인)
-		   if(encoder.matches(pwd, vo.getPwd()))
+		   if(encoder.matches(pwd, vo.getPwd()))// 암호된 비밀번호 / 일반 비밀번호 비교 
 		   {
 			   session.setAttribute("id", id);
 			   session.setAttribute("name", vo.getName());
 			   session.setAttribute("role", vo.getRole());
+			   if(ck==true)
+			   {
+				   Cookie cookie=new Cookie("id", id);
+				   cookie.setPath("/");
+				   cookie.setMaxAge(60*60*24);
+				   response.addCookie(cookie);
+				   ////////////////////////////////
+				   cookie=new Cookie("name", vo.getName());
+				   cookie.setPath("/");
+				   cookie.setMaxAge(60*60*24);
+				   response.addCookie(cookie);
+				   ///////////////////////////////
+				   cookie=new Cookie("role", vo.getRole());
+				   cookie.setPath("/");
+				   cookie.setMaxAge(60*60*24);
+				   response.addCookie(cookie);
+			   }
 			   result="OK";
 		   }
 		   else
@@ -100,6 +118,50 @@ public class MemberController {
    public String member_logout(HttpSession session)
    {
 	   session.invalidate();
+	   return "redirect:../main/main.do";
+   }
+   
+   //회원정보 수정 전 비밀번호 확인
+   @GetMapping("member/join_before.do")
+   public String member_before(Model model)
+   {
+        //model.addAttribute("main_jsp", "../member/join_before.jsp");
+        return "member/join_before";
+   }
+   @GetMapping("member/join_before_ok.do")
+   @ResponseBody
+   public String member_before_ok(String pwd,HttpSession session)
+   {
+	   String id=(String)session.getAttribute("id");
+	   String result="";
+	   String db_pwd=dao.memberGetPassword(id);
+	   if(encoder.matches(pwd, db_pwd))
+	   {
+		   result="yes";
+	   }
+	   else
+	   {
+		   result="no";
+	   }
+	   return result;
+   }
+   //회원정보 수정
+   @GetMapping("member/join_update.do")
+   public String join_update(Model model,HttpSession session)
+   {
+	   String id=(String)session.getAttribute("id");
+	   MemberVO vo=dao.memberUpdateData(id);
+	   model.addAttribute("vo", vo);
+	   //model.addAttribute("main_jsp", "../member/join_update.jsp");
+	   return "member/join_update";
+   }
+   @PostMapping("member/join_update_ok.do")
+   public String join_update_ok(MemberVO vo,HttpSession session)
+   {
+	   vo.setTel(vo.getTel1()+"-"+vo.getTel2());
+	   //DB연동 
+	   dao.memberUpdate(vo);
+	   session.setAttribute("name", vo.getName());
 	   return "redirect:../main/main.do";
    }
 }

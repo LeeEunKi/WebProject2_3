@@ -2,6 +2,7 @@ package com.sist.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.sist.vo.MemberVO;
 
@@ -19,4 +20,20 @@ public interface MemberMapper {
 	   public MemberVO memberJoinInfoData(String id);
 	   // 회원 탈퇴  ==> 복호화 
 	   // 회원 수정  ==> 복호화 
+	   // 회원 수정  ==> 복호화 
+	   @Select("SELECT pwd FROM spring_join "
+			  +"WHERE id=#{id}")
+	   public String memberGetPassword(String id);
+	   
+	   @Select("SELECT * FROM spring_join "
+			  +"WHERE id=#{id}")
+	   public MemberVO memberUpdateData(String id);
+	   
+	   @Update("UPDATE spring_join SET "
+			   +"name=#{name},sex=#{sex},email=#{email},"
+			   +"post=#{post},addr1=#{addr1},addr2=#{addr2},"
+			   +"tel=#{tel},content=#{content} "
+			   +"WHERE id=#{id}")
+		public void memberUpdate(MemberVO vo);
+	   
 }

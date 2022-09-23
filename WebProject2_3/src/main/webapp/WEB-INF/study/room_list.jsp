@@ -25,15 +25,15 @@ thead{
 </style>
 </head>
 <body>
-<div class="container" id="room-area">
-	<div class="row text-center">
-	  <h1>열람실 좌석 현황</h1>
+<div class="container"  id="room-area">
+	<div class="row" style="width: 100%;">
+	  <h1>금일 열람실 현황</h1>
 	</div>
 	<hr>
-	<div class="row text-center btn-area">
-	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="seat(1)">제 1 열람실</button>
-	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="seat(2)">제 2 열람실</button>
-	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="seat(3)">제 3 열람실</button>
+	<div class="row text-center btn-area" style="margin-bottom: 15px;">
+	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="change(1)">제 1 열람실</button>
+	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="change(2)">제 2 열람실</button>
+	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="change(3)">제 3 열람실</button>
 	</div>
 	  <table class="table table-bordered">
 	    <thead> 
@@ -59,73 +59,8 @@ thead{
 	  </table>
 	  <div id="seat-area">
 	   <div class="row"> 
-	    <div class="col-sm-7">
-			<div class="plane-container">
-			  <div class="plane">
-			  <div class="row">
-	            <div style="height: 50px;"><h4>제 <strong>{{roomNo}}</strong> 열람실 좌석 현황</h4></div>
-	    	  </div>
-			   <c:forEach begin="0" end="9" varStatus="i">
-			     <div class="row">
-			     <c:forEach begin="1" end="10" varStatus="j">
-			        <div v-for="svo in seat_data"  :class="['seat', svo.state=='occupied'?'occupied':'']" 
-			           v-if="svo.no === ${j.index+(i.index*10)}" @click="toggle" data="${j.index+(i.index*10) }">
-			         {{svo.no}} 
-			        </div>
-	      	      </c:forEach>
-			     </div>
-			   </c:forEach>
-			  </div>
-			</div>
-		</div>
-		<div class="col-sm-5" style="background-color: white; height:600px ">
-		  <div class="row" style="margin-top: 20px;">
-		    <div class="seat"></div>
-		    <small>사용 가능</small>
-		    <div class="seat occupied"></div>
-		    <small>사용 중</small>
-		    <div class="seat selected"></div>
-		    <small>선택된 좌석</small>
-		  </div>
-		  <div class="row text-center" style="height: 50px;">
-		    <h3>예약 정보</h3>
-		    <hr>
-		  </div>
-		  <div class="row">
-		    <table class="table">
-		      <tr>
-		        <th width="30%">열람실</th>
-		        <td width="70%">제 <strong>{{roomNo}}</strong> 열람실</td>
-		      </tr>
-		      <tr>
-		        <td width="30%">좌석번호</td>
-		        <td width="70%">
-		         <span v-if="selected_no!=0">
-		         	{{selected_no}}
-		         </span>
-		        </td>
-		      </tr>
-		      <tr>
-		        <td width="30%">날짜</td>
-		        <td width="70%">
-		          <input type="date">
-		        </td>
-		      </tr>
-		      <tr>
-		        <td width="30%">시간</td>
-		        <td width="70%">
-		          <select>
-		            <option value="1">9:00~10:00</option>
-		            <option value="2">10:00~11:00</option>
-		            <option value="3">11:00~12:00</option>
-		            <option value="4">13:00~14:00</option>
-		          </select>
-		        </td>
-		      </tr>
-		    </table>
-		  </div>
-		  <div class="row"></div>
-		</div>
+	    <jsp:include page="./seat_detail.jsp"></jsp:include>
+		<jsp:include page="./booking_info.jsp"></jsp:include>
 	   </div> 
 	  </div>
 </div>
@@ -152,6 +87,16 @@ new Vue({
 				this.seat_data=result.data;
 				this.roomNo=this.seat_data[0].room_no;
 			})
+		},
+		change:function(room_no){
+			const selected_seat=document.querySelector(".selected:not(.state1)");
+			if(selected_seat != null){
+				selected_seat.classList.remove("selected");
+			}
+			this.selected_no=0;
+			this.onoff=0;
+			
+			this.seat(room_no);
 		},
 		toggle:function(){
 			console.log(this.onoff);

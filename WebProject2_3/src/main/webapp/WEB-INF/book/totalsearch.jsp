@@ -25,7 +25,6 @@
 }
 .active_a{
    font-weight: bold;
-   color: #2964D9;
 }
 .table>tbody>tr>td,
 .table>tbody>tr>td, 
@@ -55,13 +54,13 @@
   height: 540px;
   margin: auto;
   border-radius: 1%;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ /*  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   transform: scale(0.8);
   display: inline-block;
 }
 
 .card1:hover {
-  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.45);
+  /* box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.45); */
 }
 
 .img {
@@ -74,7 +73,7 @@ h4 {
 
   font-size: 24px;
   font-weight: bold;
-  margin: 20px 30px 0px;
+  margin: 20px 0px 0px;
 }
 
 p {
@@ -82,7 +81,7 @@ p {
   font-size: 16px;
   font-weight: 300;
   width: 240px;
-  margin: 8px 30px 0px;
+  margin: 8px 0px 0px;
   color: #757575;
 }
 </style>
@@ -99,9 +98,9 @@ p {
 
 		</div>
 </div>
-	<div class="container">
+	<div class="container con1">
 		<div class="row row1">
-				<div class="col-sm-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
+				<div class="col-lg-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
          			   <a href="../book/totalsearch.do"><h3 class="subject">통합자료검색</h3></a>
             			
@@ -115,7 +114,7 @@ p {
             			
           			</div>
 			    </div>
-			    <div class="col-lg-9">
+			    <div class="col-sm-9">
 		          <div class="row row1 text-center">
 				      <h2 style="font-weight: 700;display: inline; padding-left: 25px">도서명: </h2>
 				      <input style="position: relative; top: -3px;" type="text" size="40" class="input-lg" :value="title" ref="title" v-model="title">
@@ -125,39 +124,19 @@ p {
 				 </div>
 
 	<div class="col-sm-9">
-		
 				<h3 style="margin-bottom: 0px">검색 결과</h3>
-				<h5 style="margin-top: 5px">Horizontal card11s</h5>
 				<hr style="margin-bottom: 0px">
+	
 			  
 		    		
-					  <div class="card1">
-					    <img src="https://source.unsplash.com/480x360/?man,people" align="midde" alt="Random Unsplash image" class="img"/>
-					    <h4>Lorem nec molestie felis</h4>
-					    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque ultrices leo, nec molestie felis bibendum in. Quisque eleifend tincidunt nulla, eget consectetur urna posuere nec. </p>
+					  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
+					    <a><img :src="vo.img" align="midde" alt="Random Unsplash image" class="img" style="width: 300px ;height: 420px"/>
+					    <h4>{{vo.title}}</h4>
+					    <p>{{vo.author}}</p>
+					    <p>{{vo.publisher}}</p>
+					    </a>
 					  </div>  
-					  
-					  <div class="card1">
-					    <img src="https://source.unsplash.com/480x360/?man,people" align="midde" alt="Random Unsplash image" class="img"/>
-					   <h4>Lorem nec molestie felis</h4>
-					    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque ultrices leo, nec molestie felis bibendum in. Quisque eleifend tincidunt nulla, eget consectetur urna posuere nec. </p>
-					  </div>  
-					  
-					  <div class="card1">
-					    <img src="https://source.unsplash.com/480x360/?man,people" align="midde" alt="Random Unsplash image" class="img"/>
-					    <h4>Lorem nec molestie felis</h4>
-					    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque ultrices leo, nec molestie felis bibendum in. Quisque eleifend tincidunt nulla, eget consectetur urna posuere nec. </p>
-					  </div>  
-					  
-					  <div class="card1">
-					    <img src="https://source.unsplash.com/480x360/?man,people" align="midde" alt="Random Unsplash image" class="img"/>
-					    <h4>Lorem nec molestie felis</h4>
-					    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque ultrices leo, nec molestie felis bibendum in. Quisque eleifend tincidunt nulla, eget consectetur urna posuere nec. </p>
-					  </div>  
-				
-						    		
-	    		
-	    		
+	
 				 
 				  <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			      <div style="height: 20px"></div>
@@ -170,12 +149,55 @@ p {
 			   
 			
 		    
-	</div>
+	  </div>
+  </div>
 </div>
-</div>
+
 <script type="text/javascript">
  new Vue({
-	 
+	 el:'.con1',
+	 data:{
+		 book_list:[],
+		 title:'행복',
+		 totalpage:0,
+		 curpage:1
+	 },
+	 mounted:function(){
+		 this.send();
+	 },
+	 methods:{
+		 send:function(){
+			 axios.get('http://localhost:8080/web/book/totalsearch_vue.do',{
+				 params:{
+					 title:this.title,
+					 page:this.curpage
+				 }
+			 }).then(result=>{
+				 console.log(result); //일단 출력이 되는지 확인
+				 
+				 this.book_list=result.data;
+				 this.curpage=this.book_list[0].curpage;
+				 this.totalpage=this.book_list[0].totalpage;
+			 })
+		 },
+		 titleSearch:function(){
+			 if(this.title=="")
+			 {
+				 alert("도서명을 입력해주세요");
+				 this.$refs.title.focus();
+				 return;
+			 }
+			 this.send();
+		 },
+		 prev:function(){
+			  this.curpage=this.curpage>1?this.curpage-1:this.curpage;
+			  this.send();
+	     },
+	     next:function(){
+		     this.curpage=this.curpage<this.totalpage?this.curpage+1:this.curpage;
+		     this.send();
+	     }
+	 }
  })
 
 </script>

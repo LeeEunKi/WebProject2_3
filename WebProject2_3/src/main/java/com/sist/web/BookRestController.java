@@ -8,6 +8,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sist.dao.BookDAO;
@@ -94,6 +95,70 @@ public class BookRestController {
 			result=obj.toJSONString();
 		}
 		catch (Exception e) {}
+		return result;
+	}
+	
+	@RequestMapping(value = "book/totalsearch_vue.do", produces = "text/plain;charset=UTF-8")
+	public String totalsearch_vue(String page,String title)
+	{
+		String result="";
+		if(page==null)
+			page="1";
+		if(title==null)
+			title="행복";
+		
+		int curpage=Integer.parseInt(page);
+		int rowSize=16;
+		int start=(rowSize*curpage)-(rowSize-1);
+		int end=rowSize*curpage;
+		
+		Map map=new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("title", title);
+		
+		List<BookVO> list=dao.bookNameFindData(map);
+		int totalpage=dao.bookNameTotalpage(title);
+		
+		JSONArray arr=new JSONArray();
+		int k=0;
+		for(BookVO vo:list)
+		{
+			String title1=vo.getTitle();
+			if(title1.length()>16)
+			{
+				title1=title1.substring(0,16)+"...";
+				vo.setTitle(title1);
+			}
+			vo.setTitle(title1);
+			
+			String author=vo.getAuthor();
+			if(author.length()>7)
+			{
+				author=author.substring(0,author.lastIndexOf(")")+1)+" 외 다수";
+				vo.setAuthor(author);
+			}
+			vo.setAuthor(author);
+			
+			//no,title,author,type,publisher,img
+			JSONObject obj=new JSONObject();
+			obj.put("no", vo.getNo());
+			obj.put("title", vo.getTitle());
+			obj.put("author", vo.getAuthor());
+			obj.put("type", vo.getType());
+			obj.put("publisher", vo.getPublisher());
+			obj.put("img", vo.getImg());
+			
+			if(k==0)
+			{
+				obj.put("curpage", curpage);
+				obj.put("totalpage", totalpage);
+			}
+			arr.add(obj);
+			k++;
+		}
+		result=arr.toJSONString();
+		
 		return result;
 	}
 }

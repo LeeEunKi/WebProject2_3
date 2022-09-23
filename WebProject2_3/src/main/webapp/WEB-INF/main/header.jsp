@@ -47,7 +47,7 @@ nav a.sidenav-trigger i {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="../main/main.do">Home</a></li>
+        <li><a href="../main/main.do">Home</a></li>
         <li><a href="../book/search.do" style="list-style: none;">도서검색</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>

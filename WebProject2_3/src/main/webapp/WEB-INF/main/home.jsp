@@ -40,9 +40,9 @@
 </script>
 </head>
 <body>
-  <div class="conBox01" style="background-color: #F2DBCE;">  
+  <div class="col-12" style="background-color: #F2DBCE;">  
     <div class="row">
-      <div class="col-sm-8" style="height: 505px;">
+      <div class="col-lg-8" style="height: 505px;">
 		 <div class="slider" style="margin-top: 30px;">
 		 	<div class="slide_viewer" style="height: 435px;">
 			    <ul class="slides">
@@ -62,9 +62,9 @@
 		    </div>
 		  </div>
       
-      
+      s
       </div>
-        <div class="col-sm-4" style="margin-top: 15px;">
+        <div class="col-lg-4" style="margin-top: 15px;">
           <div class="login-page">
             <div class="box">
               <form class="login-box">
@@ -86,15 +86,15 @@
 
 
   <div class="row"    style=" height: 400px;">
-    <div class="col-sm-8"  style=" height: 400px;" >
+    <div class="col-lg-8"  style=" height: 400px;" >
        <div class="slider" style="margin-top: 15px;">
           <div class="slide_viewer" style="height: 410px;">
             <div class="slide_group">
               <div class="slide" style="background-color: white;">
-                <div class="col-sm-4" style="margin: 30px;">
+                <div class="col-lg-4" style="margin: 30px;">
                   <img src="https://s-media-cache-ak0.pinimg.com/564x/f9/8e/2d/f98e2d661445620266c0855d418aab71.jpg">
                 </div>
-                <div class="col-sm-4" style="margin-top: 30px;">
+                <div class="col-lg-4" style="margin-top: 30px;">
                    <div class="row">
                      오늘의 책
                    </div>
@@ -142,16 +142,16 @@
         </div><!-- End // .directional_nav -->
     </div>
     
-    <div class="col-sm-4 text-center">
+    <div class="col-lg-4 text-center">
 	    <div class="box">
-		      <div class="well" style="background-color: #fff;">
+
 		       <jsp:include page="room_reserve.jsp"></jsp:include>
-		      </div>
+
 	     </div>
     </div>  
     
   </div>
-  <hr>
+
   	<div class="container text-center"> 
 		<jsp:include page="quickmenu.jsp"></jsp:include>
 	</div>

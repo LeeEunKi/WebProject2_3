@@ -96,7 +96,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <div class="container">
+ <div class="container-fluid">
   <tiles:insertAttribute name="header"/>
   <tiles:insertAttribute name="content"/>
   <tiles:insertAttribute name="footer"/>

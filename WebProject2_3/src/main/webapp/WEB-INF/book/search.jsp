@@ -53,7 +53,7 @@
 <body>
 
 <div class="section" style="padding-bottom:0px">
-
+		<div class="container">
 			<div class="row text-left mb-5">
 				<div class="col-12">
 					<h2 class="font-weight-bold heading text-primary mb-4">도서검색</h2>
@@ -61,19 +61,17 @@
 				</div>
 			</div>
 
-
+		</div>
 </div>
-
-<div class="section pt-0">
-
-		<div class="row row1 justify-content-between mb-5">
+	<div class="container">
+		<div class="row row1">
 				<div class="col-lg-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
          			   <a href="../book/totalsearch.do"><h3 class="subject">통합자료검색</h3></a>
             			
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <h3 class="subject" style="font-weight: 700;">인기도서</h3>
+         			   <a href="../book/search.do"><h3 class="subject">인기도서</h3></a>
             			
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
@@ -81,9 +79,17 @@
             			
           			</div>
 			    </div>
-		     	<div class="col-lg-5">
-			     	<h3 style="margin-bottom: 0px">인기도서</h3>
-					<hr style="margin-bottom: 0px">
+			    
+
+	<div class="col-sm-9">
+				<h3 style="margin-bottom: 0px">검색 결과</h3>
+				<h5 style="margin-top: 5px">Horizontal card11s</h5>
+				<hr style="margin-bottom: 0px">
+	</div>
+			    
+
+		     	<div class="col-sm-5">
+			     	
 					  <table class="table"> 
 					    <tr style="vertical-align:middle" v-for="vo in book_data">
 					      <td class="text-center">
@@ -112,8 +118,8 @@
 			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
 			        </div>
 			   </div>
-			   <div class="col-sm-4" v-show="isShow" v-if="isShow===true" style="background-color: #f2f2f2">
-		        <table class="table" style="background-color: #f2f2f2">
+			   <div class="col-sm-4" v-show="isShow" v-if="isShow===true" style="margin-top: 10px">
+		        <table class="table">
 		          <tr>
 		            <td class="text-center thumbnail" colspan="3" style="margin-bottom: 0px">
 		              <img :src="book_detail.img" style="width: 50%;">
@@ -153,6 +159,7 @@
                 </div>
                 
 		 </div>
+		 
 </div>
 
  

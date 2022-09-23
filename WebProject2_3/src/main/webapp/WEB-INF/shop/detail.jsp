@@ -6,6 +6,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+$( function() {
+ $('#cartBtn').click(function(){
+    $('#dialog-confirm').dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+          "장바구니에 추가": function() {
+            location.href = '../shop/cart_insert.do?no='+${no};
+          },
+          "취소": function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });
+ })
+ $('#infoIcon').click(function(){
+	 $('#dialog').dialog({
+			width:400,
+			height:150});
+ })
+});
+</script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -23,12 +52,19 @@ font-family:'yangjin'
 	margin: 0px auto;
 	width: 100%;
 }
+.row1{
+	border-top:none !important;
+	height:200px !important;
+}
+#infoIcon:hover{
+	cursor:pointer;
+}
 </style>
 </head>
 <body>
 	<div class="container">
 		<div class="row" id="book_detail">
-			<table class="table">
+			<table class="table" style="border:none;">
 				<tr>
 					<td colspan="2" width="40%"><h3>{{book_detail.title}}</h3></td>
 				</tr>
@@ -37,35 +73,40 @@ font-family:'yangjin'
 					<a :href="'../shop/publisher_list.do?publisher='+book_detail.publisher">{{book_detail.publisher}}</a> 발행</td>
 				</tr>
 				<tr>
-					<td class="text-center" rowspan="6" width="40%">
+					<td class="text-center" rowspan="5" width="40%">
 						<img :src="book_detail.img" style="width:400px; height:550px;">
 					</td>
 				</tr>
 				<tr>
-					<td><h5>책 상태</h5><br>{{book_detail.condition}}</td>
+					<td height=10></td>
 				</tr>
 				<tr>
-					<td><h5>정가</h5><br>{{book_detail.price}}원</td>
-				</tr>
-				<tr>
-					<td><h5>할인가</h5><br>{{book_detail.discount}}원</td>
+					<td class="row1">
+						<img id="infoIcon" src="../img/info.png" style="height:20px;float:left;">
+						<h5>책 상태</h5>
+						<p>{{book_detail.condition}}</p>
+						<h5>정가</h5>
+						<p style="text-decoration:line-through;color:darkred">{{book_detail.price}}원</p>
+						<h5>→&nbsp;할인가</h5>
+						<img src="../img/sale.png" style="height:20px;float:left;"><p>&nbsp;{{book_detail.discount}}원</p>
+					</td>
 				</tr>
 				<tr>
 					<td>
-						<a class="btn btn-primary" :href="'../shop/cart_insert.do?no='+book_detail.no">
+						<pre style="white-space: pre-wrap; font-family:'Pretendard-Regular';font-size:14px;">{{book_detail.desc}}</pre>
+					</td>
+				</tr>
+				<tr>
+					<td class="row1">
+						<button id="cartBtn" class="btn btn-primary">
 							<img src="../img/cart.png" style="width:20px;">&nbsp;장바구니 담기
-						</a>
+						</button>
 						<a class="btn btn-primary" href="#">
 							<img src="../img/book_find.png" style="width:20px;">&nbsp;빌려읽기
 						</a>
 						<a href="../shop/list.do" class="btn btn-primary" @click="javascript:history.back()">
 							<img src="../img/list.png" style="width:20px;">&nbsp;목록으로
 						</a>
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align:right">
-						
 					</td>
 				</tr>
 			</table>
@@ -77,6 +118,43 @@ font-family:'yangjin'
 			</a>
 		</div>
 		<div style="height:20px"></div>
+		</div>
+		<div id="dialog-confirm" title="장바구니 담기?" style="display:none">
+		  <p>선택하신 중고책을 장바구니에 추가하시겠습니까?</p>
+		</div>
+		<div id="dialog" title="품질 등급에 따른 할인율" style="display:none">
+			<table>
+				<tr>
+					<th width="20%" class="text-center">등급</th>
+					<th width="60%" class="text-center">헌 상태</th>
+					<th width="20%" class="text-center">할인율</th>
+				</tr>
+				<tr>
+					<td width="20%">최상</td>
+					<td width="60%">새것에 가까움</td>
+					<td width="20%">10%</td>
+				</tr>
+				<tr>
+					<td width="20%">상</td>
+					<td width="60%">약간의 사용감은 있으나 깨끗함</td>
+					<td width="20%">20%</td>
+				</tr>
+				<tr>
+					<td width="20%">중</td>
+					<td width="60%">사용감이 많으며 헌 느낌이 남</td>
+					<td width="20%">40%</td>
+				</tr>
+				<tr>
+					<td width="20%">하</td>
+					<td width="60%">표지 손상이 심하고 얼룩이 많음</td>
+					<td width="20%">60%</td>
+				</tr>
+				<tr>
+					<td width="20%">최하</td>
+					<td width="60%">땔감</td>
+					<td width="20%">70%</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 <script>
@@ -106,7 +184,7 @@ new Vue({
 </script>
 </body>
 </html>
-<!--  https://jqueryui.com/dialog/#modal-confirmation
+<!--  
 <!doctype html>
 <html lang="en">
 <head>

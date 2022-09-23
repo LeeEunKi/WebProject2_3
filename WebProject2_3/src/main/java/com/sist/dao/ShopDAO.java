@@ -22,4 +22,10 @@ public class ShopDAO {
 	public ShopVO shopDetailData(int no) {
 		return mapper.shopDetailData(no);
 	}
+	public List<ShopVO> shopListData_pub(Map map){
+		return mapper.shopListData_pub(map);
+	}
+	public int shopTotalCount_pub(Map map) {
+		return mapper.shopTotalCount_pub(map);
+	}
 }

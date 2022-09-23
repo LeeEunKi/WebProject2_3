@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <style type="text/css">
 *{
 font-family:'Pretendard-Regular'
@@ -28,29 +29,17 @@ font-family:'yangjin'
 		<div id="book_list">
 			<div style="height:20px"></div>
 			<div class="row">
-				<div class="col-sm-2">
-					<h4 style="text-align:center">카테고리 목록</h4>
-					<table>
-						<tr @click="typeChange('')"><td>전체</td></tr>
-						<tr @click="typeChange('총류')"><td>총류</td></tr>
-						<tr @click="typeChange('순수과학')"><td>순수과학</td></tr>
-						<tr @click="typeChange('역사')"><td>역사</td></tr>
-						<tr @click="typeChange('언어')"><td>언어</td></tr>
-						<tr @click="typeChange('기술과학')"><td>기술과학</td></tr>
-						<tr @click="typeChange('종교')"><td>종교</td></tr>
-					</table>
-				</div>
-				<div class="col-sm-10">
-					<h3>{{type}}</h3>
+					<h3>{{publisher}}에서 출판한 책 목록</h3>
 					<h5>총 {{cnt}} 권의 중고책이 있습니다.</h5>
+					<input type=button onclick="javascript:history.back()" value="돌아가기">
 					<div class="text-right">
-						<input type=button class="btn btn-sm" value="최신등록순" @click="typeChange(type,1)">
-						<input type=button class="btn btn-sm" value="낮은가격순" @click="typeChange(type,2)">
-						<input type=button class="btn btn-sm" value="높은가격순" @click="typeChange(type,3)">
-						<input type=button class="btn btn-sm" value="제목순" @click="typeChange(type,4)">
+						<input type=button class="btn btn-sm" value="최신등록순" @click="typeChange(publisher,1)">
+						<input type=button class="btn btn-sm" value="낮은가격순" @click="typeChange(publisher,2)">
+						<input type=button class="btn btn-sm" value="높은가격순" @click="typeChange(publisher,3)">
+						<input type=button class="btn btn-sm" value="제목순" @click="typeChange(publisher,4)">
 					</div>
 					<div style="height:20px"></div><!-- 간격띄우기 -->
-					<div class="col-sm-4" v-for="vo in book_list">
+					<div class="col-sm-3" v-for="vo in book_list">
 						<div class="thumbnail" style="border:none">
 							 <a :href="'../shop/detail_before.do?no='+vo.no">
 								<img :src="vo.img" style="width:150px;height:250px;" class="images">
@@ -62,7 +51,6 @@ font-family:'yangjin'
 							</a>
 						</div>
 					</div>
-				</div>
 				<div class="text-center">
 					<input type=button class="btn btn-lg btn-warning" value="이전" @click="prev()">
 						{{curPage}} page / {{totalPage}} pages
@@ -79,7 +67,7 @@ font-family:'yangjin'
 			curPage:1,
 			totalPage:0,
 			book_list:[],
-			type:'',
+			publisher:'${publisher}',
 			cnt:0,
 			cookie_list:[],
 			order:1
@@ -96,10 +84,10 @@ font-family:'yangjin'
 		methods:{
 			send:function(){
 				let _this = this;
-				axios.get("http://localhost:8080/web/shop/list_vue.do",{
+				axios.get("http://localhost:8080/web/shop/publisher_list_vue.do",{
 					params:{
 						page:_this.curPage,
-						type:_this.type,
+						publisher:_this.publisher,
 						order:_this.order
 					}
 				}).then(function(result){
@@ -107,12 +95,13 @@ font-family:'yangjin'
 					_this.book_list = result.data;
 					_this.curPage = result.data[0].curPage;
 					_this.totalPage = result.data[0].totalPage;
-					_this.type = result.data[0].type;
+					_this.publisher = result.data[0].publisher;
 					_this.cnt = result.data[0].cnt;
+					$('html,body').scrollTop(0);
 				})
 			},
-			typeChange:function(type,order){
-				this.type = type;
+			typeChange:function(publisher,order){
+				this.publisher = publisher;
 				this.order = order;
 				this.curPage = 1;
 				this.send();

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
@@ -41,7 +42,8 @@ font-family:'yangjin'
 					</table>
 				</div>
 				<div class="col-sm-10">
-					<h3>{{type}}</h3>
+					<h3 v-if="type===''">전체</h3>
+					<h3 v-else>{{type}}</h3>
 					<h5>총 {{cnt}} 권의 중고책이 있습니다.</h5>
 					<div class="text-right">
 						<input type=button class="btn btn-sm" value="최신등록순" @click="typeChange(type,1)">
@@ -50,7 +52,7 @@ font-family:'yangjin'
 						<input type=button class="btn btn-sm" value="제목순" @click="typeChange(type,4)">
 					</div>
 					<div style="height:20px"></div><!-- 간격띄우기 -->
-					<div class="col-sm-4" v-for="vo in book_list">
+					<div class="col-sm-3" v-for="vo in book_list">
 						<div class="thumbnail" style="border:none">
 							 <a :href="'../shop/detail_before.do?no='+vo.no">
 								<img :src="vo.img" style="width:150px;height:250px;" class="images">
@@ -109,6 +111,7 @@ font-family:'yangjin'
 					_this.totalPage = result.data[0].totalPage;
 					_this.type = result.data[0].type;
 					_this.cnt = result.data[0].cnt;
+					$('html,body').scrollTop(0);
 				})
 			},
 			typeChange:function(type,order){

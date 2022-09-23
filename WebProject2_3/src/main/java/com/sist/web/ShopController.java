@@ -47,7 +47,8 @@ public class ShopController {
 	
 	//출판사별 목록
 	@GetMapping("shop/publisher_list.do")
-	public String publisher_list() {
+	public String publisher_list(String publisher, Model model) {
+		model.addAttribute("publisher", publisher);
 		return "shop/publisher_list";
 	}
 	

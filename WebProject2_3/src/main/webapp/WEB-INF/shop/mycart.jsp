@@ -19,6 +19,9 @@
 </style>
 </head>
 <body>
+<%--체크된 것만 결제되도록 처리
+	https://dev-doodoo.tistory.com/204
+ --%>
   <div class="container">
     <div class="row" style="width:950px;">
       <h3>나의 장바구니</h3>
@@ -49,7 +52,7 @@
               <td width="40%" >${vo.name }</td>
               <td width="10%" class="text-center"><fmt:formatNumber value="${vo.price}" type="number" maxFractionDigits="3"/>원</td>
               <td width="20%" class="text-center">
-                <a href="#" class="btn btn-sm btn-success">구매</a>
+                <a href="../shop/purchase.do" class="btn btn-sm btn-success">구매</a>
                 <a href="cart_cancel.do?no=${vo.no }" class="btn btn-sm btn-danger">삭제</a>
               </td>
             </tr>

@@ -1,6 +1,7 @@
 package com.sist.web;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
@@ -50,6 +51,16 @@ public class ShopController {
 	public String publisher_list(String publisher, Model model) {
 		model.addAttribute("publisher", publisher);
 		return "shop/publisher_list";
+	}
+	@GetMapping("shop/purchase.do")
+	public String purchase(HttpServletRequest request) {
+	    request.setAttribute("name","김두두");
+	    request.setAttribute("email","dadfd");
+	    request.setAttribute("phone","10124");
+	    request.setAttribute("totalPrice",100);
+	    request.setAttribute("address","dfaddaf");
+		
+		return "shop/purchase";
 	}
 	
 	//중고책 장바구니

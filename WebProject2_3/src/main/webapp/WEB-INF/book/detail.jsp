@@ -229,7 +229,7 @@ nav ul.nav-tabs {
 					<div class="container-detail">
 						<section class="section-detail content active">
 							<h2>책소개</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, praesentium excepturi eos, ipsum maxime provident nulla enim tempora ab distinctio dignissimos dicta accusantium illo amet voluptatem! Accusamus aliquam animi omnis.</p>
+							<p>ㅖ{{패.채ㅜㅅ둣}}</p>
 					    </section>
 						
 						<section class="content">

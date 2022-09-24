@@ -19,15 +19,17 @@
     crossorigin="anonymous"></script>
 <style type="text/css">
  .carousel-inner > .carousel-item > img{
-       width: 640px;
-      height: 520px; 
+       width: 800px;
+      height: 510px; 
     }
+    
 </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-	   <div class="col-lg-8" style="margin-top: 20px">
+	<div class="col-lg-2"></div>
+	   <div class="col-lg-6" style="margin-top: 20px">
 			 <div id="demo" class="carousel slide" data-ride="carousel">
 	
 		    <div class="carousel-inner">
@@ -80,7 +82,7 @@
 
       
 	
-      <div class="col-lg-4" style="margin-top: 20px;">
+      <div class="col-lg-2" style="margin-top: 20px;">
         <c:if test="${sessionScope.id==null }">
           <div class="login-page">
             <div class="box">
@@ -106,25 +108,27 @@
             <p>Some text...</p>
           </div>
         </div>
+        <div class="col-lg-2"></div>
   </div>
 
 
 
 
   <div class="row"    style=" height: 400px;">
-    <div class="col-sm-8"  style=" height: 400px;" >
+  <div class="col-lg-2"></div>
+    <div class="col-sm-6"  style=" height: 400px;" >
       
       </div>
     
     
-    <div class="col-sm-4 text-center" style="margin-top: 20px">
+    <div class="col-sm-2 text-center" style="margin-top: 20px">
 	    <div class="box" style="height: 350px;">
 
 		       <jsp:include page="room_reserve.jsp"></jsp:include>
 
 	     </div>
     </div>  
-    
+    <div class="col-lg-2"></div>
   </div>
 
   	<div class="container text-center"> 

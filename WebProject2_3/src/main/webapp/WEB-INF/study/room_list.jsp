@@ -68,11 +68,14 @@ thead{
 new Vue({
 	el:'#room-area',
 	data:{
-		seat_data:[],
-		roomNo: 1,
-		selected_no:0,
-		onoff:0
-	},
+		seat_data:[], // 열람실별 좌석정보 
+		roomNo: 1,   // 열람실 번호
+		selected_no:0, // 선택 좌석번호
+		onoff:0, // 좌석 중복 선택 방지 변수
+		now_date:'', // 현재 날짜
+		now_time:'', // /시간
+		after_time:'' // 기본 3시간 예약
+ 	},
 	mounted:function(){
 		this.seat(this.roomNo);
 	},
@@ -99,23 +102,59 @@ new Vue({
 			this.seat(room_no);
 		},
 		toggle:function(){
-			console.log(this.onoff);
 			if(!event.target.classList.contains("occupied")){
 				
 				if(this.onoff==0){
 				   event.target.classList.toggle("selected");
 				   this.selected_no=event.target.getAttribute('data');
 				   this.onoff=this.onoff+1;
+				   
+				   this.myDate();
+				   
 				}
 				else{
 					if(event.target.classList.contains("selected")){
 						event.target.classList.toggle("selected");
 						this.selected_no=0;
+						this.now_date=''; 
+						this.now_time='';
+						this.after_time=''; 
 						this.onoff=this.onoff-1;
 					}
 				} 
-				   
 			}
+			
+		},
+		myDate:function(){
+			let date=new Date();
+			let year=date.getFullYear();
+			let month = date.getMonth()+1;
+			let day = date.getDate();
+			this.now_date= year + '.' + month + '.' + day ; 
+			
+			let hou = ('0' + date.getHours()).slice(-2);
+			let min = ('0' + date.getMinutes()).slice(-2);
+			let sec = ('0' + date.getSeconds()).slice(-2);
+			let after_hou = ('0' + (date.getHours()+3)).slice(-2);
+			let after_min = ('0' + date.getMinutes()).slice(-2);
+			let after_sec = ('0' + date.getSeconds()).slice(-2);
+			if(hou <9){
+				alert("현재는 예약할 수 없습니다. (개실 시간 : 09:00~18:00)");
+				return;
+			}
+			if(hou>18 && min>0){
+				alert("현재는 예약할 수 없습니다. (개실 시간 : 09:00~18:00)");
+				return;
+			}
+			
+			if(after_hou>18){
+				after_hou='18';
+				after_min='00';
+				after_sec='00';
+			}
+			
+			this.now_time= hou +':' + min + ':' + sec;
+			this.after_time = after_hou +':' + after_min + ':00';  
 		}
 	}
 })

@@ -7,5 +7,6 @@ import lombok.Setter;
 @Setter
 public class RoomVO {
 	private String name;
-	private int no,total_seat,remain_seat,used_seat,use;
+	private int no,total_seat,remain_seat,used_seat;
+	private double use;
 }

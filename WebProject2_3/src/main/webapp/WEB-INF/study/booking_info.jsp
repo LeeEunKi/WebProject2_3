@@ -37,13 +37,13 @@
       <tr>
         <td width="30%">시작 시간</td>
         <td width="70%">
-         <input type="text" readonly="readonly" value="현재시간">
+         <span>{{now_date}} &nbsp; {{now_time}}</span>
         </td>
       </tr>
       <tr>
         <td width="30%">종료 시간</td>
         <td width="70%">
-          <input type="text" readonly="readonly" value="현재 날짜">
+          <span>{{now_date}} &nbsp; {{after_time}}</span>
         </td>
       </tr>
       <tr>

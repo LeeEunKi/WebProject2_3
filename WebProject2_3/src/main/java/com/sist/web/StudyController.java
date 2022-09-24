@@ -21,7 +21,7 @@ public class StudyController {
 		List<RoomVO> list=dao.roomAllListData(); 
 		 for(RoomVO vo:list) {
 			 vo.setUsed_seat(vo.getTotal_seat()-vo.getRemain_seat());
-			 vo.setUse(vo.getUsed_seat()/vo.getTotal_seat()*100);
+			 vo.setUse((double)(vo.getUsed_seat())/(double)(vo.getTotal_seat())*100);
 		 }
 		 
 		model.addAttribute("list", list);

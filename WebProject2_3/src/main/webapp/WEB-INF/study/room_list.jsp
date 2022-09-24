@@ -105,11 +105,12 @@ new Vue({
 			if(!event.target.classList.contains("occupied")){
 				
 				if(this.onoff==0){
+				   this.myDate();
+				   if(this.now_time=='')
+					   return;
 				   event.target.classList.toggle("selected");
 				   this.selected_no=event.target.getAttribute('data');
 				   this.onoff=this.onoff+1;
-				   
-				   this.myDate();
 				   
 				}
 				else{
@@ -127,6 +128,12 @@ new Vue({
 		},
 		myDate:function(){
 			let date=new Date();
+			// 개방시간이 아닐 시 리턴
+			if(date.getHours()<9 || (date.getHours()>=18 && date.getMinutes()>=0)){
+				alert("현재는 예약할 수 없습니다. (개방 시간 : 09:00~18:00)");
+				return;
+			}
+			
 			let year=date.getFullYear();
 			let month = date.getMonth()+1;
 			let day = date.getDate();
@@ -138,14 +145,7 @@ new Vue({
 			let after_hou = ('0' + (date.getHours()+3)).slice(-2);
 			let after_min = ('0' + date.getMinutes()).slice(-2);
 			let after_sec = ('0' + date.getSeconds()).slice(-2);
-			if(hou <9){
-				alert("현재는 예약할 수 없습니다. (개실 시간 : 09:00~18:00)");
-				return;
-			}
-			if(hou>18 && min>0){
-				alert("현재는 예약할 수 없습니다. (개실 시간 : 09:00~18:00)");
-				return;
-			}
+			
 			
 			if(after_hou>18){
 				after_hou='18';

@@ -116,7 +116,7 @@ p {
 			    </div>
 			    
 
-	<div class="col-lg-9">
+	<div class="col-lg-10">
 				<h3 style="margin-bottom: 0px">검색 결과</h3>
 				<h5 style="margin-top: 5px">Horizontal card11s</h5>
 				<hr style="margin-bottom: 0px">

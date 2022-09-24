@@ -25,9 +25,9 @@
 </style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-	   <div class="col-8" style="margin-top: 20px">
+	   <div class="col-lg-8" style="margin-top: 20px">
 			 <div id="demo" class="carousel slide" data-ride="carousel">
 	
 		    <div class="carousel-inner">
@@ -80,7 +80,7 @@
 
       
 	
-      <div class="col-4" style="margin-top: 20px;">
+      <div class="col-lg-4" style="margin-top: 20px;">
         <c:if test="${sessionScope.id==null }">
           <div class="login-page">
             <div class="box">
@@ -117,8 +117,8 @@
       </div>
     
     
-    <div class="col-sm-4 text-center">
-	    <div class="box">
+    <div class="col-sm-4 text-center" style="margin-top: 20px">
+	    <div class="box" style="height: 350px;">
 
 		       <jsp:include page="room_reserve.jsp"></jsp:include>
 
@@ -128,7 +128,9 @@
   </div>
 
   	<div class="container text-center"> 
+  	  <div class="row">
 		<jsp:include page="quickmenu.jsp"></jsp:include>
+      </div>
 	</div>
 	
 	<div class="container-fluid">

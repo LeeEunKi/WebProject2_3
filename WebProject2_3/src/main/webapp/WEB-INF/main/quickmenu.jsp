@@ -17,8 +17,10 @@
 </style>
 </head>
 <body>
+<div class="col-sm-12">
   <h3>Quick Menu</h3>
   <br>
+</div>
   <div class="row quick-menu">
     <div class="col-sm-2">
       <img src="../img/book_find.png">

@@ -35,23 +35,134 @@
     vertical-align: top;
     border-top: none !important;  
 }
+
+
+/* ********************************************** */
+
+*{
+	font-family: arial;
+}
+
+p {
+/* 	padding: 10px; */
+	margin: 0;
+	font-size: 17px;
+	line-height: 16px;
+	color: #484747;
+
+}
+
+.boxarea {
+	background-color: #EFEFEF;
+	padding: 10px;
+	margin: 10px auto;
+	width: 100%;
+	
+	
+}
+
+.content-area {
+	overflow: hidden;
+  position: relative;
+  width:100%;
+}
+
+.content {
+	position: relative;
+  background-color:F7FFF7;
+	height: 100%;
+/* 	border-top: 1px solid silver; */
+	display: inline-block;
+	white-space: normal;
+}
+
+
+detail-nav {
+	box-sizing: border-box;
+	width: 50%
+}
+
+nav ul.nav-tabs {
+	margin: 0px auto;
+	padding: 0px;
+	display: table;
+	width: 100%;
+}	
+.nav-tabs li {
+	text-transform: uppercase;
+	font-size: 17px;
+  font-weight: 500;
+	list-style: none;
+	display: table-cell;
+	padding-right: 2px;
+	border-bottom: 5px solid #2964D9;
+}
+
+.nav-tabs li:last-child {
+  padding-right: 0px;
+}
+
+.nav-tabs li a {
+	display: block;
+	color: white;
+	text-align: center;
+	background-color: #6D93DF;
+	padding: 10px 10px;
+	text-decoration: none;
+ 
+}
+
+.nav-tabs li a:hover {
+	background-color: #FF6B6B;
+}
+
+
+.nav-tabs li a.active {
+	background-color: #2964D9;
+}
+
+.nav-tabs li a:visited {
+	color: white;
+}
+
+.section-detail {
+	margin: 0px 0px;
+	padding: 0px;
+	height:350px;
+/*     width:530px; */
+    float:left;
+}
+
+.container-detail {
+	height: 350px;
+	width: 7000px;
+	margin: 0px;
+	padding: 0;
+	padding-top: 0px;
+	position: block;
+	white-space: nowrap;
+	overflow: hidden;
+	transition: all 0.3s ease-in;
+}
+
+/* https://coolors.co/1a535c-4ecdc4-f7fff7-ff6b6b-ffe66d */
 </style>
+
+
 </head>
 <body>
 <div class="section" style="padding-bottom:0px">
-		<div class="container">
+	<div class="container-fluid">
 			<div class="row text-left mb-5">
 				<div class="col-12">
-					<h2 class="font-weight-bold heading text-primary mb-4">도서검색</h2>
+					<h2 class="font-weight-bold heading text-primary mb-4" style="padding-top: 20px">도서검색</h2>
 					<hr>
 				</div>
 			</div>
 
-		</div>
-</div>
-	<div class="container con1">
-		<div class="row row1">
-				<div class="col-lg-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
+		
+	<div class="row row1">
+				<div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
          			   <a href="../book/totalsearch.do"><h3 class="subject">통합자료검색</h3></a>
             			
@@ -65,25 +176,125 @@
             			
           			</div>
 			    </div>
-			    <div class="col-sm-9">
-		          <div class="row row1 text-center">
-				      <h2 style="font-weight: 700;display: inline; padding-left: 25px">도서명: </h2>
-				      <input style="position: relative; top: -3px;" type="text" size="40" class="input-lg" :value="title" ref="title" v-model="title">
-				      <!-- vo-model은 아래 new Vue 안에 있는 data title='' 값을 바꿔주는 역할  -->
-				      <input type="button" value="검색" class="btn btn-lg btn-primary" style="position: relative; top: -6px;" v-on:click="titleSearch()">
-				  </div>
-				 </div>
+			    
 
-	<div class="col-sm-9">
-				<h3 style="margin-bottom: 0px">상세보기</h3>
+	<div class="col-lg-9">
+				<h3 style="margin-bottom: 0px">검색 결과</h3>
+				<h5 style="margin-top: 5px">Horizontal card11s</h5>
 				<hr style="margin-bottom: 0px">
-	
+				
+				<table class="table">
+					<tr>
+					  <td rowspan="6">
+					  <img src="../1.jpg">
+					  </td>
+					</tr>
+		            <tr>
+		              <td colspan="2">
+		                <h3>{{book_detail.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{book_detail.type}}</span></h3>
+		              </td>
+		            </tr>
+		            <tr>
+		              <td style="width: 20%">저자명</td>
+		              <td style="width: 80%">{{book_detail.author}}</td>
+		            </tr>
+		            <tr>
+		              <td style="width: 20%">출판사</td>
+		              <td style="width: 80%">{{book_detail.publisher}}</td>
+		            </tr>
+		            <tr>
+		              <td style="width: 20%">출판일자</td>
+		              <td style="width: 80%">{{book_detail.dbday}}</td>
+		            </tr>
+		            <tr>
+		              <td style="width: 20%"></td>
+		              <td style="width: 80%">
+		                <a :href="'../book/detail.do?no='+book_detail.no" class="btn btn-sm btn-info"style="float: left">도서 예약</a>
+		              </td>
+		            </tr>
+		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->
+		          </table>
 			
-			   
+		<main class="boxarea">
+				<div class="content-area">
+					<nav class="detail-nav">
+						<ul class="nav-tabs">
+							<li><a href="#" class="n-tab active">책소개</a></li>
+							<li><a href="#" class="n-tab">이용안내</a></li>
+							<li><a href="#" class="n-tab">리뷰</a></li>
+							<li><a href="#" class="n-tab">문의</a></li>    
+						</ul>
+					</nav>
 			
-		    
-	  </div>
-  </div>
+					<div class="container-detail">
+						<section class="section-detail content active">
+							<h2>책소개</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, praesentium excepturi eos, ipsum maxime provident nulla enim tempora ab distinctio dignissimos dicta accusantium illo amet voluptatem! Accusamus aliquam animi omnis.</p>
+					    </section>
+						
+						<section class="content">
+							<h2>이용안내</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque autem itaque, nesciunt dolore non maxime praesentium! Nobis impedit aliquid eveniet blanditiis, aspernatur unde corporis, dolorem, voluptates harum, beatae cumque dolore?</p><br/>
+		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quod velit illo dicta quibusdam esse expedita doloremque provident, qui possimus deserunt omnis fuga labore necessitatibus nesciunt eius. Est, officiis aliquam.</p>
+					    </section>
+						
+						<section class="content">
+							<h2>리뷰</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque autem itaque, nesciunt dolore non maxime praesentium!</p><br/>
+		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quod velit illo dicta quibusdam esse expedita doloremque provident, qui possimus deserunt omnis fuga labore necessitatibus nesciunt eius. Est, officiis aliquam.</p>
+					    </section>
+						
+						<section class="content">
+							<h2>Contact</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque autem itaque, nesciunt dolore non maxime praesentium! Nobis impedit aliquid eveniet blanditiis, aspernatur unde corporis, dolorem, voluptates harum, beatae cumque dolore?</p><br/>
+		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quod velit illo dicta quibusdam esse expedita doloremque provident, qui possimus deserunt omnis fuga labore necessitatibus nesciunt eius. Est, officiis aliquam.</p>
+					    </section>
+		
+				    </div>
+				</div>
+
+			</main>
+		</div>
+			    
+                
+		 </div>
+	</div>
+		 
 </div>
+
+
+
+
+
+
+<script type="text/javascript">
+		var slideWidth = $(".boxarea").width();
+		var contentW = $(".content-area").width();
+		
+		$(document).ready(function() {
+		  $('.content').css({width:contentW});
+		  $('nav ul li').click(function() {
+		    var tabindex = $(this).index();
+		    var jump = (slideWidth * tabindex);
+		    console.log(tabindex);
+		    console.log(jump)
+		    $(".container-detail").css({
+		      transform: "translate3d(-" + jump + "px, 0, 0)"
+		    });
+		  });
+		  $("a.n-tab").click(function() {
+		    var $active = $('.active');
+		    $active.removeClass("active");
+		    $(this).addClass("active");
+		  })
+		});
+		
+			$(window).on('resize', function(evt) {
+		  $('.content').css({width:contentW});
+			});
+</script>
 </body>
 </html>

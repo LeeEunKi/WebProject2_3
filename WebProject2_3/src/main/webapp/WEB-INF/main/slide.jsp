@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <style type="text/css">
 
 .slider .indicators .indicator-item {
@@ -41,24 +40,24 @@
 </head>
 <body>
  <div class="col-sm-8" style="height: 505px;">
-	 <div class="slider" style="margin-top: 30px;">
+	 <!-- <div class="slider" style="margin-top: 30px;">
 	 	<div class="slide_viewer" style="height: 435px;">
 		    <ul class="slides">
 		      <li>
-		        <img src="../img/sample1.jpg"> <!-- random image -->
+		        <img src="../img/sample1.jpg"> random image
 		      </li>
 		      <li>
-		        <img src="../img/sample2.jpg"> <!-- random image -->
+		        <img src="../img/sample2.jpg"> random image
 		      </li>
 		      <li>
-		        <img src="../img/sample4.jpg"> <!-- random image -->
+		        <img src="../img/sample4.jpg"> random image
 		      </li>
 		      <li>
-		        <img src="../img/sample6.jpg"> <!-- random image -->
+		        <img src="../img/sample6.jpg"> random image
 		      </li>
 		    </ul>
 	    </div>
-	  </div>
+	  </div> -->
   </div>
 </body>
 </html>

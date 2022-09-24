@@ -6,66 +6,81 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 <style type="text/css">
-
-.slider .indicators .indicator-item {
-  background-color: #666666;
-  border: 3px solid #ffffff;
-  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
-.slider .indicators .indicator-item.active {
-  background-color: #ffffff;
-}
-.slider {
-  width: auto;
-}
-
-.slider .indicators {
-  bottom: 60px;
-  z-index: 100;
-  /* text-align: left; */
-}
-.img{
- object-fit:cover
-}
-
+ .carousel-inner > .carousel-item > img{
+       width: 640px;
+      height: 520px; 
+    }
 </style>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script type="text/javascript">
-        $(document).ready(function(){
-        	  $('.slider').slider();
-        	});
-</script>
 </head>
 <body>
-  <div class="col-12" style="background-color: #F2DBCE;">  
-    <div class="row">
-      <div class="col-lg-8" style="height: 505px;">
-		 <div class="slider" style="margin-top: 30px;">
-		 	<div class="slide_viewer" style="height: 435px;">
-			    <ul class="slides">
-			      <li>
-			        <img src="../img/sample1.jpg"> <!-- random images -->
-			      </li>
-			      <li>
-			        <img src="../img/sample2.jpg"> <!-- random images -->
-			      </li>
-			      <li>
-			        <img src="../img/sample4.jpg"> <!-- random image -->
-			      </li>
-			      <li>
-			        <img src="../img/sample6.jpg"> <!-- random image -->
-			      </li>
-			    </ul>
-		    </div>
+<div class="container-fluid">
+	<div class="row">
+	   <div class="col-8" style="margin-top: 20px">
+			 <div id="demo" class="carousel slide" data-ride="carousel">
+	
+		    <div class="carousel-inner">
+		      <!-- 슬라이드 쇼 -->
+		      <div class="carousel-item active">
+		        <!--가로-->
+		        <img class="d-block w-100" 
+		          src="https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+		          alt="First slide">
+		          <div class="carousel-caption d-none d-md-block">
+		              <h5>TEST</h5>
+		              <p>testtesttest</p>
+		        </div>
+		      </div>
+		      <div class="carousel-item">
+		        <img class="d-block w-100"
+		          src="https://images.pexels.com/photos/2355519/pexels-photo-2355519.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+		          alt="Second slide">
+		      </div>
+		      <div class="carousel-item">
+		        <img class="d-block w-100"
+		          src="https://images.pexels.com/photos/2544554/pexels-photo-2544554.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+		          alt="Third slide">
+		      </div>
+		    
+		    <!-- / 슬라이드 쇼 끝 -->
+		
+		    <!-- 왼쪽 오른쪽 화살표 버튼 -->
+		    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+		      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		      <!-- <span>Previous</span> -->
+		    </a>
+		    <a class="carousel-control-next" href="#demo" data-slide="next">
+		      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		      <!-- <span>Next</span> -->
+		    </a>
+		    <!-- / 화살표 버튼 끝 -->
+		
 		  </div>
+	   </div>
+	</div>
+
+
+
+  <script>
+    $('.carousel').carousel({
+      interval: 2000 //기본 5초
+    })
+</script>
+
       
-      
-      </div>
-      <div class="col-sm-4" style="margin-top: 15px;">
+	
+      <div class="col-4" style="margin-top: 20px;">
         <c:if test="${sessionScope.id==null }">
           <div class="login-page">
             <div class="box">
@@ -91,68 +106,18 @@
             <p>Some text...</p>
           </div>
         </div>
-    </div>
   </div>
 
 
+
+
   <div class="row"    style=" height: 400px;">
-    <div class="col-lg-8"  style=" height: 400px;" >
-       <div class="slider" style="margin-top: 15px;">
-          <div class="slide_viewer" style="height: 410px;">
-            <div class="slide_group">
-              <div class="slide" style="background-color: white;">
-                <div class="col-lg-4" style="margin: 30px;">
-                  <img src="https://s-media-cache-ak0.pinimg.com/564x/f9/8e/2d/f98e2d661445620266c0855d418aab71.jpg">
-                </div>
-                <div class="col-lg-4" style="margin-top: 30px;">
-                   <div class="row">
-                     오늘의 책
-                   </div>
-                   <div class="row">
-                     제목
-                   </div>
-                   <div class="row">
-                     내용
-                   </div>
-                </div>
-              </div>
-              <div class="slide">
-              </div>
-              <div class="slide">
-              </div>
-              <div class="slide">
-              </div>
-            </div>
-          </div>
-        </div><!-- End // .slider -->
-        <div class="slide_buttons" style="margin-top: 25px;">
-        </div>
-         <div class="directional_nav">
-          <div class="previous_btn" title="Previous">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="65px" viewBox="-11 -11.5 65 66">
-              <g>
-                <g>
-                  <path fill="#474544" d="M-10.5,22.118C-10.5,4.132,4.133-10.5,22.118-10.5S54.736,4.132,54.736,22.118
-              c0,17.985-14.633,32.618-32.618,32.618S-10.5,40.103-10.5,22.118z M-8.288,22.118c0,16.766,13.639,30.406,30.406,30.406 c16.765,0,30.405-13.641,30.405-30.406c0-16.766-13.641-30.406-30.405-30.406C5.35-8.288-8.288,5.352-8.288,22.118z"/>
-                  <path fill="#474544" d="M25.43,33.243L14.628,22.429c-0.433-0.432-0.433-1.132,0-1.564L25.43,10.051c0.432-0.432,1.132-0.432,1.563,0	c0.431,0.431,0.431,1.132,0,1.564L16.972,21.647l10.021,10.035c0.432,0.433,0.432,1.134,0,1.564	c-0.215,0.218-0.498,0.323-0.78,0.323C25.929,33.569,25.646,33.464,25.43,33.243z"/>
-                </g>
-              </g>
-            </svg>
-          </div>
-          <div class="next_btn" title="Next">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="65px" viewBox="-11 -11.5 65 66">
-              <g>
-                <g>
-                  <path fill="#474544" d="M22.118,54.736C4.132,54.736-10.5,40.103-10.5,22.118C-10.5,4.132,4.132-10.5,22.118-10.5	c17.985,0,32.618,14.632,32.618,32.618C54.736,40.103,40.103,54.736,22.118,54.736z M22.118-8.288	c-16.765,0-30.406,13.64-30.406,30.406c0,16.766,13.641,30.406,30.406,30.406c16.768,0,30.406-13.641,30.406-30.406 C52.524,5.352,38.885-8.288,22.118-8.288z"/>
-                  <path fill="#474544" d="M18.022,33.569c 0.282,0-0.566-0.105-0.781-0.323c-0.432-0.431-0.432-1.132,0-1.564l10.022-10.035 			L17.241,11.615c 0.431-0.432-0.431-1.133,0-1.564c0.432-0.432,1.132-0.432,1.564,0l10.803,10.814c0.433,0.432,0.433,1.132,0,1.564 L18.805,33.243C18.59,33.464,18.306,33.569,18.022,33.569z"/>
-                </g>
-              </g>
-            </svg>
-          </div>
-        </div><!-- End // .directional_nav -->
-    </div>
+    <div class="col-sm-8"  style=" height: 400px;" >
+      
+      </div>
     
-    <div class="col-lg-4 text-center">
+    
+    <div class="col-sm-4 text-center">
 	    <div class="box">
 
 		       <jsp:include page="room_reserve.jsp"></jsp:include>
@@ -169,5 +134,99 @@
 	<div class="container-fluid">
 	    <jsp:include page="books.jsp"></jsp:include>
 	</div>
+</div>	
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+$('.slider').each(function() {
+	  var $this = $(this);
+	  var $group = $this.find('.slide_group');
+	  var $slides = $this.find('.slide');
+	  var bulletArray = [];
+	  var currentIndex = 0;
+	  var timeout;
+	  
+	  function move(newIndex) {
+	    var animateLeft, slideLeft;
+	    
+	    advance();
+	    
+	    if ($group.is(':animated') || currentIndex === newIndex) {
+	      return;
+	    }
+	    
+	    bulletArray[currentIndex].removeClass('active');
+	    bulletArray[newIndex].addClass('active');
+	    
+	    if (newIndex > currentIndex) {
+	      slideLeft = '100%';
+	      animateLeft = '-100%';
+	    } else {
+	      slideLeft = '-100%';
+	      animateLeft = '100%';
+	    }
+	    
+	    $slides.eq(newIndex).css({
+	      display: 'block',
+	      left: slideLeft
+	    });
+	    $group.animate({
+	      left: animateLeft
+	    }, function() {
+	      $slides.eq(currentIndex).css({
+	        display: 'none'
+	      });
+	      $slides.eq(newIndex).css({
+	        left: 0
+	      });
+	      $group.css({
+	        left: 0
+	      });
+	      currentIndex = newIndex;
+	    });
+	  }
+	  
+	  function advance() {
+	    clearTimeout(timeout);
+	    timeout = setTimeout(function() {
+	      if (currentIndex < ($slides.length - 1)) {
+	        move(currentIndex + 1);
+	      } else {
+	        move(0);
+	      }
+	    }, 4000);
+	  }
+	  
+	  $('.next_btn').on('click', function() {
+	    if (currentIndex < ($slides.length - 1)) {
+	      move(currentIndex + 1);
+	    } else {
+	      move(0);
+	    }
+	  });
+	  
+	  $('.previous_btn').on('click', function() {
+	    if (currentIndex !== 0) {
+	      move(currentIndex - 1);
+	    } else {
+	      move(3);
+	    }
+	  });
+	  
+	  $.each($slides, function(index) {
+	    var $button = $('<a class="slide_btn">&bull;</a>');
+	    
+	    if (index === currentIndex) {
+	      $button.addClass('active');
+	    }
+	    $button.on('click', function() {
+	      move(index);
+	    }).appendTo('.slide_buttons');
+	    bulletArray.push($button);
+	  });
+	  
+	  advance();
+	});
+</script>
+      
 </body>
 </html>

@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/bootstrap_nav.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-    /* Add a gray background color and some padding to the footer */
+      /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
       padding: 25px;
@@ -28,69 +28,62 @@
         display: none; 
       }
     }
-    /* Studios Page Custom CSS */
-.card-container {
-  position: relative;
-  width: 100%;
-  margin: 20px 0 0 20px;
-}
-.card {
-  height: 200px;
-  min-height: 100%;
-  width: 100%;
-  background-color: #FFF;
-  color: #FFF;
-  text-align: center;
-  margin: auto;
 
-}
-.card-subtitle {
-  text-transform: uppercase;
+/*
+박스 레이아웃
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.box {
+  position: relative;
+  z-index: 1;
+  background: #FAFAFA;
+  max-width: 360px;
+  margin: 0 auto 20px;
+  padding: 45px;
   text-align: center;
-  color: #888;
-  font-size: 14px;
-  padding: 7px 0 10px 0;
-  margin: 0;
-  font-weight: bold;
-  letter-spacing: 5px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.15);
 }
-.card-section {
-  border: 0px;
-  width: 250px;
-  float: left;
-  margin: 10px;
+.box input {
+  font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
+  outline: 0 !important;
+  background: #FFF !important;
+  width: 100% !important;
+  border: 0 !important;
+  margin: 0 0 15px !important;
+  padding: 15px !important;
+  box-sizing: border-box !important;
+  font-size: 14px !important;
 }
-.card-section img {
-  width: 100%;
-  height: 330px;
+.box button {
+  font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
+  text-transform: uppercase !important; 
+  outline: 0 !important;
+  background: #405173 !important;
+  width: 100% !important;
+  border: 0 !important;
+  padding: 15px !important;
+  color: #FAFAFA !important;
+  font-size: 14px !important;
+  -webkit-transition: all 0.3 ease !important;
+  transition: all 0.3 ease !important;
+  cursor: pointer !important;
 }
-.card-description {
-  height: 20px;
-  color: #4C4C4C;
-  text-align: left;
-  margin: 0;
-  padding: 5px 30px 15px 30px;
+.box button:hover,.box button:active,.box button:focus {
+  background: #43A047;
 }
-.card-title {
-  font-size: 30px;
-  color: #2B2B2B;
-  text-align:center;
-  font-weight: bold;
-  margin: 0;
-  padding: 15px 30px 5px 30px;
+.box .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
 }
-.card hr {
-  width: 50px;
+.box .message a {
+  color: #4CAF50;
+  text-decoration: none;
 }
-.card-button {
-  border: 1px solid #CDBB00;
-  background-color: transparent;
-  color: #CDBB00;
-  text-align: center;
-  width: 110px;
-  padding: 10px;
-  margin-top:10px;
-  margin-bottom: 15px;
+.box .register-box {
+  display: none;
 }
   </style>
 <title>Insert title here</title>

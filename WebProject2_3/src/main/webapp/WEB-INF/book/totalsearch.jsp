@@ -87,20 +87,20 @@ p {
 </style>
 </head>
 <body>
+
+
 <div class="section" style="padding-bottom:0px">
-		<div class="container">
+	<div class="container-fluid con1">
 			<div class="row text-left mb-5">
 				<div class="col-12">
-					<h2 class="font-weight-bold heading text-primary mb-4">도서검색</h2>
+					<h2 class="font-weight-bold heading text-primary mb-4" style="padding-top: 20px">도서검색</h2>
 					<hr>
 				</div>
 			</div>
 
-		</div>
-</div>
-	<div class="container con1">
-		<div class="row row1">
-				<div class="col-lg-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
+		
+	<div class="row row1">
+				<div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
          			   <a href="../book/totalsearch.do"><h3 class="subject">통합자료검색</h3></a>
             			
@@ -114,44 +114,37 @@ p {
             			
           			</div>
 			    </div>
-			    <div class="col-sm-9">
-		          <div class="row row1 text-center">
-				      <h2 style="font-weight: 700;display: inline; padding-left: 25px">도서명: </h2>
-				      <input style="position: relative; top: -3px;" type="text" size="40" class="input-lg" :value="title" ref="title" v-model="title">
-				      <!-- vo-model은 아래 new Vue 안에 있는 data title='' 값을 바꿔주는 역할  -->
-				      <input type="button" value="검색" class="btn btn-lg btn-primary" style="position: relative; top: -6px;" v-on:click="titleSearch()">
-				  </div>
-				 </div>
+			    
 
-	<div class="col-sm-9">
+	<div class="col-lg-9">
 				<h3 style="margin-bottom: 0px">검색 결과</h3>
+				<h5 style="margin-top: 5px">Horizontal card11s</h5>
 				<hr style="margin-bottom: 0px">
-	
-			  
-		    		
-					  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
-					    <a><img :src="vo.img" align="midde" alt="Random Unsplash image" class="img" style="width: 300px ;height: 420px"/>
-					    <h4>{{vo.title}}</h4>
-					    <p>{{vo.author}}</p>
-					    <p>{{vo.publisher}}</p>
-					    </a>
-					  </div>  
-	
-				 
+				
+				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
+				    <a><img :src="vo.img" align="midde" alt="Random Unsplash image" class="img" style="width: 300px ;height: 420px"/>
+				    <h4>{{vo.title}}</h4>
+				    <p>{{vo.author}}</p>
+				    <p>{{vo.publisher}}</p>
+				    </a>
+				  </div>  
+
+			 
 				  <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			      <div style="height: 20px"></div>
 			        <div class="text-center">
 			          <button class="btn btn-sm btn-info" v-on:click="prev()">이전</button>
 			            {{curpage}} page / {{totalpage}} pages
 			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
-			        </div>
-			   
-			   
-			
-		    
-	  </div>
-  </div>
+			      </div>
+				
+
+	</div>
+			    
+                
 </div>
+</div>
+		 
 
 <script type="text/javascript">
  new Vue({

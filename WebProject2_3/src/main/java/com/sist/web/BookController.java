@@ -25,6 +25,11 @@ public class BookController {
 	{
 		return "book/totalsearch";
 	}
+	@GetMapping("book/authorsearch.do")
+	public String authorsearch()
+	{
+		return "book/authorsearch";
+	}
 	
 	@GetMapping("book/detail.do")
 	public String bookDetail(int no,Model model)

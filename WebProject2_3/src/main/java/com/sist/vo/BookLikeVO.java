@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BookLIkeVO {
+public class BookLikeVO {
 	private int no,book_no;
 	private String member_id;
 }

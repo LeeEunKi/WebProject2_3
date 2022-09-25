@@ -92,9 +92,13 @@ p {
 <div class="section" style="padding-bottom:0px">
 	<div class="container-fluid con1">
 			<div class="row text-left mb-5">
-				<div class="col-12">
-					<h2 class="font-weight-bold heading text-primary mb-4" style="padding-top: 20px">도서검색</h2>
-					<hr>
+				<div class="col-12 text-center">
+				<h2 class="font-weight-bold heading text-primary mb-4" style="padding-top: 20px;float: left">도서검색</h2>
+				      <h2 style="font-weight: 700;display: inline; padding-left: 25px">도서명: </h2>
+				      <input class="form-control" aria-label="Large" style="position: relative; top: -3px;" type="text" size="30" :value="title" ref="title" v-model="title">
+				      <!-- vo-model은 아래 new Vue 안에 있는 data title='' 값을 바꿔주는 역할  -->
+				      <input type="button" value="검색" class="btn btn-lg btn-primary" style="position: relative; top: -6px;" v-on:click="titleSearch()">
+				  <hr>
 				</div>
 			</div>
 
@@ -102,7 +106,11 @@ p {
 	<div class="row row1">
 				<div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <a href="../book/totalsearch.do"><h3 class="subject">통합자료검색</h3></a>
+         			   <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
+         			   <ul style="list-style: none;">
+         			     <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
+         			     <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
+         			   </ul>
             			
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
@@ -114,7 +122,8 @@ p {
             			
           			</div>
 			    </div>
-			    
+		          
+		   	    
 
 	<div class="col-lg-10">
 				<h3 style="margin-bottom: 0px">검색 결과</h3>
@@ -122,7 +131,7 @@ p {
 				<hr style="margin-bottom: 0px">
 				
 				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
-				    <a><img :src="vo.img" align="midde" alt="Random Unsplash image" class="img" style="width: 300px ;height: 420px"/>
+				    <a :href="'../book/detail.do?no='+vo.no"><img :src="vo.img" align="midde" alt="Random Unsplash image" class="img" style="width: 300px ;height: 420px"/>
 				    <h4>{{vo.title}}</h4>
 				    <p>{{vo.author}}</p>
 				    <p>{{vo.publisher}}</p>

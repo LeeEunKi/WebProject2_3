@@ -43,4 +43,16 @@ public class BookDAO {
 		return mapper.bookNameTotalpage(title);
 	}
 	
+	
+	public List<BookVO> bookauthorFindData(Map map)
+	{
+		return mapper.bookauthorFindData(map);
+	}
+	
+
+	public int bookauthorFindTotalPage(String ss)
+	{
+		return mapper.bookauthorFindTotalPage(ss);
+	}
+	
 }

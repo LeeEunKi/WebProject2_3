@@ -62,10 +62,14 @@
 			</div>
 
 		
-	<div class="row row1">
+	          <div class="row row1">
 				<div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <a href="../book/totalsearch.do"><h3 class="subject">통합자료검색</h3></a>
+         			   <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
+         			   <ul style="list-style: none;">
+         			     <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
+         			     <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
+         			   </ul>
             			
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
@@ -94,7 +98,7 @@
 					       <img :src="vo.img" style="width:160px; height:220px" class="images" v-on:click="detailData(vo.no)">  
 					      </td>	  
 					      <td colspan="2">
-					        <h3>{{vo.title}}&nbsp;&nbsp;</h3><h4><span style="color: orange;">score</span></h4>
+					        <h3>{{vo.title}}&nbsp;&nbsp;<a :href="'../book/booklike.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px"></a></h3><h4><span style="color: orange;">score</span></h4>
 					        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
 					         <li>저자:&nbsp;&nbsp;{{vo.author}}</li>
 					         <li>출판사:&nbsp;&nbsp;{{vo.publisher}}</li>

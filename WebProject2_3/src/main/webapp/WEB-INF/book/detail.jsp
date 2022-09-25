@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
 .subject{
 	position: relative;
@@ -79,7 +82,7 @@ p {
 
 detail-nav {
 	box-sizing: border-box;
-	width: 50%
+	width: 100%;
 }
 
 nav ul.nav-tabs {
@@ -95,7 +98,6 @@ nav ul.nav-tabs {
 	list-style: none;
 	display: table-cell;
 	padding-right: 2px;
-	border-bottom: 5px solid #2964D9;
 }
 
 .nav-tabs li:last-child {
@@ -128,13 +130,13 @@ nav ul.nav-tabs {
 .section-detail {
 	margin: 0px 0px;
 	padding: 0px;
-	height:350px;
+	height:800px;
 /*     width:530px; */
     float:left;
 }
 
 .container-detail {
-	height: 350px;
+	height: 600px;
 	width: 7000px;
 	margin: 0px;
 	padding: 0;
@@ -164,7 +166,11 @@ nav ul.nav-tabs {
 	<div class="row row1">
 				<div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <a href="../book/totalsearch.do"><h3 class="subject">통합자료검색</h3></a>
+         			   <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
+         			   <ul>
+         			     <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
+         			     <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
+         			   </ul>
             			
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
@@ -179,37 +185,49 @@ nav ul.nav-tabs {
 			    
 
 	<div class="col-lg-9">
-				<h3 style="margin-bottom: 0px">검색 결과</h3>
-				<h5 style="margin-top: 5px">Horizontal card11s</h5>
+				<h3 style="margin-bottom: 0px">상세 보기</h3>
 				<hr style="margin-bottom: 0px">
 				
 				<table class="table">
 					<tr>
 					  <td rowspan="6">
-					  <img src="../1.jpg">
+					  <img :src="vo.img">
 					  </td>
 					</tr>
 		            <tr>
 		              <td colspan="2">
-		                <h3>{{book_detail.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{book_detail.type}}</span></h3>
+		                <h3>{{vo.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{vo.type}}</span></h3>
 		              </td>
 		            </tr>
 		            <tr>
 		              <td style="width: 20%">저자명</td>
-		              <td style="width: 80%">{{book_detail.author}}</td>
+		              <td style="width: 80%">{{vo.author}}</td>
 		            </tr>
 		            <tr>
 		              <td style="width: 20%">출판사</td>
-		              <td style="width: 80%">{{book_detail.publisher}}</td>
+		              <td style="width: 80%">{{vo.publisher}}</td>
 		            </tr>
 		            <tr>
 		              <td style="width: 20%">출판일자</td>
-		              <td style="width: 80%">{{book_detail.dbday}}</td>
+		              <td style="width: 80%">{{vo.dbday}}</td>
 		            </tr>
 		            <tr>
 		              <td style="width: 20%"></td>
 		              <td style="width: 80%">
-		                <a :href="'../book/detail.do?no='+book_detail.no" class="btn btn-sm btn-info"style="float: left">도서 예약</a>
+		              <c:if test="${sessionScope.id==null }">
+		                <span class="btn btn-lg btn-warning"style="float: left;margin-right: 10px">도서 예약</span>
+		              </c:if>
+		              <c:if test="${sessionScope.id!=null }">
+		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-lg btn-warning"style="float: left;margin-right: 10px">도서 예약</a>
+		              </c:if>
+		              <c:if test="${sessionScope.id==null }">
+		                <span class="btn btn-lg btn-warning"style="float: left;margin-right: 10px">관심도서 추가</span>
+		              </c:if>
+		              <c:if test="${sessionScope.id!=null }">
+		                 
+		                <a :href="'../book/booklike.do?no='+vo.no" class="btn btn-lg btn-warning"style="float: left">관심도서 추가</a>
+		              </c:if>
+		                
 		              </td>
 		            </tr>
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->
@@ -221,41 +239,85 @@ nav ul.nav-tabs {
 						<ul class="nav-tabs">
 							<li><a href="#" class="n-tab active">책소개</a></li>
 							<li><a href="#" class="n-tab">이용안내</a></li>
-							<li><a href="#" class="n-tab">리뷰</a></li>
-							<li><a href="#" class="n-tab">문의</a></li>    
+							<li><a href="#" class="n-tab">별점</a></li>  
 						</ul>
 					</nav>
 			
 					<div class="container-detail">
 						<section class="section-detail content active">
+						    <br>
 							<h2>책소개</h2>
-							<p>ㅖ{{패.채ㅜㅅ둣}}</p>
+							<p>{{vo.description}}</p>
 					    </section>
 						
 						<section class="content">
+						    <br>
 							<h2>이용안내</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque autem itaque, nesciunt dolore non maxime praesentium! Nobis impedit aliquid eveniet blanditiis, aspernatur unde corporis, dolorem, voluptates harum, beatae cumque dolore?</p><br/>
-		
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quod velit illo dicta quibusdam esse expedita doloremque provident, qui possimus deserunt omnis fuga labore necessitatibus nesciunt eius. Est, officiis aliquam.</p>
+							<pre>
+※관외대출
+    관외대출은 책이음회원증 소지자에 한해 가능함
+※대출안내
+    대출권수 : 1인 5책
+    대출기간 : 2주간 대출
+    가입 대상 : 주민등록상 부산 거주자(타지역 거주자 중 부산 소재 학교 및 직장에 재학(재직)자는 재학(재직)증명서 지참)
+    대출은 본인에 한하여 책이음 회원증 소지자만 가능
+    대출 연장제도는 없으며, 당일 반납도서는 3일 후 재대출 가능
+    반납 연체 시 연체일 수만큼 자료 대출 정지(5권 중 1권이 연체되어도 연체일수만큼 대출 정지)
+    대출도서의 분실 또는 훼손 시 동일 도서 또는 해당 도서의 현시가로 변상
+    휴관일에는 1층 자동반납함에서 반납 가능
+※대출 제외 자료
+    참고도서
+    연속간행물
+							</pre>
+					    </section>
+						<section class="content reply" style="position: relative;top: -200px">
+						    <br>
+							<h2>별점 주기</h2>
+								 <div class="input-group mb-3" style="position: relative;left: -5px;">
+<!-- 								  <div class="input-group-prepend">
+								    <label class="input-group-text" for="inputGroupSelect01">별점</label>
+								  </div>
+								  <select class="custom-select" id="inputGroupSelect01">
+								    <option selected>별점을 선택하세요</option>
+								    <option value="1">★</option>
+								    <option value="2">★★</option>
+								    <option value="3">★★★</option>
+								    <option value="4">★★★★</option>
+								    <option value="5">★★★★★</option>
+								  </select> -->
+								
+								<div class="input-group">
+								  <textarea class="form-control" aria-label="With textarea"  ref="msg"  v-model="msg"></textarea>
+								
+								 <div class="input-group-append">
+								    <input class="btn btn-outline-secondary" type="button" value="댓글 쓰기" @click="replyWrite()">
+								  </div>
+								  </div>
+								</div>
+							※ 부적절한 댓글은 관리자에 의해 삭제될 수 있습니다
+							<hr>
+							<div>
+							<!-- 댓글 출력 리스트  -->
+							 <table class="table" v-for="re in reply_list">
+					               <tr>
+					                 <td class="text-left">{{re.member_id}}&nbsp;&nbsp;({{re.dbday}})</td>
+					                 <td class="text-right">
+					                   <%--
+					                         <c:if test="${sessionScope.id==re.id}">
+					                    --%>
+					                   <input type="button" class="btn btn-xs btn-info" value="수정" >
+					                   <input type="button" class="btn btn-xs btn-warning" value="삭제" >
+					               </tr>
+					               <tr>
+					                 <td colspan="2" valign="top" class="text-left"><pre style="white-space: pre-wrap;border: none;background-color: white">{{re.msg}}</pre></td>
+					               </tr>
+					               
+					             </table>
+							</div>
 					    </section>
 						
-						<section class="content">
-							<h2>리뷰</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque autem itaque, nesciunt dolore non maxime praesentium!</p><br/>
-		
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quod velit illo dicta quibusdam esse expedita doloremque provident, qui possimus deserunt omnis fuga labore necessitatibus nesciunt eius. Est, officiis aliquam.</p>
-					    </section>
-						
-						<section class="content">
-							<h2>Contact</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque autem itaque, nesciunt dolore non maxime praesentium! Nobis impedit aliquid eveniet blanditiis, aspernatur unde corporis, dolorem, voluptates harum, beatae cumque dolore?</p><br/>
-		
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quod velit illo dicta quibusdam esse expedita doloremque provident, qui possimus deserunt omnis fuga labore necessitatibus nesciunt eius. Est, officiis aliquam.</p>
-					    </section>
-		
-				    </div>
+					</div>
 				</div>
-
 			</main>
 		</div>
 			    
@@ -264,12 +326,6 @@ nav ul.nav-tabs {
 	</div>
 		 
 </div>
-
-
-
-
-
-
 <script type="text/javascript">
 		var slideWidth = $(".boxarea").width();
 		var contentW = $(".content-area").width();
@@ -295,6 +351,71 @@ nav ul.nav-tabs {
 			$(window).on('resize', function(evt) {
 		  $('.content').css({width:contentW});
 			});
+</script>
+<script type="text/javascript">
+	 new Vue({
+		 el:'.section',
+		 data:{
+			 no:${no},
+			 vo:{}
+		 },
+		 mounted:function(){
+			 axios.get("http://localhost:8080/web/book/detail_info.do",{
+				 params:{
+					 no:this.no
+				 }
+			 }).then(result=>{
+				 console.log(result);
+				 this.vo=result.data;
+			 })
+		 }
+	
+	 })
+	 
+	 new Vue({
+		 el:'.reply',
+		 data:{
+			 book_no:${no},
+			 reply_list:[],
+			 msg:'',
+			 sessionId:''
+			 
+		 },
+		 mounted:function(){
+			let _this=this;
+    		axios.get("http://localhost:8080/web/book/reply_list.do",{
+    			params:{
+    				book_no:_this.book_no
+    			}
+    		}).then(function(result){
+    			console.log(result.data)
+    			_this.reply_list=result.data;
+    			_this.sessionId=result.data[0].sessionId
+    		})
+		 },
+		 methods:{
+			 replyWrite:function(){
+				 if(this.msg==="")
+	    			{
+	    				this.$refs.msg.focus();
+	    				return;
+	    			}
+	    			let _this=this;
+	    			axios.get("http://localhost:8080/web/book/reply_insert.do",{
+	        			params:{
+	        				book_no:_this.book_no,
+	        				msg:_this.msg
+	        			}
+	        		}).then(function(result){
+	        			_this.msg="";
+	        			console.log(result.data)
+	        			_this.reply_list=result.data;
+	        			_this.sessionId=result.data[0].sessionId
+	        		})
+			 }
+		 }
+		 
+	 })
 </script>
 </body>
 </html>

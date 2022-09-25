@@ -42,15 +42,15 @@ public interface BookMapper {
 	public int bookNameTotalpage(String ss);
 	
 	//저자명 검색
-	@Select("SELECT no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday,num "
-			+ "FROM (SELECT no,title,author,type,publisher,img,pub_date,rownum AS num "
-			+ "FROM (SELECT no,title,author,type,publisher,pub_date "
+	@Select("SELECT no,title,author,type,publisher,img,num "
+			+ "FROM (SELECT no,title,author,type,publisher,img,rownum AS num "
+			+ "FROM (SELECT no,title,author,type,publisher,img "
 			+ "FROM BOOK_3 WHERE REGEXP_LIKE(author,#{ss}))) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
-	public List<BookVO> bookauthorFindData(String ss);
+	public List<BookVO> bookauthorFindData(Map map);
 	
 	@Select("SELECT CEIL(COUNT(*)/16.0) FROM book_3 WHERE REGEXP_LIKE(author,#{ss})")
-	public int bookauthorFindTotalPage(Map map);
+	public int bookauthorFindTotalPage(String ss);
 	
 	
 }

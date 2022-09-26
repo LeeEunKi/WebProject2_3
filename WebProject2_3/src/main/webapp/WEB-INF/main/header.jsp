@@ -36,14 +36,14 @@
 		    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		  </form>
 	
-	      <c:if test="${sessionScope.id==null }">
+	    <!--   <c:if test="${sessionScope.id==null }">
 	       <a href="../member/join.do"><span class="glyphicon glyphicon-user"></span>회원가입</a>
 	       <a href="../member/login.do"><span class="glyphicon glyphicon-log-in"></span>로그인</a>
 	     </c:if>
 	     <c:if test="${sessionScope.id!=null }">
 	       <a href="../member/join_before.do"><span class="glyphicon glyphicon-user"></span>회원수정</a>
 	       <a href="../member/logout.do"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a>
-	     </c:if>
+	     </c:if>  -->
 	    </div>
 	  </div>
 	</nav>

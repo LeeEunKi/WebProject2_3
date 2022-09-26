@@ -17,6 +17,53 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#logBtn').click(function(){
+		let id=$('#id').val();
+		if(id.trim()==="")
+		{
+			$('#id').focus();
+			return;
+		}
+		let pwd=$('#pwd').val();
+		if(pwd.trim()==="")
+		{
+			$('#pwd').focus();
+			return;
+		}
+		//let ck=$("#ck").is(":checked");
+		$.ajax({
+			type:'post',
+			url:'../member/login_ok.do',
+			//data:{"id":id,"pwd":pwd,"ck":ck},
+			data:{"id":id,"pwd":pwd},
+			success:function(result)
+			{
+				let res=result.trim();
+				if(res==='NOID')
+				{
+					alert("아이디 존재하지 않습니다!!");
+					$('#id').val("");
+					$('#pwd').val("");
+					$('#id').focus();
+				}
+				else if(res==='NOPWD')
+				{
+					alert("비밀번호가 틀립니다!!");
+					$('#pwd').val("");
+					$('#pwd').focus();
+				}
+				else
+				{
+					location.href="../main/main.do";
+				}
+			}
+		})
+	})
+})
+</script>
 <style type="text/css">
  .carousel-inner > .carousel-item > img{
        width: 800px;
@@ -200,6 +247,52 @@ nav ul.nav-tabs {
 .tabset {
   max-width: 65em;
 }
+
+  height:100%;
+}
+body:before{
+  content:'';
+  height:100%;
+  display:inline-block;
+  vertical-align:middle;
+}
+button1{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button1:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button1:before,button1:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button1:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button1:hover:before,button1:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
 </style>
 </head>
 <body>
@@ -264,12 +357,16 @@ nav ul.nav-tabs {
           <div class="login-page">
             <div class="box">
               <form class="login-box">
-                <input type="text" placeholder="username"/>
-                <input type="password" placeholder="password"/>
-                <button>
-                  login
-                </button>
-                <p class="message">Not registered? <a href="#">Create an account</a></p>
+                <input type="text" placeholder="username" id="id" size=15 class="input-sm" value="${id }">
+                <input type="password" placeholder="password" type=password id="pwd" size=15 class="input-sm">
+               	 <tr>
+               	  <td class="text-center" colspan="2">
+		            <Button value="로그인" class="btn btn-sm btn-danger" id="logBtn">
+		          	  Login
+		            </Button>
+		          </td>
+		         </tr>
+                <p class="message">Not registered? <a href="../member/join.do">Create an account</a></p>
               </form>
             </div>
           </div>
@@ -284,7 +381,7 @@ nav ul.nav-tabs {
               	<br>
               	<!-- <a href="#">Create an account</a></p>  -->
                 <button>
-                  <a href="#">My LIBRARY</a>
+                  <a href="../member/mypage.do">My LIBRARY</a>
                 </button>
                 <br>
                 <br>

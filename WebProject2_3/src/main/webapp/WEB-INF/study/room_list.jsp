@@ -74,7 +74,8 @@ new Vue({
 		onoff:0, // 좌석 중복 선택 방지 변수
 		now_date:'', // 현재 날짜
 		now_time:'', // /시간
-		after_time:'' // 기본 3시간 예약
+		after_time:'', // 기본 3시간 예약
+		member_name:''
  	},
 	mounted:function(){
 		this.seat(this.roomNo);
@@ -86,9 +87,9 @@ new Vue({
 					room_no:room_no
 				}
 			}).then(result=>{
-				console.log(result.data);
 				this.seat_data=result.data;
 				this.roomNo=this.seat_data[0].room_no;
+				this.member_name=this.seat_data[0].member_name;
 			})
 		},
 		change:function(room_no){
@@ -129,10 +130,10 @@ new Vue({
 		myDate:function(){
 			let date=new Date();
 			// 개방시간이 아닐 시 리턴
-			if(date.getHours()<9 || (date.getHours()>=18 && date.getMinutes()>=0)){
+			/* if(date.getHours()<9 || (date.getHours()>=18 && date.getMinutes()>=0)){
 				alert("현재는 예약할 수 없습니다. (개방 시간 : 09:00~18:00)");
 				return;
-			}
+			} */
 			
 			let year=date.getFullYear();
 			let month = date.getMonth()+1;
@@ -155,6 +156,27 @@ new Vue({
 			
 			this.now_time= hou +':' + min + ':' + sec;
 			this.after_time = after_hou +':' + after_min + ':00';  
+		},
+		booking:function(){
+			if(this.selected_no==0){
+				alert("좌석을 선택해주세요!");
+				return;
+			}
+			
+			axios.get('http://localhost:8080/web/study/room_booking.do',{
+				params:{
+					room_no:this.roomNo,
+					seat_no:this.selected_no,
+					date:this.now_date,
+					start_time:this.now_time,
+					end_time:this.after_time,
+					member_id:this.member_id,
+					type:1
+				}
+			}).then(result=>{
+				alert("예약되었습니다!");
+				location.href="../study/room_list.do";
+			})
 		}
 	}
 })

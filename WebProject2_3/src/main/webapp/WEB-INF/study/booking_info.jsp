@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,10 @@
         <td width="70%">제 <strong>{{roomNo}}</strong> 열람실</td>
       </tr>
       <tr>
+        <th width="30%">예약자명</th>
+        <td width="70%" > {{member_name}} </td>
+      </tr>
+      <tr>
         <td width="30%">좌석번호</td>
         <td width="70%">
          <span v-if="selected_no!=0">
@@ -48,7 +53,12 @@
       </tr>
       <tr>
         <td colspan="2" style="text-align-last: center;">
-          <button type="button" class="btn btn-sm btn-info">예약하기</button>
+         <c:if test="${sessionScope.id!=null }">
+          <button type="button" class="btn btn-sm btn-info" @click="booking()">예약하기</button>
+         </c:if>
+     	 <c:if test="${sessionScope.id==null }">
+          <span style="font-size: 15px; color: red; font-style: italic;">예약은 로그인시 사용 가능합니다.</span>
+         </c:if>
         </td>
       </tr>
     </table>

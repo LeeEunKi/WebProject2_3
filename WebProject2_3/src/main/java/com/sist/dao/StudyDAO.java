@@ -3,6 +3,7 @@ package com.sist.dao;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.*;
@@ -48,6 +49,34 @@ public class StudyDAO {
 	public List<SeatVO> seatInfoData(int room_no) {
 		return mapper.seatInfoData(room_no);
 	}
+	//예약하기
+	public void bookingRoom(BookingVO vo) {
+		mapper.bookingRoom(vo);
+	}
+	/*
+	 * 	/*
+	 * 	//좌석 상태 토글
+	@Update("UPDATE seat_3 SET "
+			+ "state=${state} WHERE no=#{no} AND room_no=#{room_no}")*/
+	public void seatStateChange(Map map) {
+		mapper.seatStateChange(map);
+	}
+	/*
+	//열람실 현황 업데이트
+	//예약
+	@Update("UPDATE room_3 SET "
+			+ "remain_seat=remain_seat-1 "
+			+ "WHERE no=#{no}")*/
+	public void roomRemainSeatDecrease(int no) {
+		mapper.roomRemainSeatDecrease(no);
+	}
 	
-
+	//예약 취소 or 끝
+	/*@Update("UPDATE room_3 SET "
+			+ "remain_seat=remain_seat+1 "
+			+ "WHERE no=#{no}")*/
+	public void roomRemainSeatIncrease(int no) {
+		mapper.roomRemainSeatIncrease(no);
+	}
+	
 }

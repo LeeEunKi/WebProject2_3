@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.*;
+
+import javax.servlet.http.HttpSession;
+
 import com.sist.dao.*;
 import com.sist.vo.*;
 
@@ -17,7 +20,6 @@ public class StudyController {
 	
 	@GetMapping("study/room_list.do")
 	public String study_room_list(Model model) {
-		
 		List<RoomVO> list=dao.roomAllListData(); 
 		 for(RoomVO vo:list) {
 			 vo.setUsed_seat(vo.getTotal_seat()-vo.getRemain_seat());

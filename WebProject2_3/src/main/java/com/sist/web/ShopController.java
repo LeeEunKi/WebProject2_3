@@ -55,23 +55,25 @@ public class ShopController {
 	}
 	@RequestMapping("shop/purchase.do")
 	public void purchase(HttpServletRequest request, HttpSession session) {
-//		String name = (String)session.getAttribute("name");
-//		String id = (String)session.getAttribute("id");
+		String name = (String)session.getAttribute("name");
+		String id = (String)session.getAttribute("id");
 		String[] usedBooks = request.getParameterValues("usedbooks");
-		String numbers = "";
+		List <CartVO> list = (List <CartVO>) session.getAttribute("cart");
 		if(usedBooks!=null && usedBooks.length>0){
 			for(int i=0;i<usedBooks.length;i++) {
-				numbers += usedBooks[i]+",";
+				int no = Integer.parseInt(usedBooks[i]);
+				dao.purchase(no);
+				for(CartVO vo:list) {
+					if(vo.getNo()==Integer.parseInt(usedBooks[i])) {
+						list.remove(vo);
+					}
+				}
+				System.out.println(no+"번 책 구매처리 완료");
 			}
-			numbers = numbers.substring(0,numbers.lastIndexOf(","));
-			dao.purchase(numbers);
-			System.out.println(numbers);
 		  }
 		
-//		request.setAttribute("name",name);
-	    request.setAttribute("name","nnnn");
-//	    request.setAttribute("id",id);
-	    request.setAttribute("id","dfadfa");
+		request.setAttribute("name",name);
+	    request.setAttribute("id",id);
 	    request.setAttribute("phone","10124");
 	    request.setAttribute("totalPrice",100);
 	    request.setAttribute("address","dfaddaf");
@@ -101,12 +103,13 @@ public class ShopController {
 	  cvo.setName(vo.getTitle());
 	  cvo.setPoster(vo.getImg());
 	  cvo.setPrice(vo.getDiscount());
+	  cvo.setPublisher(vo.getPublisher());
+	  cvo.setAuthor(vo.getAuthor());
 
 	  boolean bCheck = false;
-	  for (CartVO avo: list) {
-	    //이미 장바구니에 들어가 있는 상품을 또 담은 경우 수량만 증가시킨다
+	  for (CartVO avo: list) { 
+		  //이미 장바구니에 있는걸 담은 경우
 	    if (avo.getNo() == cvo.getNo()) {
-	    	//어떻게 하지???
 	      bCheck = true;
 	      break;
 	    }
@@ -115,11 +118,24 @@ public class ShopController {
 	  if (bCheck == false) {
 	    list.add(cvo);
 	    session.setAttribute("cart", list);
+	    session.setMaxInactiveInterval(60*60*24);
 	  }
 	  //데이터 전송
 	  //		model.addAttribute("list",list);
 	  //		model.addAttribute("no",no);
 	  //redirect가 나올 때는 Model로 보내 주면 안된다. request가 초기화된 후 전송되니까...불가능함.
 	  return "redirect:../shop/cart_list.do?no=" + no;
+	}
+	
+	@GetMapping("shop/cart_cancel.do")
+	public String cart_cancel(int no, HttpSession session) {
+	  List <CartVO> list = (List <CartVO> ) session.getAttribute("cart");
+	  for (int i = 0; i < list.size(); i++) {
+	    CartVO vo = list.get(i);
+	    if (vo.getNo() == no) {
+	      list.remove(i);
+	    }
+	  }
+	  return "redirect:cart_list.do?no=" + no;
 	}
 }

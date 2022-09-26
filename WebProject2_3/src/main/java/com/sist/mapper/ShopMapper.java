@@ -34,6 +34,6 @@ public interface ShopMapper {
 	public ShopVO shopDetailData(int no);
 	
 //	@Select("SELECT type, COUNT(*) as count FROM used_book_3 GROUP BY type")
-	@Update("UPDATE used_book_3 SET state=1 WHERE no IN(#{numbers})")
-	public void purchase(String numbers);
+	@Update("UPDATE used_book_3 SET state=1 WHERE no IN(#{no})")
+	public void purchase(int no);
 }

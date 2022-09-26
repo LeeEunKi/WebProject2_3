@@ -47,6 +47,18 @@ $( function() {
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'yangjin';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 *{
 font-family:'Pretendard-Regular'
 }
@@ -67,6 +79,12 @@ font-family:'yangjin'
 #infoIcon:hover{
 	cursor:pointer;
 }
+.soldout{
+	opacity:30%
+}
+.soldout:hover{
+	opacity:100%
+}
 </style>
 </head>
 <body>
@@ -82,7 +100,7 @@ font-family:'yangjin'
 				</tr>
 				<tr>
 					<td class="text-center" rowspan="5" width="40%">
-						<img :src="book_detail.img" style="width:400px; height:550px;">
+						<img :src="book_detail.img" style="width:400px; height:550px;":class="[book_detail.state===0?'img':'soldout img']"/>
 					</td>
 				</tr>
 				<tr>
@@ -90,13 +108,12 @@ font-family:'yangjin'
 				</tr>
 				<tr>
 					<td class="row1">
-						<img id="infoIcon" src="../img/info.png" style="height:20px;float:left;">
-						<h5>책 상태</h5>
+						<h5>책 상태 <img id="infoIcon" src="../img/info.png" style="height:15px;"></h5>
 						<p>{{book_detail.condition}}</p>
 						<h5>정가</h5>
-						<p style="text-decoration:line-through;color:darkred">{{book_detail.price}}원</p>
+						<p style="text-decoration:line-through;color:darkred">{{book_detail.price|currency}}원</p>
 						<h5>→&nbsp;{{book_detail.percent}} 할인!</h5>
-						<img src="../img/sale.png" style="height:20px;float:left;"><p>&nbsp;{{book_detail.discount}}원</p>
+						<img src="../img/sale.png" style="height:20px;float:left;"><p>&nbsp;{{book_detail.discount|currency}}원</p>
 					</td>
 				</tr>
 				<tr>
@@ -106,10 +123,13 @@ font-family:'yangjin'
 				</tr>
 				<tr>
 					<td class="row1">
-						<button id="cartBtn" class="btn btn-primary">
+						<button id="cartBtn" class="btn btn-primary" v-if="book_detail.state===0">
 							<img src="../img/cart.png" style="width:20px;">&nbsp;장바구니 담기
 						</button>
-						<a class="btn btn-primary" :href="'../book/detail.do?no='+book_detail.no">
+						<button id="cartBtn" class="btn btn-primary" v-if="book_detail.state!=0" disabled>
+							<img src="../img/cart.png" style="width:20px;">&nbsp;구매 불가
+						</button>
+						<a class="btn btn-primary" :href="'../book/detail.do?no='+book_detail.book_no">
 							<img src="../img/book_find.png" style="width:20px;">&nbsp;빌려읽기
 						</a>
 						<a href="../shop/list.do" class="btn btn-primary" @click="javascript:history.back()">
@@ -187,7 +207,13 @@ new Vue({
 			console.log(result.data);
 			_this.cookie_list = result.data;
 		}) 
-	}
+	},
+	filters:{ //금액 000,000 처리
+		   currency: function(value){ // 금액 3자리 수 마다 따옴표 필터
+               let num = new Number(value);
+               return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")
+           }
+	    }
 })
 </script>
 </body>

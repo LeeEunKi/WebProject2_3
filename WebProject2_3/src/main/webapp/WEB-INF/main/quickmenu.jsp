@@ -9,7 +9,7 @@
 .quick-menu p{
 	margin-top: 10px;
 	font-size: 16px;
-	color: darksalmon;
+	color: #007bff;
 }
 .quick-menu img{
 	width:80px;

@@ -31,7 +31,7 @@ public class ShopRestController {
 		String[] types = {"","순수과학","역사","언어","총류","기술과학","종교","철학","문학","예술","사회과학"};
 		int curPage = Integer.parseInt(page);
 		Map map = new HashMap();
-		int rowSize = 20;
+		int rowSize = 12;
 		int start = curPage*rowSize - (rowSize-1);
 		int end = curPage*rowSize;
 		
@@ -43,7 +43,7 @@ public class ShopRestController {
 		List<ShopVO> list = dao.shopListData(map);
 		int cnt = dao.shopTotalCount(map);
 		
-		int totalPage = (int)Math.ceil(cnt/20.0);
+		int totalPage = (int)Math.ceil(cnt/12.0);
 		
 		String result = "";
 		JSONArray arr = new JSONArray();
@@ -60,20 +60,22 @@ public class ShopRestController {
 			}
 			//저자 길이 자르기
 			String author = vo.getAuthor();
-			if(author.length()>10) {
-				author = author.substring(0,10)+"..";
+			if(author.length()>20) {
+				author = author.substring(0,20)+"..";
 			}
 			//출판사 길이 자르기
 			String publisher = vo.getPublisher();
-			if(publisher.length()>10) {
-				publisher = publisher.substring(0,10)+"..";
+			if(publisher.length()>15) {
+				publisher = publisher.substring(0,15)+"..";
 			}
 			obj.put("title",title);
 			obj.put("img",vo.getImg());
 			obj.put("author",author);
 			obj.put("publisher",publisher);
+			obj.put("price",vo.getPrice());
 			obj.put("discount",vo.getDiscount());
 			obj.put("percent",vo.getPercent());
+			obj.put("state",vo.getState());
 			if(k==0) {
 				obj.put("curPage",curPage);
 				obj.put("totalPage",totalPage);
@@ -99,7 +101,7 @@ public class ShopRestController {
 		String[] orders = {"","no ASC","discount ASC","discount DESC","title"};
 		int curPage = Integer.parseInt(page);
 		Map map = new HashMap();
-		int rowSize = 20;
+		int rowSize = 12;
 		int start = curPage*rowSize - (rowSize-1);
 		int end = curPage*rowSize;
 		
@@ -111,7 +113,7 @@ public class ShopRestController {
 		List<ShopVO> list = dao.shopListData_pub(map);
 		int cnt = dao.shopTotalCount_pub(map);
 		
-		int totalPage = (int)Math.ceil(cnt/20.0);
+		int totalPage = (int)Math.ceil(cnt/12.0);
 		
 		String result = "";
 		JSONArray arr = new JSONArray();
@@ -128,21 +130,23 @@ public class ShopRestController {
 			}
 			//저자 길이 자르기
 			String author = vo.getAuthor();
-			if(author.length()>10) {
-				author = author.substring(0,10)+"..";
+			if(author.length()>20) {
+				author = author.substring(0,20)+"..";
 			}
 			//출판사 길이 자르기
 			String publisher_tmp = vo.getPublisher();
-			if(publisher_tmp.length()>10) {
-				publisher_tmp = publisher_tmp.substring(0,10)+"..";
+			if(publisher_tmp.length()>15) {
+				publisher_tmp = publisher_tmp.substring(0,15)+"..";
 			}
 			obj.put("title",title);
 			obj.put("img",vo.getImg());
 			obj.put("author",author);
 			obj.put("publisher",publisher_tmp);
+			obj.put("price",vo.getPrice());
 			obj.put("discount",vo.getDiscount());
 			obj.put("percent",vo.getPercent());
 			obj.put("type",vo.getType());
+			obj.put("state",vo.getState());
 			if(k==0) {
 				obj.put("curPage",curPage);
 				obj.put("totalPage",totalPage);
@@ -173,6 +177,7 @@ public class ShopRestController {
 		obj.put("discount",vo.getDiscount());
 		obj.put("type",vo.getType());
 		obj.put("desc",vo.getDescription());
+		obj.put("state",vo.getState());
 		
 		result = obj.toJSONString();
 		

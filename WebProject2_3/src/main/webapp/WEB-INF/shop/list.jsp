@@ -38,10 +38,10 @@ $(function(){
     font-style: normal;
 }
 *{
-font-family:'Pretendard-Regular'
+font-family:'Pretendard-Regular'!important;
 }
 h3, h4, h5{
-  font-family:'yangjin'
+  /* font-family:'yangjin'!important; */
   font-weight: bold;
   margin: 20px 0px 0px;
 }
@@ -114,6 +114,19 @@ p {
 .filterBtn{
 	background-color: #f0f8ff;
 }
+.book-text{
+	position:absolute;
+	top:40%;
+	left:50%;
+	width:100%;
+	font-size:20px;
+	color:red;
+	transform:translate(-50%, -50%);
+	text-align:center;
+}
+.soldout{
+	opacity:30%
+}
 </style>
 </head>
 <body>
@@ -134,9 +147,9 @@ p {
 					</table>
 				</div>
 				<div class="col-lg-10">
-				<h3 v-if="type===''">전체</h3>
-					<h3 v-else>{{type}}</h3>
-					<h5>총 {{cnt}} 권의 중고책이 있습니다.</h5>
+				<h3 v-if="type===''" style="color:#007bff">전체 카테고리</h3>
+					<h3 v-else style="color:#007bff">{{type}} 카테고리</h3>
+					<h5>총 {{cnt|currency}} 권의 중고책이 있습니다.</h5>
 					<div class="text-right">
 						<input type=button class="btn btn-sm filterBtn" value="최신등록순" @click="typeChange(type,1)">
 						<input type=button class="btn btn-sm filterBtn" value="낮은가격순" @click="typeChange(type,2)">
@@ -145,12 +158,14 @@ p {
 					</div>
 					<div style="height:20px"></div><!-- 간격띄우기 -->
 				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
-				    <a :href="'../shop/detail.do?no='+vo.no"><img :src="vo.img" align="middle" class="img"/>
-				    <h4>{{vo.title}}</h4>
+				    <a :href="'../shop/detail.do?no='+vo.no"><img :src="vo.img" align="middle" :class="[vo.state===0?'img':'soldout img']"/>
+				    <div class="book-text" v-if="vo.state!=0">구매불가</div>
+				    <h4>{{vo.title}}</h4></a>
 				    <p>{{vo.author}}</p>
-				    <p>{{vo.publisher}}</p>
-				    <h5>{{vo.discount}}&nbsp;|&nbsp;{{vo.percent}}</h5>
-				    </a>
+				    <p>{{vo.publisher}} 발행</p>
+				    <h5 style="float:left; text-decoration:line-through; color:#c5c5c5;">&nbsp;{{vo.price|currency}}원&nbsp;</h5>
+				    <h5 style="float:right; transform: translate(-10%);">({{vo.percent}}할인)&nbsp;{{vo.discount|currency}}원</h5>
+				    
 				  </div>  
 			 
 				  <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>

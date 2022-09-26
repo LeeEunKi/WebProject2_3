@@ -21,7 +21,7 @@
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : 'KH Books 도서 결제',
             amount : ${totalPrice},
-            buyer_email : '${email}',
+            buyer_email : '${id}',
             buyer_name : '${name}',
             buyer_tel : '${phone}',
             buyer_addr : '${address}',

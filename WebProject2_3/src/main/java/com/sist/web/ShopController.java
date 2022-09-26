@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -52,15 +53,30 @@ public class ShopController {
 		model.addAttribute("publisher", publisher);
 		return "shop/publisher_list";
 	}
-	@GetMapping("shop/purchase.do")
-	public String purchase(HttpServletRequest request) {
-	    request.setAttribute("name","김두두");
-	    request.setAttribute("email","dadfd");
+	@RequestMapping("shop/purchase.do")
+	public void purchase(HttpServletRequest request, HttpSession session) {
+//		String name = (String)session.getAttribute("name");
+//		String id = (String)session.getAttribute("id");
+		String[] usedBooks = request.getParameterValues("usedbooks");
+		String numbers = "";
+		if(usedBooks!=null && usedBooks.length>0){
+			for(int i=0;i<usedBooks.length;i++) {
+				numbers += usedBooks[i]+",";
+			}
+			numbers = numbers.substring(0,numbers.lastIndexOf(","));
+			dao.purchase(numbers);
+			System.out.println(numbers);
+		  }
+		
+//		request.setAttribute("name",name);
+	    request.setAttribute("name","nnnn");
+//	    request.setAttribute("id",id);
+	    request.setAttribute("id","dfadfa");
 	    request.setAttribute("phone","10124");
 	    request.setAttribute("totalPrice",100);
 	    request.setAttribute("address","dfaddaf");
 		
-		return "shop/purchase";
+//		return "shop/purchase";
 	}
 	
 	//중고책 장바구니

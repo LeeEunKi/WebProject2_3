@@ -13,20 +13,28 @@
 <script>
 $( function() {
  $('#cartBtn').click(function(){
-    $('#dialog-confirm').dialog({
-        resizable: false,
-        height: "auto",
-        width: 400,
-        modal: true,
-        buttons: {
-          "장바구니에 추가": function() {
-            location.href = '../shop/cart_insert.do?no='+${no};
-          },
-          "취소": function() {
-            $( this ).dialog( "close" );
-          }
-        }
-      });
+	 let id = '${sessionScope.id}';
+	 console.log(id);
+	 if(id.trim()==''){
+		 alert('로그인 먼저 햇!');
+		 return;
+	 }else{
+		 $('#dialog-confirm').dialog({
+		        resizable: false,
+		        height: "auto",
+		        width: 400,
+		        modal: true,
+		        buttons: {
+		          "장바구니에 추가": function() {
+		            location.href = '../shop/cart_insert.do?no='+${no};
+		          },
+		          "취소": function() {
+		            $( this ).dialog( "close" );
+		          }
+		        }
+		      });
+	 }
+   
  })
  $('#infoIcon').click(function(){
 	 $('#dialog').dialog({
@@ -87,7 +95,7 @@ font-family:'yangjin'
 						<p>{{book_detail.condition}}</p>
 						<h5>정가</h5>
 						<p style="text-decoration:line-through;color:darkred">{{book_detail.price}}원</p>
-						<h5>→&nbsp;할인가</h5>
+						<h5>→&nbsp;{{book_detail.percent}} 할인!</h5>
 						<img src="../img/sale.png" style="height:20px;float:left;"><p>&nbsp;{{book_detail.discount}}원</p>
 					</td>
 				</tr>
@@ -101,7 +109,7 @@ font-family:'yangjin'
 						<button id="cartBtn" class="btn btn-primary">
 							<img src="../img/cart.png" style="width:20px;">&nbsp;장바구니 담기
 						</button>
-						<a class="btn btn-primary" href="#">
+						<a class="btn btn-primary" :href="'../book/detail.do?no='+book_detail.no">
 							<img src="../img/book_find.png" style="width:20px;">&nbsp;빌려읽기
 						</a>
 						<a href="../shop/list.do" class="btn btn-primary" @click="javascript:history.back()">
@@ -184,44 +192,3 @@ new Vue({
 </script>
 </body>
 </html>
-<!--  
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Dialog - Modal confirmation</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#dialog-confirm" ).dialog({
-      resizable: false,
-      height: "auto",
-      width: 400,
-      modal: true,
-      buttons: {
-        "Delete all items": function() {
-          $( this ).dialog( "close" );
-        },
-        Cancel: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-  } );
-  </script>
-</head>
-<body>
- 
-<div id="dialog-confirm" title="Empty the recycle bin?">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
-</div>
- 
-<p>Sed vel diam id libero <a href="http://example.com">rutrum convallis</a>. Donec aliquet leo vel magna. Phasellus rhoncus faucibus ante. Etiam bibendum, enim faucibus aliquet rhoncus, arcu felis ultricies neque, sit amet auctor elit eros a lectus.</p>
- 
- 
-</body>
-</html> -->

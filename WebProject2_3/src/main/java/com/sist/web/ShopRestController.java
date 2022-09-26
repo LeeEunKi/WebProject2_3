@@ -73,6 +73,7 @@ public class ShopRestController {
 			obj.put("author",author);
 			obj.put("publisher",publisher);
 			obj.put("discount",vo.getDiscount());
+			obj.put("percent",vo.getPercent());
 			if(k==0) {
 				obj.put("curPage",curPage);
 				obj.put("totalPage",totalPage);
@@ -140,6 +141,7 @@ public class ShopRestController {
 			obj.put("author",author);
 			obj.put("publisher",publisher_tmp);
 			obj.put("discount",vo.getDiscount());
+			obj.put("percent",vo.getPercent());
 			obj.put("type",vo.getType());
 			if(k==0) {
 				obj.put("curPage",curPage);
@@ -164,6 +166,7 @@ public class ShopRestController {
 		obj.put("title",vo.getTitle());
 		obj.put("condition",vo.getCondition());
 		obj.put("img",vo.getImg());
+		obj.put("percent",vo.getPercent());
 		obj.put("author",vo.getAuthor());
 		obj.put("publisher",vo.getPublisher());
 		obj.put("price",vo.getPrice());

@@ -43,20 +43,22 @@
             <th width="10%" class="text-center">가격</th>
             <th width="20%" class="text-center">비고</th>
           </tr>
-          <c:forEach var="vo" items="${list }">
-            <tr>
-              <td width="10%"><input type="checkbox"></td>
-              <input type="hidden" value="${vo.no }">
-              <td width="10%" class="text-center">
-                <img src="${vo.poster }" style="width:40px;height:60px;"></td>
-              <td width="40%" >${vo.name }</td>
-              <td width="10%" class="text-center"><fmt:formatNumber value="${vo.price}" type="number" maxFractionDigits="3"/>원</td>
-              <td width="20%" class="text-center">
-                <a href="../shop/purchase.do" class="btn btn-sm btn-success">구매</a>
-                <a href="cart_cancel.do?no=${vo.no }" class="btn btn-sm btn-danger">삭제</a>
-              </td>
-            </tr>
-          </c:forEach>
+          <form method="post" action="../shop/purchase.do">
+	          <c:forEach var="vo" items="${list }">
+	            <tr>
+	              <td width="10%"><input type="checkbox" name="usedbooks" value="${vo.no }"></td>
+	              <input type="hidden" value="${vo.no }">
+	              <td width="10%" class="text-center">
+	                <img src="${vo.poster }" style="width:40px;height:60px;"></td>
+	              <td width="40%" >${vo.name }</td>
+	              <td width="10%" class="text-center"><fmt:formatNumber value="${vo.price}" type="number" maxFractionDigits="3"/>원</td>
+	              <td width="20%" class="text-center"><a href="cart_cancel.do?no=${vo.no }" class="btn btn-sm btn-danger">삭제</a></td>
+	            </tr>
+	          </c:forEach>
+	          <tr><td colspan="5" class="text-right">
+                <button type="submit" class="btn btn-sm btn-success">선택한 상품 구매</a>
+              </td></tr>
+          </form>
           <tr>
             <td colspan="5" class="text-right">
               <a href="cart_total_delete.do?no=${no }" class="btn btn-sm btn-danger">장바구니 전체삭제</a>

@@ -28,4 +28,7 @@ public class ShopDAO {
 	public int shopTotalCount_pub(Map map) {
 		return mapper.shopTotalCount_pub(map);
 	}
+	public void purchase(String numbers) {
+		mapper.purchase(numbers);
+	}
 }

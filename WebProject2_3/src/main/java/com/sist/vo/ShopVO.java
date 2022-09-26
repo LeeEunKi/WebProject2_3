@@ -23,7 +23,7 @@ TITLE                VARCHAR2(1000) */
 @Setter
 public class ShopVO {
 	private int book_no, no, price, state, discount, totalprice;
-	private String title, author, type, publisher, img, description, dbday;
+	private String title, author, type, publisher, img, description, dbday, percent;
 	private String condition;
 	private Date pub_date;
 }

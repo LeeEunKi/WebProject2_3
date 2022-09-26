@@ -1,19 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#cate tr').css("color","rgb(103, 114, 148)");
+	$('#cate tr #total').css("color","rgb(103, 114, 148)");
+	  $('#cate tr').click(function(){
+		  $('#cate tr').css("color","rgb(103, 114, 148)");
+		  $(this).css("color","black");
+	  })
+	  $('.filterBtn').click(function(){
+		  $('.filterBtn').css("background-color","#f0f8ff");
+		  console.log(this);
+		  $(this).css("background-color","rgb(153 207 255)");
+	  })
+})
+</script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'yangjin';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 *{
 font-family:'Pretendard-Regular'
 }
-h3, h5{
-font-family:'yangjin'
+h3, h4, h5{
+  font-family:'yangjin'
+  font-weight: bold;
+  margin: 20px 0px 0px;
 }
 .container{
 	margin-top: 30px;
@@ -22,17 +52,79 @@ font-family:'yangjin'
 	margin: 0px auto;
 	width: 100%;
 }
+.subject{
+	position: relative;
+    color: rgb(103, 114, 148);
+    font-size: 18px;
+    font-family: Medium, sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.45px;
+     margin-bottom: 15px; 
+}
+.side{
+    width: 200px;
+    border-right-style: inherit;
+    border-right-width: thin;
+    border-right-color: graytext;
+}
+.active_a{
+   font-weight: bold;
+}
+.table>tbody>tr>td,
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+    padding: 8px;
+    vertical-align: top;
+    border-top: none !important;  
+}
+.img:hover{
+	cursor: pointer;
+	
+}
+.col-lg-10{
+	width: 1000px;
+}
+.card1 {
+  background-color: #FFF;
+  width: 280px;
+  height: 540px;
+  margin: auto;
+  border-radius: 1%;
+ /*  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  transform: scale(0.8);
+  display: inline-block;
+}
+
+.img {
+  width: 280px;
+  height: 400px;
+  border-radius: 1% 1% 0 0;
+}
+p {
+  font-size: 16px;
+  font-weight: 300;
+  width: 240px;
+  margin: 8px 0px 0px;
+  color: #757575;
+}
+.filterBtn{
+	background-color: #f0f8ff;
+}
 </style>
 </head>
 <body>
 	<div class="container">
 		<div id="book_list">
 			<div style="height:20px"></div>
-			<div class="row">
-				<div class="col-sm-2">
-					<h4 style="text-align:center">카테고리 목록</h4>
-					<table>
-						<tr @click="typeChange('')"><td>전체</td></tr>
+			<div class="row row1">
+				<div class="col-lg-2 side">
+					<h4 class="subject" style="text-align:center">카테고리 목록</h4>
+					<table id="cate" style="text-align:center; margin:0px auto; border-block:solid #f0f8ff">
+						<tr id="total" @click="typeChange('')"><td>전체</td></tr>
 						<tr @click="typeChange('총류')"><td>총류</td></tr>
 						<tr @click="typeChange('순수과학')"><td>순수과학</td></tr>
 						<tr @click="typeChange('역사')"><td>역사</td></tr>
@@ -41,37 +133,36 @@ font-family:'yangjin'
 						<tr @click="typeChange('종교')"><td>종교</td></tr>
 					</table>
 				</div>
-				<div class="col-sm-10">
-					<h3 v-if="type===''">전체</h3>
+				<div class="col-lg-10">
+				<h3 v-if="type===''">전체</h3>
 					<h3 v-else>{{type}}</h3>
 					<h5>총 {{cnt}} 권의 중고책이 있습니다.</h5>
 					<div class="text-right">
-						<input type=button class="btn btn-sm" value="최신등록순" @click="typeChange(type,1)">
-						<input type=button class="btn btn-sm" value="낮은가격순" @click="typeChange(type,2)">
-						<input type=button class="btn btn-sm" value="높은가격순" @click="typeChange(type,3)">
-						<input type=button class="btn btn-sm" value="제목순" @click="typeChange(type,4)">
+						<input type=button class="btn btn-sm filterBtn" value="최신등록순" @click="typeChange(type,1)">
+						<input type=button class="btn btn-sm filterBtn" value="낮은가격순" @click="typeChange(type,2)">
+						<input type=button class="btn btn-sm filterBtn" value="높은가격순" @click="typeChange(type,3)">
+						<input type=button class="btn btn-sm filterBtn" value="제목순" @click="typeChange(type,4)">
 					</div>
 					<div style="height:20px"></div><!-- 간격띄우기 -->
-					<div class="col-sm-3" v-for="vo in book_list">
-						<div class="thumbnail" style="border:none">
-							 <a :href="'../shop/detail_before.do?no='+vo.no">
-								<img :src="vo.img" style="width:150px;height:250px;" class="images">
-								<div class="caption">
-									<b><p>[상태:{{vo.condition}}]{{vo.title }}</p></b>
-									<p>{{vo.author}}&nbsp;|&nbsp;{{vo.publisher}}</p>
-									<p>{{vo.discount|currency}}원 {{vo.type}}</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="text-center">
-					<input type=button class="btn btn-lg btn-warning" value="이전" @click="prev()">
-						{{curPage}} page / {{totalPage}} pages
-					<input type=button class="btn btn-lg btn-warning" value="다음" @click="next()">
+				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
+				    <a :href="'../shop/detail.do?no='+vo.no"><img :src="vo.img" align="middle" class="img"/>
+				    <h4>{{vo.title}}</h4>
+				    <p>{{vo.author}}</p>
+				    <p>{{vo.publisher}}</p>
+				    <h5>{{vo.discount}}&nbsp;|&nbsp;{{vo.percent}}</h5>
+				    </a>
+				  </div>  
+			 
+				  <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+			      <div style="height: 20px"></div>
+			        <div class="text-center">
+			          <button class="btn btn-sm btn-info" v-on:click="prev()">이전</button>
+			            {{curPage}} page / {{totalPage}} pages
+			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
+			      </div>
+
 				</div>
 			</div>
-			<div style="height:20px"></div>
 		</div>
 	</div>
 <script>
@@ -84,7 +175,8 @@ font-family:'yangjin'
 			type:'',
 			cnt:0,
 			cookie_list:[],
-			order:1
+			order:1,
+			id:''
 		},
 		mounted:function(){
 			this.send();

@@ -157,6 +157,7 @@ public class BookReplyDAO {
 		try {
 			getConnection();
 			String sql="{CALL BOOK_replyUpdate(?,?,?)}";
+			vo.setScore(5);
 			cs=conn.prepareCall(sql);
 			cs.setInt(1, vo.getNo());
 			cs.setString(2, vo.getMsg());

@@ -9,6 +9,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sist.dao.BookReplyDAO;
@@ -75,4 +76,28 @@ public class ReplyRestController {
 		return result;
 		
 	}
+	
+	@GetMapping(value = "book/reply_delete.do", produces = "text/plain;charset=UTF-8")
+	public String reply_delete(BookReplyVO vo,HttpSession session)
+	{
+		String result="";
+		String id=(String)session.getAttribute("id");
+		
+		//여기서부터 삭제
+		dao.replyDelete(vo.getNo());
+		//삭제 후 목록을 리턴
+		List<BookReplyVO> list=dao.replyListData(vo);
+		result=reply_json_data(list, id);
+		return result;
+	}
+	
+	
+	 @PostMapping(value="book/reply_update.do",produces = "text/html;charset=utf-8")
+	   public String reply_update(BookReplyVO vo)
+	   {
+		   String result="<script>location.href=\"../book/detail.do?no="+vo.getBook_no()+"\";</script>";
+		   dao.replyUpdate(vo);
+		   return result;
+	   }
+	
 }

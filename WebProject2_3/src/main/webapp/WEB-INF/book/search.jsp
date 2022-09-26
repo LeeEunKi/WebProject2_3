@@ -98,7 +98,7 @@
 					       <img :src="vo.img" style="width:160px; height:220px" class="images" v-on:click="detailData(vo.no)">  
 					      </td>	  
 					      <td colspan="2">
-					        <h3>{{vo.title}}&nbsp;&nbsp;<a :href="'../book/booklike.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px"></a></h3><h4><span style="color: orange;">score</span></h4>
+					        <h3>{{vo.title}}&nbsp;&nbsp;</h3><h4><span style="color: orange;">score</span></h4>
 					        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
 					         <li>저자:&nbsp;&nbsp;{{vo.author}}</li>
 					         <li>출판사:&nbsp;&nbsp;{{vo.publisher}}</li>

@@ -136,7 +136,7 @@ nav ul.nav-tabs {
 }
 
 .container-detail {
-	height: 600px;
+	height: 400px;
 	width: 7000px;
 	margin: 0px;
 	padding: 0;
@@ -167,7 +167,7 @@ nav ul.nav-tabs {
 				<div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
          			   <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
-         			   <ul>
+         			   <ul style="list-style: none;">
          			     <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
          			     <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
          			   </ul>
@@ -184,8 +184,8 @@ nav ul.nav-tabs {
 			    </div>
 			    
 
-	<div class="col-lg-9">
-				<h3 style="margin-bottom: 0px">상세 보기</h3>
+	<div class="col-lg-8">
+				<h3 style="margin-bottom: 0px">상세보기</h3>
 				<hr style="margin-bottom: 0px">
 				
 				<table class="table">
@@ -196,7 +196,8 @@ nav ul.nav-tabs {
 					</tr>
 		            <tr>
 		              <td colspan="2">
-		                <h3>{{vo.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{vo.type}}</span></h3>
+		                <h3>{{vo.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{vo.type}}</span>
+		                <a :href="'../book/booklike.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px"></a></h3>
 		              </td>
 		            </tr>
 		            <tr>
@@ -223,7 +224,8 @@ nav ul.nav-tabs {
 		              <c:if test="${sessionScope.id==null }">
 		                <span class="btn btn-lg btn-warning"style="float: left;margin-right: 10px">관심도서 추가</span>
 		              </c:if>
-		              <c:if test="${sessionScope.id!=null }">
+
+		              <c:if test="${sessionScope.id!=null && lcheck==null }">
 		                 
 		                <a :href="'../book/booklike.do?no='+vo.no" class="btn btn-lg btn-warning"style="float: left">관심도서 추가</a>
 		              </c:if>
@@ -239,7 +241,7 @@ nav ul.nav-tabs {
 						<ul class="nav-tabs">
 							<li><a href="#" class="n-tab active">책소개</a></li>
 							<li><a href="#" class="n-tab">이용안내</a></li>
-							<li><a href="#" class="n-tab">별점</a></li>  
+							<li><a href="#" class="n-tab">문의사항</a></li>  
 						</ul>
 					</nav>
 			
@@ -270,9 +272,19 @@ nav ul.nav-tabs {
     연속간행물
 							</pre>
 					    </section>
-						<section class="content reply" style="position: relative;top: -200px">
+
+						
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+		<div class="row row1">
+		  <div class="col-lg-2 side"></div>
+		  <div class="col-lg-8">
+		    <section class="content" id="reply">
 						    <br>
-							<h2>별점 주기</h2>
+							<h2>리뷰 쓰기</h2>
 								 <div class="input-group mb-3" style="position: relative;left: -5px;">
 <!-- 								  <div class="input-group-prepend">
 								    <label class="input-group-text" for="inputGroupSelect01">별점</label>
@@ -286,43 +298,60 @@ nav ul.nav-tabs {
 								    <option value="5">★★★★★</option>
 								  </select> -->
 								
-								<div class="input-group">
-								  <textarea class="form-control" aria-label="With textarea"  ref="msg"  v-model="msg"></textarea>
+								 <div class="input-group">
+								   <textarea class="form-control" aria-label="With textarea"  ref="msg"  v-model="msg"></textarea>
 								
-								 <div class="input-group-append">
-								    <input class="btn btn-outline-secondary" type="button" value="댓글 쓰기" @click="replyWrite()">
-								  </div>
-								  </div>
-								</div>
-							※ 부적절한 댓글은 관리자에 의해 삭제될 수 있습니다
+									 <div class="input-group-append">
+									  <c:if test="${sessionScope.id!=null }">
+									    <input class="btn btn-outline-secondary" type="button" value="리뷰 작성" @click="replyWrite()">
+									  </c:if>
+									  <c:if test="${sessionScope.id==null }">
+									    <button class="btn btn-outline-secondary" type="button">리뷰 작성</button>
+									  </c:if>
+								 	  </div>
+								 </div>
+							    </div>
+							※ 부적절한 댓글은 관리자에 의해 삭제될 수 있습니다 
 							<hr>
-							<div>
 							<!-- 댓글 출력 리스트  -->
-							 <table class="table" v-for="re in reply_list">
-					               <tr>
-					                 <td class="text-left">{{re.member_id}}&nbsp;&nbsp;({{re.dbday}})</td>
-					                 <td class="text-right">
-					                   <%--
-					                         <c:if test="${sessionScope.id==re.id}">
-					                    --%>
-					                   <input type="button" class="btn btn-xs btn-info" value="수정" >
-					                   <input type="button" class="btn btn-xs btn-warning" value="삭제" >
-					               </tr>
-					               <tr>
-					                 <td colspan="2" valign="top" class="text-left"><pre style="white-space: pre-wrap;border: none;background-color: white">{{re.msg}}</pre></td>
-					               </tr>
-					               
-					             </table>
-							</div>
+					          <div class="row" style="border-bottom: 1px solid #ddd;" v-for="re in reply_list">
+					             <ul>
+										<li>
+											<div>
+												<!-- <span class="ratingStar"><span style="width:80%;"></span></span> -->
+												<strong>{{re.member_id}}</strong>
+												<span>({{re.dbday}})</span>
+												<span style="float: right; padding: 30px">
+													<input type="button" v-if="re.member_id===sessionId" value="수정" @click="replyUpdate(re.no)" :id="'up'+re.no">
+	                   								<input type="button" v-if="re.member_id===sessionId" value="삭제" v-on:click="replyDelete(re.no)">
+												</span>
+												
+											</div>
+											<p>{{re.msg}}</p>
+
+
+												<div class="input-group" v-show="isShow" style="display: none;" class="updates" :id="'u'+re.no">
+												   
+													<form method="post" action="../book/reply_update.do">
+													<textarea class="form-control" aria-label="With textarea" name="msg" ref="msg"  id="msg">{{re.msg}}</textarea>
+													 <div class="input-group-append">
+													     <input type="hidden" name="book_no" :value="book_no">
+										                 <input type="hidden" name="no" :value="re.no">
+													    <input class="btn btn-outline-secondary" type="submit" value="리뷰 수정" >
+												 	  </div>
+												 	  </form>
+												 </div>
+										</li>
+								  </ul>
+					          </div>
+							
 					    </section>
-						
-					</div>
-				</div>
-			</main>
+		  </div>
 		</div>
+		<!--리뷰란 테스  -->
 			    
                 
-		 </div>
+		 
 	</div>
 		 
 </div>
@@ -354,32 +383,14 @@ nav ul.nav-tabs {
 </script>
 <script type="text/javascript">
 	 new Vue({
-		 el:'.section',
-		 data:{
-			 no:${no},
-			 vo:{}
-		 },
-		 mounted:function(){
-			 axios.get("http://localhost:8080/web/book/detail_info.do",{
-				 params:{
-					 no:this.no
-				 }
-			 }).then(result=>{
-				 console.log(result);
-				 this.vo=result.data;
-			 })
-		 }
-	
-	 })
-	 
-	 new Vue({
-		 el:'.reply',
+		 el:'#reply',
 		 data:{
 			 book_no:${no},
 			 reply_list:[],
 			 msg:'',
-			 sessionId:''
-			 
+			 sessionId:'',
+			 isShow:false,
+			 hno:0
 		 },
 		 mounted:function(){
 			let _this=this;
@@ -397,7 +408,7 @@ nav ul.nav-tabs {
 			 replyWrite:function(){
 				 if(this.msg==="")
 	    			{
-	    				this.$refs.msg.focus();
+	    				_this.$refs.msg.focus();
 	    				return;
 	    			}
 	    			let _this=this;
@@ -408,13 +419,72 @@ nav ul.nav-tabs {
 	        			}
 	        		}).then(function(result){
 	        			_this.msg="";
-	        			console.log(result.data)
+	        			console.log(result.data);
 	        			_this.reply_list=result.data;
 	        			_this.sessionId=result.data[0].sessionId
 	        		})
-			 }
+			 },
+			 replyDelete:function(no){
+	    			let _this=this;
+	    			axios.get("http://localhost:8080/web/book/reply_delete.do",{
+	    				params:{
+	    					no:no,
+	    					book_no:_this.book_no
+	    				}
+		    		}).then(function(result){
+		    			console.log(result.data)
+		    			_this.reply_list=result.data;
+		    			_this.sessionId=result.data[0].sessionId
+		    		})
+		   	 },
+    		 replyUpdate:function(no){
+    			 $('.updates').hide();
+     			if(this.no==0)
+     			{
+     				$('#u'+no).show();
+     				$('#up'+no).val("취소");
+     				this.no=1;
+     			}
+     			else
+     			{
+     				$('#u'+no).hide();
+     				$('#up'+no).val("수정");
+     				this.no=0;
+     			}
+    		  /*   let _this=this;
+    			axios.post("http://localhost:8080/web/book/reply_update.do",{
+        			params:{
+        				book_no:_this.book_no,
+        				msg:_this.msg
+        			}
+        		}).then(function(result){
+        			_this.msg="";
+        			console.log(result.data)
+        			_this.reply_list=result.data;
+        			_this.sessionId=result.data[0].sessionId
+        		})  */
+    		} 
 		 }
 		 
+	 })
+	 
+	 new Vue({
+		 el:'.col-lg-8',
+		 data:{
+			 no:${no},
+			 vo:{}
+		 },
+		 mounted:function(){
+			 axios.get("http://localhost:8080/web/book/detail_info.do",{
+				 params:{
+					 no:this.no
+				 }
+			 }).then(result=>{
+				 console.log(result);
+				 this.vo=result.data;
+			 })
+		 }
+	
 	 })
 </script>
 </body>

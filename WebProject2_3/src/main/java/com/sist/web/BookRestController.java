@@ -117,7 +117,7 @@ public class BookRestController {
 			title="행복";
 		
 		int curpage=Integer.parseInt(page);
-		int rowSize=16;
+		int rowSize=24;
 		int start=(rowSize*curpage)-(rowSize-1);
 		int end=rowSize*curpage;
 		
@@ -180,7 +180,7 @@ public class BookRestController {
 			author="김";
 		
 		int curpage=Integer.parseInt(page);
-		int rowSize=16;
+		int rowSize=24;
 		int start=(rowSize*curpage)-(rowSize-1);
 		int end=rowSize*curpage;
 		

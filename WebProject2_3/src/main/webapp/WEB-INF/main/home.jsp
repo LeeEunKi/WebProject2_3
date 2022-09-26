@@ -277,9 +277,24 @@ nav ul.nav-tabs {
           <c:if test="${sessionScope.id!=null }">
           <div class="login-page">
             <div class="box">
-               <h3>"${sessionScope.name}"님 반갑습니다.</h3>
+              <form class="login-box">
+              	<b>"${sessionScope.name}"</b>님,<br>
+              	방문을 환영합니다! 
+              	<br>
+              	<br>
+              	<!-- <a href="#">Create an account</a></p>  -->
+                <button>
+                  <a href="#">My LIBRARY</a>
+                </button>
+                <br>
+                <br>
+                 <p><a href="../member/join_before.do">회원정보 수정</a></p> 
+                 <p><a href="../member/logout.do">로그아웃</a></p> 
+               
+                
+              </form>
             </div>
-            </div>
+          </div>
           </c:if>
           <div class="box" style="height: 180px;">
             <p>Some text...</p>

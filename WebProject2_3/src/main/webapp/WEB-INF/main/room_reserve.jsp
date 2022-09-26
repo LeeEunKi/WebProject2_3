@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,16 +57,17 @@
     overflow: hidden;
 }
 .standby {
-    clear: both;
-    width: 82%;
-    height: 40px;
-    font-size: 24px;
+ 	clear: both;
+    width: 100%;
+    height: 65px;
+    font-size: 40px;
     line-height: 36px;
     font-weight: bold;
     text-align: center;
     color: #2D2D2D;
     border: 1px solid #e5e5e5;
     background-color: #f5f4f3;
+    padding-top: 11px;
 }
 .standby span {
     left: 28%;
@@ -76,45 +78,48 @@
     font-weight: normal;
     color: #8C8C8C;
 }
+.room_h5{
+ 	style="text-align: left;
+ 	margin-bottom: 15px; 
+ 	display: inline-block;
+ 	float: left;"
+}
+#room_img{
+	margin-bottom: 6px;
+    float: left;
+}
 </style>
 </head>
 <body>
-   <h4 style="text-align: left;">◎금일 열람실 현황</h4>
+   <img id="room_img" src="../img/room_img.png"><h5 class="room_h5">열람실 실시간 현황</h5>
    <div id="room_list" style="width: 300px; height: 300px;">
+    <c:forEach var="rvo" items="${rlist }">
      <div class="rb_box" style="width: 120px;">
        <h4>
-              제&nbsp;<strong>1</strong>&nbsp;열람실
+              제&nbsp;<strong>${rvo.no }</strong>&nbsp;열람실
        </h4>
        <div>
         <p class="num1">
           <span>전체</span>
-          41
+          ${rvo.total_seat }
         </p>
         <p class="num1">
           <span>잔여</span>
-          41
+          ${rvo.remain_seat }
         </p>
        </div>
      </div>
-     <div class="rb_box" style="width: 120px;">
+    </c:forEach>
+	<div class="rb_box" style="width: 120px;">
        <h4>
-               제&nbsp;<strong>2</strong>&nbsp;열람실
+       <strong>대기 수</strong>
        </h4>
        <div>
-        <p class="num1">
-          <span>전체</span>
-          41
-        </p>
-        <p class="num1">
-          <span>잔여</span>
-          41
-        </p>
-       </div>
-     </div>
-     <p class="standby">
-       <span>대기</span>
+        <p class="standby">
          0
-     </p>
+    	</p>
+       </div>
+     </div>
      <p style="padding-top: 10px; text-align: right !important; width: 82%;" >
       <a href="../study/room_list.do">열람실 좌석 예약 바로가기▷</a>
      </p> 

@@ -39,7 +39,8 @@
   position: relative;
   z-index: 1;
   background: #FAFAFA;
-  max-width: 360px;
+  max-width: 320px;
+  max-width: 320px;
   margin: 0 auto 20px;
   padding: 45px;
   text-align: center;

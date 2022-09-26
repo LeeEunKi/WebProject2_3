@@ -292,6 +292,12 @@ button1:hover:before,button1:hover:after{
   width:100%;
   transition:800ms ease all;
 }
+.project-box {
+    --main-color-card: #dbf6fd;
+    border-radius: 30px;
+    padding: 16px;
+    background-color: white;
+}
 
 </style>
 </head>
@@ -446,7 +452,7 @@ button1:hover:before,button1:hover:after{
     
     
     <div class="col-sm-2 text-center" style="margin-top: 20px">
-	    <div class="box" style="height: 350px;">
+	    <div class="box project-box" style="height: 350px; padding: 35px;">
 
 		       <jsp:include page="room_reserve.jsp"></jsp:include>
 

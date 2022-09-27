@@ -91,7 +91,7 @@
 </style>
 </head>
 <body>
-   <img id="room_img" src="../img/room_img.png"><h5 class="room_h5">열람실 실시간 현황</h5>
+  <img id="room_img" src="../img/room_img.png"><h5 class="room_h5">열람실 실시간 현황</h5>
    <div id="room_list" style="width: 300px; height: 300px;">
     <c:forEach var="rvo" items="${rlist }">
      <div class="rb_box" style="width: 120px;">

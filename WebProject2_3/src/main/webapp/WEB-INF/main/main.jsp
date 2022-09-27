@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css" src="../css/bootstrap.css"></style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
@@ -40,7 +41,7 @@
   z-index: 1;
   background: #FAFAFA;
   max-width: 320px;
-  max-width: 320px;
+  min-width: 320px;
   margin: 0 auto 20px;
   padding: 45px;
   text-align: center;

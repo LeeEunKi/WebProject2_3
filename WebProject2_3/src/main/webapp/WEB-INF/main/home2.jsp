@@ -175,7 +175,7 @@ $(function(){
 			<div class="intro-excerpt">
 				<c:if test="${sessionScope.id==null }">
 		          <div class="login-page">
-		            <div class="box">
+		            <div class="box" style="height: 390px; width: 400px;">
 		              <form class="login-box">
 		                <input type="text" placeholder="username" id="id" size=15 class="input-sm" value="${id }">
 		                <input type="password" placeholder="password" type=password id="pwd" size=15 class="input-sm">

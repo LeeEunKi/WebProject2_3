@@ -12,7 +12,7 @@
 .subject{
 	position: relative;
     color: rgb(103, 114, 148);
-    font-size: 18px;
+    font-size: 25px;
     font-family: Medium, sans-serif;
     font-weight: bold;
     letter-spacing: -0.45px;
@@ -37,6 +37,7 @@
     padding: 8px;
     vertical-align: top;
     border-top: none !important;  
+    border-bottom: none !important;  
 }
 
 
@@ -88,13 +89,13 @@ body {
 
 .tabset > label:hover,
 .tabset > input:focus + label {
-  color: #06c;
+  color: #207856;
 }
 
 .tabset > label:hover::after,
 .tabset > input:focus + label::after,
 .tabset > input:checked + label::after {
-  background: #06c;
+  background: #207856;
 }
 
 .tabset > input:checked + label {
@@ -123,6 +124,15 @@ body {
 
 .tabset {
   max-width: 65em;
+}
+a{
+	text-decoration: none !important;
+}
+a:hover{
+	text-decoration: underline !important;
+}
+.li{
+	padding-bottom: 7px;
 }
 
 </style>
@@ -156,14 +166,16 @@ body {
         <div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;">
              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
                 <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
-                <ul style="list-style: none;">
+                <ul style="list-style: none;font-size: 18px;font-weight:300;padding-left: 5px;">
                   <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
                   <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
                 </ul>
+                <br>
                 
               </div>
               <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
                 <a href="../book/search.do"><h3 class="subject">인기도서</h3></a>
+                <br>
                 
               </div>
               <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
@@ -175,11 +187,10 @@ body {
         
       <div class="col-lg-8">
         <h3 style="margin-bottom: 0px">상세보기</h3>
-        <h5 style="margin-top: 5px">검색하신 도서</h5>
         <hr style="margin-bottom: 0px">
         
 
-            <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+            <div style="height: 20px"></div>
           
 				
 				<table class="table">
@@ -191,7 +202,15 @@ body {
 		            <tr>
 		              <td colspan="2">
 		                <h3>{{vo.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{vo.type}}</span>
-		                <a :href="'../book/booklike.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px"></a></h3>
+		                 <c:if test="${sessionScope.id==null }">
+		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like"></h3>
+		                </c:if>
+		                 <c:if test="${sessionScope.id!=null && lcheck==0 }">
+			                <a :href="'../book/bookLikeInsert.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like"></h3></a>
+			              </c:if>
+			               <c:if test="${lcheck!=0 }">
+			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no"><img src="../img/heart.png" style="float: right;width: 30px;height: 30px" class="like"></h3></a>
+		                </c:if>
 		              </td>
 		            </tr>
 		            <tr>
@@ -210,20 +229,23 @@ body {
 		              <td style="width: 20%"></td>
 		              <td style="width: 80%">
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-lg btn-warning"style="float: left;margin-right: 10px">도서 예약</span>
+		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">도서 예약</span>
 		              </c:if>
 		              <c:if test="${sessionScope.id!=null }">
-		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-lg btn-warning"style="float: left;margin-right: 10px">도서 예약</a>
+		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">도서 예약</a>
 		              </c:if>
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-lg btn-warning"style="float: left;margin-right: 10px">관심도서 추가</span>
+		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">관심도서 추가</span>
 		              </c:if>
 
-		              <c:if test="${sessionScope.id!=null && lcheck==null }">
+		              <c:if test="${sessionScope.id!=null && lcheck==0 }">
 		                 
-		                <a :href="'../book/booklike.do?no='+vo.no" class="btn btn-lg btn-warning"style="float: left">관심도서 추가</a>
+		                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">관심도서 추가</a>
 		              </c:if>
-		                
+		              <c:if test="${lcheck!=0 }">
+		                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">관심도서 삭제</a>
+		              </c:if>
+		                <a href="../book/search.do" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px" >목록으로</a>
 		              </td>
 		            </tr>
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->
@@ -232,16 +254,16 @@ body {
 					<div class="tabset">
 					  <!-- Tab 1 -->
 					  <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
-					  <label for="tab1">책소개</label>
+					  <label for="tab1">책 소개</label>
 					  <!-- Tab 2 -->
 					  <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
 					  <label for="tab2">이용안내</label>
 					  <!-- Tab 3 -->
 					  <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-					  <label for="tab3">시설안내</label>
+					  <label for="tab3">반납 방법</label>
 					  
 					  <input type="radio" name="tabset" id="tab4" aria-controls=qna">
-					  <label for="tab4">기타 문의</label>
+					  <label for="tab4">문의</label>
 					  
 					  <div class="tab-panels">
 					    <section id="marzen" class="tab-panel">
@@ -272,8 +294,7 @@ body {
 					    </section>
 					    <section id="dunkles" class="tab-panel">
 					      <h2>반납 방법</h2>
-					      <p><strong>반납 방법</strong>
-					      <p>대출한 자료실 데스크 및 도서무인반납함</p>
+					      <p>대출한 자료실 데스크 및 도서 무인 반납함</p>
 						  <p>도서관에서 발급한 회원카드로 관내 도서관에서 대출/반납 가능</p><br>
 					      <p><strong>반납 기한</strong>
 					      <p>대출한 시점으로부터 일주일 뒤</p>
@@ -298,14 +319,14 @@ body {
 								 <div class="input-group">
 								   <textarea class="form-control" aria-label="With textarea"  ref="msg"  v-model="msg"></textarea>
 								
-									 <div class="input-group-append">
+									 
 									  <c:if test="${sessionScope.id!=null }">
-									    <input class="btn btn-outline-secondary" type="button" value="리뷰 작성" @click="replyWrite()">
+									    <input class="btn btn-primary" type="button" value="리뷰 작성" @click="replyWrite()">
 									  </c:if>
 									  <c:if test="${sessionScope.id==null }">
-									    <button class="btn btn-outline-secondary" type="button">리뷰 작성</button>
+									    <button class="btn btn-primary" type="button">리뷰 작성</button>
 									  </c:if>
-								 	  </div>
+								 	  
 								 </div>
 							    </div>
 							※ 부적절한 댓글은 관리자에 의해 삭제될 수 있습니다 
@@ -325,18 +346,19 @@ body {
 												
 											</div>
 											<p>{{re.msg}}</p>
-
+												<form method="post" action="../book/reply_update.do">
 													<div class="input-group" v-show="isShow" style="display: none;" class="updates" :id="'u'+re.no">
 													   
-														<form method="post" action="../book/reply_update.do">
+														
 														<textarea class="form-control" aria-label="With textarea" name="msg" ref="msg"  id="msg">{{re.msg}}</textarea>
-														 <div class="input-group-append">
-														     <input type="hidden" name="book_no" :value="book_no">
-											                 <input type="hidden" name="no" :value="re.no">
+														 
 														    <input class="btn btn-outline-secondary" type="submit" value="리뷰 수정" >
-													 	  </div>
-													 	  </form>
+													 	 
+													 	  
 													 </div>
+													 <input type="hidden" name="book_no" :value="book_no">
+											         <input type="hidden" name="no" :value="re.no">
+												</form>
 										</li>
 								  </ul>
 					          </div>

@@ -36,8 +36,10 @@
 .table>thead>tr>th {
     padding: 8px;
     vertical-align: top;
-    border-top: 1px !important;  
-    border-top-color: #f2f2f2;
+    border-top: none !important;  
+    border-bottom: none !important;
+    
+ 
 }
 .images:hover{
 	cursor: pointer;
@@ -47,6 +49,12 @@
 .thumbnail>img {
     margin-right: auto;
     margin-left: auto;
+}
+a{
+	text-decoration: none !important;
+}
+a:hover{
+	text-decoration: underline !important;
 }
 </style>
 </head>
@@ -131,15 +139,15 @@
 			   
 			   
 			   
-			   <div class="col-lg-5" v-show="isShow" v-if="isShow===true" style="margin-top: 10px">
+			   <div class="col-lg-5" v-show="isShow" v-if="isShow===true" style="margin-top: 65px">
 				        <table class="table">
 				          <tr>
 				            <td class="text-center thumbnail" colspan="3" style="margin-bottom: 0px">
 				              <img :src="book_detail.img" style="width: 50%;">
-		<!-- 		            </td> -->
+		 		            </td> 
 				          </tr>
 				        </table>
-				          <table class="table">
+				          <table class="table" style="background-color: #FCFFFE;};">
 				            <tr>
 				              <td colspan="2">
 				                <h3>{{book_detail.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{book_detail.type}}</span></h3>

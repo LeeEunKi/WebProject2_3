@@ -41,7 +41,12 @@ public class BookController {
 	public String bookDetail(int no,Model model,HttpSession session)
 	{
 		String id=(String)session.getAttribute("id");
+		Map map=new HashMap();
+		map.put("book_no", no);
+		map.put("member_id", id);
+		int lcheck=ldao.likeCheck(map);
 		
+		model.addAttribute("lcheck",lcheck);
 		model.addAttribute("no",no);
 		return "book/detail";
 	}

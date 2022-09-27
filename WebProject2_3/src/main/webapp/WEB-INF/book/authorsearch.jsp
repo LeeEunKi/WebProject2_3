@@ -44,14 +44,13 @@
 
 
 
-.col-lg-9 {
-  /* background: #F2F2F2; */
+.col-lg-10 {
+  width: 1000px;
 }
 
 .card1 {
-  background-color: #FFF;
-  width: 340px;
-  height: 540px;
+  width: 320px;
+  height: 450px;
   margin: auto;
   border-radius: 1%;
  /*  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
@@ -64,8 +63,8 @@
 }
 
 .img {
-  width: 340px;
-  height: 400px;
+  width: 320px;
+  height: 450px;
   border-radius: 1% 1% 0 0;
 }
 
@@ -84,54 +83,76 @@ p {
   margin: 8px 0px 0px;
   color: #757575;
 }
+a{
+	text-decoration: none !important;
+}
+a:hover{
+	text-decoration: underline !important;
+}
 </style>
 </head>
 <body>
+  <!— Start Hero Section —>
+    <div class="hero">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-5">
+            <div class="intro-excerpt">
+              <h1>도서검색</h1>
+            </div>
+            
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  <!— End Hero Section —>
+  <div style="height: 30px"></div>
+  <div class="container con1">
+     <div class="row row1">
+
+            <!— Start Column 1 —>
+        <div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;">
+             <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+                <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
+                <ul style="list-style: none;">
+                  <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
+                  <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
+                </ul>
+                
+              </div>
+              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+                <a href="../book/search.do"><h3 class="subject">인기도서</h3></a>
+                
+              </div>
+              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+                <h3 class="subject">주제별검색</h3>
+                
+              </div>
+        </div>
+        
+
+      <div class="col-lg-10">
+             <h3 style="margin-bottom: 15px;padding-left: 15px">검색 결과</h3>
+
+					<div class="input-group mb-3" style="margin-left: 15px">
+					  <div class="input-group">
+					    <label class="btn btn-primary" for="inputGroupSelect01">저자명</label>
+
+						  <input type="text" class="form-control" :value="author" ref="author" v-model="author">
+	
+						    <button class="btn btn-primary" type="button" id="button-addon2" v-on:click="authorSearch()">검색</button>
+	
+						</div>	
+					  </div>	
+					
 
 
-<div class="section" style="padding-bottom:0px">
-	<div class="container-fluid con1">
-			<div class="row text-left mb-5">
-				<div class="col-12 text-center">
-				<h2 class="font-weight-bold heading text-primary mb-4" style="padding-top: 20px;float: left">도서검색</h2>
-				      <h2 style="font-weight: 700;display: inline; padding-left: 25px">도서명: </h2>
-				      <input class="form-control" aria-label="Large" style="position: relative; top: -3px;" type="text" size="30" :value="author" ref="author" v-model="author">
-				      <!-- vo-model은 아래 new Vue 안에 있는 data title='' 값을 바꿔주는 역할  -->
-				      <input type="button" value="검색" class="btn btn-lg btn-primary" style="position: relative; top: -6px;" v-on:click="authorSearch()">
-				  <hr>
-				</div>
-			</div>
-
-		
-	<div class="row row1">
-				<div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
-         			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <a href="../book/totalsearch.do"><h2 class="subject">자료검색</h2></a>
-         			   <ul style="list-style: none;">
-         			     <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
-         			     <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
-         			   </ul>
-            			
-          			</div>
-          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <a href="../book/search.do"><h2 class="subject">인기도서</h2></a>
-            			
-          			</div>
-          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <h2 class="subject">주제별검색</h2>
-            			
-          			</div>
-			    </div>
-		          
-		   	    
-
-	<div class="col-lg-10">
-				<h3 style="margin-bottom: 0px">검색 결과</h3>
-				<h5 style="margin-top: 5px">Horizontal card11s</h5>
 				<hr style="margin-bottom: 0px">
 				
 				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
-				    <a :href="'../book/detail.do?no='+vo.no"><img :src="vo.img" align="midde" alt="Random Unsplash image" class="img" style="width: 300px ;height: 420px"/>
+				    <a :href="'../book/detail.do?no='+vo.no"><img :src="vo.img" align="midde" alt="image" class="img" style="width: 300px ;height: 420px"/>
 				    <h4>{{vo.title}}</h4>
 				    <p>{{vo.author}}</p>
 				    <p>{{vo.publisher}}</p>
@@ -142,17 +163,23 @@ p {
 				  <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			      <div style="height: 20px"></div>
 			        <div class="text-center">
-			          <button class="btn btn-sm btn-info" v-on:click="prev()">이전</button>
+			          <button class="btn btn-sm btn-primary" v-on:click="prev()">이전</button>
 			            {{curpage}} page / {{totalpage}} pages
-			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
+			          <button class="btn btn-sm btn-primary" v-on:click="next()">다음</button>
 			      </div>
-				
+      </div>
+       
+       
+       
+              <div style="height: 20px"></div>
+   </div>
+</div>
 
-	</div>
-			    
-                
-</div>
-</div>
+
+
+
+
+
 		 
 
 <script type="text/javascript">

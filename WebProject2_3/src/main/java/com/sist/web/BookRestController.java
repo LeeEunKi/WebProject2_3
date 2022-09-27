@@ -208,9 +208,9 @@ public class BookRestController {
 			vo.setTitle(title1);
 			
 			String author1=vo.getAuthor();
-			if(author1.length()>5)
+			if(author1.length()>13)
 			{
-				author1=author1.substring(0,author1.lastIndexOf("("))+" 외 다수";
+				author1=author1.substring(0,13)+"...";
 				vo.setAuthor(author1);
 			}
 			vo.setAuthor(author1);

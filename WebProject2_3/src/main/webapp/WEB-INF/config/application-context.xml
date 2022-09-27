@@ -29,4 +29,12 @@
       p:suffix=".jsp"
       p:order="1" 
     />
+   <mvc:annotation-driven/>
+	  <mvc:interceptors>
+	    <mvc:interceptor>
+	      <mvc:mapping path="/shop/detail_before.do"/>
+	      <!-- 위와 같은 경로명이 들어오면 이걸 호출해라 -->
+	      <bean id="shopInterceptor" class="com.sist.interceptor.ShopInterceptor"/>
+	    </mvc:interceptor>
+  </mvc:interceptors>
 </beans>

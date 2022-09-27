@@ -37,7 +37,7 @@ public class ShopController {
 		response.addCookie(cookie);
 		
 		ra.addAttribute("no",no);
-		return "redirect:../shop/detail.do";
+		return "redirect:../shop/detail.do"; //shop/detail.do?no=..로 보내줌
 	}
 	
 	//중고책 상세 페이지

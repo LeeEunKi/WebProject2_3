@@ -357,8 +357,7 @@ button1:hover:before,button1:hover:after{
 </script>
 
       
-	
-      <div class="col-lg-2" style="margin-top: 20px;">
+	 <div class="col-lg-2" style="margin-top: 20px;">
         <c:if test="${sessionScope.id==null }">
           <div class="login-page">
             <div class="box">
@@ -386,8 +385,8 @@ button1:hover:before,button1:hover:after{
               	<br>
               	<br>
               	<!-- <a href="#">Create an account</a></p>  -->
-                <button>
-                  <a href="../member/mypage.do">My LIBRARY</a>
+                <button onclick="location.href='../member/mypage.do';">
+                  My LIBRARY
                 </button>
                 <br>
                 <br>
@@ -405,6 +404,7 @@ button1:hover:before,button1:hover:after{
         </div>
         <div class="col-lg-2"></div>
   </div>
+
 
 
 

@@ -4,6 +4,8 @@ import java.util.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +13,7 @@ import com.sist.vo.*;
 import com.sist.mapper.*;
 @Repository
 public class BoardDAO {
+	private static SqlSessionFactory ssf;
 	@Autowired
 	private BoardMapper mapper;
 	/*
@@ -78,4 +81,11 @@ public class BoardDAO {
 	    	}
 	    	return result;
 	    }
-	}
+
+	    public List<BoardVO> mypageboardlist(Map map)
+		{
+			return mapper.boardListData(map);
+		}
+	    
+	 
+}

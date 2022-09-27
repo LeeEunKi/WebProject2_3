@@ -25,61 +25,45 @@ thead{
 </style>
 </head>
 <body>
-
-<!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-							</div>
-						</div>
-						<div class="col-lg-7">
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Hero Section -->
-
-		<div class="untree_co-section product-section before-footer-section">
-		    <div class="container" id="room-area">
-		      <div class="row1">
-		        <h1>금일 열람실 실시간 좌석현황</h1>
-		        <hr>
-		      </div>
-					  <table class="table table-bordered">
-					    <thead> 
-					      <tr style="text-align-last: center;">
-					        <th>열람실 명</th>
-					        <th>전체좌석</th>
-					        <th>사용좌석</th>
-					        <th>잔여좌석</th>
-					        <th>이용률(%)</th>
-					      </tr>
-					    </thead>  
-					    <tbody>  
-					     <c:forEach var="vo" items="${list}" varStatus="s">
-						     <tr style="text-align-last: center; cursor: pointer;" :class="roomNo==${vo.no }?'selected-table':''" @click="change(${s.index+1})">
-						      <td>${vo.name }</td>
-						      <td>${vo.total_seat }</td>
-						      <td>${vo.used_seat }</td>
-						      <td>${vo.remain_seat }</td>
-						      <td>${vo.use } %</td>
-						     </tr>
-					     </c:forEach>
-					    </tbody> 
-					  </table>
-					  <div id="seat-area">
-					   <div class="row"> 
-					    <jsp:include page="./seat_detail.jsp"></jsp:include>
-						<jsp:include page="./booking_info.jsp"></jsp:include>
-					   </div> 
-					  </div>
-				</div>
-		      	</div>
-		    </div>
-		</div>
+<div class="container"  id="room-area">
+	<div class="row" style="width: 100%;">
+	  <h1>금일 열람실 현황</h1>
+	</div>
+	<hr>
+	<div class="row text-center btn-area" style="margin-bottom: 15px;">
+	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="change(1)">제 1 열람실</button>
+	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="change(2)">제 2 열람실</button>
+	 <button type="button" class="btn btn-lg btn-success" style="margin-right: 20px;" @click="change(3)">제 3 열람실</button>
+	</div>
+	  <table class="table table-bordered">
+	    <thead> 
+	      <tr style="text-align-last: center;">
+	        <th>열람실 명</th>
+	        <th>전체좌석</th>
+	        <th>사용좌석</th>
+	        <th>잔여좌석</th>
+	        <th>이용률(%)</th>
+	      </tr>
+	    </thead>  
+	    <tbody>  
+	     <c:forEach var="vo" items="${list}" varStatus="s">
+		     <tr style="text-align-last: center;" :class="roomNo==${vo.no }?'selected-table':''">
+		      <td>${vo.name }</td>
+		      <td>${vo.total_seat }</td>
+		      <td>${vo.used_seat }</td>
+		      <td>${vo.remain_seat }</td>
+		      <td>${vo.use } %</td>
+		     </tr>
+	     </c:forEach>
+	    </tbody> 
+	  </table>
+	  <div id="seat-area">
+	   <div class="row"> 
+	    <jsp:include page="./seat_detail.jsp"></jsp:include>
+		<jsp:include page="./booking_info.jsp"></jsp:include>
+	   </div> 
+	  </div>
+</div>
 <script>
 new Vue({
 	el:'#room-area',

@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body {
+body1 {
   margin: 0;
   padding: 0;
   display: flex;
@@ -94,7 +94,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.row {
+.row1 {
   display: flex;
   align-items: center;
   justify-content: center;

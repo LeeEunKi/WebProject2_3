@@ -9,7 +9,8 @@
 </head>
 <body>
 <div class="col-sm-5" style="background-color: white; height: 445px; padding: 40px; ">
-  <div class="row" style="margin-bottom: 25px;">
+ <div class="box project-box"> 
+  <div class="row1" style="margin-bottom: 25px;">
     <div class="seat"></div>
     <small>사용 가능</small>
     <div class="seat occupied"></div>
@@ -17,11 +18,11 @@
     <div class="seat selected state1"></div>
     <small>선택된 좌석</small>
   </div>
-  <div class="row text-center" style="height: 50px;">
+  <div class="row1 text-center" style="height: 50px;">
     <h3>예약 정보</h3>
     <hr>
   </div>
-  <div class="row">
+  <div class="row1">
     <table class="table">
       <tr>
         <th width="30%">열람실</th>
@@ -63,6 +64,7 @@
       </tr>
     </table>
   </div>
+ </div> 
 </div> 
 </body>
 </html>

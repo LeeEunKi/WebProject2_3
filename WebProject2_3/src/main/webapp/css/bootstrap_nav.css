@@ -2186,7 +2186,6 @@ table th[class*="span"],
 .navbar {
   *position: relative;
   *z-index: 2;
-  margin-bottom: 20px;
   overflow: visible;
 }
 

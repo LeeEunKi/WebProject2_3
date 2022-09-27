@@ -64,6 +64,18 @@
     padding: 16px;
     background-color: white;
 }
+.srchBox {
+    float: left;
+    width: 455px;
+    height: 100px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    padding: 16px 15px;
+    margin: 264px 29px 0 0;
+    box-sizing: border-box;
+    background: #465684;
+}
 
 </style>
 </head>
@@ -109,15 +121,13 @@
 									interval: 2000 //기본 5초
 									})
 								</script>
-							
 						</div>
-						
 						
 		<div class="col-lg-5">
 			<div class="intro-excerpt">
 				<c:if test="${sessionScope.id==null }">
 		          <div class="login-page">
-		            <div class="box project-box">
+		            <div class="box">
 		              <form class="login-box">
 		                <input type="text" placeholder="username" id="id" size=15 class="input-sm" value="${id }">
 		                <input type="password" placeholder="password" type=password id="pwd" size=15 class="input-sm">
@@ -149,7 +159,6 @@
 		                <br>
 		                 <p><a href="../member/join_before.do">회원정보 수정</a></p> 
 		                 <p><a href="../member/logout.do">로그아웃</a></p> 
-		                
 		              </form>
 		            </div>
 		          </div>

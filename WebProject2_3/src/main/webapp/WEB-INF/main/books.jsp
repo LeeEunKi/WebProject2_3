@@ -13,7 +13,7 @@
 				</div>
 
 				<div class="row">
-				<c:forEach var="bhvo" items="${bhlist} }">
+				<c:forEach var="bhvo" items="${bhlist }">
 					<div class="col-12 col-sm-6 col-md-3 mb-3 mb-md-0">
 						<div class="post-entry">
 							<a href="../book/detail.do?no=${bhvo.no }" class="post-thumbnail"><img src="${bhvo.img }" alt="Image" class="img-fluid"></a>

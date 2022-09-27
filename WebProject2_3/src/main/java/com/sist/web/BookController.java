@@ -20,14 +20,6 @@ public class BookController {
 	@Autowired
 	private BookLikeDAO ldao;
 	
-	@GetMapping("main/books.do")
-	public String mainHitBookData(Model model)
-	{
-		List<BookVO> list=dao.mainHitBookData();
-		model.addAttribute("bhlist",list);
-		return "main/books";
-	}
-	
 	@GetMapping("book/search.do")
 	public String bookSearch()
 	{

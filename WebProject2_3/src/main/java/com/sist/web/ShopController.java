@@ -83,9 +83,26 @@ public class ShopController {
 	
 	//중고책 장바구니
 	@GetMapping("shop/cart_list.do")
-	public String shop_cart_list(int no, HttpSession session, Model model) {
+	public String shop_cart_list(String no, HttpSession session, Model model) {
+		if(no==null) 
+			no="1";
+		int no_ = Integer.parseInt(no);
 		List<CartVO> list = (List<CartVO>)session.getAttribute("cart");
-	    model.addAttribute("no", no);
+		for(CartVO vo:list) {
+			//저자 길이 자르기
+			String author = vo.getAuthor();
+			if(author.length()>15) {
+				author = author.substring(0,15)+"..";
+			}
+			vo.setAuthor(author);
+			//출판사 길이 자르기
+			String publisher = vo.getPublisher();
+			if(publisher.length()>15) {
+				publisher = publisher.substring(0,15)+"..";
+			}
+			vo.setPublisher(publisher);
+		}
+	    model.addAttribute("no", no_);
 	    model.addAttribute("list", list);
 	    return "shop/mycart";
 	}

@@ -6,24 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('#cate tr').css("color","rgb(103, 114, 148)");
-	$('#cate tr #total').css("color","rgb(103, 114, 148)");
+	$('.def').css("background-color","#57786c");
+	$('#cate tr').css("color","#57786c");
 	  $('#cate tr').click(function(){
-		  $('#cate tr').css("color","rgb(103, 114, 148)");
-		  $(this).css("color","black");
+		  $('#cate tr').css("color","#57786c").css("font-weight","normal");
+		  $(this).css("color","rgb(35 46 42)").css("font-weight","bold");
 	  })
 	  $('.filterBtn').click(function(){
 		  $('.filterBtn').css("background-color","#f0f8ff");
 		  console.log(this);
-		  $(this).css("background-color","rgb(153 207 255)");
+		  $(this).css("background-color","#57786c");
 	  })
 })
 </script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <style type="text/css">
 @font-face {
     font-family: 'Pretendard-Regular';
@@ -44,6 +42,7 @@ h3, h4, h5{
   /* font-family:'yangjin'!important; */
   font-weight: bold;
   margin: 20px 0px 0px;
+  color : #3b5d50;
 }
 .container{
 	margin-top: 30px;
@@ -54,7 +53,7 @@ h3, h4, h5{
 }
 .subject{
 	position: relative;
-    color: rgb(103, 114, 148);
+    color: #57786c;
     font-size: 18px;
     font-family: Medium, sans-serif;
     font-weight: bold;
@@ -89,8 +88,8 @@ h3, h4, h5{
 	width: 1000px;
 }
 .card1 {
-  background-color: #FFF;
-  width: 280px;
+  /* background-color: #FFF; */
+  width: 320px;
   height: 540px;
   margin: auto;
   border-radius: 1%;
@@ -100,19 +99,21 @@ h3, h4, h5{
 }
 
 .img {
-  width: 280px;
-  height: 400px;
+  width: 320px;
+  height: 450px;
   border-radius: 1% 1% 0 0;
 }
 p {
   font-size: 16px;
   font-weight: 300;
-  width: 240px;
+  width: 320px;
   margin: 8px 0px 0px;
   color: #757575;
 }
 .filterBtn{
-	background-color: #f0f8ff;
+	background-color: #d1ded9;
+	border : none !important;
+	color : black !important;
 }
 .book-text{
 	position:absolute;
@@ -127,6 +128,12 @@ p {
 .soldout{
 	opacity:30%
 }
+a{
+	text-decoration: none !important;
+}
+a:hover{
+	text-decoration: underline !important;
+}
 </style>
 </head>
 <body>
@@ -136,7 +143,7 @@ p {
 			<div class="row row1">
 				<div class="col-lg-2 side">
 					<h4 class="subject" style="text-align:center">카테고리 목록</h4>
-					<table id="cate" style="text-align:center; margin:0px auto; border-block:solid #f0f8ff">
+					<table id="cate" style="text-align:center; margin:0px auto; border-block:solid #57786c">
 						<tr id="total" @click="typeChange('')"><td>전체</td></tr>
 						<tr @click="typeChange('총류')"><td>총류</td></tr>
 						<tr @click="typeChange('순수과학')"><td>순수과학</td></tr>
@@ -147,24 +154,26 @@ p {
 					</table>
 				</div>
 				<div class="col-lg-10">
-				<h3 v-if="type===''" style="color:#007bff">전체 카테고리</h3>
-					<h3 v-else style="color:#007bff">{{type}} 카테고리</h3>
+				<h3 v-if="type===''" style="color:#3b5d50">전체 카테고리</h3>
+					<h3 v-else style="color:#3b5d50">{{type}} 카테고리</h3>
 					<h5>총 {{cnt|currency}} 권의 중고책이 있습니다.</h5>
-					<div class="text-right">
-						<input type=button class="btn btn-sm filterBtn" value="최신등록순" @click="typeChange(type,1)">
+					<div style="text-align: right;">
+						<input type=button class="btn btn-sm filterBtn def" value="최신등록순" @click="typeChange(type,1)">
 						<input type=button class="btn btn-sm filterBtn" value="낮은가격순" @click="typeChange(type,2)">
 						<input type=button class="btn btn-sm filterBtn" value="높은가격순" @click="typeChange(type,3)">
 						<input type=button class="btn btn-sm filterBtn" value="제목순" @click="typeChange(type,4)">
 					</div>
 					<div style="height:20px"></div><!-- 간격띄우기 -->
 				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
-				    <a :href="'../shop/detail.do?no='+vo.no"><img :src="vo.img" align="middle" :class="[vo.state===0?'img':'soldout img']"/>
-				    <div class="book-text" v-if="vo.state!=0">구매불가</div>
-				    <h4>{{vo.title}}</h4></a>
+				    <a :href="'../shop/detail.do?no='+vo.no">
+				    	<img :src="vo.img" align="middle" :class="[vo.state===0?'img':'soldout img']"/>
+				    	<div class="book-text" v-if="vo.state!=0">구매불가</div>
+				    	<h4>{{vo.title}}</h4>
+				    </a>
 				    <p>{{vo.author}}</p>
 				    <p>{{vo.publisher}} 발행</p>
 				    <h5 style="float:left; text-decoration:line-through; color:#c5c5c5;">&nbsp;{{vo.price|currency}}원&nbsp;</h5>
-				    <h5 style="float:right; transform: translate(-10%);">({{vo.percent}}할인)&nbsp;{{vo.discount|currency}}원</h5>
+				    <h5 style="float:right; transform: translate(-55px);">({{vo.percent}}할인)&nbsp;{{vo.discount|currency}}원</h5>
 				    
 				  </div>  
 			 
@@ -181,8 +190,8 @@ p {
 		</div>
 	</div>
 <script>
-	const list = new Vue({
-		el:'.container',
+	new Vue({
+		el:'#book_list',
 		data:{
 			curPage:1,
 			totalPage:0,
@@ -212,13 +221,15 @@ p {
 						order:_this.order
 					}
 				}).then(function(result){
-					console.log(result.data);
 					_this.book_list = result.data;
 					_this.curPage = result.data[0].curPage;
 					_this.totalPage = result.data[0].totalPage;
 					_this.type = result.data[0].type;
 					_this.cnt = result.data[0].cnt;
 					$('html,body').scrollTop(0);
+					console.log("데이터 잘 불러왔음");
+					//console.log(result.data);
+					console.log(_this.book_list);
 				})
 			},
 			typeChange:function(type,order){

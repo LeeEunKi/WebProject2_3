@@ -4,10 +4,12 @@ import java.util.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.sist.vo.*;
@@ -60,8 +62,8 @@ public class ShopRestController {
 			}
 			//저자 길이 자르기
 			String author = vo.getAuthor();
-			if(author.length()>20) {
-				author = author.substring(0,20)+"..";
+			if(author.length()>25) {
+				author = author.substring(0,25)+"..";
 			}
 			//출판사 길이 자르기
 			String publisher = vo.getPublisher();
@@ -130,8 +132,8 @@ public class ShopRestController {
 			}
 			//저자 길이 자르기
 			String author = vo.getAuthor();
-			if(author.length()>20) {
-				author = author.substring(0,20)+"..";
+			if(author.length()>25) {
+				author = author.substring(0,25)+"..";
 			}
 			//출판사 길이 자르기
 			String publisher_tmp = vo.getPublisher();

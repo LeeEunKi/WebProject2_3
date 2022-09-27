@@ -16,7 +16,7 @@ $( function() {
 	 let id = '${sessionScope.id}';
 	 console.log(id);
 	 if(id.trim()==''){
-		 alert('로그인 먼저 햇!');
+		 alert('로그인 후 이용 가능합니다.');
 		 return;
 	 }else{
 		 $('#dialog-confirm').dialog({
@@ -47,18 +47,6 @@ $( function() {
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'yangjin';
-    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 *{
 font-family:'Pretendard-Regular'
 }
@@ -85,6 +73,13 @@ font-family:'yangjin'
 .soldout:hover{
 	opacity:100%
 }
+.t{
+	border-top: 1px solid #3c763d !important;
+    border-bottom: 1px solid #3c763d !important;
+}
+.tt{
+	border:none !important;
+}
 </style>
 </head>
 <body>
@@ -92,22 +87,22 @@ font-family:'yangjin'
 		<div class="row" id="book_detail">
 			<table class="table" style="border:none;">
 				<tr>
-					<td colspan="2" width="40%"><h3>{{book_detail.title}}</h3></td>
+					<td class="t" colspan="2" width="40%"><h3>{{book_detail.title}}</h3></td>
 				</tr>
 				<tr>
-					<td colspan="2" width="40%">{{book_detail.author}} 지음&nbsp;|&nbsp;
+					<td class="t" colspan="2" width="40%">{{book_detail.author}} 지음&nbsp;|&nbsp;
 					<a :href="'../shop/publisher_list.do?publisher='+book_detail.publisher">{{book_detail.publisher}}</a> 발행</td>
 				</tr>
 				<tr>
-					<td class="text-center" rowspan="5" width="40%">
+					<td class="text-center tt" rowspan="5" width="40%">
 						<img :src="book_detail.img" style="width:400px; height:550px;":class="[book_detail.state===0?'img':'soldout img']"/>
 					</td>
 				</tr>
 				<tr>
-					<td height=10></td>
+					<td class="tt" height=10></td>
 				</tr>
 				<tr>
-					<td class="row1">
+					<td class="row1 tt">
 						<h5>책 상태 <img id="infoIcon" src="../img/info.png" style="height:15px;"></h5>
 						<p>{{book_detail.condition}}</p>
 						<h5>정가</h5>
@@ -117,12 +112,12 @@ font-family:'yangjin'
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="tt">
 						<pre style="white-space: pre-wrap; font-family:'Pretendard-Regular';font-size:14px;">{{book_detail.desc}}</pre>
 					</td>
 				</tr>
 				<tr>
-					<td class="row1">
+					<td class="row1 tt">
 						<button id="cartBtn" class="btn btn-primary" v-if="book_detail.state===0">
 							<img src="../img/cart.png" style="width:20px;">&nbsp;장바구니 담기
 						</button>
@@ -130,7 +125,7 @@ font-family:'yangjin'
 							<img src="../img/cart.png" style="width:20px;">&nbsp;구매 불가
 						</button>
 						<a class="btn btn-primary" :href="'../book/detail.do?no='+book_detail.book_no">
-							<img src="../img/book_find.png" style="width:20px;">&nbsp;빌려읽기
+							<img src="../img/book_find2.png" style="width:20px;">&nbsp;빌려읽기
 						</a>
 						<a href="../shop/list.do" class="btn btn-primary" @click="javascript:history.back()">
 							<img src="../img/list.png" style="width:20px;">&nbsp;목록으로
@@ -190,8 +185,7 @@ new Vue({
 	el:'#book_detail',
 	data:{
 		no:${no},
-		book_detail:{},
-		cookie_list:[]
+		book_detail:{}
 	},
 	mounted:function(){
 		let _this=this;
@@ -202,11 +196,6 @@ new Vue({
 		}).then(function(result){
 			_this.book_detail=result.data
 		})
-		axios.get("http://localhost:8080/web/shop/cookie_list.do",{
-		}).then(function(result){
-			console.log(result.data);
-			_this.cookie_list = result.data;
-		}) 
 	},
 	filters:{ //금액 000,000 처리
 		   currency: function(value){ // 금액 3자리 수 마다 따옴표 필터
@@ -214,6 +203,20 @@ new Vue({
                return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")
            }
 	    }
+})
+new Vue({
+	el:'#cookie_list',
+	data:{
+		cookie_list:[]
+	},
+	mounted:function(){
+		let _this=this;
+		axios.get("http://localhost:8080/web/shop/cookie_list.do",{
+		}).then(function(result){
+			console.log(result.data);
+			_this.cookie_list = result.data;
+		}) 
+	}
 })
 </script>
 </body>

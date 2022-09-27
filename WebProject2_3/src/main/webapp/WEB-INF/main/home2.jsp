@@ -231,14 +231,15 @@ $(function(){
 			<div class="container">
 				<div class="row justify-content-between">
 					<div class="col-lg-6">
-						<h2 class="section-title">퀵 메뉴</h2>
+						<h2 class="section-title">바로가기</h2>
    						 <div class="row my-5">
 							<div class="col-6 col-md-6">
 								<div class="feature">
 									<div class="icon">
-										<img src="../images/truck.svg" alt="Image" class="imf-fluid">
+										<a href="../book/search.do">
+											<img src="../img/book_find.png" style="width:50px;" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Fast &amp; Free Shipping</h3>
+									<h3>도서검색</h3></a>
 									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
 								</div>
 							</div>
@@ -246,9 +247,10 @@ $(function(){
 							<div class="col-6 col-md-6">
 								<div class="feature">
 									<div class="icon">
-										<img src="../images/bag.svg" alt="Image" class="imf-fluid">
+										<a href="../study/room_list.do">
+											<img src="../img/room_reserve.png" style="width:50px;" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Easy to Shop</h3>
+									<h3>열람실 예약</h3></a>
 									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
 								</div>
 							</div>
@@ -256,9 +258,10 @@ $(function(){
 							<div class="col-6 col-md-6">
 								<div class="feature">
 									<div class="icon">
-										<img src="../images/support.svg" alt="Image" class="imf-fluid">
+										<a href="../shop/list.do">
+											<img src="../img/book_mall.png" style="width:50px;" alt="Image" class="imf-fluid">
 									</div>
-									<h3>24/7 Support</h3>
+									<h3>중고서적 온라인몰</h3></a>
 									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
 								</div>
 							</div>
@@ -266,9 +269,10 @@ $(function(){
 							<div class="col-6 col-md-6">
 								<div class="feature">
 									<div class="icon">
-										<img src="../images/return.svg" alt="Image" class="imf-fluid">
+									<a href="../board/list.do">
+										<img src="../img/community.png" style="width:50px;" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Hassle Free Returns</h3>
+									<h3>커뮤니티</h3></a>
 									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
 								</div>
 							</div>

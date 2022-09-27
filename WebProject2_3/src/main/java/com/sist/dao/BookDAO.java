@@ -55,4 +55,9 @@ public class BookDAO {
 		return mapper.bookauthorFindTotalPage(ss);
 	}
 	
+	public List<BookVO> mainHitBookData()
+	{
+		return mapper.mainHitBookData();
+	}
+	
 }

@@ -1,22 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="col-lg-8">
-	<h2 class="heading" style="padding-left: 13px">인기도서</h2>
-	<hr style="margin-bottom: 0px">
-	
-	  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
-	    <a :href="'../book/detail.do?no='+vo.no"><img :src="vo.img" align="midde" alt="Random Unsplash image" class="img" style="width: 300px ;height: 420px"/>
-	    <h4>{{vo.title}}</h4>
-	    <p>{{vo.author}}</p>
-	    <p>{{vo.publisher}}</p>
-	    </a>
-	  </div>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+    
+<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-6">
+						<h2 class="section-title">히트 도서</h2>
+					</div>
+					<!-- <div class="col-md-6 text-start text-md-end">
+						<a href="#" class="more">View All Posts</a>
+					</div> -->
+				</div>
 
- 
-      <div style="height: 20px"></div>
-       
-</div>
-
-<div>
-
+				<div class="row">
+				<c:forEach var="bhvo" items="${bhlist} }">
+					<div class="col-12 col-sm-6 col-md-3 mb-3 mb-md-0">
+						<div class="post-entry">
+							<a href="../book/detail.do?no=${bhvo.no }" class="post-thumbnail"><img src="${bhvo.img }" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">${bhvo.title }</a></h3>
+								<div class="meta">
+									<span>저자 <a href="../book/detail.do?no=${bhvo.no }">${bhvo.author }</a></span> <span>대출횟수: <a href="../book/detail.do?no=${bhvo.no }">${bhvo.hit }</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				</div>
 </div>

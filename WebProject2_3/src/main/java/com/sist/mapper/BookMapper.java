@@ -52,5 +52,10 @@ public interface BookMapper {
 	@Select("SELECT CEIL(COUNT(*)/16.0) FROM book_3 WHERE REGEXP_LIKE(author,#{ss})")
 	public int bookauthorFindTotalPage(String ss);
 	
-	
+	//메인 페이지 인기도서
+	@Select("SELECT no,title,author,hit,img,num "
+			+ "FROM (SELECT no,title,author,hit,img,rownum AS num "
+			+ "FROM book_3 ORDER BY hit DESC)) "
+			+ "WHERE num <=4")
+	public List<BookVO> mainHitBookData();
 }

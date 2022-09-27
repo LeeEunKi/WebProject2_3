@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sist.dao.BookDAO;
 import com.sist.dao.BookLikeDAO;
+import com.sist.vo.BookLikeVO;
+import com.sist.vo.BookReplyVO;
 import com.sist.vo.BookVO;
 
 import oracle.net.aso.k;
@@ -27,6 +29,7 @@ public class BookRestController {
 	
 	@Autowired
 	private BookLikeDAO ldao;
+	
 	
 	@GetMapping(value = "book/search_vue.do",produces = "text/plain;charset=utf-8")
 	public String bookSearch(String page, HttpSession session)
@@ -142,9 +145,9 @@ public class BookRestController {
 			vo.setTitle(title1);
 			
 			String author=vo.getAuthor();
-			if(author.length()>7)
+			if(author.length()>6)
 			{
-				author=author.substring(0,author.lastIndexOf(")")+1)+" 외 다수";
+				author=author.substring(0,author.lastIndexOf("("))+" 외 다수";
 				vo.setAuthor(author);
 			}
 			vo.setAuthor(author);
@@ -205,9 +208,9 @@ public class BookRestController {
 			vo.setTitle(title1);
 			
 			String author1=vo.getAuthor();
-			if(author1.length()>7)
+			if(author1.length()>5)
 			{
-				author1=author1.substring(0,author1.lastIndexOf(")")+1)+" 외 다수";
+				author1=author1.substring(0,author1.lastIndexOf("("))+" 외 다수";
 				vo.setAuthor(author1);
 			}
 			vo.setAuthor(author1);
@@ -258,13 +261,7 @@ public class BookRestController {
 			obj.put("publisher", vo.getPublisher());
 			obj.put("img", vo.getImg());
 			obj.put("dbday", vo.getDbday());
-			obj.put("description", vo.getDescription());
-			//좋아요 체크
-			map.put("member_id", id);
-			map.put("book_no", vo.getNo());
-			
-			//int lCheck=ldao.likeCheck(map); 
-			//obj.put("lCheck", lCheck);
+			obj.put("description", vo.getDescription()); 
 			 
 			
 			result=obj.toJSONString();
@@ -272,4 +269,6 @@ public class BookRestController {
 		catch (Exception e) {}
 		return result;
 	}
+	
+	
 }

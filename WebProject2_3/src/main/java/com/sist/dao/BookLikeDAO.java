@@ -22,15 +22,19 @@ public class BookLikeDAO {
 	}
 	
 	//좋아요
-	public void bookLikeInsert(Map map)
+	public void bookLikeInsert(int book_no,Map map)
 	{
+		mapper.booklikecntIncreament(book_no);
 		mapper.bookLikeInsert(map);
 	}
 	
 	
 	//취소
-	public void bookLikeDelete(Map map)
+	public void bookLikeDelete(int book_no,Map map)
 	{
+		mapper.booklikecntDecreament(book_no);
 		mapper.bookLikeDelete(map);
 	}
+	
+	
 }

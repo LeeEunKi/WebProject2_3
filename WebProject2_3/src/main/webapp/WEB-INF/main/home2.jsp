@@ -229,9 +229,9 @@
 					</div>
 
 					<div class="col-md-12 col-lg-5 mb-5 mb-lg-0 box1">
-					  <div class="box" style="height: 350px; padding: 35px;">
+					  
 		      			 <jsp:include page="room_reserve.jsp"></jsp:include>
-	    			 </div>
+	    			 
 					</div>
 				</div>
 			</div>

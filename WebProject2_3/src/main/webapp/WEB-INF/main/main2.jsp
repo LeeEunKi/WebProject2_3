@@ -17,6 +17,9 @@
 <link href="../css/tiny-slider.css" rel="stylesheet">
 <link href="../css/style.css" rel="stylesheet">
 <title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
  <body>
 	  <tiles:insertAttribute name="header"/>

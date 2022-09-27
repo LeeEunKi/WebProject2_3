@@ -40,153 +40,147 @@
 }
 
 
-/* ********************************************** */
-
-*{
-	font-family: arial;
+/*
+ CSS for the main interaction
+*/
+.tabset > input[type="radio"] {
+  position: absolute;
+  left: -200vw;
 }
 
-p {
-/* 	padding: 10px; */
-	margin: 0;
-	font-size: 17px;
-	line-height: 16px;
-	color: #484747;
-
+.tabset .tab-panel {
+  display: none;
 }
 
-.boxarea {
-	background-color: #EFEFEF;
-	padding: 10px;
-	margin: 10px auto;
-	width: 100%;
-	
-	
+.tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+  display: block;
 }
 
-.content-area {
-	overflow: hidden;
+/*
+ Styling
+*/
+body {
+  font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+  color: #333;
+  font-weight: 300;
+}
+
+.tabset > label {
   position: relative;
-  width:100%;
+  display: inline-block;
+  padding: 15px 15px 25px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-.content {
-	position: relative;
-  background-color:F7FFF7;
-	height: 100%;
-/* 	border-top: 1px solid silver; */
-	display: inline-block;
-	white-space: normal;
+.tabset > label::after {
+  content: "";
+  position: absolute;
+  display: none;
 }
 
-
-detail-nav {
-	box-sizing: border-box;
-	width: 100%;
+.tabset > label:hover,
+.tabset > input:focus + label {
+  color: #06c;
 }
 
-nav ul.nav-tabs {
-	margin: 0px auto;
-	padding: 0px;
-	display: table;
-	width: 100%;
-}	
-.nav-tabs li {
-	text-transform: uppercase;
-	font-size: 17px;
-  font-weight: 500;
-	list-style: none;
-	display: table-cell;
-	padding-right: 2px;
+.tabset > label:hover::after,
+.tabset > input:focus + label::after,
+.tabset > input:checked + label::after {
+  background: #06c;
 }
 
-.nav-tabs li:last-child {
-  padding-right: 0px;
+.tabset > input:checked + label {
+  border-color: #ccc;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
 }
 
-.nav-tabs li a {
-	display: block;
-	color: white;
-	text-align: center;
-	background-color: #6D93DF;
-	padding: 10px 10px;
-	text-decoration: none;
- 
+.tab-panel {
+  padding: 30px 0;
+  border-top: 1px solid #ccc;
 }
 
-.nav-tabs li a:hover {
-	background-color: #FF6B6B;
+/*
+ Demo purposes only
+*/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
-
-.nav-tabs li a.active {
-	background-color: #2964D9;
+body {
+  padding: 30px;
 }
 
-.nav-tabs li a:visited {
-	color: white;
+.tabset {
+  max-width: 65em;
 }
 
-.section-detail {
-	margin: 0px 0px;
-	padding: 0px;
-	height:800px;
-/*     width:530px; */
-    float:left;
-}
-
-.container-detail {
-	height: 400px;
-	width: 7000px;
-	margin: 0px;
-	padding: 0;
-	padding-top: 0px;
-	position: block;
-	white-space: nowrap;
-	overflow: hidden;
-	transition: all 0.3s ease-in;
-}
-
-/* https://coolors.co/1a535c-4ecdc4-f7fff7-ff6b6b-ffe66d */
 </style>
 
 
 </head>
 <body>
-<div class="section" style="padding-bottom:0px">
-	<div class="container-fluid">
-			<div class="row text-left mb-5">
-				<div class="col-12">
-					<h2 class="font-weight-bold heading text-primary mb-4" style="padding-top: 20px">도서검색</h2>
-					<hr>
-				</div>
-			</div>
 
-		
-	<div class="row row1">
-				<div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
-         			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
-         			   <ul style="list-style: none;">
-         			     <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
-         			     <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
-         			   </ul>
-            			
-          			</div>
-          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <a href="../book/search.do"><h3 class="subject">인기도서</h3></a>
-            			
-          			</div>
-          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <h3 class="subject">주제별검색</h3>
-            			
-          			</div>
-			    </div>
-			    
+<body>
+  <!-- Start Hero Section -->
+    <div class="hero">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-5">
+            <div class="intro-excerpt">
+              <h1>도서검색</h1>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- End Hero Section -->
+  <div style="height: 30px"></div>
+  <div class="container">
+     <div class="row row1">
 
-	<div class="col-lg-8">
-				<h3 style="margin-bottom: 0px">상세보기</h3>
-				<hr style="margin-bottom: 0px">
+            <!-- Start Column 1 -->
+        <div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;">
+             <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+                <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
+                <ul style="list-style: none;">
+                  <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
+                  <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
+                </ul>
+                
+              </div>
+              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+                <a href="../book/search.do"><h3 class="subject">인기도서</h3></a>
+                
+              </div>
+              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
+                <h3 class="subject">주제별검색</h3>
+                
+              </div>
+        </div>
+        
+        
+      <div class="col-lg-8">
+        <h3 style="margin-bottom: 0px">상세보기</h3>
+        <h5 style="margin-top: 5px">검색하신 도서</h5>
+        <hr style="margin-bottom: 0px">
+        
+
+            <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+          
 				
 				<table class="table">
 					<tr>
@@ -235,68 +229,71 @@ nav ul.nav-tabs {
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->
 		          </table>
 			
-		<main class="boxarea">
-				<div class="content-area">
-					<nav class="detail-nav">
-						<ul class="nav-tabs">
-							<li><a href="#" class="n-tab active">책소개</a></li>
-							<li><a href="#" class="n-tab">이용안내</a></li>
-							<li><a href="#" class="n-tab">문의사항</a></li>  
-						</ul>
-					</nav>
-			
-					<div class="container-detail">
-						<section class="section-detail content active">
-						    <br>
-							<h2>책소개</h2>
-							<p>{{vo.description}}</p>
+					<div class="tabset">
+					  <!-- Tab 1 -->
+					  <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+					  <label for="tab1">책소개</label>
+					  <!-- Tab 2 -->
+					  <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+					  <label for="tab2">이용안내</label>
+					  <!-- Tab 3 -->
+					  <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+					  <label for="tab3">시설안내</label>
+					  
+					  <input type="radio" name="tabset" id="tab4" aria-controls=qna">
+					  <label for="tab4">기타 문의</label>
+					  
+					  <div class="tab-panels">
+					    <section id="marzen" class="tab-panel">
+					      <h2>책소개</h2>
+					      <p><strong>줄거리:&nbsp;&nbsp;</strong>{{vo.description}}</p>
+					  </section>
+					    <section id="rauchbier" class="tab-panel">
+					      <h2>이용안내</h2><br>
+					      	
+						 <p><strong>※관외대출</strong></p>
+						 
+						    <p>관외대출은 책이음회원증 소지자에 한해 가능함</p><br>
+						    
+						 <p><strong>※대출안내</strong></p>
+						 
+						    <p>대출권수 : 1인 5책</p>
+						    <p>대출기간 : 2주간 대출</p>
+						    <p>가입 대상 : 주민등록상 부산 거주자(타지역 거주자 중 부산 소재 학교 및 직장에 재학(재직)자는 재학(재직)증명서 지참)</p>
+						    <p>대출은 본인에 한하여 책이음 회원증 소지자만 가능</p>
+						    <p>대출 연장제도는 없으며, 당일 반납도서는 3일 후 재대출 가능</p>
+						    <p>반납 연체 시 연체일 수만큼 자료 대출 정지(5권 중 1권이 연체되어도 연체일수만큼 대출 정지)</p>
+						    <p>대출도서의 분실 또는 훼손 시 동일 도서 또는 해당 도서의 현시가로 변상</p>
+						    <p>휴관일에는 1층 자동 반납함에서 반납 가능</p><br>
+						 	<p><strong>※대출 제외 자료</strong></p>
+						 	<p>참고도서</p>
+						    <p>연속간행물</p>
+							
 					    </section>
-						
-						<section class="content">
-						    <br>
-							<h2>이용안내</h2>
-							<pre>
-※관외대출
-    관외대출은 책이음회원증 소지자에 한해 가능함
-※대출안내
-    대출권수 : 1인 5책
-    대출기간 : 2주간 대출
-    가입 대상 : 주민등록상 부산 거주자(타지역 거주자 중 부산 소재 학교 및 직장에 재학(재직)자는 재학(재직)증명서 지참)
-    대출은 본인에 한하여 책이음 회원증 소지자만 가능
-    대출 연장제도는 없으며, 당일 반납도서는 3일 후 재대출 가능
-    반납 연체 시 연체일 수만큼 자료 대출 정지(5권 중 1권이 연체되어도 연체일수만큼 대출 정지)
-    대출도서의 분실 또는 훼손 시 동일 도서 또는 해당 도서의 현시가로 변상
-    휴관일에는 1층 자동반납함에서 반납 가능
-※대출 제외 자료
-    참고도서
-    연속간행물
-							</pre>
+					    <section id="dunkles" class="tab-panel">
+					      <h2>반납 방법</h2>
+					      <p><strong>반납 방법</strong>
+					      <p>대출한 자료실 데스크 및 도서무인반납함</p>
+						  <p>도서관에서 발급한 회원카드로 관내 도서관에서 대출/반납 가능</p><br>
+					      <p><strong>반납 기한</strong>
+					      <p>대출한 시점으로부터 일주일 뒤</p>
 					    </section>
-
-						
+					    <section id="qna" class="tab-panel">
+					      <h2>문의사항</h2>
+					      <p><strong>※기타문의 사항</strong>
+					      <p>단체 대출이나 기타 문의 사항은 유선으로 연락바랍니다</p>
+					    </section>
+				     </div>
+				   </div>
 					</div>
 				</div>
-			</main>
-		</div>
-	</div>
 		<div class="row row1">
-		  <div class="col-lg-2 side"></div>
+		<div class="col-lg-2 side"></div>
 		  <div class="col-lg-8">
 		    <section class="content" id="reply">
 						    <br>
 							<h2>리뷰 쓰기</h2>
 								 <div class="input-group mb-3" style="position: relative;left: -5px;">
-<!-- 								  <div class="input-group-prepend">
-								    <label class="input-group-text" for="inputGroupSelect01">별점</label>
-								  </div>
-								  <select class="custom-select" id="inputGroupSelect01">
-								    <option selected>별점을 선택하세요</option>
-								    <option value="1">★</option>
-								    <option value="2">★★</option>
-								    <option value="3">★★★</option>
-								    <option value="4">★★★★</option>
-								    <option value="5">★★★★★</option>
-								  </select> -->
 								
 								 <div class="input-group">
 								   <textarea class="form-control" aria-label="With textarea"  ref="msg"  v-model="msg"></textarea>
@@ -315,7 +312,7 @@ nav ul.nav-tabs {
 							<hr>
 							<!-- 댓글 출력 리스트  -->
 					          <div class="row" style="border-bottom: 1px solid #ddd;" v-for="re in reply_list">
-					             <ul>
+					             <ul style="list-style: none;">
 										<li>
 											<div>
 												<!-- <span class="ratingStar"><span style="width:80%;"></span></span> -->
@@ -329,18 +326,17 @@ nav ul.nav-tabs {
 											</div>
 											<p>{{re.msg}}</p>
 
-
-												<div class="input-group" v-show="isShow" style="display: none;" class="updates" :id="'u'+re.no">
-												   
-													<form method="post" action="../book/reply_update.do">
-													<textarea class="form-control" aria-label="With textarea" name="msg" ref="msg"  id="msg">{{re.msg}}</textarea>
-													 <div class="input-group-append">
-													     <input type="hidden" name="book_no" :value="book_no">
-										                 <input type="hidden" name="no" :value="re.no">
-													    <input class="btn btn-outline-secondary" type="submit" value="리뷰 수정" >
-												 	  </div>
-												 	  </form>
-												 </div>
+													<div class="input-group" v-show="isShow" style="display: none;" class="updates" :id="'u'+re.no">
+													   
+														<form method="post" action="../book/reply_update.do">
+														<textarea class="form-control" aria-label="With textarea" name="msg" ref="msg"  id="msg">{{re.msg}}</textarea>
+														 <div class="input-group-append">
+														     <input type="hidden" name="book_no" :value="book_no">
+											                 <input type="hidden" name="no" :value="re.no">
+														    <input class="btn btn-outline-secondary" type="submit" value="리뷰 수정" >
+													 	  </div>
+													 	  </form>
+													 </div>
 										</li>
 								  </ul>
 					          </div>
@@ -353,34 +349,6 @@ nav ul.nav-tabs {
                 
 		 
 	</div>
-		 
-</div>
-<script type="text/javascript">
-		var slideWidth = $(".boxarea").width();
-		var contentW = $(".content-area").width();
-		
-		$(document).ready(function() {
-		  $('.content').css({width:contentW});
-		  $('nav ul li').click(function() {
-		    var tabindex = $(this).index();
-		    var jump = (slideWidth * tabindex);
-		    console.log(tabindex);
-		    console.log(jump)
-		    $(".container-detail").css({
-		      transform: "translate3d(-" + jump + "px, 0, 0)"
-		    });
-		  });
-		  $("a.n-tab").click(function() {
-		    var $active = $('.active');
-		    $active.removeClass("active");
-		    $(this).addClass("active");
-		  })
-		});
-		
-			$(window).on('resize', function(evt) {
-		  $('.content').css({width:contentW});
-			});
-</script>
 <script type="text/javascript">
 	 new Vue({
 		 el:'#reply',
@@ -390,7 +358,7 @@ nav ul.nav-tabs {
 			 msg:'',
 			 sessionId:'',
 			 isShow:false,
-			 hno:0
+			 no:0
 		 },
 		 mounted:function(){
 			let _this=this;
@@ -451,18 +419,6 @@ nav ul.nav-tabs {
      				$('#up'+no).val("수정");
      				this.no=0;
      			}
-    		  /*   let _this=this;
-    			axios.post("http://localhost:8080/web/book/reply_update.do",{
-        			params:{
-        				book_no:_this.book_no,
-        				msg:_this.msg
-        			}
-        		}).then(function(result){
-        			_this.msg="";
-        			console.log(result.data)
-        			_this.reply_list=result.data;
-        			_this.sessionId=result.data[0].sessionId
-        		})  */
     		} 
 		 }
 		 

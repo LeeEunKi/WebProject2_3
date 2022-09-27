@@ -55,6 +55,10 @@ public interface BoardMapper {
 			  +"WHERE no=#{no}")
 	   public void boardDelete(int no);
 
-	   	
+	   @Select("SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num "
+				  +"FROM (SELECT no,subject,name,regdate,hit,rownum as num "
+				  +"FROM (SELECT no,subject,name,regdate,hit "
+				  +"FROM replyboard_3 WHERE name=#{name} ORDER BY no DESC))")
+		public List<BoardVO> mypageboardListData(Map map);
 
 	}

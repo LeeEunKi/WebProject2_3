@@ -5,75 +5,87 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/room_style.css">
-<style type="text/css">
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
 
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
 
-
-img {
-   padding-top :100px;
-   width: 100px;
-   height: 180px;
-   
-}
-
-</style>
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="css/tiny-slider.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 </head>
 <body>
-<!-- <div class="container">
-   <div class="row row1">
-      <div class="mypage">
-         <img src="../img/user-info-icon.png">
-         <h1>회원님의 소중한 개인정보를 위해<hr>비밀번호를 확인 해 주세요!</h1>
-         <ul>
-            <li>
-               <input type=password ref=pwd size=15 class="pww" placeholder="비밀번호를 입력하세요" v-model="pwd">
-            </li>
-         </ul>
-         <ul>
-            <li class="pwwco">
-               <button><a>비밀번호 확인</a></button>
-            </li>
-            <li class="mypagecs">
-               <p>* 비밀번호를 분실하셨나요? </p><button class="mycs"><a>비밀번호 찾기</a></button>
-            </li>
-         </ul>
-         </div>
-   </div>
-</div> -->
- <div class="container">
-    <div class="row row1">
-      <table class="table">
-        <tr>
-           <td class="text-center">
-               <img src="../img/user-info-icon.png">
-               <br>
-               <h3>회원님의 소중한 개인정보를 위해 <br> 비밀번호를 확인 해 주세요!</h3>
-           </td>
-        </tr>
-        <tr>
-         <td class="text-center">
-           <input type=password ref=pwd style="width:230px; height:50px" class="input-sm" v-model="pwd" placeholder="비밀번호를 입력하세요">
-         </td>
-        </tr>
-        <tr>
-          <td class="text-center">
-            <input type=button value="확인" class="btn btn-sm btn-warning" v-on:click="ok()">
-            <input type=button value="취소" class="btn btn-sm btn-info"
-              onclick="javascript:history.back()"
-            >
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div> 
-  <script>
+
+		<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>회원가입</h1>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+		
+		
+		<div class="untree_co-section">
+  		 <div class="container">
+  		 	
+	  		 <div class="row mb-5">
+			        <div class="col-md-12">
+			          <div class="border p-4 rounded" role="alert" style="background-color:#F5E3CF;">
+			           	 <b>💡회원님의 소중한 개인 정보를 위해, 비밀번호를 확인 해 주세요!💡</b>
+			          </div>
+			        </div>
+			      </div>
+			    <div class="row">
+				<div id="join_before">
+		          <div class="col-md-12 mb-12 mb-md-0">
+		              <h2 class="h3 mb-3 text-black"><b>비밀번호 확인</b></h2>
+		              <div class="p-3 p-lg-5 border bg-white">
+						
+						<div class="text-center">
+		                <label for="c_code" class="text-black mb-3">비밀번호를 입력 해 주세요!</label>
+		                <div class="input-group w-75 couponcode-wrap">
+		                   <input type=password style='text-align:center' ref=pwd class="form-control me-2" v-model="pwd" placeholder="비밀번호를 입력하세요">
+		                </div>
+		                </div>
+		                <br>
+		                <br>
+						<div class="text-center">
+				            <input type=button value="확인" class="btn btn-sm btn-warning" v-on:click="ok()">
+				            <input type=button value="취소" class="btn btn-sm btn-info"
+				              onclick="javascript:history.back()"
+				            >
+				        </div>
+		              </div>
+		            </div>
+		          </div>
+  		 		</div>
+  		</div>
+  		</div>
+  		<script>
     new Vue({
-       el:'.container',
+       el:'#join_before',
        data:{
           pwd:''
        },

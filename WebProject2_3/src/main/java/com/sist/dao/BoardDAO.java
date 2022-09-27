@@ -82,10 +82,9 @@ public class BoardDAO {
 	    	return result;
 	    }
 
-	    public List<BoardVO> mypageboardlist(Map map)
-		{
-			return mapper.boardListData(map);
+	    public List<BoardVO> mypageboardListData(Map map){
+			
+			return mapper.mypageboardListData(map);
 		}
-	    
 	 
 }

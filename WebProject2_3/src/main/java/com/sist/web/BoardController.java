@@ -54,8 +54,7 @@ public class BoardController {
 	   // Vue / React ==> 화면 변경 (Router)
 	   // View단 ,서버단 , DB단 
 	   @GetMapping("member/mypage.do")
-	   
-	   public String mypage_boardlist()
+	   public String mypageboardListData(Model model)
 	   {
 		   return "member/mypage";//forward => request를 전송 
 	   }

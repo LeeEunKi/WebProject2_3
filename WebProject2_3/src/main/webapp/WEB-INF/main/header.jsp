@@ -30,6 +30,7 @@
 	      <a class="nav-item nav-link" href="../book/search.do">도서검색</a>
 	      <a class="nav-item nav-link" href="../study/room_list.do">열람실 예약</a>
 	      <a class="nav-item nav-link" href="../board/list.do">게시판(Test)</a>
+	      <a class="nav-item nav-link" href="../member/mypage.do">마이페이지(Test)</a>
 	      <a class="nav-item nav-link" href="#">중고서적 판매</a>
 	      <form class="form-inline">
 		    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

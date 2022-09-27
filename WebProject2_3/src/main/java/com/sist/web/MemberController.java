@@ -164,6 +164,8 @@ public class MemberController {
 	   session.setAttribute("name", vo.getName());
 	   return "redirect:../main/main.do";
    }
+   
+  
 }
 
 

@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Update;
 
 import com.sist.vo.BoardVO;
 
+import lombok.Setter;
+
 public interface BoardMapper {
 	@Select("SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num "
 			  +"FROM (SELECT no,subject,name,regdate,hit,rownum as num "
@@ -52,4 +54,7 @@ public interface BoardMapper {
 	   @Delete("DELETE FROM replyboard_3 "
 			  +"WHERE no=#{no}")
 	   public void boardDelete(int no);
+
+	   
+
 	}

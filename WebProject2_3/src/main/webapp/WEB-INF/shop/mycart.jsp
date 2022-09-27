@@ -10,20 +10,22 @@
 <script type="text/javascript">
 $(function(){
 	let price = 0;
+	let total = 0;
 	$('#ckall').click(function(){
 	    if($("input[name=ckall]").prop("checked")){
 	        $("input[name=usedbooks]").prop("checked",true);   // 전체 체크
-	        let total = 0;
 	        $('input[name=usedbooks]').each(function(){
         		let book_price = parseInt($(this).attr("data-price"));
         		total = total + book_price;
 	        })
 	        console.log(total);
-	        $('#totalprice').text(total+'원');
+	        console.log(typeof total);
 	    }else{
 	        $("input[name=usedbooks]").prop("checked",false);
-	        //$('#totalprice').text('0원');// 전체 체크 해제
+	        total=0;
 	    }
+	    console.log(total);
+	    $('#totalprice').text(total+'원');
 	});
 	$('input[type=checkbox]').click(function(){
 		if($(this).attr("data-checked")=='f'){
@@ -49,7 +51,6 @@ $(function(){
 }
 
 #books td, #books th {
-  border: 1px solid #ddd;
   padding: 8px;
 }
 
@@ -69,6 +70,12 @@ $(function(){
 }
 .row{
   margin : 0px auto;
+}
+h3{
+font-family:'yangjin' !important;
+}
+*{
+font-family:'Pretendard-Regular';
 }
 </style>
 </head>
@@ -104,22 +111,20 @@ $(function(){
 	              	<input type="hidden" value="${vo.no }">
 	              <td width="10%" class="text-center">
 	                <img src="${vo.poster }" style="width:40px;height:60px;"></td>
-	              <td width="60%" >${vo.name }<br>${vo.author}&nbsp;|&nbsp;${vo.publisher }</td>
+	              <td width="60%" >
+	              	<a href="../shop/detail.do?no=${vo.no }">${vo.name }</a>
+	              	<br>${vo.author}&nbsp;|&nbsp;${vo.publisher }</td>
 	              <td width="10%" class="text-center"><fmt:formatNumber value="${vo.price}" type="number" maxFractionDigits="3"/>원</td>
 	              <td width="10%" class="text-center"><a href="../shop/cart_cancel.do?no=${vo.no }" class="btn btn-sm btn-danger">삭제</a></td>
 	            </tr>
 	          </c:forEach>
 	          <tr><td colspan="5" class="text-right">
 	          	<h3 id="totalprice"></h3>
-                <button type="submit" class="btn btn-sm btn-success">선택한 상품 구매</a>
+	          	<a href="cart_total_delete.do?no=${no }" class="btn btn-sm btn-danger">장바구니 전체삭제</a>
+              	<a href="../shop/detail.do?no=${no }" class="btn btn-sm btn-danger">상품으로 돌아가기</a>
+                <button type="submit" class="btn btn-sm btn-success">선택한 상품 구매</button>
               </td></tr>
           </form>
-          <tr>
-            <td colspan="5" class="text-right">
-              <a href="cart_total_delete.do?no=${no }" class="btn btn-sm btn-danger">장바구니 전체삭제</a>
-              <a href="../shop/detail.do?no=${no }" class="btn btn-sm btn-danger">상품으로 돌아가기</a>
-            </td>
-          </tr>
         </table>
       </c:if>
 </body>

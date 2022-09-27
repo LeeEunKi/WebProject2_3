@@ -88,19 +88,21 @@ public class ShopController {
 			no="1";
 		int no_ = Integer.parseInt(no);
 		List<CartVO> list = (List<CartVO>)session.getAttribute("cart");
-		for(CartVO vo:list) {
-			//저자 길이 자르기
-			String author = vo.getAuthor();
-			if(author.length()>15) {
-				author = author.substring(0,15)+"..";
+		if(list!=null) {
+			for(CartVO vo:list) {
+				//저자 길이 자르기
+				String author = vo.getAuthor();
+				if(author.length()>15) {
+					author = author.substring(0,15)+"..";
+				}
+				vo.setAuthor(author);
+				//출판사 길이 자르기
+				String publisher = vo.getPublisher();
+				if(publisher.length()>15) {
+					publisher = publisher.substring(0,15)+"..";
+				}
+				vo.setPublisher(publisher);
 			}
-			vo.setAuthor(author);
-			//출판사 길이 자르기
-			String publisher = vo.getPublisher();
-			if(publisher.length()>15) {
-				publisher = publisher.substring(0,15)+"..";
-			}
-			vo.setPublisher(publisher);
 		}
 	    model.addAttribute("no", no_);
 	    model.addAttribute("list", list);

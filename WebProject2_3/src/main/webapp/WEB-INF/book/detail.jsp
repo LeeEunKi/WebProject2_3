@@ -229,23 +229,23 @@ a:hover{
 		              <td style="width: 20%"></td>
 		              <td style="width: 80%">
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">도서 예약</span>
+		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">도서 예약</span>
 		              </c:if>
 		              <c:if test="${sessionScope.id!=null }">
-		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">도서 예약</a>
+		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">도서 예약</a>
 		              </c:if>
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">관심도서 추가</span>
+		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</span>
 		              </c:if>
 
 		              <c:if test="${sessionScope.id!=null && lcheck==0 }">
 		                 
-		                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">관심도서 추가</a>
+		                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</a>
 		              </c:if>
 		              <c:if test="${lcheck!=0 }">
-		                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px">관심도서 삭제</a>
+		                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 삭제</a>
 		              </c:if>
-		                <a href="../book/search.do" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px" >목록으로</a>
+		                <a href="../book/search.do" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >목록으로</a>
 		              </td>
 		            </tr>
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->

@@ -55,6 +55,7 @@ public interface BookMapper {
 	//메인 페이지 인기도서
 	@Select("SELECT no,title,author,hit,img,num "
 			+ "FROM (SELECT no,title,author,hit,img,rownum AS num "
+			+ "FROM (SELECT no,title,author,hit,img "
 			+ "FROM book_3 ORDER BY hit DESC)) "
 			+ "WHERE num <=4")
 	public List<BookVO> mainHitBookData();

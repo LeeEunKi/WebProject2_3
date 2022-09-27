@@ -119,7 +119,7 @@ a:hover{
 					         <li>출판일:&nbsp;&nbsp;{{vo.dbday}}</li>
 					         <li>대출가능 권 수:&nbsp;&nbsp;{{vo.loancnt}}</li>
 					        </ul>
-					        <button style="float: right;margin-bottom: 5px" v-on:click="detailData(vo.no)">상세보기</button>
+					        <button class="btn btn-xs btn-primary" style="float: right;margin-bottom: 5px;padding: 8px 20px;" v-on:click="detailData(vo.no)">상세보기</button>
 					        <hr style="width: 100%;background-color: rgb(231, 234, 238);">
 					      </td>
 					    </tr>
@@ -147,7 +147,7 @@ a:hover{
 		 		            </td> 
 				          </tr>
 				        </table>
-				          <table class="table" style="background-color: #FCFFFE;};">
+				          <table class="table">
 				            <tr>
 				              <td colspan="2">
 				                <h3>{{book_detail.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{book_detail.type}}</span></h3>
@@ -172,7 +172,7 @@ a:hover{
 				            <tr>
 				              <td style="width: 20%"></td>
 				              <td style="width: 80%">
-				                <a :href="'../book/detail.do?no='+book_detail.no" class="btn btn-sm btn-info"style="float: right">도서 예약</a>
+				                <a :href="'../book/detail.do?no='+book_detail.no" class="btn btn-sm btn-primary"style="float: right">도서 예약</a>
 				              </td>
 				            </tr>
 				            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->

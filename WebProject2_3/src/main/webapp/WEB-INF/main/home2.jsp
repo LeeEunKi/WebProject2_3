@@ -6,6 +6,53 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#logBtn').click(function(){
+		let id=$('#id').val();
+		if(id.trim()==="")
+		{
+			$('#id').focus();
+			return;
+		}
+		let pwd=$('#pwd').val();
+		if(pwd.trim()==="")
+		{
+			$('#pwd').focus();
+			return;
+		}
+		//let ck=$("#ck").is(":checked");
+		$.ajax({
+			type:'post',
+			url:'../member/login_ok.do',
+			//data:{"id":id,"pwd":pwd,"ck":ck},
+			data:{"id":id,"pwd":pwd},
+			success:function(result)
+			{
+				let res=result.trim();
+				if(res==='NOID')
+				{
+					alert("아이디 존재하지 않습니다!!");
+					$('#id').val("");
+					$('#pwd').val("");
+					$('#id').focus();
+				}
+				else if(res==='NOPWD')
+				{
+					alert("비밀번호가 틀립니다!!");
+					$('#pwd').val("");
+					$('#pwd').focus();
+				}
+				else
+				{
+					location.href="../main/main.do";
+				}
+			}
+		})
+	})
+})
+</script>
 <style type="text/css">
 .box {
   position: relative;
@@ -78,6 +125,7 @@
 }
 
 </style>
+
 </head>
 <body>
 		<!-- Start Hero Section -->

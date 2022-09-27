@@ -55,6 +55,6 @@ public interface BoardMapper {
 			  +"WHERE no=#{no}")
 	   public void boardDelete(int no);
 
-	   
+	   	
 
 	}

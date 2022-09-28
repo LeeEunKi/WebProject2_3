@@ -153,7 +153,7 @@ a:hover{
 					</div>
 					<div style="height:20px"></div><!-- 간격띄우기 -->
 				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
-				    <a :href="'../shop/detail.do?no='+vo.no">
+				    <a :href="'../shop/detail_before.do?no='+vo.no+'&page='+curPage">
 				    	<img :src="vo.img" align="middle" :class="[vo.state===0?'img':'soldout img']"/>
 				    	<div class="book-text" v-if="vo.state!=0">구매불가</div>
 				    	<h4>{{vo.title}}</h4>
@@ -181,14 +181,15 @@ a:hover{
 	new Vue({
 		el:'#book_list',
 		data:{
-			curPage:1,
+			curPage:${curPage},
 			totalPage:0,
 			book_list:[],
 			type:'',
 			cnt:0,
 			cookie_list:[],
 			order:1,
-			id:''
+			id:'',
+			page:''
 		},
 		mounted:function(){
 			this.send();

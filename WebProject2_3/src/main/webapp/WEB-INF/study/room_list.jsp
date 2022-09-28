@@ -190,8 +190,14 @@ new Vue({
 					type:1
 				}
 			}).then(result=>{
-				alert("예약되었습니다!");
-				location.href="../study/room_list.do";
+				if(result.data=='NO'){
+					alert("이미 예약한 좌석이 있습니다!");
+					return;
+				}	
+				else{
+					alert("예약되었습니다!");
+					location.href="../study/room_list.do";
+				}
 			})
 		}
 	}

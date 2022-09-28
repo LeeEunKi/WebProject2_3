@@ -70,5 +70,11 @@ public interface StudyMapper {
 	@Delete("DELETE booking_3 WHERE no=#{no}")
 	public void bookingCancel(int no);
 	
+	//예약중복확인 - 아이디 count
+	@Select("SELECT COUNT(*) "
+			+ "FROM booking_3 "
+			+ "WHERE member_id=#{member_id}")
+	public int bookingCheckID(String member_id);
+	
 	
 }

@@ -31,8 +31,9 @@ public class StudyRestController {
 			obj.put("no", vo.getNo());
 			obj.put("state",vo.getState());
 			obj.put("room_no",vo.getRoom_no());
-			if(k==1) 
+			if(k==1) {
 				obj.put("member_name", name);
+			}
 			k++;
 			arr.add(obj);
 		}
@@ -41,17 +42,26 @@ public class StudyRestController {
 	}
 	
 	@GetMapping(value = "study/room_booking.do", produces = "text/plain;charset=utf-8")
-	public void study_room_booking(BookingVO vo,int type,HttpSession session) {
+	public String study_room_booking(BookingVO vo,int type,HttpSession session) {
+		
 		// type = 1 예약
 		// type = 2 예약 취소
-		String result="";
-		String member_id=(String)session.getAttribute("id");
-		vo.setMember_id(member_id);
+		String result="ok";
+		String id=(String)session.getAttribute("id");
+		vo.setMember_id(id); 
+		
 		Map map=new HashMap();
 		map.put("no",vo.getSeat_no());
 		map.put("room_no", vo.getRoom_no());
+		
 		//예약
 		if(type == 1) {
+			//예약한 좌석이 있을시 리턴
+			int cnt=dao.bookingCheckID(vo.getMember_id());
+			if(cnt>0) {
+				return "NO";
+			}
+
 			dao.bookingRoom(vo);
 			// 좌석 상태 토글
 			map.put("state", "occupied");
@@ -65,5 +75,7 @@ public class StudyRestController {
 			dao.seatStateChange(map);
 			dao.roomRemainSeatIncrease(vo.getRoom_no());
 		}
+		
+		return result;
 	}
 }

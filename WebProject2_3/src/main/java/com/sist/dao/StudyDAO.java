@@ -88,6 +88,7 @@ public class StudyDAO {
 		return mapper.bookingGetInfo();
 	}
 	
+	//AOP 실시간 예약 취소
 	public void bookingCancel(BookingVO vo) {
 		mapper.bookingCancel(vo.getNo());
 		//열람실 좌석 증가
@@ -101,6 +102,14 @@ public class StudyDAO {
 		System.out.println(vo.getNo()+"번 예약 삭제됨");
 		
 		return;
+	}
+	
+	//예약중복확인 - 아이디 count
+	/*@Select("SELECT COUNT(*) "
+			+ "FROM booking_3 "
+			+ "WHERE member_id=#{member_id}")*/
+	public int bookingCheckID(String member_id) {
+		return mapper.bookingCheckID(member_id);
 	}
 	
 	

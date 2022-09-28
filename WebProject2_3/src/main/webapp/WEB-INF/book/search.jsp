@@ -5,9 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
 .subject{
 	position: relative;
     color: rgb(103, 114, 148);
@@ -36,8 +42,8 @@
 .table>thead>tr>th {
     padding: 8px;
     vertical-align: top;
-    border-top: none !important;  
-    border-bottom: none !important;
+    border-top: none;  
+    border-bottom: none;
     
  
 }
@@ -112,14 +118,16 @@ a:hover{
 					       <img :src="vo.img" style="width:160px; height:220px" class="images" v-on:click="detailData(vo.no)">  
 					      </td>	  
 					      <td colspan="2">
-					        <h3>{{vo.title}}&nbsp;&nbsp;</h3><h4><span style="color: orange;">score</span></h4>
+					        <h3 class="h4 text-primary mb-4">{{vo.title}}&nbsp;&nbsp;</h3>
+					       <span style="color: orange;"><h4 class="h5 mb-4">{{vo.type}}</h4></span>
 					        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
 					         <li>저자:&nbsp;&nbsp;{{vo.author}}</li>
 					         <li>출판사:&nbsp;&nbsp;{{vo.publisher}}</li>
 					         <li>출판일:&nbsp;&nbsp;{{vo.dbday}}</li>
-					         <li>대출가능 권 수:&nbsp;&nbsp;{{vo.loancnt}}</li>
+					         <li>:&nbsp;&nbsp;{{vo.dbday}}</li>
+					         <li>대출가능 권 수:&nbsp;&nbsp;{{vo.loancnt}}<button class="btn btn-xs btn-primary" style="float: right;margin-bottom: 5px;padding: 8px 20px;" v-on:click="detailData(vo.no)">도서정보</button></li>
 					        </ul>
-					        <button class="btn btn-xs btn-primary" style="float: right;margin-bottom: 5px;padding: 8px 20px;" v-on:click="detailData(vo.no)">상세보기</button>
+					        
 					        <hr style="width: 100%;background-color: rgb(231, 234, 238);">
 					      </td>
 					    </tr>
@@ -140,7 +148,7 @@ a:hover{
 			   
 			   
 			   <div class="col-lg-5" v-show="isShow" v-if="isShow===true" style="margin-top: 65px">
-				        <table class="table">
+				        <table class="table" style="background-color: #f9f9f9;margin-bottom: 0px">
 				          <tr>
 				            <td class="text-center thumbnail" colspan="3" style="margin-bottom: 0px">
 				              <img :src="book_detail.img" style="width: 50%;">
@@ -149,25 +157,26 @@ a:hover{
 				        </table>
 				          <table class="table">
 				            <tr>
-				              <td colspan="2">
+				              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">도서명</td>
+				              <td style="background-color: #fff;border-bottom:1px solid #eff2f1">
 				                <h3>{{book_detail.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{book_detail.type}}</span></h3>
 				              </td>
 				            </tr>
 				            <tr>
-				              <td style="width: 20%">저자명</td>
-				              <td style="width: 80%">{{book_detail.author}}</td>
+				              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">저자명</td>
+				              <td style="width: 80%;background-color: #f9f9f9;border-bottom:1px solid #eff2f1">{{book_detail.author}}</td>
 				            </tr>
 				            <tr>
-				              <td style="width: 20%">출판사</td>
-				              <td style="width: 80%">{{book_detail.publisher}}</td>
+				              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle" class="text-center">출판사</td>
+				              <td style="width: 80%;background-color: #fff;border-bottom:1px solid #eff2f1">{{book_detail.publisher}}</td>
 				            </tr>
 				            <tr>
-				              <td style="width: 20%">출판일자</td>
-				              <td style="width: 80%">{{book_detail.dbday}}</td>
+				              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle" class="text-center">출판일자</td>
+				              <td style="width: 80%;background-color: #f9f9f9;border-bottom:1px solid #eff2f1">{{book_detail.dbday}}</td>
 				            </tr>
 				            <tr>
-				              <td style="width: 20%">책소개</td>
-				              <td style="width: 80%">{{book_detail.description}}</td>
+				              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;vertical-align: middle;" class="text-center">책소개</td>
+				              <td style="width: 80%;background-color: #fff;border-bottom:1px solid #eff2f1">{{book_detail.description}}</td>
 				            </tr>
 				            <tr>
 				              <td style="width: 20%"></td>

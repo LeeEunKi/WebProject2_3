@@ -35,9 +35,7 @@
 .table>thead>tr>td, 
 .table>thead>tr>th {
     padding: 8px;
-    vertical-align: top;
-    border-top: none !important;  
-    border-bottom: none !important;  
+    vertical-align: top;  
 }
 
 
@@ -105,7 +103,7 @@ body {
 }
 
 .tab-panel {
-  padding: 30px 0;
+  padding: 30px 8px;
   border-top: 1px solid #ccc;
 }
 
@@ -116,10 +114,6 @@ body {
 *:before,
 *:after {
   box-sizing: border-box;
-}
-
-body {
-  padding: 30px;
 }
 
 .tabset {
@@ -195,14 +189,17 @@ a:hover{
 				
 				<table class="table">
 					<tr>
-					  <td rowspan="6">
+					  <td rowspan="6"  style="padding-top: 0px">
 					  <img :src="vo.img">
 					  </td>
 					</tr>
 		            <tr>
-		              <td colspan="2">
-		                <h3>{{vo.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{vo.type}}</span></h3>
-		                 <c:if test="${sessionScope.id==null }">
+		              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">
+		             	도서명
+		              </td>
+		              <td>
+		                <h3>{{vo.title}}&nbsp;&nbsp; 
+		                <c:if test="${sessionScope.id==null }">
 		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like">
 		                 </c:if>
 		                 <c:if test="${sessionScope.id!=null && lcheck==0 }">
@@ -211,25 +208,26 @@ a:hover{
 			             <c:if test="${sessionScope.id!=null && lcheck!=0 }">
 			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no"><img src="../img/heart.png" style="float: right;width: 30px;height: 30px" class="like"></a>
 		                 </c:if>
+		                <span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{vo.type}}</span></h3>
+		                
 		              </td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%">저자명</td>
+		              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">저자명</td>
 		              <td style="width: 80%">{{vo.author}}</td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%">출판사</td>
+		              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판사</td>
 		              <td style="width: 80%">{{vo.publisher}}</td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%">출판일자</td>
+		              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판일자</td>
 		              <td style="width: 80%">{{vo.dbday}}</td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%"></td>
-		              <td style="width: 80%">
+		              <td colspan="2">
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">도서 예약</span>
+		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;flo">도서 예약</span>
 		              </c:if>
 		              <c:if test="${sessionScope.id!=null }">
 		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">도서 예약</a>
@@ -265,7 +263,7 @@ a:hover{
 					  <input type="radio" name="tabset" id="tab4" aria-controls=qna">
 					  <label for="tab4">문의</label>
 					  
-					  <div class="tab-panels">
+					  <div class="tab-panels" style="background-color: #f9f9f9">
 					    <section id="marzen" class="tab-panel">
 					      <h2>책소개</h2>
 					      <p><strong>줄거리:&nbsp;&nbsp;</strong>{{vo.description}}</p>

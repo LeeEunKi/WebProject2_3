@@ -21,19 +21,34 @@ public interface MemberMapper {
 	   // 회원 탈퇴  ==> 복호화 
 	   // 회원 수정  ==> 복호화 
 	   // 회원 수정  ==> 복호화 
-	   @Select("SELECT pwd FROM spring_join "
+	   @Select("SELECT pwd FROM book_join_3 "
 			  +"WHERE id=#{id}")
 	   public String memberGetPassword(String id);
 	   
-	   @Select("SELECT * FROM spring_join "
+	   @Select("SELECT * FROM book_join_3 "
 			  +"WHERE id=#{id}")
 	   public MemberVO memberUpdateData(String id);
 	   
-	   @Update("UPDATE spring_join SET "
+	   @Update("UPDATE book_join_3 SET "
 			   +"name=#{name},sex=#{sex},email=#{email},"
 			   +"post=#{post},addr1=#{addr1},addr2=#{addr2},"
 			   +"tel=#{tel},content=#{content} "
 			   +"WHERE id=#{id}")
 		public void memberUpdate(MemberVO vo);
 	   
+	   //////////////////////////////////////////////////////////////////////
+	   /*@Select("SELECT name FROM book_join_3 "
+				  +"WHERE name=#{name}")
+	   public String memberGetName(String name);
+		   
+		   @Select("SELECT * FROM book_join_3 "
+				  +"WHERE name=#{name}")
+		   public MemberVO mypageData(String name);
+		   
+		   @Update("UPDATE book_join_3 SET "
+				   +"name=#{name},sex=#{sex},email=#{email},"
+				   +"post=#{post},addr1=#{addr1},addr2=#{addr2},"
+				   +"tel=#{tel},content=#{content} "
+				   +"WHERE id=#{id}")
+			public void memberUpdate(MemberVO vo);*/
 }

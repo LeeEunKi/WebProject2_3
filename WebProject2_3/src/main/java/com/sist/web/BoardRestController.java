@@ -46,12 +46,7 @@ public class BoardRestController {
 		String result="";
 		try
 		{
-			//list보낼때 => Array 사용(JSONArray)
-			//vo보낼때 => object 사용(JSONObject)
-			//여러개 묶어서 보내야할때는 object로 값 받고 array로 묶기!
-			//==> Javascript의 공식(이걸써야 Vue가 인식함)
-			
-			//object에 있는거 10개를 list에 모아라!(10개씩 나누기로 했으니까)
+
 			JSONArray arr=new JSONArray();
 			int k=0;
 			for(BoardVO vo:list)
@@ -127,15 +122,32 @@ public class BoardRestController {
    	 return result;
     }
     
-    @GetMapping(value = "member/mypage_board_vue.do",produces = "text/plain;charset=utf-8")
-	public String mypageboardlist(BoardVO vo,String name)
+    @GetMapping(value = "mypage/mypage_vue.do",produces = "text/plain;charset=utf-8")
+	public String mypageboardlist(String page,HttpSession session)
 	{
-    	Map map=new HashMap();
+    	String name=(String)session.getAttribute("name");
+    	if(page==null)
+			page="1";
+		int curpage=Integer.parseInt(page);
+		Map map=new HashMap();
+		int rowSize=10;
+		int start=(rowSize*curpage)-(rowSize-1);
+		int end=rowSize*curpage;
+		
+		map.put("name", name);
+		map.put("start", start);
+		map.put("end", end);
+		
 		List<BoardVO> list=dao.mypageboardListData(map);
+		int totalpage=dao.boardTotalPage();
+		
+		//JavaScript에 데이터를 전송
 		String result="";
 		try
 		{
+
 			JSONArray arr=new JSONArray();
+			int k=0;
 			for(BoardVO Mvo:list)
 			{
 				JSONObject obj=new JSONObject();
@@ -144,7 +156,13 @@ public class BoardRestController {
 				obj.put("name", Mvo.getName());
 				obj.put("dbday", Mvo.getDbday());
 				obj.put("hit", Mvo.getHit());
+				if(k==0)
+				{
+					obj.put("curpage", curpage);
+					obj.put("totalpage",totalpage);
+				}
 				arr.add(obj);
+				k++;
 			}
 			result=arr.toJSONString();
 		}catch(Exception ex) {}

@@ -201,7 +201,7 @@ $(function(){
 		              	<br>
 		              	<!-- <a href="#">Create an account</a></p>  -->
 		                <button>
-		                  <a href="../member/mypage.do">My LIBRARY</a>
+		                  <a href="../mypage/mypage_Volunteer.do">My LIBRARY</a>
 		                </button>
 		                <br>
 		                <br>

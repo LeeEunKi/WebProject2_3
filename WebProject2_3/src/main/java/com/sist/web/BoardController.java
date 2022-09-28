@@ -22,6 +22,7 @@ public class BoardController {
 	{
 		return "board/list";
 	}
+	
 
 	@GetMapping("board/insert.do")
 	public String board_insert()
@@ -53,10 +54,10 @@ public class BoardController {
 	   }
 	   // Vue / React ==> 화면 변경 (Router)
 	   // View단 ,서버단 , DB단 
-	   @GetMapping("member/mypage.do")
-	   public String mypageboardListData(Model model)
+	   @GetMapping("mypage/mypage.do")
+	   public String mypageboardListData()
 	   {
-		   return "member/mypage";//forward => request를 전송 
+		   return "mypage/mypage";//forward => request를 전송 
 	   }
 
 	}

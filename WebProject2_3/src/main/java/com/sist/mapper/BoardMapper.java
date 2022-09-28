@@ -58,7 +58,8 @@ public interface BoardMapper {
 	   @Select("SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num "
 				  +"FROM (SELECT no,subject,name,regdate,hit,rownum as num "
 				  +"FROM (SELECT no,subject,name,regdate,hit "
-				  +"FROM replyboard_3 WHERE name=#{name} ORDER BY no DESC))")
+				  +"FROM replyboard_3 WHERE name=(SELECT name from book_join_3 WHERE name=#{name}) ORDER BY no DESC))"
+				  +"WHERE num BETWEEN #{start} AND #{end}")
 		public List<BoardVO> mypageboardListData(Map map);
 
 	}

@@ -164,7 +164,17 @@ public class MemberController {
 	   session.setAttribute("name", vo.getName());
 	   return "redirect:../main/main.do";
    }
+   @GetMapping("mypage/mypage_Volunteer.do")
+   public String mypage_Volunteer(HttpSession session)
+   {
+	   return "mypage/mypage_Volunteer";
+   }
    
+   @GetMapping("mypage/mypage_Volunteer_submit.do")
+   public String mypage_Volunteer_submit(HttpSession session)
+   {
+	   return "mypage/mypage_Volunteer_submit";
+   }
   
 }
 

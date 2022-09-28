@@ -1,5 +1,7 @@
 package com.sist.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +57,12 @@ public class BoardController {
 	   // Vue / React ==> 화면 변경 (Router)
 	   // View단 ,서버단 , DB단 
 	   @GetMapping("mypage/mypage.do")
-	   public String mypageboardListData()
+	   public String mypageboardListData(HttpSession session)
 	   {
+		   String id=(String)session.getAttribute("id");
+		   String name=(String)session.getAttribute("name");
+		   System.out.println(name);
+		   
 		   return "mypage/mypage";//forward => request를 전송 
 	   }
 

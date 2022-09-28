@@ -236,7 +236,7 @@ table td, th {
 		  </div>
 		   
 		 <div class="container">
-		  <div id="mypage_list">
+		  <div class="mypage_list">
 		  <div class="row">
 		    <div class="col-xs-12">
 		     <br>
@@ -292,11 +292,12 @@ table td, th {
   	<script>
 		new Vue({
 			//el : 관리 영역 지정 => container
-			el:'#mypage_list',
+			el:'.mypage_list',
 			data:{
 				mypageboardListData:[],
 				curpage:1,
-				totalpage:0
+				totalpage:0,
+				id:${sessionScope.name}
 			},
 			mounted:function(){
 				let _this=this;
@@ -307,11 +308,13 @@ table td, th {
 				}).then(function(result){
 					//개발자도구창에서 넘어온값 확인가능
 					console.log(result.data);
-					_this.board_list=result.data;
+					console.log(id);
+					_this.mypageboardListData=result.data;
 					_this.curpage=result.data[0].curpage;
 					_this.totalpage=result.date[0].totalpage;
 				})
 			}
+		}
 		})
 	</script>
 </body>

@@ -127,7 +127,7 @@ font-family:'yangjin'
 						<a class="btn btn-primary" :href="'../book/detail.do?no='+book_detail.book_no">
 							<img src="../img/book_find2.png" style="width:20px;">&nbsp;빌려읽기
 						</a>
-						<a href="../shop/list.do" class="btn btn-primary" @click="javascript:history.back()">
+						<a :href="'../shop/list.do?page='+book_detail.page" class="btn btn-primary" @click="javascript:history.back()">
 							<img src="../img/list.png" style="width:20px;">&nbsp;목록으로
 						</a>
 					</td>
@@ -185,17 +185,25 @@ new Vue({
 	el:'#book_detail',
 	data:{
 		no:${no},
-		book_detail:{}
+		book_detail:{},
+		cookie_list:[],
+		page:${page}
 	},
 	mounted:function(){
 		let _this=this;
 		axios.get("http://localhost:8080/web/shop/detail_vue.do",{
 			params:{
-				no:_this.no
+				no:_this.no,
+				page:_this.page
 			}
 		}).then(function(result){
 			_this.book_detail=result.data
 		})
+		axios.get("http://localhost:8080/web/shop/cookie_list.do",{
+		}).then(function(result){
+			console.log(result.data);
+			_this.cookie_list = result.data;
+		}) 
 	},
 	filters:{ //금액 000,000 처리
 		   currency: function(value){ // 금액 3자리 수 마다 따옴표 필터
@@ -203,20 +211,6 @@ new Vue({
                return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")
            }
 	    }
-})
-new Vue({
-	el:'#cookie_list',
-	data:{
-		cookie_list:[]
-	},
-	mounted:function(){
-		let _this=this;
-		axios.get("http://localhost:8080/web/shop/cookie_list.do",{
-		}).then(function(result){
-			console.log(result.data);
-			_this.cookie_list = result.data;
-		}) 
-	}
 })
 </script>
 </body>

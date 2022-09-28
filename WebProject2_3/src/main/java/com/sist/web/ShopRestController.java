@@ -163,7 +163,7 @@ public class ShopRestController {
 	}
 	
 	@GetMapping(value="shop/detail_vue.do", produces="text/plain;charset=UTF-8")
-	public String shop_detail_vue(int no) {
+	public String shop_detail_vue(int no, int page) {
 		ShopVO vo = dao.shopDetailData(no);
 		String result = "";
 		JSONObject obj = new JSONObject();
@@ -180,6 +180,7 @@ public class ShopRestController {
 		obj.put("type",vo.getType());
 		obj.put("desc",vo.getDescription());
 		obj.put("state",vo.getState());
+		obj.put("page",page);
 		
 		result = obj.toJSONString();
 		

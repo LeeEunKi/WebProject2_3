@@ -25,7 +25,7 @@
             buyer_name : '${name}',
             buyer_tel : '${phone}',
             buyer_addr : '${address}',
-            buyer_postcode : '123-456',
+            buyer_postcode : '${postcode}',
             //m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
             if ( rsp.success ) {
@@ -51,12 +51,12 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href="../shop/list.do";
+                location.href="../mypage/order.do";
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="../shop/list.do";
+                location.href="../mypage/order.do";
                 alert(msg);
             }
         });

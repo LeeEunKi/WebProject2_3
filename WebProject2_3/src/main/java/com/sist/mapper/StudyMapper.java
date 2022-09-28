@@ -1,6 +1,7 @@
 package com.sist.mapper;
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
@@ -60,8 +61,14 @@ public interface StudyMapper {
 			+ "WHERE no=#{no}")
 	public void roomRemainSeatIncrease(int no);
 	
+	// 예약 끝나는 시간,좌석번호 가져오기
+	@Select("SELECT no,TO_CHAR(booking_date,'YYYY-MM-DD') as dbday,end_time,seat_no,room_no "
+			+ "FROM booking_3")
+	public List<BookingVO> bookingGetInfo();
 	
-	
+	// 예약 취소
+	@Delete("DELETE booking_3 WHERE no=#{no}")
+	public void bookingCancel(int no);
 	
 	
 }

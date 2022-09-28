@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 import com.sist.mapper.*;
 import com.sist.vo.*;
@@ -78,5 +80,29 @@ public class StudyDAO {
 	public void roomRemainSeatIncrease(int no) {
 		mapper.roomRemainSeatIncrease(no);
 	}
+	
+	// 예약 정보 가져오기
+	/*@Select("SELECT booking_date,end_time "
+			+ "FROM booking_3")*/
+	public List<BookingVO> bookingGetInfo(){
+		return mapper.bookingGetInfo();
+	}
+	
+	public void bookingCancel(BookingVO vo) {
+		mapper.bookingCancel(vo.getNo());
+		//열람실 좌석 증가
+		mapper.roomRemainSeatIncrease(vo.getRoom_no());
+		Map map=new HashMap();
+		map.put("room_no",vo.getRoom_no());
+		map.put("no",vo.getSeat_no());
+		map.put("state","remained");
+		//좌석 상태 변경
+		mapper.seatStateChange(map);
+		System.out.println(vo.getNo()+"번 예약 삭제됨");
+		
+		return;
+	}
+	
+	
 	
 }

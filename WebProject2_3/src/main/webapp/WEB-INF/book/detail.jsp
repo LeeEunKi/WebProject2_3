@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -201,16 +201,16 @@ a:hover{
 					</tr>
 		            <tr>
 		              <td colspan="2">
-		                <h3>{{vo.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{vo.type}}</span>
+		                <h3>{{vo.title}}&nbsp;&nbsp;<span style="color: orange;font-size: 16px;font-weight: 600;padding-left: 15px">{{vo.type}}</span></h3>
 		                 <c:if test="${sessionScope.id==null }">
-		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like"></h3>
-		                </c:if>
+		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like">
+		                 </c:if>
 		                 <c:if test="${sessionScope.id!=null && lcheck==0 }">
-			                <a :href="'../book/bookLikeInsert.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like"></h3></a>
-			              </c:if>
-			               <c:if test="${lcheck!=0 }">
-			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no"><img src="../img/heart.png" style="float: right;width: 30px;height: 30px" class="like"></h3></a>
-		                </c:if>
+			                <a :href="'../book/bookLikeInsert.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like"></a>
+			             </c:if>
+			             <c:if test="${sessionScope.id!=null && lcheck!=0 }">
+			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no"><img src="../img/heart.png" style="float: right;width: 30px;height: 30px" class="like"></a>
+		                 </c:if>
 		              </td>
 		            </tr>
 		            <tr>
@@ -242,7 +242,7 @@ a:hover{
 		                 
 		                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</a>
 		              </c:if>
-		              <c:if test="${lcheck!=0 }">
+		              <c:if test="${sessionScope.id!=null && lcheck!=0 }">
 		                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 삭제</a>
 		              </c:if>
 		                <a href="../book/search.do" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >목록으로</a>

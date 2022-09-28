@@ -11,6 +11,7 @@ import com.sist.vo.*;
 
 import lombok.Delegate;
 public interface BookLikeMapper {
+	
 	@Select("SELECT COUNT(*) FROM booklike_3 WHERE book_no=#{book_no} AND member_id=#{member_id}")
 	public int likeCheck(Map map);
 	

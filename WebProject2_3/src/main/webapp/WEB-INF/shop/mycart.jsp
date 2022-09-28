@@ -11,33 +11,36 @@
 $(function(){
 	let price = 0;
 	let total = 0;
+	let currency = function(value){ // 금액 3자리 수 마다 따옴표 필터
+        let num = new Number(value);
+        return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")
+    }
 	$('#ckall').click(function(){
 	    if($("input[name=ckall]").prop("checked")){
 	        $("input[name=usedbooks]").prop("checked",true);   // 전체 체크
 	        $('input[name=usedbooks]').each(function(){
         		let book_price = parseInt($(this).attr("data-price"));
-        		total = total + book_price;
+        		total = parseInt(total) + book_price;
 	        })
-	        console.log(total);
-	        console.log(typeof total);
 	    }else{
 	        $("input[name=usedbooks]").prop("checked",false);
 	        total=0;
 	    }
-	    console.log(total);
-	    $('#totalprice').text(total+'원');
+	    let total_ = currency(total);
+	    $('#totalprice').text(total_+'원');
 	});
-	$('input[type=checkbox]').click(function(){
+	$('.bookselect').click(function(){
 		if($(this).attr("data-checked")=='f'){
 		console.log(this);
 		$(this).attr("data-checked",'t');
 		price = price + parseInt($(this).attr("data-price"));
-		console.log(price);
-		$('#totalprice').text(price+'원');
+		let price_ = currency(price);
+		$('#totalprice').text(price_+'원');
 		}else{
 			$(this).attr("data-checked",'f')
 			price = price - parseInt($(this).attr("data-price"));
-			$('#totalprice').text(price+'원');
+			let price_ = currency(price);
+			$('#totalprice').text(price_+'원');
 		}
 	})
 })
@@ -107,7 +110,7 @@ font-family:'Pretendard-Regular';
           <form method="post" action="../shop/purchase.do">
 	          <c:forEach var="vo" items="${list }">
 	            <tr>
-	              <td width="10%" class="text-center"><input type="checkbox" name="usedbooks" value="${vo.no }" data-checked="f" data-price="${vo.price }"></td>
+	              <td width="10%" class="text-center"><input class="bookselect" type="checkbox" name="usedbooks" value="${vo.no }" data-checked="f" data-price="${vo.price }"></td>
 	              	<input type="hidden" value="${vo.no }">
 	              <td width="10%" class="text-center">
 	                <img src="${vo.poster }" style="width:40px;height:60px;"></td>

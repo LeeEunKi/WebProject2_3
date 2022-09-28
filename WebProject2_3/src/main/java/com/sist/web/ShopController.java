@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
-import com.sist.dao.ShopDAO;
+import com.sist.dao.*;
 import com.sist.vo.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,29 +21,36 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ShopController {
 	@Autowired
 	private ShopDAO dao;
+	@Autowired
+	private MemberDAO mDao;
 	
 	//중고책 목록 출력
 	@GetMapping("shop/list.do")
-	public String shop_list() {
+	public String shop_list(String page, Model model) {
+		if(page==null)
+			page="1";
+		model.addAttribute("curPage",Integer.parseInt(page));
 		return "shop/list";
 	}
 	
 	//쿠키 저장
 	@GetMapping("shop/detail_before.do")
-	public String shop_detail_before(int no, RedirectAttributes ra, HttpServletResponse response) {
+	public String shop_detail_before(int no, int page, RedirectAttributes ra, HttpServletResponse response) {
 		Cookie cookie = new Cookie("usedbook"+no, String.valueOf(no));
 		cookie.setPath("/");
 		cookie.setMaxAge(60*60*24);
 		response.addCookie(cookie);
 		
 		ra.addAttribute("no",no);
+		ra.addAttribute("page",page);
 		return "redirect:../shop/detail.do"; //shop/detail.do?no=..로 보내줌
 	}
 	
 	//중고책 상세 페이지
 	@GetMapping("shop/detail.do")
-	public String shop_detail(int no, Model model) {
+	public String shop_detail(int no, int page, Model model) {
 		model.addAttribute("no",no);
+		model.addAttribute("page",page);
 		return "shop/detail";
 	}
 	
@@ -54,31 +61,44 @@ public class ShopController {
 		return "shop/publisher_list";
 	}
 	@RequestMapping("shop/purchase.do")
-	public void purchase(HttpServletRequest request, HttpSession session) {
+	public String purchase(HttpServletRequest request, HttpSession session) {
 		String name = (String)session.getAttribute("name");
 		String id = (String)session.getAttribute("id");
+		MemberVO mvo = mDao.memberUpdateData(id);
 		String[] usedBooks = request.getParameterValues("usedbooks");
 		List <CartVO> list = (List <CartVO>) session.getAttribute("cart");
+		
+		int totalPrice = 0;
+		//체크한 상품목록을 불러와서 구매처리 한다
 		if(usedBooks!=null && usedBooks.length>0){
 			for(int i=0;i<usedBooks.length;i++) {
 				int no = Integer.parseInt(usedBooks[i]);
-				dao.purchase(no);
-				for(CartVO vo:list) {
-					if(vo.getNo()==Integer.parseInt(usedBooks[i])) {
-						list.remove(vo);
-					}
-				}
+				dao.changeState(no);
+				OrderVO vo = new OrderVO();
+				ShopVO svo = dao.shopDetailData(no);
+				vo.setUsedbook_no(no);
+				vo.setMember_id((String)session.getAttribute("id"));
+				vo.setPrice(svo.getDiscount());
+				totalPrice += svo.getDiscount();
+				
+				dao.purchase_insert(vo);
+				CartVO cvo = list.get(i);
+			    if (cvo.getNo() == no) {
+			      list.remove(i);
+			    }
 				System.out.println(no+"번 책 구매처리 완료");
 			}
 		  }
 		
 		request.setAttribute("name",name);
 	    request.setAttribute("id",id);
-	    request.setAttribute("phone","10124");
-	    request.setAttribute("totalPrice",100);
-	    request.setAttribute("address","dfaddaf");
+	    request.setAttribute("totalPrice",totalPrice);
+	    request.setAttribute("address",mvo.getAddr1()+mvo.getAddr2());
+	    request.setAttribute("phone", mvo.getTel());
+	    System.out.println("TEL:"+mvo.getTel());
+	    request.setAttribute("postcode", mvo.getPost());
 		
-//		return "shop/purchase";
+		return "shop/purchase";
 	}
 	
 	//중고책 장바구니
@@ -156,5 +176,24 @@ public class ShopController {
 	    }
 	  }
 	  return "redirect:cart_list.do?no=" + no;
+	}
+	
+	//중고책 구매내역
+	@GetMapping("mypage/order.do")
+	public String mypage_order(Model model, HttpSession session) {
+		String member_id = (String)session.getAttribute("id");
+		List<OrderVO> oList = dao.orderListData(member_id);
+		int listsize = oList.size();
+		for(OrderVO ovo:oList) {
+			int no = ovo.getUsedbook_no();
+			ShopVO vo = dao.shopDetailData(no);
+			ovo.setTitle(vo.getTitle());
+			ovo.setAuthor(vo.getAuthor());
+			ovo.setPublisher(vo.getPublisher());
+			ovo.setPoster(vo.getImg());
+		}
+		model.addAttribute("list",oList);
+		model.addAttribute("listsize",listsize);
+		return "mypage/order";
 	}
 }

@@ -2,6 +2,8 @@ package com.sist.mapper;
 
 import java.util.*;
 import com.sist.vo.*;
+
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -35,5 +37,15 @@ public interface ShopMapper {
 	
 //	@Select("SELECT type, COUNT(*) as count FROM used_book_3 GROUP BY type")
 	@Update("UPDATE used_book_3 SET state=1 WHERE no IN(#{no})")
-	public void purchase(int no);
+	public void changeState(int no);
+
+	//구매 처리
+	@Insert("INSERT INTO order_3(no,usedbook_no,member_id,price,regdate) "
+			+ "VALUES((SELECT NVL(MAX(no)+1,1) FROM order_3),#{usedbook_no}, #{member_id}, #{price},SYSDATE)")
+	public void purchase_insert(OrderVO vo);
+	
+	//구매 내역
+	@Select("SELECT no, usedbook_no, member_id, price, to_char(regdate,'yyyy-mm-dd HH24:MM:SS') as dbday "
+			+ "FROM order_3 WHERE member_id=#{member_id} ORDER BY no")
+	public List<OrderVO> orderListData(String member_id);
 }

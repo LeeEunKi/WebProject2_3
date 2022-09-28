@@ -60,8 +60,6 @@ hr {
 
 
 </style>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <div id="mypage_list">
@@ -97,6 +95,7 @@ hr {
         <!-- 안내 문구 출력 끝 -->
      
       <div class="row">
+         <!-- 헤더는 mypage_header.jsp에서 수정 가능 --> 
 		<jsp:include page="../mypage/mypage_header.jsp"></jsp:include>
 		 <div class="col-md-9 mb-9 mb-md-0">
 		 
@@ -119,8 +118,8 @@ hr {
 				            <input type=button value="취소" class="btn btn-sm btn-info"
 				              onclick="javascript:history.back()"
 				            >
-		     </div>
-		    </div>
+		       </div>
+		      </div>
 		    </div>
 		    <!-- 원하는 내용 출력 끝 -->
 		    
@@ -130,43 +129,5 @@ hr {
     </div>
    </div>
  </div>
-  <script>
-    new Vue({
-       el:'#join_before',
-       data:{
-          pwd:''
-       },
-       methods:{
-          ok:function(){
-             if(this.pwd==="")
-             {
-                this.$refs.pwd.focus();//$('#id명').focus()
-                return;
-             }
-             
-             // 비밀번호 입력
-             let _this=this;
-             //axios.post() axios.get()
-             axios.get('http://localhost:8080/web/member/join_before_ok.do',{
-                params:{
-                   pwd:this.pwd
-                }
-             }).then(function(result){
-                let res=result.data;
-                if(res==='yes')
-                {
-                   location.href="../mypage/mypage_join_update.do";
-                }
-                else
-                {
-                   alert("비밀번호가 틀립니다");
-                   _this.pwd="";
-                   _this.$refs.pwd.focus();
-                }
-             })
-          }
-       }
-    })
-  </script>
 </body>
 </html>

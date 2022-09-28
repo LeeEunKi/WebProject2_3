@@ -128,6 +128,14 @@ public class MemberController {
         //model.addAttribute("main_jsp", "../member/join_before.jsp");
         return "member/join_before";
    }
+   //이건 마이페이지용
+   @GetMapping("mypage/mypage_join_before.do")
+   public String mypage_before(Model model)
+   {
+        //model.addAttribute("main_jsp", "../member/join_before.jsp");
+        return "mypage/mypage_join_before";
+   }
+   //비밀번호 확인 후 수정페이지 이동
    @GetMapping("member/join_before_ok.do")
    @ResponseBody
    public String member_before_ok(String pwd,HttpSession session)
@@ -145,6 +153,26 @@ public class MemberController {
 	   }
 	   return result;
    }
+   
+   //이건 마이페이지용~
+   @GetMapping("mypage/mypage_join_before_ok.do")
+   @ResponseBody
+   public String mypage_before_ok(String pwd,HttpSession session)
+   {
+	   String id=(String)session.getAttribute("id");
+	   String result="";
+	   String db_pwd=dao.memberGetPassword(id);
+	   if(encoder.matches(pwd, db_pwd))
+	   {
+		   result="yes";
+	   }
+	   else
+	   {
+		   result="no";
+	   }
+	   return result;
+   }
+   
    //회원정보 수정
    @GetMapping("member/join_update.do")
    public String join_update(Model model,HttpSession session)
@@ -155,6 +183,19 @@ public class MemberController {
 	   //model.addAttribute("main_jsp", "../member/join_update.jsp");
 	   return "member/join_update";
    }
+   
+   //마이페이지
+   @GetMapping("mypage/mypage_join_update.do")
+   public String mypage_join_update(Model model,HttpSession session)
+   {
+	   String id=(String)session.getAttribute("id");
+	   MemberVO vo=dao.memberUpdateData(id);
+	   model.addAttribute("vo", vo);
+	   //model.addAttribute("main_jsp", "../member/join_update.jsp");
+	   return "mypage/mypage_join_update";
+   }
+   
+   
    @PostMapping("member/join_update_ok.do")
    public String join_update_ok(MemberVO vo,HttpSession session)
    {
@@ -164,6 +205,18 @@ public class MemberController {
 	   session.setAttribute("name", vo.getName());
 	   return "redirect:../main/main.do";
    }
+   
+   //마이페이지
+   @PostMapping("mypage/mypage_join_update_ok.do")
+   public String mypage_join_update_ok(MemberVO vo,HttpSession session)
+   {
+	   vo.setTel(vo.getTel1()+"-"+vo.getTel2());
+	   //DB연동 
+	   dao.memberUpdate(vo);
+	   session.setAttribute("name", vo.getName());
+	   return "redirect:../main/main.do";
+   }
+   
    @GetMapping("mypage/mypage_Volunteer.do")
    public String mypage_Volunteer(HttpSession session)
    {

@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/room_style.css">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -25,30 +24,32 @@ thead{
 </style>
 </head>
 <body>
-
-<!-- Start Hero Section -->
+		<!-- Start Hero Section -->
 			<div class="hero">
 				<div class="container">
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
+								<h1>열람실 예약</h1>
 							</div>
 						</div>
 						<div class="col-lg-7">
-						
+							
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		<!-- End Hero Section -->
+		
+<div style="height: 50px"></div>
 
-		<div class="untree_co-section product-section before-footer-section">
-		    <div class="container" id="room-area">
-		      <div class="row1">
+	<div class="container" id="room-area">
+   		<div class="row row1">
 		        <h1>금일 열람실 실시간 좌석현황</h1>
 		        <hr>
-		      </div>
-					  <table class="table table-bordered">
+		</div> 
+		<div>
+					  <table class="table table-bordered" style="margin-bottom: 50px;">
 					    <thead> 
 					      <tr style="text-align-last: center;">
 					        <th>열람실 명</th>
@@ -70,16 +71,14 @@ thead{
 					     </c:forEach>
 					    </tbody> 
 					  </table>
-					  <div id="seat-area">
-					   <div class="row"> 
+		</div>
+		
+					  <div class ="row" id="seat-area">
 					    <jsp:include page="./seat_detail.jsp"></jsp:include>
 						<jsp:include page="./booking_info.jsp"></jsp:include>
-					   </div> 
 					  </div>
-				</div>
-		      	</div>
-		    </div>
-		</div>
+</div>
+				
 <script>
 new Vue({
 	el:'#room-area',

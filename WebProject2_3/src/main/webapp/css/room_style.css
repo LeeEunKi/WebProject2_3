@@ -20,8 +20,8 @@ body1 {
 
 .plane {
   position: absolute;
-  width: 60rem;
-  min-height: 56rem;
+  width: 45rem;
+  min-height: 45rem;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -119,8 +119,8 @@ body1 {
 
 .seat {
   background-color: #c9c9c9;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   border: 2px solid #fff;
   cursor: pointer;
   text-align: center;

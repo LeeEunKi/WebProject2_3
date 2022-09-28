@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="col-sm-7">
+<div class="col-sm-8">
 	<div class="plane-container">
 	  <div class="plane">
 	  <div class="row">

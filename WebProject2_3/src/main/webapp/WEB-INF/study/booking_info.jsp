@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="col-sm-5" style="background-color: white; height: 445px; padding: 40px; ">
- <div class="box project-box"> 
+<div class="col-sm-4" style="background-color: white;width: 440px; height: 470px; padding: 40px; ">
+ <div class="box project-box" style="widows: 100%"> 
   <div class="row1" style="margin-bottom: 25px;">
     <div class="seat"></div>
     <small>사용 가능</small>

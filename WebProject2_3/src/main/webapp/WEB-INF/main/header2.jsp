@@ -24,7 +24,7 @@
 						<li><a class="nav-link" href="../shop/list.do">중고샵Shop</a></li>
 						<li><a class="nav-link" href="about.html">About us</a></li>
 						<li><a class="nav-link" href="services.html">Services</a></li>
-						<li><a class="nav-link" href="blog.html">Blog</a></li>
+						<li><a class="nav-link" href="../study/room_list.do">열람실예약</a></li>
 						<li><a class="nav-item nav-link" href="../board/list.do">커뮤니티</a></li>
 					</ul>
 

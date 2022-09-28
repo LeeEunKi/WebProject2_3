@@ -18,7 +18,9 @@ public class StudyAspect {
 	@Autowired
 	private StudyDAO dao;
 	
-	@Before("execution(* com.sist.web.*Controller.*(..))")
+	@Before("execution(* com.sist.web.StudyController.*(..)) || "
+			+ "execution(* com.sist.web.StudyRestController.*(..)) || "
+			+ "execution(* com.sist.web.MainController.*(..))")
 	public void bookingCheck() {
 		try {
 			

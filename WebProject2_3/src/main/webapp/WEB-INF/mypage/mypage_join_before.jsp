@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +58,7 @@ hr {
   margin: 0 auto;
 }
 
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -87,7 +88,7 @@ hr {
 		 <div class="row mb-5">
 		        <div class="col-md-12">
 		          <div class="border p-4 rounded" role="alert" style="background-color:#F5E3CF;">
-		           	 💡 <b>이미 계정이 있으신가요? <a href="#">Click here</a> 에서 로그인 해 주세요!</b> 💡
+		           	  <b>💡회원님의 소중한 개인 정보를 위해, 비밀번호를 확인 해 주세요!💡</b>
 		          </div>
 		        </div>
      </div>
@@ -96,81 +97,72 @@ hr {
 		  
 		  
 		<jsp:include page="../mypage/mypage_header.jsp"></jsp:include>
-		  
-		    <div class="col-md-9 mb-9 mb-md-0">
-		     <h2 class="h3 mb-3 text-black"><b>내가 작성한 게시글 목록 </b></h2>
+		
+		 <div class="col-md-9 mb-9 mb-md-0">
+		     <h2 class="h3 mb-3 text-black"><b>회원 정보 수정</b></h2>
 		    <div class="p-3 p-lg-5 border bg-white">
-		     <br>
-		     <br>
-		      <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">
-		        <thead>
-		          <tr style="background-color:#F5E3CF;">
-		            <th width=10% class="text-center">번호</th>
-								<th width=45% class="text-center">제목</th>
-								<th width=15% class="text-center">아이디</th>
-								<th width=20% class="text-center">작성일</th>
-								<th width=10% class="text-center">조회수</th>
-		          </tr>
-		        </thead>
-		        <tbody>
-		       
-		          <tr v-for="Mvo in mypageboardListData" style="background-color: white;">
-								<th width=10% class="text-center">{{Mvo.no}}</th>
-								<th width=45%><a :href="'../board/detail.do?no='+vo.no">{{Mvo.subject}}</a></th>
-								<th width=15% class="text-center">{{Mvo.name}}</th>
-								<th width=20% class="text-center">{{Mvo.dbday}}</th>
-								<th width=10% class="txt_org text-center">{{Mvo.hit}}</th>
-							</tr>
-		        </tbody>
-				<tr>
-				</table>
-				<br>
-				<div class="text-ceter">
-				<table class="text-center">
-					<tr>
-			          <td class="text-center">
-									<input type=button value="이전" class="btn btn-sm btn-danger">
-									{{curpage}} page / {{totalpage}} pages
-									<input type=button value="다음" class="btn btn-sm btn-danger">
-					  </td>
-					</tr>
-		      </table>
-		      </div>
-		      <br><br><br>
+		    <div id="join_before">
+		     <div class="text-center">
+		                <label for="c_code" class="text-black mb-3">비밀번호를 입력 해 주세요!</label>
+		                <div class="col-md-12">
+		                <div class="input-group w-75 couponcode-wrap">
+		                   <input type=password style='text-align:center' ref=pwd class="form-control me-2" v-model="pwd" placeholder="비밀번호를 입력하세요">
+		                </div>
+		                </div>
+		                </div>
+		                <br>
+		                <br>
+						<div class="text-center">
+				            <input type=button value="확인" class="btn btn-sm btn-warning" v-on:click="ok()">
+				            <input type=button value="취소" class="btn btn-sm btn-info"
+				              onclick="javascript:history.back()"
+				            >
+		     </div>
 		    </div>
-		  </div>
-		  </div>
-		  </div>
-		  </div>
-		  </div>
-</div>
-  	<script>
-  	
-	new Vue({
-		//el : 관리 영역 지정 => container
-		el:'#mypage_list',
-		data:{
-			mypageboardListData:[],
-			curpage:1,
-			totalpage:0,
-			id:${sessionScope.name}
-		},
-		mounted:function(){
-			let _this=this;
-			axios.get("http://localhost:8080/web/board/list_vue.do",{
-				params:{
-					page:_this.curpage
-				}
-			}).then(function(result){
-				//개발자도구창에서 넘어온값 확인가능
-				console.log(result.data);
-				console.log(id);
-				_this.mypageboardListData=result.data;
-				_this.curpage=result.data[0].curpage;
-				_this.totalpage=result.date[0].totalpage;
-			})
-		}
-	})
-	</script>
+		    </div>
+		    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <script>
+    new Vue({
+       el:'#join_before',
+       data:{
+          pwd:''
+       },
+       methods:{
+          ok:function(){
+             if(this.pwd==="")
+             {
+                this.$refs.pwd.focus();//$('#id명').focus()
+                return;
+             }
+             
+             // 비밀번호 입력
+             let _this=this;
+             //axios.post() axios.get()
+             axios.get('http://localhost:8080/web/member/join_before_ok.do',{
+                params:{
+                   pwd:this.pwd
+                }
+             }).then(function(result){
+                let res=result.data;
+                if(res==='yes')
+                {
+                   location.href="../mypage/mypage_join_update.do";
+                }
+                else
+                {
+                   alert("비밀번호가 틀립니다");
+                   _this.pwd="";
+                   _this.$refs.pwd.focus();
+                }
+             })
+          }
+       }
+    })
+  </script>
 </body>
 </html>

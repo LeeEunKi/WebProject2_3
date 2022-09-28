@@ -15,7 +15,6 @@
   <meta name="keywords" content="bootstrap, bootstrap4" />
 <!-- Bootstrap CSS -->
 <!-- 이거 지우면 깨짐 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="css/tiny-slider.css" rel="stylesheet">
@@ -59,138 +58,18 @@ hr {
   margin: 0 auto;
 }
 
-.pointcolor {
-  color: #f84646 !important;
-}
-.pointbutton {
-  color: #fff !important;
-  background: #f84646 !important;
-  border: 1px solid #f84646;
-}
-.pointbutton:hover {
-  background: #db3a29 !important;
-}
 
-
-/* Menu */
-.ui.secondary.pointing.menu {
-  margin-left: 5%;
-  margin-right: 5%;
-}
-.pointing.menu, .pointing.menu a {
-  border: none !important;
-}
-.centermenu {
-  margin: 0 auto !important;
-}
-
-.activecustom {
-  color: #f84646 !important;
-  font-weight: bold !important;
-}
-.item:hover{
-  color: #f84646 !important;
-  background: none !important;
-}
-
-
-/* Responsive Menu */
-.hidden.menu {
-   display: none;
-}
-
-.masthead.segment {
-   min-height: 100px;
-   padding: .25em 0em;
-}
-
-.secondary.pointing.menu .toc.item {
-   display: none;
-}
-
-@media only screen and (max-width: 700px) {
-  .ui.fixed.menu {
-    display: none !important;
-  }
-  .secondary.pointing.menu .item {
-    display: none;
-  }
-  .secondary.pointing.menu .toc.item {
-    display: block;
-  }
-  .masthead.segment {
-    min-height: 70px;
-  }
-}
-
-.item--white {
-  color: white !important;
-}
-
-
-/* header */
-.logoimg {
-  /*border: 1px solid #eee;*/
-  margin-bottom: 20px;
-  margin-top: -25px;
-}
-
-
-/* Contents */
-.ui.sub-container {
-  /*border: 1px solid #eee;*/
-  margin: 0 4% 0 4%;
-}
-.ui.vertical.text.menu.sidemenu .item{
-  /*border: 1px solid #eee;*/
-  margin-bottom: 10%;
-
-}
-.ui.items p {
-  margin-top: -10px;
-}
-.ui.items .item.pointcolor {
-  text-decoration: underline;
-  font-size: 16px;  
-}
-
-
-/* Table */
-table td, th {
-  padding: 10px 0 !important;
-  text-align: center !important;
-  font-size: 13px;
-}
-@media (min-width: 768px) {
-  .sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-}
-
-p {
+.form-group p {
 	border : 1px solid #ccc;
 	padding : 10px;
 	margin : 10px;
 }
-.align-left {table-align:left};
 </style>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
+<div id="mypage_list">
 		<!-- Start Hero Section -->
 			<div class="hero">
 				<div class="container">
@@ -208,52 +87,26 @@ p {
 			</div>
 		<!-- End Hero Section -->
 		
-		<div class="untree_co-section">
-		<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-2"></div>
-			   <div class="col-lg-8" style="margin-top: 20px">
-			<div class="pusher">
-			  <div class="ui vertical masthead segment" style="border: none;">
-			   <div class="col-sm-3">
-		    <div class="sidebar-nav">
-		      <div class="navbar navbar-default" role="navigation">
-		        <div class="navbar-header">
-		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-		            <span class="sr-only">Toggle navigation</span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		          </button>
-		          <span class="visible-xs navbar-brand">Sidebar menu</span>
-		        </div>
-		        <div class="navbar-collapse collapse sidebar-navbar-collapse">
-		          <ul class="nav navbar-nav">
-		            <li><a href="../mypage/mypage_Volunteer.do">자원봉사 신청하기</a></li>
-		            <li><a href="../mypage/mypage.do">내가 작성한 게시글 확인하기</a></li>
-		            <li><a href="#">Menu Item 3</a></li>
-		            <li><a href="#">Menu Item 4</a></li>
-		            <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
-		          </ul>
-		        </div><!--/.nav-collapse -->
-		      </div>
-		    </div>
-		  </div>
-   
-    <div class="row mb-5">
+	<div class="untree_co-section">
+		 <div class="container" style="width:90%">
+		 <div id="mypage_list">
+		 <div class="row mb-5">
 		        <div class="col-md-12">
 		          <div class="border p-4 rounded" role="alert" style="background-color:#F5E3CF;">
-	           <!--   <img  src="volunteering.png">  -->
-		           	 <b>다독다독에서 자원봉사자를 모집합니다!<br>
+		           	 	 💡 <b>다독다독에서 자원봉사자를 모집합니다!<br>
 						자원봉사자는 자료실에서 자료배가 및 정리, 이용안내 등에 참여하게 됩니다.
-						자원봉사활동을 통해 다독다독의 친구가 되어주세요.</b>
-						
+						자원봉사활동을 통해 다독다독의 친구가 되어주세요.</b> 💡
 		          </div>
 		        </div>
      </div>
-    <div class="row">
-     <div class="col-md-12 mb-12 mb-md-0">
-      <h2 class="h3 mb-3 text-black"><b>자원봉사 신청</b></h2>
+     
+		  <div class="row">
+		  
+		  
+		<jsp:include page="../mypage/mypage_header.jsp"></jsp:include>
+		  
+		    <div class="col-md-9 mb-9 mb-md-0">
+		     <h2 class="h3 mb-3 text-black"><b>자원봉사 신청</b></h2>
       <div class="p-3 p-lg-5 border bg-white">
      <form method="post" action="../member/join_update_ok.do">
      
@@ -341,10 +194,37 @@ p {
   </div>
   </div>
   </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
+		    </div>
+		  </div>
+		  </div>
+
+  	<script>
+  	
+	new Vue({
+		//el : 관리 영역 지정 => container
+		el:'#mypage_list',
+		data:{
+			mypageboardListData:[],
+			curpage:1,
+			totalpage:0,
+			id:${sessionScope.name}
+		},
+		mounted:function(){
+			let _this=this;
+			axios.get("http://localhost:8080/web/board/list_vue.do",{
+				params:{
+					page:_this.curpage
+				}
+			}).then(function(result){
+				//개발자도구창에서 넘어온값 확인가능
+				console.log(result.data);
+				console.log(id);
+				_this.mypageboardListData=result.data;
+				_this.curpage=result.data[0].curpage;
+				_this.totalpage=result.date[0].totalpage;
+			})
+		}
+	})
+	</script>
 </body>
 </html>

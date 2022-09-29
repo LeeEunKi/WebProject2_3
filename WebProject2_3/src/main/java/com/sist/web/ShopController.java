@@ -113,6 +113,7 @@ public class ShopController {
 			no="1";
 		int no_ = Integer.parseInt(no);
 		List<CartVO> list = (List<CartVO>)session.getAttribute("cart");
+		int listsize = list.size();
 		if(list!=null) {
 			for(CartVO vo:list) {
 				//저자 길이 자르기
@@ -131,10 +132,11 @@ public class ShopController {
 		}
 	    model.addAttribute("no", no_);
 	    model.addAttribute("list", list);
+	    model.addAttribute("listsize",listsize);
 	    return "shop/mycart";
 	}
 	@GetMapping("shop/cart_insert.do")
-	public String shop_cart_insert(int no, HttpSession session, Model model) {
+	public String shop_cart_insert(int no, HttpSession session, RedirectAttributes ra) {
 	  List <CartVO> list = (List <CartVO>) session.getAttribute("cart");
 	  //처음 이후에는 세션에 저장된 데이터를 불러옴 -> 맨 처음에만 메모리 할당을 하도록 한다.
 	  if (list == null) {

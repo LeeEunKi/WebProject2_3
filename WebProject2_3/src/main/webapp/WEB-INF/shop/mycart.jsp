@@ -89,16 +89,16 @@ font-family:'Pretendard-Regular';
   <div class="container">
     <div class="row">
       <h3>나의 장바구니</h3>
-      <c:if test="${sessionScope.cart==null }">
+      <c:if test="${listsize==0 }">
         <table class="table">
-          <tr>
-            <td class="text-center">
+          <tr style="height:500px">
+            <td class="text-center" style="vertical-align:middle">
               <h3>장바구니가 비었습니다.</h3>
             </td>
           </tr>
         </table>
       </c:if>
-      <c:if test="${sessionScope.cart!=null }">
+      <c:if test="${listsize!=0 }">
         <table id="books">
           <tr class="warning">
             <th width="10%" class="text-center"><input type="checkbox" id="ckall" name="ckall"></th>

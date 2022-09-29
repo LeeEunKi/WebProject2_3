@@ -128,7 +128,7 @@ font-family:'yangjin'
 							<img src="../img/book_find2.png" style="width:20px;">&nbsp;빌려읽기
 						</a>
 						<a class="btn btn-primary" @click="javascript:history.back()">
-							<img src="../img/list.png" style="width:20px;">&nbsp;목록으로
+							<img src="../img/list.png" style="width:20px;">&nbsp;돌아가기
 						</a>
 					</td>
 				</tr>

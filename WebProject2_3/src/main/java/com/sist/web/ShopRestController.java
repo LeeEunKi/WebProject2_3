@@ -8,17 +8,25 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.sist.vo.*;
+
 import com.sist.dao.*;
+import com.sist.data.ShopDataManager;
 
 @RestController
 public class ShopRestController {
 	@Autowired
 	private ShopDAO dao;
+	@Autowired
+	private ShopDataManager mgr;
+	static String[] orders = {"","no ASC","discount ASC","discount DESC","title"};
+	static String[] types = {"","순수과학","역사","언어","총류","기술과학","종교","철학","문학","예술","사회과학"};
 	
 	@GetMapping(value="shop/list_vue.do", produces="text/plain;charset=UTF-8")
 	public String shop_list_vue(String page, String type, String order) {
@@ -29,8 +37,7 @@ public class ShopRestController {
 		if(order==null)
 			order="1";
 		int index = Integer.parseInt(order);
-		String[] orders = {"","no ASC","discount ASC","discount DESC","title"};
-		String[] types = {"","순수과학","역사","언어","총류","기술과학","종교","철학","문학","예술","사회과학"};
+		
 		int curPage = Integer.parseInt(page);
 		Map map = new HashMap();
 		int rowSize = 12;
@@ -100,7 +107,6 @@ public class ShopRestController {
 		if(publisher==null)
 			publisher="";
 		int index = Integer.parseInt(order);
-		String[] orders = {"","no ASC","discount ASC","discount DESC","title"};
 		int curPage = Integer.parseInt(page);
 		Map map = new HashMap();
 		int rowSize = 12;
@@ -184,6 +190,34 @@ public class ShopRestController {
 		
 		result = obj.toJSONString();
 		
+		return result;
+	}
+	
+	@GetMapping(value="shop/detail_vue_blog.do", produces="text/plain;charset=UTF-8")
+	public String news_find(String booktitle) {
+		if(booktitle==null)
+			booktitle="책";
+		System.out.println(booktitle);
+		String json = mgr.blogFind(booktitle);
+		String result = "";
+		try {
+			JSONParser jp = new JSONParser();
+			JSONObject root = (JSONObject)jp.parse(json);
+			JSONArray arr = (JSONArray)root.get("items");
+			result = arr.toJSONString();
+//			List<BlogVO> list = new ArrayList<BlogVO>();
+//			for(int i=0;i<arr.size();i++) {
+//				BlogVO vo = new BlogVO();
+//				JSONObject obj = (JSONObject)arr.get(i);
+//				vo.setTitle((String)obj.get("title"));
+//				vo.setLink((String)obj.get("link"));
+//				vo.setDescription((String)obj.get("description"));
+//				list.add(vo);
+//			}
+//			model.addAttribute("list",list);
+		}catch(Exception ex) {}
+//		model.addAttribute("main_jsp","../news/find.jsp");
+//		return "main/main";
 		return result;
 	}
 	

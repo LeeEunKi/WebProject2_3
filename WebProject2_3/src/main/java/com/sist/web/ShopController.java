@@ -35,21 +35,26 @@ public class ShopController {
 	
 	//쿠키 저장
 	@GetMapping("shop/detail_before.do")
-	public String shop_detail_before(int no, int page, RedirectAttributes ra, HttpServletResponse response) {
+	public String shop_detail_before(int no, String page, RedirectAttributes ra, HttpServletResponse response) {
+		if(page==null)
+			page="1";
+		int _page = Integer.parseInt(page);
 		Cookie cookie = new Cookie("usedbook"+no, String.valueOf(no));
 		cookie.setPath("/");
 		cookie.setMaxAge(60*60*24);
 		response.addCookie(cookie);
 		
 		ra.addAttribute("no",no);
-		ra.addAttribute("page",page);
+		ra.addAttribute("page",_page);
 		return "redirect:../shop/detail.do"; //shop/detail.do?no=..로 보내줌
 	}
 	
 	//중고책 상세 페이지
 	@GetMapping("shop/detail.do")
 	public String shop_detail(int no, int page, Model model) {
+		ShopVO vo = dao.shopDetailData(no);
 		model.addAttribute("no",no);
+		model.addAttribute("booktitle",vo.getTitle());
 		model.addAttribute("page",page);
 		return "shop/detail";
 	}

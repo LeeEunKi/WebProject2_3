@@ -94,7 +94,7 @@ font-family:'yangjin'
 					<a :href="'../shop/publisher_list.do?publisher='+book_detail.publisher">{{book_detail.publisher}}</a> 발행</td>
 				</tr>
 				<tr>
-					<td class="text-center tt" rowspan="5" width="40%">
+					<td class="text-center tt" rowspan="6" width="40%">
 						<img :src="book_detail.img" style="width:400px; height:550px;":class="[book_detail.state===0?'img':'soldout img']"/>
 					</td>
 				</tr>
@@ -117,7 +117,7 @@ font-family:'yangjin'
 					</td>
 				</tr>
 				<tr>
-					<td class="row1 tt">
+					<td class="tt">
 						<button id="cartBtn" class="btn btn-primary" v-if="book_detail.state===0">
 							<img src="../img/cart.png" style="width:20px;">&nbsp;장바구니 담기
 						</button>
@@ -127,19 +127,30 @@ font-family:'yangjin'
 						<a class="btn btn-primary" :href="'../book/detail.do?no='+book_detail.book_no">
 							<img src="../img/book_find2.png" style="width:20px;">&nbsp;빌려읽기
 						</a>
-						<a :href="'../shop/list.do?page='+book_detail.page" class="btn btn-primary" @click="javascript:history.back()">
+						<a class="btn btn-primary" @click="javascript:history.back()">
 							<img src="../img/list.png" style="width:20px;">&nbsp;목록으로
 						</a>
 					</td>
 				</tr>
+				<tr><td class="tt">
+					<h5>관련 포스팅</h5>
+					<table>
+						<tr v-for="b in blog_list">
+							<td >
+								<a :href="b.link" target="_blank">{{b.title.replace(/(<([^>]+)>)/ig,"")}}</a>
+							</td>
+						</tr>
+					</table>
+				</td></tr>
 			</table>
 		<div stlye="height:20px"></div>
 		<h3>최근 본 책</h3>
-		<div class="row" id="cookie_list">
-			<a :href="'../shop/detail.do?no='+c.no" v-for="c in cookie_list">
-				<img :src="c.img" style="width:60px;height:60px;margin-left:5px">
+		<div class="row" id="cookie_list" style="display:inline;">
+			<a :href="'../shop/detail_before.do?no='+c.no" v-for="c in cookie_list" >
+				<img :src="c.img" style="width:50px;height:60px;margin-left:5px">
 			</a>
 		</div>
+		
 		<div style="height:20px"></div>
 		</div>
 		<div id="dialog-confirm" title="장바구니 담기?" style="display:none">
@@ -187,6 +198,7 @@ new Vue({
 		no:${no},
 		book_detail:{},
 		cookie_list:[],
+		blog_list:[],
 		page:${page}
 	},
 	mounted:function(){
@@ -199,9 +211,18 @@ new Vue({
 		}).then(function(result){
 			_this.book_detail=result.data
 		})
+		axios.get("http://localhost:8080/web/shop/detail_vue_blog.do",{
+			params:{
+				booktitle:'${booktitle}'
+			}
+		}).then(function(result){
+			//console.log(result.data); //확인용출력
+			result.data
+			_this.blog_list=result.data;
+		})
 		axios.get("http://localhost:8080/web/shop/cookie_list.do",{
 		}).then(function(result){
-			console.log(result.data);
+			//console.log(result.data); //확인용출력
 			_this.cookie_list = result.data;
 		}) 
 	},

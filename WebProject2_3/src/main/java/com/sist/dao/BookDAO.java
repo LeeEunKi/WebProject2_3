@@ -60,4 +60,13 @@ public class BookDAO {
 		return mapper.mainHitBookData();
 	}
 	
+	public List<BookVO> CategoryListData(Map map)
+	{
+		return mapper.CategoryListData(map);
+	}
+	
+	public int CategoryTotalPage(String type)
+	{
+		return mapper.CategoryTotalPage(type);
+	}
 }

@@ -15,7 +15,7 @@ public interface BookMapper {
 	@Select("SELECT no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday,loancnt,num "
 			+ "FROM (SELECT no,title,author,type,publisher,img,pub_date,loancnt,rownum AS num "
 			+ "FROM (SELECT no,title,author,type,publisher,img,pub_date,loancnt "
-			+ "FROM BOOK_3 ORDER BY no DESC)) "
+			+ "FROM BOOK_3 ORDER BY hit DESC)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<BookVO> bookListData(Map map);
 	
@@ -59,4 +59,23 @@ public interface BookMapper {
 			+ "FROM book_3 ORDER BY hit DESC)) "
 			+ "WHERE num <=4")
 	public List<BookVO> mainHitBookData();
+	
+	//도서 주제별 검색
+	/*
+	 * SELECT  no, title, author, type, img, publisher, num
+		FROM (SELECT no, title, author, type, img, publisher, rownum as num 
+		FROM (SELECT no, title, author, type, img, publisher
+		FROM book_3 WHERE type LIKE '%'||#{type}||'%' ORDER BY pub_date DESC ))
+		WHERE num BETWEEN #{start} AND #{end}
+	 */
+	@Select("SELECT no, title, author, type, img, publisher, num "
+			+ "FROM (SELECT no, title, author, type, img, publisher, rownum as num "
+			+ "FROM (SELECT no, title, author, type, img, publisher "
+			+ "FROM book_3 WHERE type LIKE '%'||#{type}||'%' ORDER BY pub_date DESC)) "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
+	public List<BookVO> CategoryListData(Map map);
+	
+	//도서 주제별 토탈 페이지
+	@Select("SELECT COUNT (*) FROM book_3 WHERE type LIKE '%'||#{type}||'%'")
+	public int CategoryTotalPage(String type);
 }

@@ -73,7 +73,6 @@ body {
   position: relative;
   display: inline-block;
   padding: 15px 15px 25px;
-  border: 1px solid transparent;
   border-bottom: 0;
   cursor: pointer;
   font-weight: 600;
@@ -98,7 +97,7 @@ body {
 
 .tabset > input:checked + label {
   border-color: #ccc;
-  border-bottom: 1px solid #fff;
+  border-bottom: none;
   margin-bottom: -1px;
 }
 
@@ -194,10 +193,10 @@ a:hover{
 					  </td>
 					</tr>
 		            <tr>
-		              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">
+		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">
 		             	도서명
 		              </td>
-		              <td>
+		              <td style="width: 85%">
 		                <h3>{{vo.title}}&nbsp;&nbsp; 
 		                <c:if test="${sessionScope.id==null }">
 		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like">
@@ -213,37 +212,38 @@ a:hover{
 		              </td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">저자명</td>
-		              <td style="width: 80%">{{vo.author}}</td>
+		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">저자명</td>
+		              <td style="width: 85%">{{vo.author}}</td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판사</td>
-		              <td style="width: 80%">{{vo.publisher}}</td>
+		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판사</td>
+		              <td style="width: 85%">{{vo.publisher}}</td>
 		            </tr>
 		            <tr>
-		              <td style="width: 20%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판일자</td>
-		              <td style="width: 80%">{{vo.dbday}}</td>
+		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판일자</td>
+		              <td style="width: 85%">{{vo.dbday}}</td>
 		            </tr>
 		            <tr>
-		              <td colspan="2">
+		            <td></td>
+		              <td style="float: right;">
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;flo">도서 예약</span>
+		                <span class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;flo">도서 예약</span>
 		              </c:if>
 		              <c:if test="${sessionScope.id!=null }">
-		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">도서 예약</a>
+		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">도서 예약</a>
 		              </c:if>
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</span>
+		                <span class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</span>
 		              </c:if>
 
 		              <c:if test="${sessionScope.id!=null && lcheck==0 }">
 		                 
-		                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</a>
+		                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 추가</a>
 		              </c:if>
 		              <c:if test="${sessionScope.id!=null && lcheck!=0 }">
-		                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 삭제</a>
+		                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 삭제</a>
 		              </c:if>
-		                <a href="../book/search.do" class="btn btn-lg btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >목록으로</a>
+		                <a href="../book/search.do" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;" >목록으로</a>
 		              </td>
 		            </tr>
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->

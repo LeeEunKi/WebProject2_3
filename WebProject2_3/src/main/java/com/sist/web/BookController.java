@@ -80,4 +80,10 @@ public class BookController {
 		return "redirect:../book/detail.do?no="+no;
 		
 	}
+	
+	@GetMapping("book/categorysearch.do")
+	public String book_category()
+	{
+		return "book/categorysearch";
+	}
 }

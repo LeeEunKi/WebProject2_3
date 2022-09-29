@@ -1,22 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -65,232 +54,56 @@ $(function(){
 })
 </script>
 <style type="text/css">
- .carousel-inner > .carousel-item > img{
-       width: 800px;
-      height: 510px; 
-    }
-.boxarea {
-	background-color: #EFEFEF;
-	padding: 10px;
-	margin: 10px auto;
-	width: 100%;
-	
-	
-}
-
-.content-area {
-	overflow: hidden;
+.box {
   position: relative;
-  width:100%;
+  z-index: 1;
+  background: #FAFAFA;
+  max-width: 320px;
+  min-width: 320px;
+  margin: 0 auto 20px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.15);
 }
-
-.content {
-	position: relative;
-  background-color:F7FFF7;
-	height: 100%;
-/* 	border-top: 1px solid silver; */
-	display: inline-block;
-	white-space: normal;
+.box input {
+  font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
+  outline: 0 !important;
+  background: #FFF !important;
+  width: 100% !important;
+  border: 0 !important;
+  margin: 0 0 15px !important;
+  padding: 15px !important;
+  box-sizing: border-box !important;
+  font-size: 14px !important;
 }
-
-
-detail-nav {
-	box-sizing: border-box;
-	width: 50%
+.box button {
+  font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
+  text-transform: uppercase !important; 
+  outline: 0 !important;
+  background: #405173 !important;
+  width: 100% !important;
+  border: 0 !important;
+  padding: 15px !important;
+  color: #FAFAFA !important;
+  font-size: 14px !important;
+  -webkit-transition: all 0.3 ease !important;
+  transition: all 0.3 ease !important;
+  cursor: pointer !important;
 }
-
-nav ul.nav-tabs {
-	margin: 0px auto;
-	padding: 0px;
-	display: table;
-	width: 100%;
-}	
-.nav-tabs li {
-	text-transform: uppercase;
-	font-size: 17px;
-  font-weight: 500;
-	list-style: none;
-	display: table-cell;
-	padding-right: 2px;
-	border-bottom: 5px solid #2964D9;
+.box button:hover,.box button:active,.box button:focus {
+  background: #43A047;
 }
-
-.nav-tabs li:last-child {
-  padding-right: 0px;
+.box .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
 }
-
-.nav-tabs li a {
-	display: block;
-	color: white;
-	text-align: center;
-	background-color: #6D93DF;
-	padding: 10px 10px;
-	text-decoration: none;
- 
+.box .message a {
+  color: #4CAF50;
+  text-decoration: none;
 }
-
-.nav-tabs li a:hover {
-	background-color: #FF6B6B;
-}
-
-
-.nav-tabs li a.active {
-	background-color: #2964D9;
-}
-
-.nav-tabs li a:visited {
-	color: white;
-}
-
-.section-detail {
-	margin: 0px 0px;
-	padding: 0px;
-	height:350px;
-/*     width:530px; */
-    float:left;
-}
-
-.container-detail {
-	height: 350px;
-	width: 7000px;
-	margin: 0px;
-	padding: 0;
-	padding-top: 0px;
-	position: block;
-	white-space: nowrap;
-	overflow: hidden;
-	transition: all 0.3s ease-in;
-}
-
-/* https://coolors.co/1a535c-4ecdc4-f7fff7-ff6b6b-ffe66d */    
-
-
-
-
-.tabset > input[type="radio"] {
-  position: absolute;
-  left: -200vw;
-}
-
-.tabset .tab-panel {
+.box .register-box {
   display: none;
-}
-
-.tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
-.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
-.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
-.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
-.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
-.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
-  display: block;
-}
-
-/*
- Styling
-*/
-
-.tabset > label {
-  position: relative;
-  display: inline-block;
-  padding: 15px 15px 25px;
-  border: 1px solid transparent;
-  border-bottom: 0;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.tabset > label::after {
-  content: "";
-  position: absolute;
-  left: 15px;
-  bottom: 10px;
-  width: 22px;
-  height: 4px;
-  background: #8d8d8d;
-}
-
-.tabset > label:hover,
-.tabset > input:focus + label {
-  color: #06c;
-}
-
-.tabset > label:hover::after,
-.tabset > input:focus + label::after,
-.tabset > input:checked + label::after {
-  background: #06c;
-}
-
-.tabset > input:checked + label {
-  border-color: #ccc;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -1px;
-}
-
-.tab-panel {
-  padding: 30px 0;
-  border-top: 1px solid #ccc;
-}
-
-/*
- Demo purposes only
-*/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-.col-sm-6 {
-  padding: 30px;
-}
-
-.tabset {
-  max-width: 65em;
-}
-
-  height:100%;
-}
-body:before{
-  content:'';
-  height:100%;
-  display:inline-block;
-  vertical-align:middle;
-}
-button1{
-  background:#1AAB8A;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-button1:hover{
-  background:#fff;
-  color:#1AAB8A;
-}
-button1:before,button1:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #1AAB8A;
-  transition:400ms ease all;
-}
-button1:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-button1:hover:before,button1:hover:after{
-  width:100%;
-  transition:800ms ease all;
 }
 .project-box {
     --main-color-card: #dbf6fd;
@@ -298,274 +111,495 @@ button1:hover:before,button1:hover:after{
     padding: 16px;
     background-color: white;
 }
+.srchBox {
+    float: left;
+    width: 455px;
+    height: 100px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    padding: 16px 15px;
+    margin: 264px 29px 0 0;
+    box-sizing: border-box;
+    background: #465684;
+}
 
 </style>
+
 </head>
 <body>
-<div class="container-fluid">
-	<div class="row">
-	<div class="col-lg-2"></div>
-	   <div class="col-lg-6" style="margin-top: 20px">
-			 <div id="demo" class="carousel slide" data-ride="carousel">
-	
-		    <div class="carousel-inner">
-		      <!-- 슬라이드 쇼 -->
-		      <div class="carousel-item active">
-		        <!--가로-->
-		        <img class="d-block w-100" 
-		          src="https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-		          alt="First slide">
-		          <div class="carousel-caption d-none d-md-block">
-		              <h5>TEST</h5>
-		              <p>testtesttest</p>
-		        </div>
-		      </div>
-		      <div class="carousel-item">
-		        <img class="d-block w-100"
-		          src="https://images.pexels.com/photos/2355519/pexels-photo-2355519.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-		          alt="Second slide">
-		      </div>
-		      <div class="carousel-item">
-		        <img class="d-block w-100"
-		          src="https://images.pexels.com/photos/2544554/pexels-photo-2544554.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-		          alt="Third slide">
-		      </div>
-		    
-		    <!-- / 슬라이드 쇼 끝 -->
-		
-		    <!-- 왼쪽 오른쪽 화살표 버튼 -->
-		    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-		      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		      <!-- <span>Previous</span> -->
-		    </a>
-		    <a class="carousel-control-next" href="#demo" data-slide="next">
-		      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		      <!-- <span>Next</span> -->
-		    </a>
-		    <!-- / 화살표 버튼 끝 -->
-		
-		  </div>
-	   </div>
+		<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-7">
+
+							<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner">
+								  <div class="carousel-item active">
+									<img class="d-block w-100" src="../images/post-1.jpg" alt="First slide">
+								  </div>
+								  <div class="carousel-item">
+									<img class="d-block w-100" src="../images/post-2.jpg" alt="Second slide">
+								  </div>
+								  <div class="carousel-item">
+									<img class="d-block w-100" src="../images/post-3.jpg" alt="Third slide">
+								  </div>
+								</div>
+								<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+								  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								  <span class="sr-only">Previous</span>
+								</a>
+								<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+								  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								  <span class="sr-only">Next</span>
+								</a>
+							  </div>
+							    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+									integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+									crossorigin="anonymous"></script>
+								<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+									integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+									crossorigin="anonymous"></script>
+								<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+									integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+									crossorigin="anonymous"></script>
+								<script>
+									$('.carousel').carousel({
+									interval: 2000 //기본 5초
+									})
+								</script>
+						</div>
+						
+		<div class="col-lg-5">
+			<div class="intro-excerpt">
+				<c:if test="${sessionScope.id==null }">
+		          <div class="login-page">
+		            <div class="box" style="height: 390px; width: 400px;">
+		              <form class="login-box">
+		                <input type="text" placeholder="username" id="id" size=15 class="input-sm" value="${id }">
+		                <input type="password" placeholder="password" type=password id="pwd" size=15 class="input-sm">
+		               	 <tr>
+		               	  <td class="text-center" colspan="2">
+				            <Button value="로그인" class="btn btn-sm btn-danger" id="logBtn">
+				          	  Login
+				            </Button>
+				          </td>
+				         </tr>
+		                <p class="message">Not registered? <a href="../member/join.do">Create an account</a></p>
+		              </form>
+		            </div>
+		          </div>
+		          </c:if>
+		          <c:if test="${sessionScope.id!=null }">
+		          <div class="login-page">
+		            <div class="box">
+		              <form class="login-box">
+		              	<b>"${sessionScope.name}"</b>님,<br>
+		              	방문을 환영합니다! 
+		              	<br>
+		              	<br>
+		              	<!-- <a href="#">Create an account</a></p>  -->
+		                <button>
+		                  <a href="../mypage/mypage_Volunteer.do">My LIBRARY</a>
+		                </button>
+		                <br>
+		                <br>
+		                 <p><a href="../member/join_before.do">회원정보 수정</a></p> 
+		                 <p><a href="../member/logout.do">로그아웃</a></p> 
+		              </form>
+		            </div>
+		          </div>
+		          </c:if>
+				</div>
+			</div>
+		</div>
 	</div>
-
-
-
-  <script>
-    $('.carousel').carousel({
-      interval: 2000 //기본 5초
-    })
-</script>
-
-      
-	 <div class="col-lg-2" style="margin-top: 20px;">
-        <c:if test="${sessionScope.id==null }">
-          <div class="login-page">
-            <div class="box">
-              <form class="login-box">
-                <input type="text" placeholder="username" id="id" size=15 class="input-sm" value="${id }">
-                <input type="password" placeholder="password" type=password id="pwd" size=15 class="input-sm">
-               	 <tr>
-               	  <td class="text-center" colspan="2">
-		            <Button value="로그인" class="btn btn-sm btn-danger" id="logBtn">
-		          	  Login
-		            </Button>
-		          </td>
-		         </tr>
-                <p class="message">Not registered? <a href="../member/join.do">Create an account</a></p>
-              </form>
-            </div>
-          </div>
-          </c:if>
-          <c:if test="${sessionScope.id!=null }">
-          <div class="login-page">
-            <div class="box">
-              <form class="login-box">
-              	<b>"${sessionScope.name}"</b>님,<br>
-              	방문을 환영합니다! 
-              	<br>
-              	<br>
-              	<!-- <a href="#">Create an account</a></p>  -->
-                <button onclick="location.href='../member/mypage.do';">
-                  My LIBRARY
-                </button>
-                <br>
-                <br>
-                 <p><a href="../member/join_before.do">회원정보 수정</a></p> 
-                 <p><a href="../member/logout.do">로그아웃</a></p> 
-               
-                
-              </form>
-            </div>
-          </div>
-          </c:if>
-          <div class="box" style="height: 180px;">
-            <p>Some text...</p>
-          </div>
-        </div>
-        <div class="col-lg-2"></div>
-  </div>
-
-
-
-
-
-  <div class="row"    style=" height: 400px;">
-  <div class="col-lg-2"></div>
-    <div class="col-sm-6">
-      
-      <div class="tabset">
-		  <!-- Tab 1 -->
-		  <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
-		  <label for="tab1">이달의 책</label>
-		  <!-- Tab 2 -->
-		  <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
-		  <label for="tab2">이용안내</label>
-		  <!-- Tab 3 -->
-		  <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-		  <label for="tab3">시설안내</label>
-		  
-		  <div class="tab-panels">
-		    <section id="marzen" class="tab-panel">
-		      <h2>이달의 책</h2>
-		      <p><strong>Overall Impression:</strong> An elegant, malty German amber lager with a clean, rich, toasty and bready malt flavor, restrained bitterness, and a dry finish that encourages another drink. The overall malt impression is soft, elegant, and complex, with a rich aftertaste that is never cloying or heavy.</p>
-		      <p><strong>History:</strong> As the name suggests, brewed as a stronger “March beer” in March and lagered in cold caves over the summer. Modern versions trace back to the lager developed by Spaten in 1841, contemporaneous to the development of Vienna lager. However, the Märzen name is much older than 1841; the early ones were dark brown, and in Austria the name implied a strength band (14 °P) rather than a style. The German amber lager version (in the Viennese style of the time) was first served at Oktoberfest in 1872, a tradition that lasted until 1990 when the golden Festbier was adopted as the standard festival beer.</p>
-		  </section>
-		    <section id="rauchbier" class="tab-panel">
-		      <h2>이용안내</h2>
-		      <p><strong>Overall Impression:</strong>  An elegant, malty German amber lager with a balanced, complementary beechwood smoke character. Toasty-rich malt in aroma and flavor, restrained bitterness, low to high smoke flavor, clean fermentation profile, and an attenuated finish are characteristic.</p>
-		      <p><strong>History:</strong> A historical specialty of the city of Bamberg, in the Franconian region of Bavaria in Germany. Beechwood-smoked malt is used to make a Märzen-style amber lager. The smoke character of the malt varies by maltster; some breweries produce their own smoked malt (rauchmalz).</p>
-		    </section>
-		    <section id="dunkles" class="tab-panel">
-		      <h2>시설안내</h2>
-		      <p><strong>Overall Impression:</strong> A dark, strong, malty German lager beer that emphasizes the malty-rich and somewhat toasty qualities of continental malts without being sweet in the finish.</p>
-		      <p><strong>History:</strong> Originated in the Northern German city of Einbeck, which was a brewing center and popular exporter in the days of the Hanseatic League (14th to 17th century). Recreated in Munich starting in the 17th century. The name “bock” is based on a corruption of the name “Einbeck” in the Bavarian dialect, and was thus only used after the beer came to Munich. “Bock” also means “Ram” in German, and is often used in logos and advertisements.</p>
-		    </section>
-	     </div>
-	   </div>
-  
 </div>
-      
-      
-      
-      
-     
-    
-    
-    <div class="col-sm-2 text-center" style="margin-top: 20px">
-	    <div class="box project-box" style="height: 350px; padding: 35px;">
+		<!-- End Hero Section -->
 
-		       <jsp:include page="room_reserve.jsp"></jsp:include>
+		<!-- Start Product Section -->
+		<!-- <div class="product-section">
+			<div class="container">
+				
+			</div>
+		</div> -->
+		<!-- End Product Section -->
 
-	     </div>
-    </div> 
-     
-        <div class="col-lg-2"></div>
-     </div>
+		<!-- Start Why Choose Us Section -->
+		<div class="why-choose-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-6">
+						<h2 class="section-title">바로가기</h2>
+   						 <div class="row my-5">
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<a href="../book/search.do">
+											<img src="../img/book_find.png" style="width:50px;" alt="Image" class="imf-fluid">
+									</div>
+									<h3>도서검색</h3></a>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
 
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<a href="../study/room_list.do">
+											<img src="../img/room_reserve.png" style="width:50px;" alt="Image" class="imf-fluid">
+									</div>
+									<h3>열람실 예약</h3></a>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
 
-  	<div class="container text-center"> 
-  	  <div class="row">
-		<jsp:include page="quickmenu.jsp"></jsp:include>
-      </div>
-	</div>
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<a href="../shop/list.do">
+											<img src="../img/book_mall.png" style="width:50px;" alt="Image" class="imf-fluid">
+									</div>
+									<h3>중고서적 온라인몰</h3></a>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+									<a href="../board/list.do">
+										<img src="../img/community.png" style="width:50px;" alt="Image" class="imf-fluid">
+									</div>
+									<h3>커뮤니티</h3></a>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-md-12 col-lg-5 mb-5 mb-lg-0 box1">
+					  
+		      			 <jsp:include page="room_reserve.jsp"></jsp:include>
+	    			 
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Why Choose Us Section -->
+
+		<!-- Start We Help Section -->
+		<!-- <div class="we-help-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-7 mb-5 mb-lg-0">
+						<div class="imgs-grid">
+							<div class="grid grid-1"><img src="../images/img-grid-1.jpg" alt="Untree.co"></div>
+							<div class="grid grid-2"><img src="../images/img-grid-2.jpg" alt="Untree.co"></div>
+							<div class="grid grid-3"><img src="../images/img-grid-3.jpg" alt="Untree.co"></div>
+						</div>
+					</div>
+					<div class="col-lg-5 ps-lg-5">
+						<h2 class="section-title mb-4">We Help You Make Modern Interior Design</h2>
+						<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+
+						<ul class="list-unstyled custom-list my-4">
+							<li>Donec vitae odio quis nisl dapibus malesuada</li>
+							<li>Donec vitae odio quis nisl dapibus malesuada</li>
+							<li>Donec vitae odio quis nisl dapibus malesuada</li>
+							<li>Donec vitae odio quis nisl dapibus malesuada</li>
+						</ul>
+						<p><a herf="#" class="btn">Explore</a></p>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- End We Help Section -->
+
+		<!-- Start Popular Product -->
+		<!-- <div class="popular-product">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+						<div class="product-item-sm d-flex">
+							<div class="thumbnail">
+								<img src="../images/product-1.png" alt="Image" class="img-fluid">
+							</div>
+							<div class="pt-3">
+								<h3>Nordic Chair</h3>
+								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
+								<p><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+						<div class="product-item-sm d-flex">
+							<div class="thumbnail">
+								<img src="../images/product-2.png" alt="Image" class="img-fluid">
+							</div>
+							<div class="pt-3">
+								<h3>Kruzo Aero Chair</h3>
+								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
+								<p><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+						<div class="product-item-sm d-flex">
+							<div class="thumbnail">
+								<img src="../images/product-3.png" alt="Image" class="img-fluid">
+							</div>
+							<div class="pt-3">
+								<h3>Ergonomic Chair</h3>
+								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
+								<p><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div> -->
+		<!-- End Popular Product -->
+
+		<!-- Start Testimonial Slider -->
+		<div class="testimonial-section">
+			<div class="container">
+				<div class="row mb-5 align-items-center">
+					<div class="col-md-6">
+						<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">오늘의 책</h2>
+						<p class="sub-title">The latest and best lifstyle articles selected by our editorial office.</p>
+					</div>
+					<div class="col-md-6 text-md-end">
+						<div id="testimonial-nav">
+							<span class="prev" data-controls="prev">Prev</span>
+							
+							<span class="next" data-controls="next">Next</span>
+						</div>
+					</div>
+				</div>
+
+							<div class="testimonial-slider">
+								
+								
+						
+								<div class="item">
+									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
+										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+										<div class="rate">
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+										</div>
+										<h3 class="h5 text-primary mb-4">James Smith</h3>
+										<blockquote>
+											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+										</blockquote>
+										<p class="text-black-50">Designer, Co-founder</p>
+									</div>
+									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
+										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+										<div class="rate">
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+										</div>
+										<h3 class="h5 text-primary mb-4">James Smith</h3>
+										<blockquote>
+											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+										</blockquote>
+										<p class="text-black-50">Designer, Co-founder</p>
+									</div>
+									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
+										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+										<div class="rate">
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+										</div>
+										<h3 class="h5 text-primary mb-4">James Smith</h3>
+										<blockquote>
+											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+										</blockquote>
+										<p class="text-black-50">Designer, Co-founder</p>
+									</div>
+								</div>
+
+								<div class="item">
+									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
+										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+										<div class="rate">
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+										</div>
+										<h3 class="h5 text-primary mb-4">James Smith</h3>
+										<blockquote>
+											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+										</blockquote>
+										<p class="text-black-50">Designer, Co-founder</p>
+									</div>
+									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
+										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+										<div class="rate">
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+										</div>
+										<h3 class="h5 text-primary mb-4">James Smith</h3>
+										<blockquote>
+											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+										</blockquote>
+										<p class="text-black-50">Designer, Co-founder</p>
+									</div>
+									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
+										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+										<div class="rate">
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+											<span class="icon-star text-warning"></span>
+										</div>
+										<h3 class="h5 text-primary mb-4">James Smith</h3>
+										<blockquote>
+											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+										</blockquote>
+										<p class="text-black-50">Designer, Co-founder</p>
+									</div>
+								</div>
+								
+								
+								
+								 
+								<!-- END item -->
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Testimonial Slider -->
+
+		<!-- Start Blog Section -->
+		<div class="blog-section">
+			
+			<jsp:include page="books.jsp"></jsp:include>
+			
+		</div>
+		<!-- End Blog Section -->	
 	
-	<div class="container-fluid">
-	    <jsp:include page="books.jsp"></jsp:include>
-	</div>
-</div>	
-
-	
+		<!-- 슬라이더 자바스크립트 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-$('.slider').each(function() {
-	  var $this = $(this);
-	  var $group = $this.find('.slide_group');
-	  var $slides = $this.find('.slide');
-	  var bulletArray = [];
-	  var currentIndex = 0;
-	  var timeout;
-	  
-	  function move(newIndex) {
-	    var animateLeft, slideLeft;
-	    
-	    advance();
-	    
-	    if ($group.is(':animated') || currentIndex === newIndex) {
-	      return;
-	    }
-	    
-	    bulletArray[currentIndex].removeClass('active');
-	    bulletArray[newIndex].addClass('active');
-	    
-	    if (newIndex > currentIndex) {
-	      slideLeft = '100%';
-	      animateLeft = '-100%';
-	    } else {
-	      slideLeft = '-100%';
-	      animateLeft = '100%';
-	    }
-	    
-	    $slides.eq(newIndex).css({
-	      display: 'block',
-	      left: slideLeft
-	    });
-	    $group.animate({
-	      left: animateLeft
-	    }, function() {
-	      $slides.eq(currentIndex).css({
-	        display: 'none'
-	      });
-	      $slides.eq(newIndex).css({
-	        left: 0
-	      });
-	      $group.css({
-	        left: 0
-	      });
-	      currentIndex = newIndex;
-	    });
-	  }
-	  
-	  function advance() {
-	    clearTimeout(timeout);
-	    timeout = setTimeout(function() {
-	      if (currentIndex < ($slides.length - 1)) {
-	        move(currentIndex + 1);
-	      } else {
-	        move(0);
-	      }
-	    }, 4000);
-	  }
-	  
-	  $('.next_btn').on('click', function() {
-	    if (currentIndex < ($slides.length - 1)) {
-	      move(currentIndex + 1);
-	    } else {
-	      move(0);
-	    }
-	  });
-	  
-	  $('.previous_btn').on('click', function() {
-	    if (currentIndex !== 0) {
-	      move(currentIndex - 1);
-	    } else {
-	      move(3);
-	    }
-	  });
-	  
-	  $.each($slides, function(index) {
-	    var $button = $('<a class="slide_btn">&bull;</a>');
-	    
-	    if (index === currentIndex) {
-	      $button.addClass('active');
-	    }
-	    $button.on('click', function() {
-	      move(index);
-	    }).appendTo('.slide_buttons');
-	    bulletArray.push($button);
-	  });
-	  
-	  advance();
-	});
-</script>
-
+	$('.slider').each(function() {
+		  var $this = $(this);
+		  var $group = $this.find('.slide_group');
+		  var $slides = $this.find('.slide');
+		  var bulletArray = [];
+		  var currentIndex = 0;
+		  var timeout;
+		  
+		  function move(newIndex) {
+			var animateLeft, slideLeft;
+			
+			advance();
+			
+			if ($group.is(':animated') || currentIndex === newIndex) {
+			  return;
+			}
+			
+			bulletArray[currentIndex].removeClass('active');
+			bulletArray[newIndex].addClass('active');
+			
+			if (newIndex > currentIndex) {
+			  slideLeft = '100%';
+			  animateLeft = '-100%';
+			} else {
+			  slideLeft = '-100%';
+			  animateLeft = '100%';
+			}
+			
+			$slides.eq(newIndex).css({
+			  display: 'block',
+			  left: slideLeft
+			});
+			$group.animate({
+			  left: animateLeft
+			}, function() {
+			  $slides.eq(currentIndex).css({
+				display: 'none'
+			  });
+			  $slides.eq(newIndex).css({
+				left: 0
+			  });
+			  $group.css({
+				left: 0
+			  });
+			  currentIndex = newIndex;
+			});
+		  }
+		  
+		  function advance() {
+			clearTimeout(timeout);
+			timeout = setTimeout(function() {
+			  if (currentIndex < ($slides.length - 1)) {
+				move(currentIndex + 1);
+			  } else {
+				move(0);
+			  }
+			}, 4000);
+		  }
+		  
+		  $('.next_btn').on('click', function() {
+			if (currentIndex < ($slides.length - 1)) {
+			  move(currentIndex + 1);
+			} else {
+			  move(0);
+			}
+		  });
+		  
+		  $('.previous_btn').on('click', function() {
+			if (currentIndex !== 0) {
+			  move(currentIndex - 1);
+			} else {
+			  move(3);
+			}
+		  });
+		  
+		  $.each($slides, function(index) {
+			var $button = $('<a class="slide_btn">&bull;</a>');
+			
+			if (index === currentIndex) {
+			  $button.addClass('active');
+			}
+			$button.on('click', function() {
+			  move(index);
+			}).appendTo('.slide_buttons');
+			bulletArray.push($button);
+		  });
+		  
+		  advance();
+		});
+	</script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/tiny-slider.js"></script>
+<script src="../js/custom.js"></script>
 </body>
 </html>

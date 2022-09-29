@@ -45,7 +45,6 @@ $(function(){
 	})
 })
 </script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
 #books {
   font-family: Arial, Helvetica, sans-serif;
@@ -68,43 +67,39 @@ $(function(){
   background-color: #6a8b7f;
   color: white;
 }
-.container{
-  margin-top: 50px;
-}
-.row{
-  margin : 0px auto;
-}
 h3{
 font-family:'yangjin' !important;
 }
 *{
 font-family:'Pretendard-Regular';
-}
+} 
 </style>
 </head>
 <body>
 <%--체크된 것만 결제되도록 처리
 	https://dev-doodoo.tistory.com/204
  --%>
-  <div class="container">
+  <div class="container" style="margin-top:50px">
     <div class="row">
       <h3>나의 장바구니</h3>
-      <c:if test="${sessionScope.cart==null }">
+      <hr>
+      <c:if test="${listsize==0 }">
         <table class="table">
-          <tr>
-            <td class="text-center">
+          <tr style="height:500px">
+            <td class="text-center" style="vertical-align:middle">
               <h3>장바구니가 비었습니다.</h3>
             </td>
           </tr>
         </table>
       </c:if>
-      <c:if test="${sessionScope.cart!=null }">
+      <c:if test="${listsize!=0 }">
         <table id="books">
           <tr class="warning">
             <th width="10%" class="text-center"><input type="checkbox" id="ckall" name="ckall"></th>
             <th width="10%" class="text-center"></th>
-            <th width="60%" class="text-center">상품명</th>
-            <th width="10%" class="text-center">가격</th>
+            <th width="40%" class="text-center">상품명</th>
+            <th width="10%" class="text-center">책 상태</th>
+            <th width="20%" class="text-center">가격</th>
             <th width="10%" class="text-center">비고</th>
           </tr>
           <form method="post" action="../shop/purchase.do">
@@ -114,21 +109,28 @@ font-family:'Pretendard-Regular';
 	              	<input type="hidden" value="${vo.no }">
 	              <td width="10%" class="text-center">
 	                <img src="${vo.poster }" style="width:40px;height:60px;"></td>
-	              <td width="60%" >
-	              	<a href="../shop/detail.do?no=${vo.no }">${vo.name }</a>
+	              <td width="40%" >
+	              	<a href="../shop/detail_before.do?no=${vo.no }">${vo.name }</a>
 	              	<br>${vo.author}&nbsp;|&nbsp;${vo.publisher }</td>
-	              <td width="10%" class="text-center"><fmt:formatNumber value="${vo.price}" type="number" maxFractionDigits="3"/>원</td>
+	              <td width="10%" class="text-center">${vo.condition }</td>
+	              <td width="20%" class="text-center">
+	              	(할인가)<fmt:formatNumber value="${vo.discount}" type="number" maxFractionDigits="3"/>원
+	              </td>
 	              <td width="10%" class="text-center"><a href="../shop/cart_cancel.do?no=${vo.no }" class="btn btn-sm btn-danger">삭제</a></td>
 	            </tr>
 	          </c:forEach>
-	          <tr><td colspan="5" class="text-right">
-	          	<h3 id="totalprice"></h3>
+	          <tr><td colspan="6" style="text-align:right;">
+	          	<h3 id="totalprice" style="height:35px;"></h3>
 	          	<a href="cart_total_delete.do?no=${no }" class="btn btn-sm btn-danger">장바구니 전체삭제</a>
-              	<a href="../shop/detail.do?no=${no }" class="btn btn-sm btn-danger">상품으로 돌아가기</a>
+	          	<c:if test="${no!=0 }">
+              		<a href="../shop/detail_before.do?no=${no }" class="btn btn-sm btn-danger">상품으로 돌아가기</a>
+              	</c:if>
                 <button type="submit" class="btn btn-sm btn-success">선택한 상품 구매</button>
               </td></tr>
           </form>
         </table>
       </c:if>
+   </div>
+ </div>
 </body>
 </html>

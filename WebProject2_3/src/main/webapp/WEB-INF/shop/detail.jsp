@@ -87,7 +87,9 @@ font-family:'yangjin'
 		<div class="row" id="book_detail">
 			<table class="table" style="border:none;">
 				<tr>
-					<td class="t" colspan="2" width="40%"><h3>{{book_detail.title}}</h3></td>
+					<td class="t" colspan="2" width="40%">
+						<h3 style="white-space: pre-wrap; width: 80%;">{{book_detail.title}}</h3>
+					</td>
 				</tr>
 				<tr>
 					<td class="t" colspan="2" width="40%">{{book_detail.author}} 지음&nbsp;|&nbsp;
@@ -128,7 +130,7 @@ font-family:'yangjin'
 							<img src="../img/book_find2.png" style="width:20px;">&nbsp;빌려읽기
 						</a>
 						<a class="btn btn-primary" @click="javascript:history.back()">
-							<img src="../img/list.png" style="width:20px;">&nbsp;목록으로
+							<img src="../img/list.png" style="width:20px;">&nbsp;돌아가기
 						</a>
 					</td>
 				</tr>

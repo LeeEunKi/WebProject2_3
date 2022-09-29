@@ -340,7 +340,7 @@ div.content {
 				this.send();
 			}
  		}
- 	})
+ 	}) 
 
 </script>
 </body>

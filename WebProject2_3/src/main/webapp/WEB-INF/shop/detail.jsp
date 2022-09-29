@@ -87,7 +87,9 @@ font-family:'yangjin'
 		<div class="row" id="book_detail">
 			<table class="table" style="border:none;">
 				<tr>
-					<td class="t" colspan="2" width="40%"><h3>{{book_detail.title}}</h3></td>
+					<td class="t" colspan="2" width="40%">
+						<h3 style="white-space: pre-wrap; width: 80%;">{{book_detail.title}}</h3>
+					</td>
 				</tr>
 				<tr>
 					<td class="t" colspan="2" width="40%">{{book_detail.author}} 지음&nbsp;|&nbsp;

@@ -110,11 +110,12 @@ public class ShopController {
 	@GetMapping("shop/cart_list.do")
 	public String shop_cart_list(String no, HttpSession session, Model model) {
 		if(no==null) 
-			no="1";
+			no="0";
 		int no_ = Integer.parseInt(no);
 		List<CartVO> list = (List<CartVO>)session.getAttribute("cart");
-		int listsize = list.size();
+		int listsize = 0;
 		if(list!=null) {
+			listsize = list.size();
 			for(CartVO vo:list) {
 				//저자 길이 자르기
 				String author = vo.getAuthor();
@@ -148,10 +149,11 @@ public class ShopController {
 	  cvo.setNo(no);
 	  cvo.setName(vo.getTitle());
 	  cvo.setPoster(vo.getImg());
-	  cvo.setPrice(vo.getDiscount());
+	  cvo.setPrice(vo.getPrice());
 	  cvo.setPublisher(vo.getPublisher());
 	  cvo.setAuthor(vo.getAuthor());
-
+	  cvo.setCondition(vo.getCondition());
+	  cvo.setDiscount(vo.getDiscount());
 	  boolean bCheck = false;
 	  for (CartVO avo: list) { 
 		  //이미 장바구니에 있는걸 담은 경우

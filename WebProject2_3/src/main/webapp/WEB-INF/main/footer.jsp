@@ -13,8 +13,8 @@
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
-						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">다독다독<span>.</span></a></div>
+						<p class="mb-4">더 많은 사람들이 마음 놓고 종이책의 물성을 느끼며 독서를 하길 권하는 취지에서 만들어진 사이트입니다.</p>
 
 						<ul class="list-unstyled custom-social">
 							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>

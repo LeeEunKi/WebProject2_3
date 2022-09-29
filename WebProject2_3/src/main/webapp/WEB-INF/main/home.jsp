@@ -113,13 +113,14 @@ $(function(){
 }
 .srchBox {
     float: left;
-    width: 455px;
+    width: 320px;
+    min-width: 320px;
     height: 100px;
     font-size: 16px;
     line-height: 20px;
     color: #fff;
     padding: 16px 15px;
-    margin: 264px 29px 0 0;
+    margin-left: 63px;
     box-sizing: border-box;
     background: #465684;
 }
@@ -175,7 +176,7 @@ $(function(){
 			<div class="intro-excerpt">
 				<c:if test="${sessionScope.id==null }">
 		          <div class="login-page">
-		            <div class="box" style="height: 390px; width: 400px;">
+		            <div class="box" >
 		              <form class="login-box">
 		                <input type="text" placeholder="username" id="id" size=15 class="input-sm" value="${id }">
 		                <input type="password" placeholder="password" type=password id="pwd" size=15 class="input-sm">
@@ -210,7 +211,28 @@ $(function(){
 		              </form>
 		            </div>
 		          </div>
-		          </c:if>
+     		     </c:if> 
+					  <div class="srchBox">
+						  <label for="ch_1">
+						    <input type="radio" id="ch_1" name="mainSearchType" checked="checked">
+						 	   도서명
+						  </label>
+						  <label for="ch_2">
+						    <input type="radio" id="ch_1" name="mainSearchType">
+						   	 저자명
+						  </label>
+						  <label for="ch_3">
+						    <input type="radio" id="ch_3" name="mainSearchType">
+						 	   장르
+						  </label>
+						  <div class="srch">
+						    <input type="text" class="searchTxt" id="search_text_1" name="search_text" title="검색어를 입력해주세요"
+						    placeholder="검색어를 입력해주세요." autocomplete="off">
+						    <a href="../search/search.do">
+							    <img src="../img/search.png" >
+						    </a>
+						  </div>
+						</div>
 				</div>
 			</div>
 		</div>

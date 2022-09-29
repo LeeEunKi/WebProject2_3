@@ -59,6 +59,7 @@ font-family:'Pretendard-Regular';
 	            <th width="50%" class="text-center">상품명</th>
 	            <th width="10%" class="text-center">가격</th>
 	            <th width="10%" class="text-center">주문일</th>
+	            <th width="10%" class="text-center">비고</th>
 	          </tr>
 		          <c:forEach var="vo" items="${list }">
 		            <tr>
@@ -66,10 +67,11 @@ font-family:'Pretendard-Regular';
 		              <td width="10%" class="text-center">
 		                <img src="${vo.poster }" style="width:40px;height:60px;"></td>
 		              <td width="50%" >
-		              	<a href="../shop/detail.do?no=${vo.no }">${vo.title }</a>
+		              	<a href="../shop/detail_before.do?no=${vo.no }">${vo.title }</a>
 		              	<br>${vo.author}&nbsp;|&nbsp;${vo.publisher }</td>
 		              <td width="10%" class="text-center"><fmt:formatNumber value="${vo.price}" type="number" maxFractionDigits="3"/>원</td>
 		              <td width="10%" class="text-center">${vo.dbday }</td>
+		              <td><a class="btn btn-sm btn-danger">주문취소</a></td>
 		            </tr>
 		          </c:forEach>
 	        </table>

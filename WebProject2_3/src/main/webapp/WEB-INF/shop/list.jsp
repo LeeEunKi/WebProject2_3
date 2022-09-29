@@ -23,17 +23,13 @@ $(function(){
 </script>
 
 <style type="text/css">
-*{
+#book_list{
 font-family:'Pretendard-Regular'!important;
 }
 h3, h4, h5{
-  /* font-family:'yangjin'!important; */
-  font-weight: bold;
+  font-family:'yangjin'!important;
   margin: 20px 0px 0px;
   color : #3b5d50;
-}
-.container{
-	margin-top: 30px;
 }
 .row{
 	margin: 0px auto;
@@ -98,11 +94,7 @@ p {
   margin: 8px 0px 0px;
   color: #757575;
 }
-.filterBtn{
-	background-color: #d1ded9;
-	border : none !important;
-	color : black !important;
-}
+
 .book-text{
 	position:absolute;
 	top:40%;
@@ -115,6 +107,11 @@ p {
 }
 .soldout{
 	opacity:30%
+}
+.filterBtn{
+	background-color: #d1ded9;
+	border : none !important;
+	color : black !important;
 }
 a{
 	text-decoration: none !important;
@@ -170,6 +167,7 @@ a:hover{
 					</div>
 					<div style="height:20px"></div><!-- 간격띄우기 -->
 				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
+				  	<h5>상태 : {{vo.condition}}</h5>
 				    <a :href="'../shop/detail_before.do?no='+vo.no+'&page='+curPage">
 				    	<img :src="vo.img" align="middle" :class="[vo.state===0?'img':'soldout img']"/>
 				    	<div class="book-text" v-if="vo.state!=0">구매불가</div>
@@ -178,18 +176,19 @@ a:hover{
 				    <p>{{vo.author}}</p>
 				    <p>{{vo.publisher}} 발행</p>
 				    <h5 style="float:left; text-decoration:line-through; color:#c5c5c5;">&nbsp;{{vo.price|currency}}원&nbsp;</h5>
-				    <h5 style="float:right; transform: translate(-55px);">({{vo.percent}}할인)&nbsp;{{vo.discount|currency}}원</h5>
+				    <h5 style="float:right; transform: translate(-25px);color:black;">({{vo.percent}}할인)&nbsp;{{vo.discount|currency}}원</h5>
 				    
 				  </div>  
 			 
 				  <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
-			      <div style="height: 20px"></div>
+			      <div style="height: 30px"></div>
 			        <div class="text-center">
-			          <button class="btn btn-sm btn-info" v-on:click="prev()">이전</button>
+			          <button class="btn btn-sm btn-success" v-on:click="prev()">이전</button>
 			            {{curPage}} page / {{totalPage}} pages
-			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
+			          <button class="btn btn-sm btn-success" v-on:click="next()">다음</button>
 			      </div>
-
+			      
+			      <div style="height:60px"></div>
 				</div>
 			</div>
 		</div>

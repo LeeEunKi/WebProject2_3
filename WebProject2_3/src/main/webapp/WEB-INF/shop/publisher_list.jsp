@@ -5,9 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.def').css("background-color","#57786c");
+	$('#cate tr').css("color","#57786c");
+	  $('#cate tr').click(function(){
+		  $('#cate tr').css("color","#57786c").css("font-weight","normal");
+		  $(this).css("color","rgb(35 46 42)").css("font-weight","bold");
+	  })
+	  $('.filterBtn').click(function(){
+		  $('.filterBtn').css("background-color","#f0f8ff");
+		  console.log(this);
+		  $(this).css("background-color","#57786c");
+	  })
+})
+</script>
 <style type="text/css">
 *{
 font-family:'Pretendard-Regular'
@@ -15,12 +27,28 @@ font-family:'Pretendard-Regular'
 h3, h5{
 font-family:'yangjin'
 }
-.container{
-	margin-top: 30px;
+.backBtn{
+	background-color:rgb(32 42 38);
+	border : none !important;
+	color : white !important;
+}
+.filterBtn{
+	background-color: #d1ded9;
+	border : none !important;
+	color : black !important;
 }
 .row{
 	margin: 0px auto;
 	width: 100%;
+}
+a{
+	text-decoration: none !important;
+}
+a:hover{
+	text-decoration: underline !important;
+}
+p{
+	margin: 5px auto;
 }
 </style>
 </head>
@@ -31,14 +59,13 @@ font-family:'yangjin'
 			<div class="row">
 					<h3>{{publisher}}에서 출판한 책 목록</h3>
 					<h5>총 {{cnt}} 권의 중고책이 있습니다.</h5>
-					<input type=button onclick="javascript:history.back()" value="돌아가기">
 					<div class="text-right">
-						<input type=button class="btn btn-sm" value="최신등록순" @click="typeChange(publisher,1)">
-						<input type=button class="btn btn-sm" value="낮은가격순" @click="typeChange(publisher,2)">
-						<input type=button class="btn btn-sm" value="높은가격순" @click="typeChange(publisher,3)">
-						<input type=button class="btn btn-sm" value="제목순" @click="typeChange(publisher,4)">
+						<input type=button  class="btn btn-sm backBtn" onclick="javascript:history.back()" value="돌아가기">
+						<input type=button class="btn btn-sm filterBtn def" value="최신등록순" @click="typeChange(publisher,1)">
+						<input type=button class="btn btn-sm filterBtn" value="낮은가격순" @click="typeChange(publisher,2)">
+						<input type=button class="btn btn-sm filterBtn" value="높은가격순" @click="typeChange(publisher,3)">
+						<input type=button class="btn btn-sm filterBtn" value="제목순" @click="typeChange(publisher,4)">
 					</div>
-					<div style="height:20px"></div><!-- 간격띄우기 -->
 					<div class="col-sm-3" v-for="vo in book_list">
 						<div class="thumbnail" style="border:none">
 							 <a :href="'../shop/detail_before.do?no='+vo.no">
@@ -51,18 +78,19 @@ font-family:'yangjin'
 							</a>
 						</div>
 					</div>
+				<div style="height:20px"></div>
 				<div class="text-center">
-					<input type=button class="btn btn-lg btn-warning" value="이전" @click="prev()">
+					<input type=button class="btn btn-lg btn-success" value="이전" @click="prev()">
 						{{curPage}} page / {{totalPage}} pages
-					<input type=button class="btn btn-lg btn-warning" value="다음" @click="next()">
+					<input type=button class="btn btn-lg btn-success" value="다음" @click="next()">
 				</div>
+				<div style="height:60px"></div>
 			</div>
-			<div style="height:20px"></div>
 		</div>
 	</div>
 <script>
 	const list = new Vue({
-		el:'.container',
+		el:'#book_list',
 		data:{
 			curPage:1,
 			totalPage:0,

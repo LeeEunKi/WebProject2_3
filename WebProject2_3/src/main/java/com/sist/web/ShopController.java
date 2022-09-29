@@ -35,21 +35,26 @@ public class ShopController {
 	
 	//쿠키 저장
 	@GetMapping("shop/detail_before.do")
-	public String shop_detail_before(int no, int page, RedirectAttributes ra, HttpServletResponse response) {
+	public String shop_detail_before(int no, String page, RedirectAttributes ra, HttpServletResponse response) {
+		if(page==null)
+			page="1";
+		int _page = Integer.parseInt(page);
 		Cookie cookie = new Cookie("usedbook"+no, String.valueOf(no));
 		cookie.setPath("/");
 		cookie.setMaxAge(60*60*24);
 		response.addCookie(cookie);
 		
 		ra.addAttribute("no",no);
-		ra.addAttribute("page",page);
+		ra.addAttribute("page",_page);
 		return "redirect:../shop/detail.do"; //shop/detail.do?no=..로 보내줌
 	}
 	
 	//중고책 상세 페이지
 	@GetMapping("shop/detail.do")
 	public String shop_detail(int no, int page, Model model) {
+		ShopVO vo = dao.shopDetailData(no);
 		model.addAttribute("no",no);
+		model.addAttribute("booktitle",vo.getTitle());
 		model.addAttribute("page",page);
 		return "shop/detail";
 	}
@@ -105,10 +110,12 @@ public class ShopController {
 	@GetMapping("shop/cart_list.do")
 	public String shop_cart_list(String no, HttpSession session, Model model) {
 		if(no==null) 
-			no="1";
+			no="0";
 		int no_ = Integer.parseInt(no);
 		List<CartVO> list = (List<CartVO>)session.getAttribute("cart");
+		int listsize = 0;
 		if(list!=null) {
+			listsize = list.size();
 			for(CartVO vo:list) {
 				//저자 길이 자르기
 				String author = vo.getAuthor();
@@ -126,10 +133,11 @@ public class ShopController {
 		}
 	    model.addAttribute("no", no_);
 	    model.addAttribute("list", list);
+	    model.addAttribute("listsize",listsize);
 	    return "shop/mycart";
 	}
 	@GetMapping("shop/cart_insert.do")
-	public String shop_cart_insert(int no, HttpSession session, Model model) {
+	public String shop_cart_insert(int no, HttpSession session, RedirectAttributes ra) {
 	  List <CartVO> list = (List <CartVO>) session.getAttribute("cart");
 	  //처음 이후에는 세션에 저장된 데이터를 불러옴 -> 맨 처음에만 메모리 할당을 하도록 한다.
 	  if (list == null) {
@@ -141,10 +149,11 @@ public class ShopController {
 	  cvo.setNo(no);
 	  cvo.setName(vo.getTitle());
 	  cvo.setPoster(vo.getImg());
-	  cvo.setPrice(vo.getDiscount());
+	  cvo.setPrice(vo.getPrice());
 	  cvo.setPublisher(vo.getPublisher());
 	  cvo.setAuthor(vo.getAuthor());
-
+	  cvo.setCondition(vo.getCondition());
+	  cvo.setDiscount(vo.getDiscount());
 	  boolean bCheck = false;
 	  for (CartVO avo: list) { 
 		  //이미 장바구니에 있는걸 담은 경우

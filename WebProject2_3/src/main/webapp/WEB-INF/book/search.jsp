@@ -101,7 +101,7 @@ a:hover{
             			
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-         			   <h3 class="subject">주제별검색</h3>
+         			   <a href="../book/categorysearch.do"><h3 class="subject">주제별검색</h3></a>
             			
           			</div>
 			    </div>
@@ -109,7 +109,7 @@ a:hover{
 
 			<div class="col-lg-5">
 				<h3 style="margin-bottom: 0px">검색 결과</h3>
-				<h5 style="margin-top: 5px">Horizontal card11s</h5>
+				<!-- <h5 style="margin-top: 5px">Horizontal card11s</h5> -->
 				<hr style="margin-bottom: 0px">
 			  
 					  <table class="table"> 
@@ -124,7 +124,6 @@ a:hover{
 					         <li>저자:&nbsp;&nbsp;{{vo.author}}</li>
 					         <li>출판사:&nbsp;&nbsp;{{vo.publisher}}</li>
 					         <li>출판일:&nbsp;&nbsp;{{vo.dbday}}</li>
-					         <li>:&nbsp;&nbsp;{{vo.dbday}}</li>
 					         <li>대출가능 권 수:&nbsp;&nbsp;{{vo.loancnt}}<button class="btn btn-xs btn-primary" style="float: right;margin-bottom: 5px;padding: 8px 20px;" v-on:click="detailData(vo.no)">도서정보</button></li>
 					        </ul>
 					        

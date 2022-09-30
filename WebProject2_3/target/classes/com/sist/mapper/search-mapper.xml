@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.search-mapper">
+  <select id="integratedSearch" resultType="BookVO" parameterType="hashmap">
+    SELECT no,title,author,type,publisher,img,num 
+	FROM (SELECT no,title,author,type,publisher,img,rownum AS num 
+	FROM (SELECT no,title,author,type,publisher,img 
+	FROM BOOK_3 
+	WHERE
+    <trim prefix="(" suffix=")" prefixOverrides="OR"> 
+      <foreach collection="fsArr" item="fd">
+       <trim prefix="OR">
+         <choose>
+           <when test="fd=='T'.toString()">title LIKE '%'||#{ss}||'%'</when>
+           <when test="fd=='A'.toString()">author LIKE '%'||#{ss}||'%'</when>
+           <when test="fd=='G'.toString()">type LIKE '%'||#{ss}||'%'</when>
+         </choose>
+       </trim>
+      </foreach>
+    </trim>
+    ))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  
+  <select id="findDataCount" resultType="int" parameterType="hashmap">
+    SELECT COUNT(*) FROM book_3
+    WHERE
+    <trim prefix="(" suffix=")" prefixOverrides="OR"> 
+      <foreach collection="fsArr" item="fd">
+       <trim prefix="OR">
+         <choose>
+           <when test="fd=='T'.toString()">title LIKE '%'||#{ss}||'%'</when>
+           <when test="fd=='A'.toString()">author LIKE '%'||#{ss}||'%'</when>
+           <when test="fd=='G'.toString()">type LIKE '%'||#{ss}||'%'</when>
+         </choose>
+       </trim>
+      </foreach>
+    </trim>
+  </select>
+
+</mapper>

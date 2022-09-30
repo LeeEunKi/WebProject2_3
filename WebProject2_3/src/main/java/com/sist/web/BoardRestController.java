@@ -24,6 +24,9 @@ public class BoardRestController {
 	@Autowired
 	private BoardDAO dao;
 	
+	@Autowired
+	private BoardReplyDAO dao1;
+	
 	//VueJS에서 페이지 전송
 	@GetMapping(value = "board/list_vue.do",produces = "text/plain;charset=utf-8")
 	public String board_list_vue(String page)
@@ -79,7 +82,7 @@ public class BoardRestController {
 	}
 	
 	@GetMapping(value = "board/detail_vue.do",produces = "text/plain;charset=utf-8")
-	public String board_detail_vue(int no)
+	public String board_detail_vue(int no,Model model)
 	{
 		String result="";
 		BoardVO vo=dao.boardDetailData(no);
@@ -91,7 +94,13 @@ public class BoardRestController {
 		obj.put("dbday", vo.getDbday());
 		obj.put("hit", vo.getHit());
 		result=obj.toJSONString();
-		return result;
+		
+		BoardReplyVO rvo=new BoardReplyVO();
+		rvo.setCno(no);
+		List<BoardReplyVO> list=dao1.BoardreplyListData(rvo);
+		model.addAttribute("list", list);
+		
+		return "board/detail";
 	}
     
     @GetMapping(value="board/update_vue.do",produces = "text/plain;charset=utf-8")

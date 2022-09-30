@@ -86,5 +86,6 @@ public class BoardDAO {
 			
 			return mapper.mypageboardListData(map);
 		}
+
 	 
 }

@@ -5,6 +5,7 @@ import java.util.*;
 import com.sist.mapper.ShopMapper;
 import com.sist.vo.*;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -57,12 +58,22 @@ public class ShopDAO {
 	//구매 처리
 	/*@Insert("INSERT INTO order_3(no,usedbook_no,member_id,price,regdate) "
 			+ "VALUES((SELECT NVL(MAX(no)+1,1) FROM order_3),#{usedbook_no}, #{member_id}, #{price},SYSDATE)")*/
-	public void purchase_insert(OrderVO vo) {
-		mapper.purchase_insert(vo);
+	public void purchaseInsert(OrderVO vo) {
+		mapper.purchaseInsert(vo);
 	}
 	/*@Select("SELECT no, usedbook_no, member_id, price, regdate "
 			+ "FROM order_3 WHERE member_id=#{member_id}")*/
 	public List<OrderVO> orderListData(String member_id){
 		return mapper.orderListData(member_id);
+	}
+	
+	//주문취소
+	/*@Delete("DELETE FROM order_3 WHERE no=#{no}")
+	public void orderCancel(int no);
+	@Update("UPDATE used_book_3 SET state=0 WHERE no=#{no}")
+	 */
+	public void orderCancel(int no, int usedbook_no) {
+		mapper.orderCancel_changeState(usedbook_no);
+		mapper.orderCancel(no);
 	}
 }

@@ -28,6 +28,7 @@ public class ShopRestController {
 	static String[] orders = {"","no ASC","discount ASC","discount DESC","title"};
 	static String[] types = {"","순수과학","역사","언어","총류","기술과학","종교","철학","문학","예술","사회과학"};
 	
+	//카테고리별 책 목록 출력
 	@GetMapping(value="shop/list_vue.do", produces="text/plain;charset=UTF-8")
 	public String shop_list_vue(String page, String type, String order) {
 		if(page==null)
@@ -98,6 +99,7 @@ public class ShopRestController {
 		return result;
 	}
 	
+	//출판사별 책 목록 출력
 	@GetMapping(value="shop/publisher_list_vue.do", produces="text/plain;charset=UTF-8")
 	public String shop_publisher_list_vue(String page, String publisher, String order) {
 		if(page==null)
@@ -168,6 +170,7 @@ public class ShopRestController {
 		return result;
 	}
 	
+	//상세 페이지 정보 출력
 	@GetMapping(value="shop/detail_vue.do", produces="text/plain;charset=UTF-8")
 	public String shop_detail_vue(int no, int page) {
 		ShopVO vo = dao.shopDetailData(no);
@@ -193,11 +196,12 @@ public class ShopRestController {
 		return result;
 	}
 	
+	//상세 페이지 - 관련 블로그 포스팅 출력
 	@GetMapping(value="shop/detail_vue_blog.do", produces="text/plain;charset=UTF-8")
 	public String news_find(String booktitle) {
 		if(booktitle==null)
 			booktitle="책";
-		System.out.println(booktitle);
+//		System.out.println(booktitle);
 		String json = mgr.blogFind(booktitle);
 		String result = "";
 		try {
@@ -205,23 +209,11 @@ public class ShopRestController {
 			JSONObject root = (JSONObject)jp.parse(json);
 			JSONArray arr = (JSONArray)root.get("items");
 			result = arr.toJSONString();
-//			List<BlogVO> list = new ArrayList<BlogVO>();
-//			for(int i=0;i<arr.size();i++) {
-//				BlogVO vo = new BlogVO();
-//				JSONObject obj = (JSONObject)arr.get(i);
-//				vo.setTitle((String)obj.get("title"));
-//				vo.setLink((String)obj.get("link"));
-//				vo.setDescription((String)obj.get("description"));
-//				list.add(vo);
-//			}
-//			model.addAttribute("list",list);
 		}catch(Exception ex) {}
-//		model.addAttribute("main_jsp","../news/find.jsp");
-//		return "main/main";
 		return result;
 	}
 	
-	//쿠키 리스트
+	//상세 페이지 - 쿠키 리스트
 	@GetMapping(value="shop/cookie_list.do", produces="text/plain;charset=UTF-8")
 	public String shop_cookie_list(HttpServletRequest request) {
 		String result = "";

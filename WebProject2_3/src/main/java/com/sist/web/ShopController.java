@@ -65,46 +65,6 @@ public class ShopController {
 		model.addAttribute("publisher", publisher);
 		return "shop/publisher_list";
 	}
-	@RequestMapping("shop/purchase.do")
-	public String purchase(HttpServletRequest request, HttpSession session) {
-		String name = (String)session.getAttribute("name");
-		String id = (String)session.getAttribute("id");
-		MemberVO mvo = mDao.memberUpdateData(id);
-		String[] usedBooks = request.getParameterValues("usedbooks");
-		List <CartVO> list = (List <CartVO>) session.getAttribute("cart");
-		
-		int totalPrice = 0;
-		//체크한 상품목록을 불러와서 구매처리 한다
-		if(usedBooks!=null && usedBooks.length>0){
-			for(int i=0;i<usedBooks.length;i++) {
-				int no = Integer.parseInt(usedBooks[i]);
-				dao.changeState(no);
-				OrderVO vo = new OrderVO();
-				ShopVO svo = dao.shopDetailData(no);
-				vo.setUsedbook_no(no);
-				vo.setMember_id((String)session.getAttribute("id"));
-				vo.setPrice(svo.getDiscount());
-				totalPrice += svo.getDiscount();
-				
-				dao.purchase_insert(vo);
-				CartVO cvo = list.get(i);
-			    if (cvo.getNo() == no) {
-			      list.remove(i);
-			    }
-				System.out.println(no+"번 책 구매처리 완료");
-			}
-		  }
-		
-		request.setAttribute("name",name);
-	    request.setAttribute("id",id);
-	    request.setAttribute("totalPrice",totalPrice);
-	    request.setAttribute("address",mvo.getAddr1()+mvo.getAddr2());
-	    request.setAttribute("phone", mvo.getTel());
-	    System.out.println("TEL:"+mvo.getTel());
-	    request.setAttribute("postcode", mvo.getPost());
-		
-		return "shop/purchase";
-	}
 	
 	//중고책 장바구니
 	@GetMapping("shop/cart_list.do")
@@ -175,6 +135,7 @@ public class ShopController {
 	  return "redirect:../shop/cart_list.do?no=" + no;
 	}
 	
+	//장바구니 담기 취소
 	@GetMapping("shop/cart_cancel.do")
 	public String cart_cancel(int no, HttpSession session) {
 	  List <CartVO> list = (List <CartVO> ) session.getAttribute("cart");
@@ -184,7 +145,49 @@ public class ShopController {
 	      list.remove(i);
 	    }
 	  }
-	  return "redirect:cart_list.do?no=" + no;
+	  return "redirect:../shop/cart_list.do?no=" + no;
+	}
+	
+	//구매 처리
+	@RequestMapping("shop/purchase.do")
+	public String purchase(HttpServletRequest request, HttpSession session) {
+		String name = (String)session.getAttribute("name");
+		String id = (String)session.getAttribute("id");
+		MemberVO mvo = mDao.memberUpdateData(id);
+		String[] usedBooks = request.getParameterValues("usedbooks");
+		List <CartVO> list = (List <CartVO>) session.getAttribute("cart");
+		
+		int totalPrice = 0;
+		//체크한 상품목록을 불러와서 구매처리 한다
+		if(usedBooks!=null && usedBooks.length>0){
+			for(int i=0;i<usedBooks.length;i++) {
+				int no = Integer.parseInt(usedBooks[i]);
+				dao.changeState(no);
+				OrderVO vo = new OrderVO();
+				ShopVO svo = dao.shopDetailData(no);
+				vo.setUsedbook_no(no);
+				vo.setMember_id((String)session.getAttribute("id"));
+				vo.setPrice(svo.getDiscount());
+				totalPrice += svo.getDiscount();
+				
+				dao.purchaseInsert(vo);
+				CartVO cvo = list.get(i);
+			    if (cvo.getNo() == no) {
+			      list.remove(i);
+			    }
+				System.out.println(no+"번 책 구매처리 완료");
+			}
+		  }
+		
+		request.setAttribute("name",name);
+	    request.setAttribute("id",id);
+	    request.setAttribute("totalPrice",totalPrice);
+	    request.setAttribute("address",mvo.getAddr1()+mvo.getAddr2());
+	    request.setAttribute("phone", mvo.getTel());
+	    System.out.println("TEL:"+mvo.getTel());
+	    request.setAttribute("postcode", mvo.getPost());
+		
+		return "shop/purchase";
 	}
 	
 	//중고책 구매내역
@@ -204,5 +207,12 @@ public class ShopController {
 		model.addAttribute("list",oList);
 		model.addAttribute("listsize",listsize);
 		return "mypage/order";
+	}
+	
+	//중고책 주문취소
+	@GetMapping("shop/order_cancel.do")
+	public String shop_order_cancel(int no, int usedbook_no) {
+		dao.orderCancel(no, usedbook_no);
+		return "redirect:../mypage/order.do";
 	}
 }

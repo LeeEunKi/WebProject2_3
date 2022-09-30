@@ -212,27 +212,7 @@ $(function(){
 		            </div>
 		          </div>
      		     </c:if> 
-					  <div class="srchBox">
-						  <label for="ch_1">
-						    <input type="radio" id="ch_1" name="mainSearchType" checked="checked">
-						 	   도서명
-						  </label>
-						  <label for="ch_2">
-						    <input type="radio" id="ch_1" name="mainSearchType">
-						   	 저자명
-						  </label>
-						  <label for="ch_3">
-						    <input type="radio" id="ch_3" name="mainSearchType">
-						 	   장르
-						  </label>
-						  <div class="srch">
-						    <input type="text" class="searchTxt" id="search_text_1" name="search_text" title="검색어를 입력해주세요"
-						    placeholder="검색어를 입력해주세요." autocomplete="off">
-						    <a href="../search/search.do">
-							    <img src="../img/search.png" >
-						    </a>
-						  </div>
-						</div>
+					 <jsp:include page="searchBar.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>

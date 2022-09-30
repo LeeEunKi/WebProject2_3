@@ -139,7 +139,7 @@ font-family:'yangjin'
 					<table>
 						<tr v-for="b in blog_list">
 							<td >
-								<a :href="b.link" target="_blank">{{b.title.replace(/(<([^>]+)>)/ig,"")}}</a>
+								<a :href="b.link" target="_blank" v-html="b.title"></a>
 							</td>
 						</tr>
 					</table>

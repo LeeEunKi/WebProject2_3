@@ -67,11 +67,11 @@ font-family:'Pretendard-Regular';
 		              <td width="10%" class="text-center">
 		                <img src="${vo.poster }" style="width:40px;height:60px;"></td>
 		              <td width="50%" >
-		              	<a href="../shop/detail_before.do?no=${vo.no }">${vo.title }</a>
+		              	<a href="../shop/detail_before.do?no=${vo.usedbook_no }">${vo.title }</a>
 		              	<br>${vo.author}&nbsp;|&nbsp;${vo.publisher }</td>
 		              <td width="10%" class="text-center"><fmt:formatNumber value="${vo.price}" type="number" maxFractionDigits="3"/>원</td>
 		              <td width="10%" class="text-center">${vo.dbday }</td>
-		              <td><a class="btn btn-sm btn-danger">주문취소</a></td>
+		              <td><a class="btn btn-sm btn-danger" href="../shop/order_cancel.do?no=${vo.no }&usedbook_no=${vo.usedbook_no}">주문취소</a></td>
 		            </tr>
 		          </c:forEach>
 	        </table>

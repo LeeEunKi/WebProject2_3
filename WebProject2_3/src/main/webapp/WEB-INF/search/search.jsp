@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +59,9 @@ a{
 a:hover{
 	text-decoration: underline !important;
 }
+td{
+	
+}
 
 </style>
 </head>
@@ -106,14 +110,18 @@ a:hover{
 
         <div class="b-search-wrap02">
             <div class="b-search-box02">
-                <form action="" method="">
                     <fieldset>
                         <legend title="통합검색" class="hide">통합 검색</legend>
                         <div class="top-box">
                             <div class="b-search-input-box">
+                              <div class="chk_box" style="display:inline; ">
+							    <input style="width: fit-content;" type="checkbox" id="ch_1" name="checked" value="T" checked="checked">도서명
+							    <input style="width: fit-content;" type="checkbox" id="ch_1" name="checked" value="A">저자명
+							    <input style="width: fit-content;" type="checkbox" id="ch_3" name="checked" value="G">장르
+                              </div>
                                 <label class="hide" for="sch-word-rules">검색어 입력</label>
-                                <input type="text" id="sch-word-rules" placeholder="Search keywords" :value="ss" :v-model="ss">
-                                <button type="button" value="검색" class="sch-btn"><span>검색</span></button>
+                                <input style="inline-size: min-content; width: 420px;" type="text" id="sch-word-rules" placeholder="Search keywords" :value="ss" v-model="ss" ref="ss">
+                                <button type="button" value="검색" class="sch-btn" v-on:click="search()"><span style="color: white;">검색</span></button>
                                 <!-- 검색박스 -->
                                 <div class="b-search-auto-box" style="display: none;">
                                     <ul>
@@ -121,66 +129,42 @@ a:hover{
                                     </ul>
                                 </div>
                             </div>
-                            <div class="b-search-side-box">
-                                <div class="b-option-box">
-                                    <a href="#a" title="검색옵션">필터</a>
-                                    <ul>
-                                        <li class="active"><a href="#a">표시</a></li>
-                                        <li><a href="#a">숨김</a></li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </fieldset>
-                </form>
             </div>
-            <div class="b-search-box03">
+             <div class="b-search-box03">
                 <div class="left-box">
-                    <!-- 추천 검색어 -->
-                    <div class="b-box recomand">
-                        <h4>
-                            추천 검색어
-                        </h4>
-                        <ul class="b-recomand-ul">
-                            <li><a href="#a">등록금</a></li>
-                            <li><a href="#a">캠퍼스</a></li>
-                            <li><a href="#a">학생증</a></li>
-                            <li><a href="#a">개강</a></li>
-                            <li><a href="#a">장학</a></li>
-                            <li><a href="#a">입학</a></li>
-                        </ul>
-                    </div>
 
                    <!-- 검색 결과 건수 -->
                     <div class="b-box">
                         <p class="b-result">
-                            <span>{{ss }}</span>에 대한 검색결과는 총 <span>{{count}}</span>건입니다.
+                            <span>{{result_ss }}</span>에 대한 검색결과는 총 <span>{{count}}</span>건입니다. 
                         </p>
                     </div>
                     <!-- 메뉴 검색 -->
-                    <div class="b-box">
+                    <div class="b-box" v-show="isShow">
                         <ul class="b-sch-ul-type01">
                             <li>
-                              <table class="table" style="background-color: white;">
+                              <table class="table" style="background-color: white; width: 760px;">
                                <tr v-for="vo in book_list">
                                  <td>
 	                               <table class="table">
 		                                <tr>
-		                                  <td rowspan="6"><img :src="vo.img" style="width: 105px; height: 150px;"></td>
+		                                  <td rowspan="6" width="20%"><img :src="vo.img" style="width:100%;"></td>
 		                                </tr>
 		                                <tr>
-		                                  <td colspan="2" ><span style="font-size: 20px; font-weight: bold;">{{vo.title}}</span></td>
+		                                  <td colspan="2" width="80%"><span style="font-size: 20px; font-weight: bold;">{{vo.title}}</span></td>
 		                                </tr>
 		                                <tr>
-		                                  <th>저자:</th>
-		                                  <td>{{vo.author}}</td>
+		                                  <th width="8%">저자:</th>
+		                                  <td>{{vo.author}} </td>
 		                                </tr>
 		                                <tr>
-		                                  <th>분류:</th>
+		                                  <th width="8%">분류:</th>
 		                                  <td>{{vo.type}}</td>
 		                                </tr>
 		                                <tr>
-		                                  <th>출판사:</th>
+		                                  <th width="15%">출판사:</th>
 		                                  <td>{{vo.publisher}}</td>
 		                                </tr>
 		                                <tr>
@@ -195,46 +179,38 @@ a:hover{
                               </table>
                             </li>
                         </ul>
-                        <div class="text-center">
-                          <ul class="pagination">
-							  <li><a href="#">1</a></li>
-							  <li><a href="#">2</a></li>
-							  <li><a href="#">3</a></li>
-							  <li class="disabled"><a href="#">4</a></li>
-							  <li><a href="#">5</a></li>
-						   </ul>
-                        </div>
                     </div>
     
-                    <!-- 관련 영화  -->
-                    <div class="b-box">
-                        <h4>관련 영화</h4>
-                          <table class="table">
-                                <tr>
-                                  <td>{{curPage}}</td>
-                                </tr>
-                                <tr>
-                                  <td>{{totalPage}}</td>
-                                </tr>
-                                <tr>
-                                  <td>{{ss}}</td>
-                                </tr>
-                          </table>
-                    </div>
-
-                    <div class="b-box">
+                    <div class="b-box" v-show="noCountShow">
                         <div class="b-no-result">
                             <div><img src="#" alt="" ></div>
                             <div>
-                                <P class="b-result-tit"><span>{{ss}}</span>에 대한 상세 검색결과가 없습니다.</P>
+                                <P class="b-result-tit"><span>{{result_ss}}</span>에 대한 상세 검색결과가 없습니다.</P>
                                 <ul>
                                     <li>단어의 철자가 정확한지 확인해 주시기 바랍니다.</li>
                                     <li>검색어의 단어 수를 줄이거나, 다른 검색어(유사어)로 검색해 보시기 바랍니다.</li>
                                     <li>일반적으로 많이 사용하는 검색어로 다시 검색해 주시기 바랍니다.</li>
                                 </ul>
                                 <p>검색처리가 <span>대기중</span> 혹은 <span>업데이트</span> 메시지가 뜨면 <span>잠시 후 다시 검색</span>해 보시기 바랍니다. <br>
-                                    불편하신 점이나 좋은 의견이 있으면 홈페이지 오류신고 게시판에 의견을 남겨주세요.</p>
+                             	      불편하신 점이나 좋은 의견이 있으면 홈페이지 오류신고 게시판에 의견을 남겨주세요.</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-box">
+                    <div class="b-box">
+                        <h4>
+                        	    관련 영화 목록
+                        </h4>
+                        <div class="b-word-box active">
+                            <ul>
+                                <li v-for="mvo in movie_list">
+                                  <a href="#a">
+                                    <span>1</span><span>{{mvo.title}}</span>
+                                  </a>
+                                    <img :src="mvo.image">
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -254,35 +230,58 @@ a:hover{
 		curPage:1,
 		totalPage:0,
 		book_list:[],
-  		ss:'${ss}',
+		movie_list:[],
+  		ss:'',
+  		result_ss:'',
   		str:'${strArr}',
   		count:0,
   		startPage:0,
-  		endPage:0
+  		endPage:0,
+  		noCountShow:false,
+  		isShow:true
 	  },
-	  mounted:function(){		 
-		  this.search(this.ss,this.str);
+	  mounted:function(){	
+		  let ss='${ss}';
+		  this.send(ss);
 	  },
 	  methods:{
-		  search:function(ss,str){
+		  send:function(ss){
 			  axios.get("http://localhost:8080/web/search/search_vue.do",{
 				  params:{
 					  page:this.curPage,
-					  ss:ss,
-					  str:str
+ 					  ss:ss,
+					  str:this.str
 				  }
 	 		  }).then(result=>{
 				  this.book_list=result.data;
 				  this.curPage=result.data[0].curPage;
 				  this.totalPage=result.data[0].totalPage;
-				  this.ss=result.data[0].ss;
-				  this.str=result.data[0].str;
+ 				  this.result_ss=result.data[0].ss;
+				 /* this.str=result.data[0].str; */
 				  this.count=result.data[0].count;
+				  if(this.count==0){
+					  this.isShow=false;
+					  this.noCountShow=true;
+				  }
+				  else{
+					  this.isShow=true;
+					  this.noCountShow=false;
+				  }
 				  this.startPage=result.data[0].startPage;
 				  this.endPage=result.data[0].endPage;
+				  this.movie_list=result.data[0].movie_list;
 				  console.log(this.book_list);
 			  })
-		  }
+		  },
+		  search:function(){
+			  if(this.ss==""){
+				  alert("검색어를 입력하세요!");
+				  this.$refs.ss.focus();
+				  return;
+			  }
+			  this.curPage=1;
+			  this.send(this.ss);
+		  },
 	  }
   })
   </script>

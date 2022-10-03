@@ -5,6 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.srchBox {
+    height: 130px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    padding: 16px 15px;
+    box-sizing: border-box;
+    background: #465684;
+}
+
+</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function() {
@@ -25,8 +37,9 @@ $(function() {
 </script>
 </head>
 <body>
-<div class="srchBox">
+<div class="box srchBox">
 	    <form method="post" action="../search/search.do" id="searchForm">
+	      <div class="label" style="float: left;">
 		  <label for="ch_1">
 		    <input type="checkbox" id="ch_1" name="checked" value="T" checked="checked">
 		 	   도서명
@@ -39,9 +52,10 @@ $(function() {
 		    <input type="checkbox" id="ch_3" name="checked" value="G">
 		 	   장르
 		  </label>
-		  <div class="srch">
+		  </div>
+		  <div class="srch" style="float: left;">
 		    <input type="text" class="searchTxt" id="search_text" name="ss" title="검색어를 입력해주세요"
-		    placeholder="검색어를 입력해주세요." autocomplete="off">
+		    placeholder="검색어를 입력해주세요." autocomplete="off" style="margin-right: 7px !important;">
 		    <!-- <input type="button" id="searchBtn" value="검색"> -->
 		    <img src="../img/search.png" id="searchBtn" style="cursor: pointer;">
 		  </div>

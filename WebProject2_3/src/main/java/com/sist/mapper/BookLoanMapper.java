@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 public interface BookLoanMapper {
 	@SelectKey(keyProperty = "no", resultType = int.class , before = true, 
 			statement = "SELECT NVL(MAX(no)+1,1) AS no FROM bookloan_3")
-	@Insert("INSERT INTO bookloan_3 VALUES( #{no}, #{book_no}, #{member_id},SYSDATE )")
+	@Insert("INSERT INTO bookloan_3 VALUES( #{no}, #{book_no}, #{member_id},SYSDATE, SYSDATE + 7 )")
 	public void bookLoanInsert(Map map);
 	
 	@Update("UPDATE book_3 SET "

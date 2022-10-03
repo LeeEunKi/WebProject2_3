@@ -34,7 +34,7 @@ public class BookLikeDAO {
 	{
 		mapper.booklikecntDecreament(book_no);
 		mapper.bookLikeDelete(map);
-	}
+	} 
 	
 	
 }

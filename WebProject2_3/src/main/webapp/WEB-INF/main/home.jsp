@@ -69,12 +69,11 @@ $(function(){
   font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
   outline: 0 !important;
   background: #FFF !important;
-  width: 100% !important;
   border: 0 !important;
   margin: 0 0 15px !important;
   padding: 15px !important;
   box-sizing: border-box !important;
-  font-size: 14px !important;
+  
 }
 .box button {
   font-family: 'Pretendard-Regular';/*"Roboto", sans-serif;*/
@@ -110,19 +109,6 @@ $(function(){
     border-radius: 30px;
     padding: 16px;
     background-color: white;
-}
-.srchBox {
-    float: left;
-    width: 320px;
-    min-width: 320px;
-    height: 100px;
-    font-size: 16px;
-    line-height: 20px;
-    color: #fff;
-    padding: 16px 15px;
-    margin-left: 63px;
-    box-sizing: border-box;
-    background: #465684;
 }
 
 </style>
@@ -178,8 +164,8 @@ $(function(){
 		          <div class="login-page">
 		            <div class="box" >
 		              <form class="login-box">
-		                <input type="text" placeholder="username" id="id" size=15 class="input-sm" value="${id }">
-		                <input type="password" placeholder="password" type=password id="pwd" size=15 class="input-sm">
+		                <input type="text" placeholder="username" id="id" size=15 class="input-sm" value="${id }" style="width: 100%;font-size: 14px;">
+		                <input type="password" placeholder="password" type=password id="pwd" size=15 class="input-sm"  style="width: 100%;font-size: 14px;">
 		               	 <tr>
 		               	  <td class="text-center" colspan="2">
 				            <Button value="로그인" class="btn btn-sm btn-danger" id="logBtn">

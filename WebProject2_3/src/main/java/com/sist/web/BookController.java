@@ -20,23 +20,28 @@ public class BookController {
 	@Autowired
 	private BookLikeDAO ldao;
 	
+	@Autowired
+	private BookLoanDAO loandao;
+	
+	//인기검색
 	@GetMapping("book/search.do")
 	public String bookSearch()
 	{
 		return "book/search";
 	}
-	
+	//도서명 검색
 	@GetMapping("book/totalsearch.do")
 	public String totalSearch()
 	{
 		return "book/totalsearch";
 	}
+	//저자명 검색
 	@GetMapping("book/authorsearch.do")
 	public String authorsearch()
 	{
 		return "book/authorsearch";
 	}
-	
+	//상세보기 
 	@GetMapping("book/detail.do")
 	public String bookDetail(int no,Model model,HttpSession session)
 	{
@@ -80,10 +85,12 @@ public class BookController {
 		return "redirect:../book/detail.do?no="+no;
 		
 	}
-	
+	//주제별 검색
 	@GetMapping("book/categorysearch.do")
 	public String book_category()
 	{
 		return "book/categorysearch";
 	}
+	
+	
 }

@@ -231,9 +231,9 @@ div.content {
             <!— Start Column 1 —>
         <div class="col-lg-2 col-md-2 col-sm-12" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;float: right;">
 				<div class="sidebar">
-				  <a href="../book/totalsearch.do">도서검색</a>
+				  <a class="active" href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>
-				  <a class="active" href="../book/categorysearch.do">주제별 도서</a>
+				  <a href="../book/categorysearch.do">주제별 도서</a>
              </div>
         </div>
         

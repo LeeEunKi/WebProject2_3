@@ -159,7 +159,7 @@ margin-bottom: 6px;
         -o-transition: .3s all ease;
         transition: .3s all ease; }
       .testimonial-slider-wrap .tns-nav button.tns-nav-active:before {
-        background-color: #2964D9; }
+        background-color: #3b5d50; }
 
 #testimonial-nav span {
   display: inline-block;
@@ -167,13 +167,13 @@ margin-bottom: 6px;
   padding: 7px 20px;
   border-radius: 30px;
   background: rgba(0, 32, 74, 0.1);
-  color: #2964D9;
+  color: #3b5d50;
   text-align: center;
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease; }
   #testimonial-nav span:hover, #testimonial-nav span.active {
-    background: #2964D9;
+    background: #3b5d50;
     color: #fff !important; }
 /*                                         
 

@@ -14,7 +14,7 @@
 $( function() {
  $('#cartBtn').click(function(){
 	 let id = '${sessionScope.id}';
-	 console.log(id);
+	 let bookno = '${no}';
 	 if(id.trim()==''){
 		 alert('로그인 후 이용 가능합니다.');
 		 return;
@@ -26,7 +26,7 @@ $( function() {
 		        modal: true,
 		        buttons: {
 		          "장바구니에 추가": function() {
-		            location.href = '../shop/cart_insert.do?no='+${no};
+		            location.href = '../shop/cart_insert.do?no='+bookno;
 		          },
 		          "취소": function() {
 		            $( this ).dialog( "close" );

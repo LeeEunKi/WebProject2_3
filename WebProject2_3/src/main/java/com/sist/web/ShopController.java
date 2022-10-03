@@ -128,9 +128,12 @@ public class ShopController {
 	    session.setAttribute("cart", list);
 	    session.setMaxInactiveInterval(60*60*24);
 	  }
+	  System.out.println("------현재 장바구니에 들어 있는 책 목록------");
+	  for(CartVO ccvo:list) {
+		  System.out.println(ccvo.getName());
+	  }
+	  System.out.println("-----------------------------------");
 	  //데이터 전송
-	  //		model.addAttribute("list",list);
-	  //		model.addAttribute("no",no);
 	  //redirect가 나올 때는 Model로 보내 주면 안된다. request가 초기화된 후 전송되니까...불가능함.
 	  return "redirect:../shop/cart_list.do?no=" + no;
 	}
@@ -153,38 +156,53 @@ public class ShopController {
 	public String purchase(HttpServletRequest request, HttpSession session) {
 		String name = (String)session.getAttribute("name");
 		String id = (String)session.getAttribute("id");
-		MemberVO mvo = mDao.memberUpdateData(id);
+
 		String[] usedBooks = request.getParameterValues("usedbooks");
 		List <CartVO> list = (List <CartVO>) session.getAttribute("cart");
-		
+		for(CartVO vo:list) {
+			System.out.println(vo.getName());
+		}
 		int totalPrice = 0;
 		//체크한 상품목록을 불러와서 구매처리 한다
+		int cnt = usedBooks.length;
+		System.out.println("선택한 책 수:"+usedBooks.length);
 		if(usedBooks!=null && usedBooks.length>0){
-			for(int i=0;i<usedBooks.length;i++) {
-				int no = Integer.parseInt(usedBooks[i]);
+			for(String u:usedBooks) {
+				int no = Integer.parseInt(u);
+				System.out.println("usedBooks[i]:"+u);
+				//Usedbook 테이블에서 해당 책 판매 상태 변경
 				dao.changeState(no);
 				OrderVO vo = new OrderVO();
+				
+				//책 정보를 가져와서 OrderVO에 넣는다
 				ShopVO svo = dao.shopDetailData(no);
 				vo.setUsedbook_no(no);
 				vo.setMember_id((String)session.getAttribute("id"));
 				vo.setPrice(svo.getDiscount());
+				
+				//결제 모듈에 보낼 전체 금액 계산
 				totalPrice += svo.getDiscount();
 				
+				//Order 테이블에 row 추가
 				dao.purchaseInsert(vo);
-				CartVO cvo = list.get(i);
-			    if (cvo.getNo() == no) {
-			      list.remove(i);
-			    }
 				System.out.println(no+"번 책 구매처리 완료");
+				
+				//구매한 책은 장바구니에서 삭제
+				for(int i=0;i<list.size();i++) {
+					if(list.get(i).getNo()==no) {
+						list.remove(i);
+					}
+				}
 			}
 		  }
 		
+		//결제 창으로 전송할 멤버 정보를 가져와서 전달
+		MemberVO mvo = mDao.memberUpdateData(id);
 		request.setAttribute("name",name);
 	    request.setAttribute("id",id);
 	    request.setAttribute("totalPrice",totalPrice);
 	    request.setAttribute("address",mvo.getAddr1()+mvo.getAddr2());
 	    request.setAttribute("phone", mvo.getTel());
-	    System.out.println("TEL:"+mvo.getTel());
 	    request.setAttribute("postcode", mvo.getPost());
 		
 		return "shop/purchase";

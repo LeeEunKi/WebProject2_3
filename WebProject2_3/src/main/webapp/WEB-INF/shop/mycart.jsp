@@ -82,6 +82,7 @@ font-family:'Pretendard-Regular';
   <div class="container" style="margin-top:50px">
     <div class="row">
       <h3>나의 장바구니</h3>
+      <a href="../mypage/order.do" style="text-align:right">주문내역으로 이동</a>
       <hr>
       <c:if test="${listsize==0 }">
         <table class="table">
@@ -123,7 +124,7 @@ font-family:'Pretendard-Regular';
 	          	<h3 id="totalprice" style="height:35px;"></h3>
 	          	<a href="cart_total_delete.do?no=${no }" class="btn btn-sm btn-danger">장바구니 전체삭제</a>
 	          	<c:if test="${no!=0 }">
-              		<a href="../shop/detail_before.do?no=${no }" class="btn btn-sm btn-danger">상품으로 돌아가기</a>
+              		<a href="../shop/list.do" class="btn btn-sm btn-danger">목록으로 돌아가기</a>
               	</c:if>
                 <button type="submit" class="btn btn-sm btn-success">선택한 상품 구매</button>
               </td></tr>

@@ -125,13 +125,13 @@ $(function(){
 							<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 								<div class="carousel-inner">
 								  <div class="carousel-item active">
-									<img class="d-block w-100" src="../images/post-1.jpg" alt="First slide">
+									<img class="d-block w-100" src="../images/sample1.jpg" alt="First slide">
 								  </div>
 								  <div class="carousel-item">
-									<img class="d-block w-100" src="../images/post-2.jpg" alt="Second slide">
+									<img class="d-block w-100" src="../images/sample4.jpg" alt="Second slide">
 								  </div>
 								  <div class="carousel-item">
-									<img class="d-block w-100" src="../images/post-3.jpg" alt="Third slide">
+									<img class="d-block w-100" src="../images/sample6.jpg" alt="Third slide">
 								  </div>
 								</div>
 								<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

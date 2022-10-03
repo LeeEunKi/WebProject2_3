@@ -111,6 +111,7 @@ $(function(){
     background-color: white;
 }
 
+
 </style>
 
 </head>
@@ -188,11 +189,13 @@ $(function(){
 		              	<br>
 		              	<!-- <a href="#">Create an account</a></p>  -->
 		                <button>
-		                  <a href="../mypage/mypage_Volunteer.do">My LIBRARY</a>
+		                  <a href="../mypage/mypage_Volunteer.do" style="color: white">My LIBRARY</a>
 		                </button>
 		                <br>
 		                <br>
-		                 <p><a href="../member/join_before.do">회원정보 수정</a><span style="padding-left: 20px"><a href="../member/logout.do">로그아웃</a></span></p> 
+		                <button>
+		                  <a href="../member/logout.do" style="color: white">로그아웃</a>
+		                </button>
 		              </form>
 		            </div>
 		          </div>

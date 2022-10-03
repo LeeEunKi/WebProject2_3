@@ -57,7 +57,11 @@ hr {
   border: 1px solid #f84646;
   margin: 0 auto;
 }
-
+.form-group p {
+	border : 1px solid #ccc;
+	padding : 10px;
+	margin : 10px;
+}
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
@@ -90,7 +94,7 @@ hr {
 		 <div class="row mb-5">
 		        <div class="col-md-12">
 		          <div class="border p-4 rounded" role="alert" style="background-color:#F5E3CF;">
-		           	  <b>💡회원님의 소중한 개인 정보를 위해, 비밀번호를 확인 해 주세요!💡</b>
+		           	  <b>💡 한번 탈퇴 시 재가입이 어려우니 신중하게 결정해주세요!💡</b>
 		          </div>
 	    	</div>
         </div>
@@ -101,38 +105,58 @@ hr {
 		 <div class="col-md-9 mb-9 mb-md-0">
 		 
 		 <!-- 여기서 부터 원하는 내용 넣어주시면 됩니다. -->
-		     <h2 class="h3 mb-3 text-black"><b>회원 정보 수정</b></h2>
-		    <div class="p-3 p-lg-5 border bg-white">
-		    <div id="join_before">
-		     <div class="text-center">
-		                <label for="c_code" class="text-black mb-3">비밀번호를 입력 해 주세요!</label>
-		                <div class="col-md-12">
-		                <div class="input-group w-75 couponcode-wrap">
-		                   <input type=password style='text-align:center' ref=pwd class="form-control me-2" v-model="pwd" placeholder="비밀번호를 입력하세요">
-		                </div>
-		                </div>
-		                </div>
-		                <br>
-		                <br>
-						<div class="text-center">
-				            <input type=button value="확인" class="btn btn-sm btn-warning" v-on:click="ok()">
-				            <input type=button value="취소" class="btn btn-sm btn-info"
-				              onclick="javascript:history.back()"
-				            >
-		     </div>
+		     <h2 class="h3 mb-3 text-black"><b>회원 탈퇴하기</b></h2>
+		    <div class="p-3 p-lg-5 border bg-white" style="width: auto">
+		    <div id="join_delete">
+		    <form method="post" action="../mypage/mypage_delete_ok.do">
+		    
+		       <div class="form-group row">
+		        <label for="c_name" class="text-black" style="font-size: 20px">🔔 회원탈퇴약관 🔔</label>
+		      	 <div class="col-md-12">
+				    <p class="align-left">
+				     	제11조 (회원 탈퇴 및 자격 상실)
+						1. 회원은 회사에 언제든지 회원 탈퇴를 요청할 수 있으며 회사는 요청을 받은 즉시 해당 회원의 회원 탈퇴를 위한 절차를 밟아 NHN커머스 개인정보처리방침에 따라 회원 등록을 말소합니다.<br>
+						2. 회사의 모든 서비스에서 이용중인 서비스의 기간이 남아있는 회원이 탈퇴 요청하였을 경우 회원탈퇴로 인한 서비스의 중지 또는 피해는 회원탈퇴 이용자에게 있습니다.<br>
+						3. 회원이 서비스 이용에 있어서 본 약관 제 10조 내용을 위반하거나, 다음 각 호의 사유에 해당하는 경우 회사는 직권으로 회원자격 상실 및 회원탈퇴의 조치를 할 수 있습니다.<br>
+						가. 다른 사람의 명의를 사용하여 가입 신청한 경우<br>
+						나. 신청 시 필수 작성 사항을 허위로 기재한 경우<br>
+						다. 관계법령의 위반을 목적으로 신청하거나 그러한 행위를 하는 경우<br>
+						라. 사회의 안녕질서 또는 미풍양속을 저해할 목적으로 신청하거나 그러한 행위를 하는 경우<br>
+						마. 다른 사람의 회사 서비스 이용을 방해하거나 그 정보를 도용하는 등 전자거래질서를 위협하는 경우<br>
+						바. 관계 법령 위배와 본 약관이 금지하는 행위를 하는 회원 경우<br>
+						4. 회사가 직권으로 회원탈퇴 처리를 하고자 하는 경우에는 말소 전에 회원에게 소명의 기회를 부여합니다.
+				    </p>
+				   </div>
+				 </div>
+				   <br>
+				   <br>
+				  <div style="font-size: 20px">
+				   <p>탈퇴를 원할경우 모두 체크해주세요!</p>
+				      <label><input type="checkbox"> 약관을 모두 확인하셨나요?</label><br><br>
+				      <label><input type="checkbox"> 정말로 탈퇴를 원하시나요?</label>
+				  </div>
+				  
+				  <br><br>
+			        <tr>
+			          <td colspan="2" class="text-center">
+			            <input type=submit value="회원탈퇴" class="btn btn-sm btn-primary">
+			            <input type=button value="취소" class="btn btn-sm btn-primary"
+			              onclick="javascript:history.back()"
+			            >
+			          </td>
+			        </tr>
+			        </form>
+			        </div>
 		    </div>
 		    </div>
 		    <!-- 원하는 내용 출력 끝 -->
-		    
+		    </div>
 		   </div>
       </div>
      </div>
-    </div>
-   </div>
- </div>
   <script>
     new Vue({
-       el:'#join_before',
+       el:'#join_delete',
        data:{
           pwd:''
        },
@@ -147,7 +171,7 @@ hr {
              // 비밀번호 입력
              let _this=this;
              //axios.post() axios.get()
-             axios.get('http://localhost:8080/web/mypage/mypage_join_before_ok.do',{
+             axios.get('http://localhost:8080/web/mypage/mypage_delete_ok.do',{
                 params:{
                    pwd:this.pwd
                 }
@@ -155,7 +179,8 @@ hr {
                 let res=result.data;
                 if(res==='yes')
                 {
-                   location.href="../mypage/mypage_join_update.do";
+                	alert("탈퇴가 완료되었습니다! 이용해주셔서 감사합니다.");
+                   location.href="../mypage/mypage_delete.do";
                 }
                 else
                 {

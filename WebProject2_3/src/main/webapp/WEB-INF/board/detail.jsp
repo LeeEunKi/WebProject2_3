@@ -25,8 +25,6 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
 
 h1 {
@@ -110,39 +108,13 @@ h2 {
 	position:relative;
 	top:1px;
 }
-
-        
-        
-
 </style>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-let u=0;
-$(function(){
-	$('.up').click(function(){
-		$('.updates').hide();
-		let no=$(this).attr("data-no");
-		if(u==0)
-		{
-			$('#u'+no).show();
-			$(this).text("취소");
-			u=1;
-		}
-		else
-		{
-			$('#u'+no).hide();
-			$(this).text("수정");
-			u=0;
-		}
-	})
-})
-</script>
 </head>
 <body>
 
-		<!-- Start Hero Section -->
+<!-- Start Hero Section -->
 			<div class="hero">
 				<div class="container">
 					<div class="row justify-content-between">
@@ -160,7 +132,7 @@ $(function(){
 		<!-- End Hero Section -->
 		
 &nbsp;&nbsp;<h2><b>상세보기 페이지</b></h2>
-<hr>
+<br>
    <div class="container">
     <div id="board_detail">
      <div class="row">
@@ -195,83 +167,163 @@ $(function(){
           </td>
         </tr>
       </table>
-      </div>
      </div>
      </div>
-     
-     <div class="row row1">
-      <table class="table">
-        <tr>
-          <td>
-           <c:forEach var="rvo" items="${list }">
-             <table class="table">
-               <tr>
-                 <td class="text-left">
-                                        ◑<span style="color:orange">${rvo.name }</span>&nbsp;(${rvo.dbday })
-                 </td>
-                 <td class="text-right">
-                   <c:if test="${sessionScope.id==rvo.id }">
-                     <span class="btn btn-xs btn-info up" data-no="${rvo.no }">수정</span>
-                     <a href="../reply/delete.do?no=${rvo.no }&type=${tab}&cno=${vo.no}" class="btn btn-xs btn-success">삭제</a>
-                   </c:if>
-                 </td>
-               </tr>
-               <tr>
-                 <td colspan="2" valign="top">
-                  <pre style="white-space: pre-wrap;background-color: white;border:none">${rvo.msg }</pre>
-                 </td>
-               </tr>
-               <tr style="display:none" id="u${rvo.no }" class="updates">
-		          <td>
-		           <form method="post" action="../reply/update.do">
-		            <textarea rows="5" cols="80" style="float: left" name="msg">${rvo.msg }</textarea>
-		            <input type=hidden name="no" value="${rvo.no }">
-		            <input type="hidden" name="cno" value="${vo.no }">
-		            <input type=submit value="댓글수정" class="btn btn-sm btn-danger" style="height: 105px;float: left">
-		           </form>
-		          </td>
-		        </tr>
-             </table>
-           </c:forEach>
-          </td>
-        </tr>
-      </table>
-      <c:if test="${sessionScope.id!=null }"><%--로그인시에만  --%>
-	      <table class="table">
-	        <tr>
-	          <td>
-	           <form method="post" action="../reply/insert.do">
-	            <textarea rows="5" cols="93" style="float: left" name="msg"></textarea>
-	            <input type="hidden" name="cno" value="${vo.no }">
-	            <input type=submit value="댓글쓰기" class="btn btn-sm btn-danger" style="height: 105px;float: left">
-	           </form>
-	          </td>
-	        </tr>
-	      </table>
-      </c:if>
-    </div>
+   </div>
+   
+   		<div class="row row1">
+		<div class="col-lg-2 side"></div>
+		  <div class="col-xs-12">
+		    <section class="content" id="reply">
+						    <br>
+							<h2>댓글 작성하기</h2>
+								 <div class="input-group mb-3" style="position: relative;left: -5px;">
+								
+								 <div class="input-group">
+								   <textarea class="form-control" aria-label="With textarea"  ref="msg"  v-model="msg"></textarea>
+								
+									 
+									  <c:if test="${sessionScope.id!=null }">
+									    <input class="btn btn-primary" type="button" value="댓글작성" @click="replyWrite()">
+									  </c:if>
+									  <c:if test="${sessionScope.id==null }">
+									    <button class="btn btn-primary" type="button">댓글작성</button>
+									  </c:if>
+								 </div>
+							    </div>
+							※ 부적절한 댓글은 관리자에 의해 삭제될 수 있습니다 
+							<hr>
+							<!-- 댓글 출력 리스트  -->
+					          <div class="row" style="border-bottom: 1px solid #ddd;" v-for="bor in board_reply_list">
+					             <ul style="list-style: none;">
+										<li>
+											<div>
+												<!-- <span class="ratingStar"><span style="width:80%;"></span></span> -->
+												<strong>{{bor.id}}</strong>
+												<span>({{bor.dbday}})</span>
+												<span style="float: right; padding: 30px">
+													<input type="button" v-if="bor.id===sessionId" value="수정" @click="replyUpdate_3(bor.no)" :id="'up'+bor.no">
+	                   								<input type="button" v-if="bor.id===sessionId" value="삭제" v-on:click="replyDelete_3(bor.no)">
+												</span>
+												
+											</div>
+											<p>{{bor.msg}}</p>
+												<form method="post" action="../board/board_reply_update.do">
+													<div class="input-group" v-show="isShow" style="display: none;" class="updates" :id="'u'+bor.no">
+													   
+														
+														<textarea class="form-control" aria-label="With textarea" name="msg" ref="msg"  id="msg">{{bor.msg}}</textarea>
+														 
+														    <input class="btn btn-outline-secondary" type="submit" value="댓글수정" >
+													 	 
+													 	  
+													 </div>
+													 <input type="hidden" name="cno" :value="cno">
+											         <input type="hidden" name="no" :value="bor.no">
+												</form>
+										</li>
+								  </ul>
+					          </div>
+							
+					    </section>
+		  </div>
 		</div>
+   </div>
    <script>
- 
    new Vue({
-	   el:'.col-xs-12',
-	   data:{
-		   //array
-		   vo:{},
-		   no:${no}
-	   },
-	   //버튼을 누를때 X => 시작과 동시에 값을 가져옴
-	   mounted:function(){
-		   let _this=this;
-		   axios.get("http://localhost:8080/web/board/detail_vue.do",{
-			   params:{
-					no:_this.no	   
-			   }
-		   //요청 처리 결과값 읽기 => 데이터값만 변경(상태변경)
-		   }).then(function(result){
-			   _this.vo=result.data;
-		   })
-	   }
+		 el:'#reply',
+		 data:{
+			 cno:${no},
+			 board_reply_list:[],
+			 msg:'',
+			 sessionId:'',
+			 isShow:false,
+			 no:0
+		 },
+		 mounted:function(){
+			let _this=this;
+  		axios.get("http://localhost:8080/web/board/board_reply_list.do",{
+  			params:{
+  				cno:_this.cno
+  			}
+  		}).then(function(result){
+  			console.log(result.data)
+  			_this.board_reply_list=result.data;
+  			_this.sessionId=result.data[0].sessionId
+  		})
+		 },
+		 methods:{
+			 replyWrite:function(){
+				 if(this.msg==="")
+	    			{
+	    				_this.$refs.msg.focus();
+	    				return;
+	    			}
+	    			let _this=this;
+	    			axios.get("http://localhost:8080/web/board/board_reply_insert.do",{
+	        			params:{
+	        				cno:_this.cno,
+	        				msg:_this.msg
+	        			}
+	        		}).then(function(result){
+	        			_this.msg="";
+	        			console.log(result.data);
+	        			_this.board_reply_list=result.data;
+	        			_this.sessionId=result.data[0].sessionId
+	        		})
+			 },
+			 replyDelete:function(no){
+	    			let _this=this;
+	    			axios.get("http://localhost:8080/web/board/board_reply_delete.do",{
+	    				params:{
+	    					no:no,
+	    					cno:_this.cno
+	    				}
+		    		}).then(function(result){
+		    			console.log(result.data)
+		    			_this.board_reply_list=result.data;
+		    			_this.sessionId=result.data[0].sessionId
+		    		})
+		   	 },
+  		 replyUpdate:function(no){
+  			 $('.updates').hide();
+   			if(this.no==0)
+   			{
+   				$('#u'+no).show();
+   				$('#up'+no).val("취소");
+   				this.no=1;
+   			}
+   			else
+   			{
+   				$('#u'+no).hide();
+   				$('#up'+no).val("수정");
+   				this.no=0;
+   			}
+  		} 
+		 }
+		 
+	 })
+	 
+   
+   new Vue({
+      el:'#board_detail',
+      data:{
+         //array
+         vo:{},
+         no:${no}
+      },
+      //버튼을 누를때 X => 시작과 동시에 값을 가져옴
+      mounted:function(){
+         let _this=this;
+         axios.get("http://localhost:8080/web/board/detail_vue.do",{
+            params:{
+               no:_this.no      
+            }
+         //요청 처리 결과값 읽기 => 데이터값만 변경(상태변경)
+         }).then(function(result){
+            _this.vo=result.data;
+         })
+      }
    })
    </script>
 </body>

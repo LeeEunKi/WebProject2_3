@@ -17,6 +17,8 @@ import oracle.jdbc.OracleTypes;
 @Repository
 public class BoardReplyDAO {
 	private Connection conn;
+	//프로시저 사용을 위한 인터페이스
+	//속도, 코드의 독립성, 보안성 향상
 	private CallableStatement cs;
 	private final String URL="jdbc:oracle:thin:@211.63.89.131:1521:XE";
 	
@@ -75,6 +77,8 @@ public class BoardReplyDAO {
 			// 1. String형으로 값을 받아 왔다 => 여기서 OracleTypes.VARCHAR
 			cs.registerOutParameter(2, OracleTypes.CURSOR);
 			cs.executeQuery();
+			//값 넘어오는지 확인
+			System.out.println("*Cno : "+cs.getString(2));
 			ResultSet rs=(ResultSet)cs.getObject(2);
 			//Cursor ==ResultSet
 			while(rs.next())
@@ -124,7 +128,6 @@ public class BoardReplyDAO {
 			getConnection();
 			String sql="{CALL replyInsert_3(?,?,?,?)}";
 			cs=conn.prepareCall(sql); //프로시저 함수 호출
-			// <select ~~ statement="CALLABLE">{}</select>  => select
 			cs.setInt(1, vo.getCno());
 			cs.setString(2, vo.getId());
 			cs.setString(3, vo.getName());

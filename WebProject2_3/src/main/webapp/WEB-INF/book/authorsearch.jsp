@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
@@ -87,7 +90,80 @@ a{
 	text-decoration: none !important;
 }
 a:hover{
-	text-decoration: underline !important;
+	text-decoration: none !important;
+}
+
+
+
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  position: absolute;
+  height: 50%;
+  overflow: hidden;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #3b5d50;
+  color: white;
+}
+.sidebar a:hover:not(.active) {
+  background-color: #777;
+  color: white;
+}
+
+.sidebar span a {
+  display: block;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+ 
+.sidebar span.active {
+  background-color: #3b5d50;
+  color: white;
+}
+
+.sidebar span:hover:not(.active) {
+  background-color: #777;
+  color: white;
+}
+
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+	.sidebar{
+		display:flex;
+	}
+  div.content {
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.sidebar{
+		display:flex;
+		flex-direction:column;
+		text-align:center;
+	}
 }
 </style>
 </head>
@@ -112,28 +188,19 @@ a:hover{
   <div class="container con1">
      <div class="row row1">
 
-            <!— Start Column 1 —>
-        <div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;">
-             <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-                <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
-                <ul style="list-style: none;">
-                  <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
-                  <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
-                </ul>
-                
-              </div>
-              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-                <a href="../book/search.do"><h3 class="subject">인기도서</h3></a>
-                
-              </div>
-              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-                <h3 class="subject">주제별검색</h3>
-                
-              </div>
-        </div>
+             
+        <div class="col-lg-2 col-md-2 col-sm-12" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;float: right;">
+				<div class="sidebar">
+				  <a class="active"  href="../book/totalsearch.do">도서검색</a>
+				      <span><a href="../book/totalsearch.do">&nbsp;&nbsp;도서명 검색</a></span>
+	                  <span><a href="../book/authorsearch.do">&nbsp;&nbsp;저자명 검색</a></span>
+				  <a href="../book/search.do">인기도서</a>
+
+				  <a href="../book/categorysearch.do">주제별 도서</a>
+             </div>
         
 
-      <div class="col-lg-10">
+      <div class="col-lg-10 col-md-8 col-sm-12 content">
              <h3 style="margin-bottom: 15px;padding-left: 15px">검색 결과</h3>
 
 					<div class="input-group mb-3" style="margin-left: 15px">

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <style type="text/css">
 .subject{
 	position: relative;
@@ -122,12 +123,84 @@ a{
 	text-decoration: none !important;
 }
 a:hover{
-	text-decoration: underline !important;
+	text-decoration: none; !important;
 }
 .li{
 	padding-bottom: 7px;
 }
 
+
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+
+  position: absolute;
+  height: 50%;
+  overflow: hidden;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #3b5d50;
+  color: white;
+}
+.sidebar a:hover:not(.active) {
+  background-color: #777;
+  color: white;
+}
+
+.sidebar span {
+  display: block;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+ 
+.sidebar span.active {
+  background-color: #3b5d50;
+  color: white;
+}
+
+.sidebar span:hover:not(.active) {
+  background-color: #777;
+  color: white;
+}
+
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+	.sidebar{
+		display:flex;
+	}
+  div.content {
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.sidebar{
+		display:flex;
+		flex-direction:column;
+		text-align:center;
+	}
+}
 </style>
 
 
@@ -155,30 +228,18 @@ a:hover{
   <div class="container">
      <div class="row row1">
 
-            <!-- Start Column 1 -->
-        <div class="col-lg-2 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;">
-             <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-                <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>
-                <ul style="list-style: none;font-size: 18px;font-weight:300;padding-left: 5px;">
-                  <a href="../book/totalsearch.do"><li>도서명 검색</li></a>
-                  <a href="../book/authorsearch.do"><li>저자명 검색</li></a>
-                </ul>
-                <br>
-                
-              </div>
-              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-                <a href="../book/search.do"><h3 class="subject">인기도서</h3></a>
-                <br>
-                
-              </div>
-              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-                <h3 class="subject">주제별검색</h3>
-                
-              </div>
+            <!— Start Column 1 —>
+        <div class="col-lg-2 col-md-2 col-sm-12" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;float: right;">
+				<div class="sidebar">
+				  <a href="../book/totalsearch.do">도서검색</a>
+				  <a href="../book/search.do">인기도서</a>
+				  <a class="active" href="../book/categorysearch.do">주제별 도서</a>
+             </div>
         </div>
         
         
-      <div class="col-lg-8">
+
+      <div class="col-lg-10 col-md-10 col-sm-12 content">
         <h3 style="margin-bottom: 0px">상세보기</h3>
         <hr style="margin-bottom: 0px">
         
@@ -199,7 +260,7 @@ a:hover{
 		              <td style="width: 85%">
 		                <h3>{{vo.title}}&nbsp;&nbsp; 
 		                <c:if test="${sessionScope.id==null }">
-		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like">
+		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like unlogin">
 		                 </c:if>
 		                 <c:if test="${sessionScope.id!=null && lcheck==0 }">
 			                <a :href="'../book/bookLikeInsert.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like"></a>
@@ -227,13 +288,13 @@ a:hover{
 		            <td></td>
 		              <td style="float: right;">
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;flo">도서 예약</span>
+		                <span class="btn btn-sm btn-primary unlogin"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >도서 예약</span>
 		              </c:if>
 		              <c:if test="${sessionScope.id!=null }">
 		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">도서 예약</a>
 		              </c:if>
 		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</span>
+		                <span class="btn btn-sm btn-primary unlogin"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</span>
 		              </c:if>
 
 		              <c:if test="${sessionScope.id!=null && lcheck==0 }">
@@ -308,7 +369,7 @@ a:hover{
 				</div>
 		<div class="row row1">
 		<div class="col-lg-2 side"></div>
-		  <div class="col-lg-8">
+		  <div class="col-lg-10">
 		    <section class="content" id="reply">
 						    <br>
 							<h2>리뷰 쓰기</h2>
@@ -446,7 +507,7 @@ a:hover{
 	 })
 	 
 	 new Vue({
-		 el:'.col-lg-8',
+		 el:'.col-lg-10',
 		 data:{
 			 no:${no},
 			 vo:{}
@@ -463,6 +524,13 @@ a:hover{
 		 }
 	
 	 })
+</script>
+<script type="text/javascript">
+ $(function () {
+	$('.unlogin').click(function() {
+		alert("로그인 후에 이용 가능합니다");
+	})
+})
 </script>
 </body>
 </html>

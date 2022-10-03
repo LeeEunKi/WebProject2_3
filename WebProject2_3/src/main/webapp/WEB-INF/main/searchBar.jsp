@@ -53,9 +53,9 @@ $(function() {
 		 	   장르
 		  </label>
 		  </div>
-		  <div class="srch" style="float: left;">
+		  <div class="srch" style="float: left; width: 100%">
 		    <input type="text" class="searchTxt" id="search_text" name="ss" title="검색어를 입력해주세요"
-		    placeholder="검색어를 입력해주세요." autocomplete="off" style="margin-right: 7px !important;">
+		    placeholder="검색어를 입력해주세요." autocomplete="off" style="margin-right: 7px; width: 88%">
 		    <!-- <input type="button" id="searchBtn" value="검색"> -->
 		    <img src="../img/search.png" id="searchBtn" style="cursor: pointer;">
 		  </div>

@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
@@ -87,7 +90,7 @@ a{
 	text-decoration: none !important;
 }
 a:hover{
-	text-decoration: underline !important;
+	text-decoration: none !important;
 }
 span:hover{
 	cursor: pointer;
@@ -103,7 +106,7 @@ span:hover{
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color: #f1f1f1;
+
   position: absolute;
   height: 50%;
   overflow: hidden;
@@ -117,11 +120,11 @@ span:hover{
 }
  
 .sidebar a.active {
-  background-color: #3e84e0;
+  background-color: #3b5d50;
   color: white;
 }
 .sidebar a:hover:not(.active) {
-  background-color: #555;
+  background-color: #777;
   color: white;
 }
 
@@ -133,12 +136,12 @@ span:hover{
 }
  
 .sidebar span.active {
-  background-color: #3e84e0;
+  background-color: #3b5d50;
   color: white;
 }
 
 .sidebar span:hover:not(.active) {
-  background-color: #555;
+  background-color: #777;
   color: white;
 }
 
@@ -172,7 +175,7 @@ div.content {
 </style>
 </head>
 <body>
-  <!— Start Hero Section —>
+  <!-- Start Hero Section -->
     <div class="hero">
       <div class="container">
         <div class="row justify-content-between">
@@ -194,53 +197,6 @@ div.content {
 		
             <!— Start Column 1 —>
         <div class="col-lg-2 col-md-2 col-sm-12" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);display: inline-block;float: right;">
-            <!--  <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px;">
-                <a href="../book/totalsearch.do"><h3 class="subject">자료검색</h3></a>      
-              </div>
-              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-                <a href="../book/search.do"><h3 class="subject">인기도서</h3></a>
-                
-              </div>
-              <div class="ui vertical text menu sidemenu" style="margin-bottom: 15px">
-                <h3 class="subject">주제별검색</h3>
-                <ul style="list-style: none;">
-                "순수과학","역사","언어","총류","기술과학","종교","철학","문학","예술","사회과학"
-                  <li v-on:click="cate('총류')">총류</li>
-                  <li v-on:click="cate('역사')">역사</li>
-                  <li v-on:click="cate('언어')">언어</li>
-                  <li v-on:click="cate('종교')">종교</li>
-                  <li v-on:click="cate('철학')">철학</li>
-                  <li v-on:click="cate('문학')">문학</li>
-                  <li v-on:click="cate('예술')">예술</li>
- 				  <li v-on:click="cate('순수과학')">순수과학</li>
-                  <li v-on:click="cate('기술과학')">기술과학</li>
-                  <li v-on:click="cate('사회과학')">사회과학</li>
-                </ul>
-              </div> -->
-              <!-- <ul class="nav nav-pills  flex-column">
-				  <li class="nav-item">
-				    <a class="nav-link" aria-current="page" href="#">도서 검색</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" href="#">인기도서</a>
-				  </li>
-				  <li class="nav-item">
-				    <span v-on:click="cate('총류')" class="nav-link active">주제별 검색</span>
-				    <span v-on:click="cate('총류')">총류</span>
-				    <span v-on:click="cate('역사')">역사</span>
-				    <span v-on:click="cate('언어')">언어</span>
-				    <span v-on:click="cate('종교')">종교</span>
-				    <span v-on:click="cate('철학')">철학</span>
-				    <span v-on:click="cate('문학')">문학</span>
-				    <span v-on:click="cate('예술')">예술</span>
-				    <span v-on:click="cate('순수과학')">순수과학</span>
-				    <span v-on:click="cate('기술과학')">기술과학</span>
-				    <span v-on:click="cate('사회과학')">사회과학</span>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link disabled">Disabled</a>
-				  </li>
-				</ul> -->
 				<div class="sidebar">
 				  <a href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>

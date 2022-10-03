@@ -58,8 +58,8 @@ $(function(){
   position: relative;
   z-index: 1;
   background: #FAFAFA;
-  max-width: 320px;
-  min-width: 320px;
+  max-width: 100%;
+  min-width: 400px;
   margin: 0 auto 20px;
   padding: 45px;
   text-align: center;
@@ -192,8 +192,7 @@ $(function(){
 		                </button>
 		                <br>
 		                <br>
-		                 <p><a href="../member/join_before.do">회원정보 수정</a></p> 
-		                 <p><a href="../member/logout.do">로그아웃</a></p> 
+		                 <p><a href="../member/join_before.do">회원정보 수정</a><span style="padding-left: 20px"><a href="../member/logout.do">로그아웃</a></span></p> 
 		              </form>
 		            </div>
 		          </div>

@@ -274,9 +274,8 @@ a {
 
 .hero {
   background: #3b5d50;
-  background-image: url("../img/bg4.jpg");
-  /* background-repeat:no-repeat;
-  background-position:center top; */
+  background-image: url("../img/bg13.png");
+  background-position: top;
   padding: calc(4rem - 30px) 0 0rem 0; }
   @media (min-width: 768px) {
     .hero {

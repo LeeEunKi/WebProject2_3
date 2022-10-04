@@ -38,7 +38,7 @@ public interface BookLoanMapper {
 	
 	@Update("UPDATE book_3 SET "
 			+ "loancnt=loancnt+1 "
-			+ "WHERE no=#{no}")
+			+ "WHERE no=#{book_no}")
 	public void bookloancntDecreament(int book_no);
 	
 	

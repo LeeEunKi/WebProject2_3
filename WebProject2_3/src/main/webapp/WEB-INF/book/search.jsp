@@ -23,6 +23,12 @@
 				location.href = "../book/loan.do";
 			}
 		})
+		
+		$('.pageBtn').click(function () {
+			$('html, body').animate({ scrollTop: 300 }, 'fast');
+			//$("html, body").animate({scrollTop: 2250.984375}, 400);   /* 자동 스크롤 */
+		})
+		
 	})
 </script>
 <style type="text/css">
@@ -32,7 +38,7 @@
 }
 .subject{
 	position: relative;
-    color: rgb(103, 114, 148);
+    color: rgwkb(103, 114, 148);
     font-size: 18px;
     font-family: Medium, sans-serif;
     font-weight: bold;
@@ -215,7 +221,7 @@ div.content {
 			    
 
 			<div class="col-lg-5 col-md-5 col-sm-12">
-				<h3 style="margin-bottom: 0px">검색 결과</h3>
+				<h3 style="margin-bottom: 0px" class="searchinfo">검색 결과</h3>
 				<!-- <h5 style="margin-top: 5px">Horizontal card11s</h5> -->
 				<hr style="margin-bottom: 0px">
 			  
@@ -231,7 +237,7 @@ div.content {
 					         <li>저자:&nbsp;&nbsp;{{vo.author}}</li>
 					         <li>출판사:&nbsp;&nbsp;{{vo.publisher}}</li>
 					         <li>출판일:&nbsp;&nbsp;{{vo.dbday}}</li>
-					         <li>대출가능 권 수:&nbsp;&nbsp;{{vo.loancnt}}<button class="btn btn-xs btn-primary" style="float: right;margin-bottom: 5px;padding: 8px 20px;" v-on:click="detailData(vo.no)">도서정보</button></li>
+					         <li>대출가능 권 수:&nbsp;&nbsp;{{vo.loancnt}}<button class="btn btn-xs btn-primary bookinfoBtn" style="float: right;margin-bottom: 5px;padding: 8px 20px;" v-on:click="detailData(vo.no)">도서정보</button></li>
 					        </ul>
 					        
 					        <hr style="width: 100%;background-color: rgb(231, 234, 238);">
@@ -243,9 +249,9 @@ div.content {
 				   
 			      <div style="height: 20px"></div>
 			        <div class="text-center">
-			          <button class="btn btn-sm btn-info" v-on:click="prev()">이전</button>
+			          <button class="btn btn-sm btn-info pageBtn" v-on:click="prev()">이전</button>
 			            {{curpage}} page / {{totalpage}} pages
-			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
+			          <button class="btn btn-sm btn-info pageBtn" v-on:click="next()">다음</button>
 			        </div>
 			   </div>
 			   
@@ -363,6 +369,7 @@ div.content {
         				no:no
         			}
         		}).then(function(result){
+        			$('html, body').animate({ scrollTop: 350 }, 'fast');
         			_this.book_detail=result.data;
         		})
     

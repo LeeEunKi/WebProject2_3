@@ -23,6 +23,11 @@
 				location.href = "../book/loan.do";
 			}
 		})
+		
+		$('.pageBtn').click(function () {
+		$('html, body').animate({ scrollTop: 300 }, 'fast');
+		//$("html, body").animate({scrollTop: 2250.984375}, 400);   /* 자동 스크롤 */
+		})
 	})
 </script>
 <style type="text/css">
@@ -266,9 +271,9 @@ div.content {
 				  <div style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			      <div style="height: 20px"></div>
 			        <div class="text-center">
-			          <button class="btn btn-sm btn-info" v-on:click="prev()">이전</button>
+			          <button class="btn btn-sm btn-info pageBtn" v-on:click="prev()">이전</button>
 			            {{curpage}} page / {{totalpage}} pages
-			          <button class="btn btn-sm btn-info" v-on:click="next()">다음</button>
+			          <button class="btn btn-sm btn-info pageBtn" v-on:click="next()">다음</button>
 			      </div>
 				
 

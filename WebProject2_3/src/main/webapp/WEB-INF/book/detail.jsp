@@ -287,7 +287,7 @@ div.content {
 				
 				<table class="table">
 					<tr>
-					  <td rowspan="6"  style="padding-top: 0px">
+					  <td rowspan="6"  style="padding-top: 0px;border-bottom: none">
 					  <img :src="vo.img">
 					  </td>
 					</tr>
@@ -323,8 +323,8 @@ div.content {
 		              <td style="width: 85%">{{vo.dbday}}</td>
 		            </tr>
 		            <tr> 
-		            <td></td>
-		              <td style="float: right;">
+		            <td style="border-bottom: none"></td>
+		              <td style="float: right;border-bottom: none">
 			              <c:if test="${loancnt ==0 }">
 			                <span class="btn btn-sm btn-danger"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >예약 불가</span>
 			              </c:if>

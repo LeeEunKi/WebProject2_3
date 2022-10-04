@@ -78,4 +78,8 @@ public interface BookMapper {
 	//도서 주제별 토탈 페이지
 	@Select("SELECT COUNT (*) FROM book_3 WHERE type LIKE '%'||#{type}||'%'")
 	public int CategoryTotalPage(String type);
+	
+	//관심도서 목록 출력
+	//@Select("SELECT * FROM booklike_3 WHERE member_id=#{member_id}")
+	//public 
 }

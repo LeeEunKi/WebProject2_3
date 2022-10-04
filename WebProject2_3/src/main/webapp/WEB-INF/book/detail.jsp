@@ -287,24 +287,33 @@ div.content {
 		            <tr>
 		            <td></td>
 		              <td style="float: right;">
-		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-sm btn-primary unlogin"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >도서 예약</span>
-		              </c:if>
-		              <c:if test="${sessionScope.id!=null }">
-		                <a :href="'../book/insertLoan.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">도서 예약</a>
-		              </c:if>
-		              <c:if test="${sessionScope.id==null }">
-		                <span class="btn btn-sm btn-primary unlogin"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</span>
-		              </c:if>
-
-		              <c:if test="${sessionScope.id!=null && lcheck==0 }">
-		                 
-		                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 추가</a>
-		              </c:if>
-		              <c:if test="${sessionScope.id!=null && lcheck!=0 }">
-		                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 삭제</a>
-		              </c:if>
-		                <a href="../book/search.do" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;" >목록으로</a>
+			              <c:if test="${loancnt ==0 }">
+			                <span class="btn btn-sm btn-danger"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >예약 불가</span>
+			              </c:if>
+			              <c:if test="${sessionScope.id==null && loancnt !=0 }">
+			                <span class="btn btn-sm btn-primary unlogin"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >도서 예약</span>
+			              </c:if>
+			              <c:if test="${sessionScope.id!=null && loancnt !=0 }">
+				              <form method="post" action="../book/insertLoan.do" style="display: inline-block;">
+				              	<input type="hidden" :value="vo.no" name="book_no">
+				              	<input type="hidden" :value="vo.title" name="title">
+				              	<input type="hidden" :value="vo.img" name="img">
+				              	<input type="hidden" :value="vo.author" name="author">
+				                <input type="submit" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;" value="도서예약"/>
+				              </form>
+			              </c:if>
+			              <c:if test="${sessionScope.id==null }">
+			                <span class="btn btn-sm btn-primary unlogin"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</span>
+			              </c:if>
+	
+			              <c:if test="${sessionScope.id!=null && lcheck==0 }">
+			                 
+			                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 추가</a>
+			              </c:if>
+			              <c:if test="${sessionScope.id!=null && lcheck!=0 }">
+			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 삭제</a>
+			              </c:if>
+			                <a href="../book/search.do" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;" >목록으로</a>
 		              </td>
 		            </tr>
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->

@@ -24,7 +24,7 @@ public interface BookMapper {
 	public int bookTotalPage();
 	
 	//상세보기 -Vue
-	@Select("SELECT no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description "
+	@Select("SELECT no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday,description,loancnt "
 			+ "FROM BOOK_3 "
 			+ "WHERE no=#{no}")
 	public BookVO bookDetailData(int no);

@@ -1,5 +1,6 @@
 package com.sist.dao;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.*;
@@ -21,4 +22,9 @@ public class BookLoanDAO {
 		mapper.bookloancntDecreament(book_no);
 		mapper.bookloanDelete(map);
 	}
+	
+		public List<BookLoanVO> loanBookInfoData(String member_id)
+		{
+			return mapper.loanBookInfoData(member_id);
+		}
 }

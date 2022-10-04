@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -244,13 +245,29 @@ div.content {
 				
 				<table id="books">
 			          <tr class="warning">
-			            <th width="10%" class="text-center">주문번호</th>
-			            <th width="10%" class="text-center">제품 이미지</th>
-			            <th width="50%" class="text-center">상품명</th>
-			            <th width="10%" class="text-center">가격</th>
-			            <th width="10%" class="text-center">주문일</th>
-			            <th width="10%" class="text-center">비고</th>
+			            <th width="10%" class="text-center">예약번호</th>
+			            <th width="10%" class="text-center">이미지</th>
+			            <th width="15%" class="text-center">도서명</th>
+			            <th width="10%" class="text-center">저자명</th>
+			            <th width="20%" class="text-center">요청일</th>
+			            <th width="20%" class="text-center">만료일</th>
+			            <th width="15%" class="text-center"></th>
 			          </tr>
+			          <c:forEach var="vo" items="${list }">
+			          <tr class="warning">
+			            <td width="10%" class="text-center">${vo.no }</td>
+			            <td width="10%" class="text-center">
+			            <img src="${vo.img }"style="width: 50px;height: 70px">
+			            </td>
+			            <td width="15%" class="text-center">${vo.title }</td>
+			            <td width="10%" class="text-center">${vo.author }</td>
+			            <td width="20%" class="text-center">${vo.dbday }</td>
+			            <td width="20%" class="text-center">${vo.dbday2 }</td>
+			            <td width="10%" class="text-center">
+			              <a href="../book/deleteLoan.do?no=${vo.book_no }" class="btn btn-sm btn-primary">대출 취소</a>
+			            </td>
+			          </tr>
+			          </c:forEach>
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->
 		        </table>
 </body>

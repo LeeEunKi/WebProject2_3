@@ -14,6 +14,6 @@ import lombok.Setter;
 @Setter
 public class BookLoanVO {
 	private int no,book_no;
-	private String member_id,dbday;
-	private Date regdate;
+	private String member_id,title,author,img,dbday,dbday2;
+	private Date regdate,expdate;
 }

@@ -137,9 +137,9 @@ public class BookRestController {
 		for(BookVO vo:list)
 		{
 			String title1=vo.getTitle();
-			if(title1.length()>16)
+			if(title1.length()>14)
 			{
-				title1=title1.substring(0,16)+"...";
+				title1=title1.substring(0,14)+"...";
 				vo.setTitle(title1);
 			}
 			vo.setTitle(title1);
@@ -147,7 +147,7 @@ public class BookRestController {
 			String author=vo.getAuthor();
 			if(author.length()>6)
 			{
-				author=author.substring(0,author.lastIndexOf("("))+" 외 다수";
+				author=author.substring(0,6)+"...";
 				vo.setAuthor(author);
 			}
 			vo.setAuthor(author);
@@ -200,17 +200,17 @@ public class BookRestController {
 		for(BookVO vo:list)
 		{
 			String title1=vo.getTitle();
-			if(title1.length()>16)
+			if(title1.length()>14)
 			{
-				title1=title1.substring(0,16)+"...";
+				title1=title1.substring(0,14)+"...";
 				vo.setTitle(title1);
 			}
 			vo.setTitle(title1);
 			
 			String author1=vo.getAuthor();
-			if(author1.length()>13)
+			if(author1.length()>6)
 			{
-				author1=author1.substring(0,13)+"...";
+				author1=author1.substring(0,6)+"...";
 				vo.setAuthor(author1);
 			}
 			vo.setAuthor(author1);
@@ -317,17 +317,17 @@ public class BookRestController {
 		for(BookVO vo:list)
 		{
 			String title1=vo.getTitle();
-			if(title1.length()>16)
+			if(title1.length()>14)
 			{
-				title1=title1.substring(0,16)+"...";
+				title1=title1.substring(0,14)+"...";
 				vo.setTitle(title1);
 			}
 			vo.setTitle(title1);
 			
 			String author1=vo.getAuthor();
-			if(author1.length()>13)
+			if(author1.length()>6)
 			{
-				author1=author1.substring(0,13)+"...";
+				author1=author1.substring(0,6)+"...";
 				vo.setAuthor(author1);
 			}
 			vo.setAuthor(author1);

@@ -118,7 +118,7 @@
     <div class="row mb-5">
 		        <div class="col-md-12">
 		          <div class="border p-4 rounded" role="alert" style="background-color:#F5E3CF;">
-		           	 <b>이미 계정이 있으신가요? <a href="#">Click here</a> 에서 로그인 해 주세요!</b>
+		           	 <b>이미 계정이 있으신가요? <a href="../main/main.do">Click here</a> 에서 로그인 해 주세요!</b>
 		          </div>
 		        </div>
      </div>

@@ -43,7 +43,7 @@ public interface MemberMapper {
 	   
 	   @Delete("DELETE FROM book_join_3 "
 	   		+ "WHERE id=#{id}")
-	   public void memberDelete(MemberVO vo);
+	   public void memberDelete(String id);
 	   
 	   //////////////////////////////////////////////////////////////////////
 	   /*@Select("SELECT name FROM book_join_3 "

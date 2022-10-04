@@ -65,8 +65,8 @@ public class MemberDAO {
 		return mapper.memberDeleteData(id);
 	}
 	
-	public void memberDelete(MemberVO vo)
+	public void memberDelete(String id)
 	{
-		mapper.memberDelete(vo);
+		mapper.memberDelete(id);
 	}
 }

@@ -50,8 +50,9 @@
 		      <li><a class="active" href="#home"><b2>MyPage</b2></a></li>
 		      <li><a href="../mypage/mypage_Volunteer.do"><b2>자원봉사 신청하기</b2></a></li>
 		      <li><a href="../mypage/mypage.do"><b2>내가 작성한 게시글</b2></a></li>
+		      <li><a href="../study/booking_manager.do"><b2>열람실 예약정보</b2></a></li>
 		      <li><a href="../mypage/mypage_join_before.do">회원정보 수정하기</a></li>
-		       <li><a href="../mypage/mypage_delete_before.do">회원 탈퇴하기</a></li>
+		      <li><a href="../mypage/mypage_delete_before.do">회원 탈퇴하기</a></li>
 		    </ul>
 		    </div>
 		  </div>

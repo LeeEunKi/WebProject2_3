@@ -66,6 +66,12 @@ public interface StudyMapper {
 			+ "FROM booking_3")
 	public List<BookingVO> bookingGetInfo();
 	
+	//회원 좌석정보
+	@Select("SELECT no,TO_CHAR(booking_date,'YYYY-MM-DD') as dbday,start_time,end_time,seat_no,room_no "
+			+ "FROM booking_3 "
+			+ "WHERE member_id=#{member_id}")
+	public BookingVO bookingGetMemeberInfo(String member_id);
+	
 	// 예약 취소
 	@Delete("DELETE booking_3 WHERE no=#{no}")
 	public void bookingCancel(int no);
@@ -75,6 +81,11 @@ public interface StudyMapper {
 			+ "FROM booking_3 "
 			+ "WHERE member_id=#{member_id}")
 	public int bookingCheckID(String member_id);
+	
+	//예약 시간 연장
+	@Update("UPDATE booking_3 SET "
+			+ "end_time=#{end_time}")
+	public void bookingExtend(String end_time);
 	
 	
 }

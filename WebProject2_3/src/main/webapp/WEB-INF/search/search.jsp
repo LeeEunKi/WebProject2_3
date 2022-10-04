@@ -281,7 +281,7 @@ td{
 			  }
 			  this.curPage=1;
 			  this.send(this.ss);
-		  },
+		  }
 	  }
   })
   </script>

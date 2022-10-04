@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
@@ -77,5 +78,34 @@ public class StudyRestController {
 		}
 		
 		return result;
+	}
+	@PostMapping("study/booking_cancel.do")
+	public String study_booking_cancel(HttpSession session) {
+		String result="";
+		BookingVO vo=dao.bookingGetMemberInfo((String)session.getAttribute("id"));
+		
+		dao.bookingCancel(vo);
+		
+		return result;
+	}
+	
+	@PostMapping("study/booking_extend.do")
+	public String study_booking_extend(HttpSession session) {
+		BookingVO vo=dao.bookingGetMemberInfo((String)session.getAttribute("id"));
+		
+		String extend_time=vo.getEnd_time();
+		String end_time="";
+		int hour = Integer.parseInt(extend_time.substring(0, 2));
+		
+		if(hour+3>=18) {
+			end_time="18:00:00";
+		}
+		else {
+			hour=hour+3;
+			end_time=hour+":00:00";
+		} 
+		dao.bookingExtend(end_time);
+		
+		return end_time;
 	}
 }

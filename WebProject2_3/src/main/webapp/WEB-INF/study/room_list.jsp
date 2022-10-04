@@ -162,15 +162,16 @@ new Vue({
 			let after_min = ('0' + date.getMinutes()).slice(-2);
 			let after_sec = ('0' + date.getSeconds()).slice(-2);
 			
+			console.log(Number(date.getHours()+3));
 			
-			if(after_hou>18){
+			if(Number(date.getHours()+3)>=18){
 				after_hou='18';
 				after_min='00';
-				after_sec='00';
 			}
-			
+		
 			this.now_time= hou +':' + min + ':' + sec;
-			this.after_time = after_hou +':' + after_min + ':00';  
+			this.after_time = after_hou +':' + after_min + ':00';	
+			  
 		},
 		booking:function(){
 			if(this.selected_no==0){

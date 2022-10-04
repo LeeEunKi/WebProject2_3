@@ -32,8 +32,23 @@ public class StudyController {
 		return "study/room_list";
 	}
 	
-	
-	
+	@GetMapping("study/booking_manager.do")
+	public String study_booking_manager(HttpSession session,Model model) {
+		String id=(String)session.getAttribute("id");
+		int count=dao.bookingCheckID(id);
+		BookingVO vo=new BookingVO();
+		
+		if(count>0) {
+			vo=dao.bookingGetMemberInfo(id);
+		}
+		else {
+			vo.setNo(0);
+		}
+		
+		model.addAttribute("vo", vo);
+		model.addAttribute("count", count);
+		return "study/booking_manager";
+	}
 	
 	
 	

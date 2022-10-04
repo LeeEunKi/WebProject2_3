@@ -284,7 +284,7 @@ div.content {
 		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판일자</td>
 		              <td style="width: 85%">{{vo.dbday}}</td>
 		            </tr>
-		            <tr>
+		            <tr> 
 		            <td></td>
 		              <td style="float: right;">
 			              <c:if test="${loancnt ==0 }">

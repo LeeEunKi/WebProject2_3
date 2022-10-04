@@ -165,9 +165,11 @@ a:hover{
 						<input type=button class="btn btn-sm filterBtn" value="높은가격순" @click="typeChange(type,3)">
 						<input type=button class="btn btn-sm filterBtn" value="제목순" @click="typeChange(type,4)">
 					</div>
-					<div style="height:20px"></div><!-- 간격띄우기 -->
+				<hr>
 				  <div class="card1" v-for="vo in book_list" style="display: inline-block;">
-				  	<h5>상태 : {{vo.condition}}</h5>
+				  	<h6 v-if="vo.condition=='상'||vo.condition=='최상'" style="color:blue">상태 : {{vo.condition}}</h6>
+				  	<h6 v-if="vo.condition=='중'" style="color:green">상태 : {{vo.condition}}</h6>
+				  	<h6 v-if="vo.condition=='하'||vo.condition=='최하'" style="color:red">상태 : {{vo.condition}}</h6>
 				    <a :href="'../shop/detail_before.do?no='+vo.no+'&page='+curPage">
 				    	<img :src="vo.img" align="middle" :class="[vo.state===0?'img':'soldout img']"/>
 				    	<div class="book-text" v-if="vo.state!=0">구매불가</div>

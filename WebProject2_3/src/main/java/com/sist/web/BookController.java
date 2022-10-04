@@ -70,7 +70,7 @@ public class BookController {
 		map.put("member_id", id);
 		ldao.bookLikeInsert(no,map);
 		
-		return "redirect:../book/detail.do?no="+no;
+		return "redirect:../book/detail.do?no="+no; 
 		
 	}
 	@GetMapping("book/bookDisLikeInsert.do")
@@ -92,5 +92,17 @@ public class BookController {
 		return "book/categorysearch";
 	}
 	
+	
+	@GetMapping("book/insertLoan.do")
+	public String book_insertLoan(int no,HttpSession session)
+	{
+		String id=(String)session.getAttribute("id");
+		Map map=new HashMap();
+		map.put("book_no", no);
+		map.put("member_id", id);
+		loandao.bookLoanInsert(no, map);
+		
+		return "redirect:../book/loan.do";
+	}
 	
 }

@@ -291,7 +291,7 @@ div.content {
 		                <span class="btn btn-sm btn-primary unlogin"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;" >도서 예약</span>
 		              </c:if>
 		              <c:if test="${sessionScope.id!=null }">
-		                <a :href="'../book/loan.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">도서 예약</a>
+		                <a :href="'../book/insertLoan.do?no='+vo.no" class="btn btn-sm btn-primary"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">도서 예약</a>
 		              </c:if>
 		              <c:if test="${sessionScope.id==null }">
 		                <span class="btn btn-sm btn-primary unlogin"style="float: left;margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;">관심도서 추가</span>

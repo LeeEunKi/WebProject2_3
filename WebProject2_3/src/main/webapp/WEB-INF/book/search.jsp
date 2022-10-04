@@ -13,6 +13,7 @@
 <style type="text/css">
 *{
 	font-family: 'Noto Sans KR', sans-serif;
+
 }
 .subject{
 	position: relative;
@@ -30,7 +31,7 @@
     border-right-color: graytext;
 }
 .active_a{
-   font-weight: bold;
+   font-weight: 500;
    color: #2964D9;
 }
 .table>tbody>tr>td,
@@ -56,6 +57,14 @@
     margin-right: auto;
     margin-left: auto;
 }
+p {
+
+  font-size: 16px;
+  font-weight: 300;
+  width: 240px;
+  margin: 8px 0px 0px;
+  color: #757575;
+}
 a{
 	text-decoration: none !important;
 }
@@ -69,6 +78,7 @@ a:hover{
   margin: 0;
   padding: 0;
   width: 200px;
+
   position: absolute;
   height: 50%;
   overflow: hidden;
@@ -77,6 +87,8 @@ a:hover{
 .sidebar a {
   display: block;
   color: black;
+  font-weight: 600;
+  font-size: 20px;
   padding: 16px;
   text-decoration: none;
 }
@@ -93,6 +105,8 @@ a:hover{
 .sidebar span a {
   display: block;
   color: black;
+  font-weight: 400;
+  font-size: 17px;
   padding: 8px 16px;
   text-decoration: none;
 }
@@ -167,6 +181,9 @@ div.content {
 						  <a class="active" href="../book/search.do">인기도서</a>
 		
 						  <a href="../book/categorysearch.do">주제별 도서</a>
+						  <c:if test="${sessionScope.id!=null }">
+						    <a href="../book/loan.do">예약 내역</a>
+						  </c:if>
 		             </div>
 		         </div>
 			    

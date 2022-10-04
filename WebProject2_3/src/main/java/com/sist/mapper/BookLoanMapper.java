@@ -30,6 +30,9 @@ public interface BookLoanMapper {
 			+ "WHERE member_id=#{member_id}")
 	public List<BookLoanVO> loanBookInfoData(String member_id);
 	
+	//예약 체크
+	@Select("SELECT COUNT(*) FROM bookloan_3 WHERE member_id=#{member_id}")
+	public int loanCountCheck(String member_id);
 	
 	//취소
 	@Delete("DELETE FROM bookloan_3 "

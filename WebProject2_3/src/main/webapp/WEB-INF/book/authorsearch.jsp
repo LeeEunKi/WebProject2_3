@@ -11,6 +11,9 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
 .subject{
 	position: relative;
     color: rgb(103, 114, 148);
@@ -100,6 +103,7 @@ a:hover{
   margin: 0;
   padding: 0;
   width: 200px;
+
   position: absolute;
   height: 50%;
   overflow: hidden;
@@ -108,6 +112,8 @@ a:hover{
 .sidebar a {
   display: block;
   color: black;
+  font-weight: 600;
+  font-size: 20px;
   padding: 16px;
   text-decoration: none;
 }
@@ -124,10 +130,11 @@ a:hover{
 .sidebar span a {
   display: block;
   color: black;
+  font-weight: 400;
+  font-size: 17px;
   padding: 8px 16px;
   text-decoration: none;
 }
- 
 .sidebar span.active {
   background-color: #3b5d50;
   color: white;
@@ -197,6 +204,9 @@ div.content {
 				  <a href="../book/search.do">인기도서</a>
 
 				  <a href="../book/categorysearch.do">주제별 도서</a>
+				  <c:if test="${sessionScope.id!=null }">
+				    <a href="../book/loan.do">예약 내역</a>
+				  </c:if>
              </div>
         
 

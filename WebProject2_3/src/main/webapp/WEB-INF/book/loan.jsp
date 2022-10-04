@@ -6,10 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+
+}
 .subject{
 	position: relative;
     color: rgb(103, 114, 148);
@@ -135,7 +142,8 @@ a:hover{
   margin: 0;
   padding: 0;
   width: 200px;
-
+  font-weight: 600;
+  font-size: 20px;
   position: absolute;
   height: 50%;
   overflow: hidden;
@@ -201,6 +209,31 @@ div.content {
 		text-align:center;
 	}
 }
+
+
+
+
+#books {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#books td, #books th {
+  padding: 8px;
+}
+
+#books tr:nth-child(even){background-color: #f2f2f2;}
+
+#books tr:hover {background-color: #ddd;}
+
+#books th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #6a8b7f;
+  color: white;
+}
+
 </style>
 </head>
 <body>
@@ -230,6 +263,9 @@ div.content {
 				  <a href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>
 				  <a href="../book/categorysearch.do">주제별 도서</a>
+				  <c:if test="${sessionScope.id!=null }">
+				    <a href="../book/loan.do">예약 내역</a>
+				  </c:if>
              </div>
         </div>
         
@@ -242,7 +278,10 @@ div.content {
 
             <div style="height: 20px"></div>
           
-				
+				<c:if test="${loanChk==0 }">
+					<h4 style="text-align:left; margin:50px auto;">구매 내역이 없습니다.</h4>    
+				</c:if>
+				<c:if test="${loanChk!=0 }">
 				<table id="books">
 			          <tr class="warning">
 			            <th width="10%" class="text-center">예약번호</th>
@@ -253,13 +292,14 @@ div.content {
 			            <th width="20%" class="text-center">만료일</th>
 			            <th width="15%" class="text-center"></th>
 			          </tr>
+
 			          <c:forEach var="vo" items="${list }">
 			          <tr class="warning">
 			            <td width="10%" class="text-center">${vo.no }</td>
 			            <td width="10%" class="text-center">
-			            <img src="${vo.img }"style="width: 50px;height: 70px">
+			              <a href="../book/detail.do?no=${vo.book_no }"><img src="${vo.img }"style="width: 50px;height: 70px"></a>
 			            </td>
-			            <td width="15%" class="text-center">${vo.title }</td>
+			            <td width="15%" class="text-center"><a href="../book/detail.do?no=${vo.book_no }">${vo.title }</a></td>
 			            <td width="10%" class="text-center">${vo.author }</td>
 			            <td width="20%" class="text-center">${vo.dbday }</td>
 			            <td width="20%" class="text-center">${vo.dbday2 }</td>
@@ -270,5 +310,10 @@ div.content {
 			          </c:forEach>
 		            <!-- no,title,author,type,publisher,img,TO_CHAR(pub_date,'YYYY-MM-DD') AS dbday, description -->
 		        </table>
+		        </c:if>
+		        
+		        
+		</div>
+		<div style="height: 40px"></div>
 </body>
 </html>

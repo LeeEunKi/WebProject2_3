@@ -23,8 +23,13 @@ public class BookLoanDAO {
 		mapper.bookloanDelete(map);
 	}
 	
-		public List<BookLoanVO> loanBookInfoData(String member_id)
-		{
-			return mapper.loanBookInfoData(member_id);
-		}
+	public List<BookLoanVO> loanBookInfoData(String member_id)
+	{
+		return mapper.loanBookInfoData(member_id);
+	}
+		
+	//@Select("SELECT COUNT(*) FROM bookloan_3 WHERE member_id=#{member_id}")
+	public int loanCountCheck(String member_id) {
+		return mapper.loanCountCheck(member_id);
+	}
 }

@@ -6,10 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+
+}
 .subject{
 	position: relative;
     color: rgb(103, 114, 148);
@@ -135,7 +142,8 @@ a:hover{
   margin: 0;
   padding: 0;
   width: 200px;
-
+  font-weight: 600;
+  font-size: 20px;
   position: absolute;
   height: 50%;
   overflow: hidden;
@@ -234,6 +242,9 @@ div.content {
 				  <a class="active" href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>
 				  <a href="../book/categorysearch.do">주제별 도서</a>
+				  <c:if test="${sessionScope.id!=null }">
+				    <a href="../book/loan.do">예약 내역</a>
+				  </c:if>
              </div>
         </div>
         

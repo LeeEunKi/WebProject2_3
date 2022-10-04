@@ -153,8 +153,10 @@ public class BookController {
 			vo.setAuthor(author);
 		}
 		
-		model.addAttribute("list", list);
+		int loanChk=loandao.loanCountCheck(id);
 		
+		model.addAttribute("list", list);
+		model.addAttribute("loanChk",loanChk);
 		return "book/loan";
 		
 	}

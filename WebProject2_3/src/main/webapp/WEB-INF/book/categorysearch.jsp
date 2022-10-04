@@ -11,6 +11,10 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+
+}
 .subject{
 	position: relative;
     color: rgb(103, 114, 148);
@@ -106,7 +110,6 @@ span:hover{
   margin: 0;
   padding: 0;
   width: 200px;
-
   position: absolute;
   height: 50%;
   overflow: hidden;
@@ -117,6 +120,8 @@ span:hover{
   color: black;
   padding: 16px;
   text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
 }
  
 .sidebar a.active {
@@ -133,6 +138,7 @@ span:hover{
   color: black;
   padding: 8px 16px;
   text-decoration: none;
+  font-size: 17px;
 }
  
 .sidebar span.active {
@@ -211,6 +217,10 @@ div.content {
 				    <span v-on:click="cate('순수과학')">순수과학</span>
 				    <span v-on:click="cate('기술과학')">기술과학</span>
 				    <span v-on:click="cate('사회과학')">사회과학</span>
+				    
+				  <c:if test="${sessionScope.id!=null }">
+				    <a href="../book/loan.do">예약 내역</a>
+				  </c:if>
 
 				
              </div>

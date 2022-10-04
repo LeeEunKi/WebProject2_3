@@ -25,6 +25,7 @@
 						<li><a class="nav-link" href="../study/room_list.do">열람실 예약</a></li>
 						<li><a class="nav-link" href="../shop/list.do">중고책 온라인몰</a></li>
 						<li><a class="nav-item nav-link" href="../board/list.do">커뮤니티</a></li>
+						<li><a class="nav-item nav-link" href="../databoard/list.do">정보공유 게시판</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">

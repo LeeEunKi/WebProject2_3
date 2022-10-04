@@ -74,10 +74,10 @@ h2 {
         <thead>
           <tr style="background-color:#F5E3CF;">
             <th width=10% class="text-center">번호</th>
-						<th width=45% class="text-center">제목</th>
-						<th width=15% class="text-center">아이디</th>
-						<th width=20% class="text-center">작성일</th>
-						<th width=10% class="text-center">조회수</th>
+			<th width=45% class="text-center">제목</th>
+			<th width=15% class="text-center">아이디</th>
+			<th width=20% class="text-center">작성일</th>
+			<th width=10% class="text-center">조회수</th>
           </tr>
         </thead>
         <tbody>
@@ -87,7 +87,7 @@ h2 {
 						<th width=15% class="text-center">{{vo.name}}</th>
 						<th width=20% class="text-center">{{vo.dbday}}</th>
 						<th width=10% class="txt_org text-center">{{vo.hit}}</th>
-					</tr>
+		  </tr>
         </tbody>
 		<tr>
 		</table>

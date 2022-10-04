@@ -218,19 +218,21 @@ public class MemberController {
    @RequestMapping("mypage/mypage_delete.do")
    public String mypage_delete(Model model,HttpSession session)
    {
-       String id=(String)session.getAttribute("id");
-       MemberVO vo=dao.memberDeleteData(id);
-      //model.addAttribute("vo", vo);
+      String id=(String)session.getAttribute("id");
+      MemberVO vo=dao.memberDeleteData(id);
+      model.addAttribute("vo", vo);
       //model.addAttribute("main_jsp", "../member/join_update.jsp");
-	   dao.memberDelete(vo);
+	   
 	   return "mypage/mypage_delete";
    }
    
    @PostMapping("mypage/mypage_delete_ok.do")
-   public String mypage_delete_ok(MemberVO vo,HttpSession session)
+   public String mypage_delete_ok(Model model,HttpSession session)
    {
-       dao.memberDelete(vo);
-     // session.setAttribute("name", vo.getName());
+	  String id=(String)session.getAttribute("id");
+      dao.memberDelete(id);
+      //session.setAttribute("name", vo.getName());
+      session.invalidate();//로그아웃 처리
       return "redirect:../main/main.do";
    }
   

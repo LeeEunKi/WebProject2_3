@@ -56,4 +56,7 @@ public interface ShopMapper {
 	//중고책 state 변경
 	@Update("UPDATE used_book_3 SET state=0 WHERE no=#{no}")
 	public void orderCancel_changeState(int no);
+	
+	@Select("SELECT no FROM used_book_3 WHERE book_no=#{book_no}")
+	public int getShopNo(int book_no);
 }

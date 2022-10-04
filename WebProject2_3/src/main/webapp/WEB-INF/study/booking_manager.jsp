@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
 $(function() {
 	$('.cancel-btn').click(function(){
@@ -156,7 +157,6 @@ hr {
 			             <button class="btn booking-btn cancel-btn">예약취소</button>
 			             <button class="btn booking-btn cancel-btn">퇴실/반납</button>
 			             <button id="extend-btn" class="btn booking-btn">시간연장</button>
-			             <button class="btn booking-btn">좌석이동</button>
 			           </td>
 			         </tr>
 			       </table>

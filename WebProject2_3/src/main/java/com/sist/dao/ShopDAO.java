@@ -76,4 +76,8 @@ public class ShopDAO {
 		mapper.orderCancel_changeState(usedbook_no);
 		mapper.orderCancel(no);
 	}
+	// 중고책 번호가져오기(통합검색용)
+	public int getShopNo(int book_no) {
+		return mapper.getShopNo(book_no);
+	}
 }

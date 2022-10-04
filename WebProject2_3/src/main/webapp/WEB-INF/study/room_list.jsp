@@ -144,11 +144,11 @@ new Vue({
 		},
 		myDate:function(){
 			let date=new Date();
-			// 개방시간이 아닐 시 리턴
-			/* if(date.getHours()<9 || (date.getHours()>=18 && date.getMinutes()>=0)){
+		
+			if(date.getHours()<9 || (date.getHours()>=18 && date.getMinutes()>=0)){
 				alert("현재는 예약할 수 없습니다. (개방 시간 : 09:00~18:00)");
 				return;
-			} */
+			} 
 			
 			let year=date.getFullYear();
 			let month = date.getMonth()+1;

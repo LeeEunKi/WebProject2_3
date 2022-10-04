@@ -50,7 +50,7 @@
 								<h3>열람실 운영시간</h3>
 								<p>평일(화~금) 09:00~18:00</p>
 								<p>주말(토~일) 09:00~18:00</p>
-								<p style="letter-spacing: 0.5px">매주 <strong>월요일, 공유일</strong>은 휴관일입니다</p>
+								<p style="letter-spacing: 0.5px">매주 <strong>월요일, 공휴일</strong>은 휴관일입니다</p>
 								
 							 </div> 
 							</div>

@@ -87,12 +87,11 @@ td{
             <div class="b-search-box01">
                 <div class="tablet-hide">
                     <ul>
-                        <li class="active"><a href="#a" title="통합검색">통합검색</a></li>
-                        <li><a href="#a" title="메뉴검색">도서대출</a></li>
-                        <li><a href="#a" title="교내홈페이지">중고서적</a></li>
-                        <li><a href="#a" title="전화번호부">열람실예약</a></li>
-                        <li><a href="#a" title="교직원">자유게시판</a></li>
-                        <li><a href="#a" title="공지사항">공지사항</a></li>
+                        <li class="active"><a title="바로가기">바로가기</a></li>
+                        <li><a href="../book/search.do" title="도서대출">도서대출</a></li>
+                        <li><a href="../shop/list.do" title="중고서적">중고서적</a></li>
+                        <li><a href="../study/room_list.do" title="열람실예약">열람실예약</a></li>
+                        <li><a href="../board/list.do" title="자유게시판">자유게시판</a></li>
                     </ul>
                 </div>
                 <div class="tablet-show">
@@ -120,7 +119,7 @@ td{
 							    <input style="width: fit-content;" type="checkbox" id="ch_3" name="checked" value="G">장르
                               </div>
                                 <label class="hide" for="sch-word-rules">검색어 입력</label>
-                                <input style="inline-size: min-content; width: 420px;" type="text" id="sch-word-rules" placeholder="Search keywords" :value="ss" v-model="ss" ref="ss">
+                                <input style="inline-size: min-content; width: 420px;" type="text" id="sch-word-rules" placeholder="Search keywords" :value="result_ss" v-model="ss" ref="ss">
                                 <button type="button" value="검색" class="sch-btn" v-on:click="search()"><span style="color: white;">검색</span></button>
                                 <!-- 검색박스 -->
                                 <div class="b-search-auto-box" style="display: none;">
@@ -169,8 +168,8 @@ td{
 		                                </tr>
 		                                <tr>
 		                                 <td colspan="2" style="text-align: -webkit-right;">
-		                                   <a class="btn" style="inline-size: fit-content; display:inline; ">도서대출</a>
-		                                   <a class="btn" style="inline-size: fit-content; display:inline; ">중고책구매</a>
+		                                   <a :href="'../book/detail.do?no='+vo.no" class="btn" style="inline-size: fit-content; display:inline; ">도서대출</a>
+		                                   <a :href="'../shop/detail.do?no='+vo.shop_no+'&page=1'" class="btn" style="inline-size: fit-content; display:inline; ">중고책구매</a>
 		                                 </td>
 		                                </tr>
 	                               </table>
@@ -205,10 +204,27 @@ td{
                         <div class="b-word-box active">
                             <ul>
                                 <li v-for="mvo in movie_list">
-                                  <a href="#a">
-                                    <span>1</span><span>{{mvo.title}}</span>
-                                  </a>
-                                    <img :src="mvo.image">
+                                  <table>
+                                    <tr>
+                                      <td rowspan="4" width="30%">
+                                        <img :src="mvo.image" style="width: 110px; height: 150px;">
+                                      </td>
+                                      <td width="70%"><a :href="mvo.link" target="_blank" v-html="mvo.title"></a></td>
+                                    </tr>
+                                    <tr>
+                                      <td width="70%">{{mvo.actor}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td width="70%">{{mvo.director}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td width="70%">
+                                      <span style="color: orange;">
+                                        {{mvo.userRating}}
+                                      </span>
+                                      </td>
+                                    </tr>
+                                  </table>
                                 </li>
                             </ul>
                         </div>
@@ -232,7 +248,7 @@ td{
 		book_list:[],
 		movie_list:[],
   		ss:'',
-  		result_ss:'',
+  		result_ss:'${ss}',
   		str:'${strArr}',
   		count:0,
   		startPage:0,
@@ -246,6 +262,7 @@ td{
 	  },
 	  methods:{
 		  send:function(ss){
+			  this.movieFind(ss);
 			  axios.get("http://localhost:8080/web/search/search_vue.do",{
 				  params:{
 					  page:this.curPage,
@@ -267,9 +284,6 @@ td{
 					  this.isShow=true;
 					  this.noCountShow=false;
 				  }
-				  this.startPage=result.data[0].startPage;
-				  this.endPage=result.data[0].endPage;
-				  this.movie_list=result.data[0].movie_list;
 				  console.log(this.book_list);
 			  })
 		  },
@@ -281,6 +295,16 @@ td{
 			  }
 			  this.curPage=1;
 			  this.send(this.ss);
+		  },
+		  movieFind:function(ss){
+			  axios.get("http://localhost:8080/web/search/search_moive_vue.do",{
+				  params:{
+ 					  ss:ss,
+				  }
+			  }).then(result=>{
+				  this.movie_list=result.data;
+				  console.log(this.movie_list);
+			  })
 		  }
 	  }
   })

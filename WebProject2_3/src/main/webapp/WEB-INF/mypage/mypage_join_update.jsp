@@ -117,9 +117,10 @@ hr {
 		
 		 <div class="col-md-9 mb-9 mb-md-0">
 		     <h2 class="h3 mb-3 text-black"><b>회원 정보 수정</b></h2>
+		     <div id="join_before">
 		    <div class="p-3 p-lg-5 border bg-white">
-		    <form method="post" action="../member/join_update_ok.do">
-      
+		    <form method="post" action="../mypage/mypage_join_update_ok.do">
+      	     
        <div class="form-group row">
 		              <div class="col-md-7">
 		                <label for="c_name" class="text-black">ID</label>
@@ -209,6 +210,7 @@ hr {
   </div>
   </div>
   </div>
+  </div>
   <script>
     new Vue({
        el:'#join_before',
@@ -226,7 +228,7 @@ hr {
              // 비밀번호 입력
              let _this=this;
              //axios.post() axios.get()
-             axios.get('http://localhost:8080/web/member/join_before_ok.do',{
+             axios.get('http://localhost:8080/web/mypage/mypage_join_update_ok.do',{
                 params:{
                    pwd:this.pwd
                 }
@@ -234,7 +236,7 @@ hr {
                 let res=result.data;
                 if(res==='yes')
                 {
-                   location.href="../member/join_update.do";
+                   location.href="../mypage/mypage_join_update.do";
                 }
                 else
                 {

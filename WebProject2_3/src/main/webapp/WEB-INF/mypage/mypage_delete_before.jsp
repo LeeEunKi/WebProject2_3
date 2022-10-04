@@ -58,6 +58,12 @@ hr {
   margin: 0 auto;
 }
 
+.form-group p {
+	border : 1px solid #ccc;
+	padding : 10px;
+	margin : 10px;
+}
+
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
@@ -84,7 +90,7 @@ hr {
 		
 	<div class="untree_co-section">
 		 <div class="container" style="width:90%">
-		 <div id="mypage_list">
+		 <div id="delete_befores">
 		 
 		 <!-- 안내 문구 출력 하는 곳 입니다!! 삭제 가능 -->
 		 <div class="row mb-5">
@@ -101,9 +107,9 @@ hr {
 		 <div class="col-md-9 mb-9 mb-md-0">
 		 
 		 <!-- 여기서 부터 원하는 내용 넣어주시면 됩니다. -->
-		     <h2 class="h3 mb-3 text-black"><b>회원 정보 수정</b></h2>
+		     <h2 class="h3 mb-3 text-black"><b>회원 탈퇴하기</b></h2>
 		    <div class="p-3 p-lg-5 border bg-white">
-		    <div id="join_before">
+		    <div id="delete_before">
 		     <div class="text-center">
 		                <label for="c_code" class="text-black mb-3">비밀번호를 입력 해 주세요!</label>
 		                <div class="col-md-12">
@@ -132,7 +138,7 @@ hr {
  </div>
   <script>
     new Vue({
-       el:'#join_before',
+       el:'#delete_before',
        data:{
           pwd:''
        },
@@ -147,7 +153,7 @@ hr {
              // 비밀번호 입력
              let _this=this;
              //axios.post() axios.get()
-             axios.get('http://localhost:8080/web/mypage/mypage_join_before_ok.do',{
+             axios.get('http://localhost:8080/web/mypage/mypage_delete_before_ok.do',{
                 params:{
                    pwd:this.pwd
                 }
@@ -155,7 +161,7 @@ hr {
                 let res=result.data;
                 if(res==='yes')
                 {
-                   location.href="../mypage/mypage_join_update.do";
+                   location.href="../mypage/mypage_delete.do";
                 }
                 else
                 {

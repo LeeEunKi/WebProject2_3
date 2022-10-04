@@ -1,5 +1,6 @@
 package com.sist.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -35,6 +36,14 @@ public interface MemberMapper {
 			   +"tel=#{tel},content=#{content} "
 			   +"WHERE id=#{id}")
 		public void memberUpdate(MemberVO vo);
+	   
+	   @Select("SELECT * FROM book_join_3 "
+				  +"WHERE id=#{id}")
+		   public MemberVO memberDeleteData(String id);
+	   
+	   @Delete("DELETE FROM book_join_3 "
+	   		+ "WHERE id=#{id}")
+	   public void memberDelete(MemberVO vo);
 	   
 	   //////////////////////////////////////////////////////////////////////
 	   /*@Select("SELECT name FROM book_join_3 "

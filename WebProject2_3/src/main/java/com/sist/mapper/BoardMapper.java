@@ -51,4 +51,11 @@ public interface BoardMapper {
 	   @Delete("DELETE FROM spring_board_3 "
 			  +"WHERE no=#{no}")
 	   public void boardDelete(int no);
+	   
+	   @Select("SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num "
+				  +"FROM (SELECT no,subject,name,regdate,hit,rownum as num "
+				  +"FROM (SELECT no,subject,name,regdate,hit "
+				  +"FROM spring_board_3 ORDER BY no DESC)) "
+				  +"WHERE num BETWEEN #{start} AND #{end} AND name=#{name}")
+		public List<BoardVO> mypageboardListData(String name);
 	}

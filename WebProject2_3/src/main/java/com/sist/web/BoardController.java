@@ -54,6 +54,13 @@ public class BoardController {
 	   // Vue / React ==> 화면 변경 (Router)
 	   // View단 ,서버단 , DB단 
 	   
+	   @GetMapping("mypage/board_list.do")
+		//사용자에게 받은 주소가 board/list.do 라면 어떤 역할을 수행할건지??
+		public String mypageboard_list()
+		{
+			return "mypage/board_list";
+		}
+	   
 	}
 
 

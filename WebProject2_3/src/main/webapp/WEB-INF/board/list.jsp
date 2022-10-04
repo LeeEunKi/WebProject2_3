@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +65,9 @@ h2 {
 	<div id="board_list">
   <div class="row">
     <div class="col-xs-12">
+    <c:if test="${sessionScope.id!=null }">
      <a href="../board/insert.do" class="btn btn-sm btn-primary">새글</a>
+     </c:if>
      <br>
      <br>
       <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">
@@ -94,8 +97,8 @@ h2 {
 			<tr>
 	          <td class="text-center">
 							<input type=button value="이전" class="btn btn-sm btn-danger">
-							{{curpage}} page / {{totalpage}} pages
-							<input type=button value="다음" class="btn btn-sm btn-danger">
+				           {{curpage}} page / {{totalpage}} pages
+				           <input type=button value="다음" class="btn btn-sm btn-warning">
 			  </td>
 			</tr>
       </table>
@@ -115,20 +118,19 @@ h2 {
 				totalpage:0
 			},
 			mounted:function(){
-				let _this=this;
-				axios.get("http://localhost:8080/web/board/list_vue.do",{
-					params:{
-						page:_this.curpage
-					}
-				}).then(function(result){
-					//개발자도구창에서 넘어온값 확인가능
-					console.log(result.data);
-					_this.board_list=result.data;
-					_this.curpage=result.data[0].curpage;
-					_this.totalpage=result.date[0].totalpage;
-				})
-			}
-		})
+	    		let _this=this;
+	    		axios.get("http://localhost:8080/web/board/list_vue.do",{
+	    			params:{
+	    				page:_this.curpage
+	    			}
+	    		}).then(function(result){
+	    			console.log(result.data);
+	    			_this.board_list=result.data;
+	    			_this.curpage=result.data[0].curpage;
+	    			_this.totalpage=result.data[0].totalpage;
+	    		})
+	    	}
+	    })
 	</script>
 	
 </body>

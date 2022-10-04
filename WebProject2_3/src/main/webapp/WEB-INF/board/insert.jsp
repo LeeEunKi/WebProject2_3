@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +73,7 @@ h2 {
        <tr>
          <th width=20% class="text-right">이름</th>
          <td width=80%>
-           <input type=text v-model="name" size=20 class="input-sm" ref="name">
+           <input type=text v-model="name" size=20 class="input-sm" ref="name" value="${sessionScope.name}">
          </td>
        </tr>
        <tr>
@@ -110,7 +111,7 @@ h2 {
   </div>
   <script>
   //입력하면 멤버변수 안에 값을 채워줌(name,subject...)
-  	new Vue({
+  new Vue({
   		el:'#board_insert',
   		data:{
   			name:'',

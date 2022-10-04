@@ -2,6 +2,8 @@ package com.sist.web;
 
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,60 +21,62 @@ public class BoardRestController {
 	private BoardDAO dao;
 	
 	//VueJS에서 페이지 전송
-	@GetMapping(value = "board/list_vue.do",produces = "text/plain;charset=utf-8")
-	public String board_list_vue(String page)
-	{
-		if(page==null)
-			page="1";
-		int curpage=Integer.parseInt(page);
-		Map map=new HashMap();
-		int rowSize=10;
-		int start=(rowSize*curpage)-(rowSize-1);
-		int end=rowSize*curpage;
-		
-		map.put("start", start);
-		map.put("end", end);
-		
-		List<BoardVO> list=dao.boardListData(map);
-		int totalpage=dao.boardTotalPage();
-		
-		//JavaScript에 데이터를 전송
-		String result="";
-		try
-		{
-			//list보낼때 => Array 사용(JSONArray)
-			//vo보낼때 => object 사용(JSONObject)
-			//여러개 묶어서 보내야할때는 object로 값 받고 array로 묶기!
-			//==> Javascript의 공식(이걸써야 Vue가 인식함)
-			
-			//object에 있는거 10개를 list에 모아라!(10개씩 나누기로 했으니까)
-			JSONArray arr=new JSONArray();
-			int k=0;
-			for(BoardVO vo:list)
-			{
-				JSONObject obj=new JSONObject();
-				obj.put("no", vo.getNo());
-				obj.put("subject", vo.getSubject());
-				obj.put("name", vo.getName());
-				obj.put("dbday", vo.getDbday());
-				obj.put("hit", vo.getHit());
-				if(k==0)
-				{
-					obj.put("curpage", curpage);
-					obj.put("totalpage",totalpage);
-				}
-				arr.add(obj);
-				k++;
-			}
-			result=arr.toJSONString();
-		}catch(Exception ex) {}
-		
-		return result;
-	}
+	 @GetMapping(value = "board/list_vue.do",produces = "text/plain;charset=utf-8")
+     public String board_list_vue(String page)
+     {
+    	 if(page==null)
+    		 page="1";
+    	 int curpage=Integer.parseInt(page);
+    	 Map map=new HashMap();
+    	 int rowSize=10;
+    	 int start=(rowSize*curpage)-(rowSize-1);
+    	 int end=rowSize*curpage;
+    	 
+    	 map.put("start", start);
+    	 map.put("end", end);
+    	 
+    	 List<BoardVO> list=dao.boardListData(map);
+    	 int totalpage=dao.boardTotalPage();
+    	 
+    	 // JavaScript로 데이터를 전송 
+    	 /*
+    	  *   List ==> Array ==> []  ====> JSONArray
+    	  *   VO   ==> Object ==> {}  ===> JSONObject
+    	  *   
+    	  *   [{no:1,name:'',subject:''...},{},{},{},{}....]
+    	  */
+    	 String result="";
+    	 try
+    	 {
+    		 JSONArray arr=new JSONArray();
+    		 int k=0;
+    		 for(BoardVO vo:list)
+    		 {
+    			 JSONObject obj=new JSONObject();
+    			 obj.put("no", vo.getNo());
+    			 obj.put("subject", vo.getSubject());
+    			 obj.put("name", vo.getName());
+    			 obj.put("dbday", vo.getDbday());
+    			 obj.put("hit", vo.getHit());
+    			 if(k==0)
+    			 {
+    				 obj.put("curpage", curpage);
+        			 obj.put("totalpage", totalpage);
+    			 }
+    			 arr.add(obj);
+    			 k++;
+    		 }
+    		 result=arr.toJSONString();
+    	 }catch(Exception ex){}
+    	 return result;
+    	 
+     }
 	
 	@GetMapping(value = "board/insert_vue.do",produces = "text/plain;charset=utf-8")
-	public String board_insert_vue(BoardVO vo)
+	public String board_insert_vue(BoardVO vo,HttpSession session)
 	{
+		String name=(String)session.getAttribute("name");
+		System.out.println("name="+name);
 		dao.boardInsert(vo);
 		return "OK";
 	}

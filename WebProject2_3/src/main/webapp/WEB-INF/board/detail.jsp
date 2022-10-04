@@ -159,6 +159,7 @@ h2 {
            <pre style="white-space: pre-wrap;border:none;background-color: white;">{{vo.content }}</pre>
           </td>
         </tr>
+        
         <tr>
           <td colspan="4" class="text-center">
           	<a :href="'../board/update.do?no='+no" class="myButton">수정</a>
@@ -202,8 +203,8 @@ h2 {
 												<strong>{{bor.id}}</strong>
 												<span>({{bor.dbday}})</span>
 												<span style="float: right; padding: 30px">
-													<input type="button" v-if="bor.id===sessionId" value="수정" @click="replyUpdate_3(bor.no)" :id="'up'+bor.no">
-	                   								<input type="button" v-if="bor.id===sessionId" value="삭제" v-on:click="replyDelete_3(bor.no)">
+													<input type="button" v-if="bor.id===sessionId" value="수정" @click="BoardreplyUpdate(bor.no)" :id="'up'+bor.no">
+	                   								<input type="button" v-if="bor.id===sessionId" value="삭제" v-on:click="BoardreplyDelete(bor.no)">
 												</span>
 												
 											</div>
@@ -272,7 +273,7 @@ h2 {
 	        			_this.sessionId=result.data[0].sessionId
 	        		})
 			 },
-			 replyDelete:function(no){
+			 BoardreplyDelete:function(no){
 	    			let _this=this;
 	    			axios.get("http://localhost:8080/web/board/board_reply_delete.do",{
 	    				params:{
@@ -285,7 +286,7 @@ h2 {
 		    			_this.sessionId=result.data[0].sessionId
 		    		})
 		   	 },
-  		 replyUpdate:function(no){
+  		 BoardreplyUpdate:function(no){
   			 $('.updates').hide();
    			if(this.no==0)
    			{

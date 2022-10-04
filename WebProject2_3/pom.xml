@@ -48,12 +48,22 @@
 		    <version>1.1</version>
 		    <scope>provided</scope>
 		</dependency>
+		
 	    <!-- mybatis log -->
 	    <dependency>
 		    <groupId>org.lazyluke</groupId>
 		    <artifactId>log4jdbc-remix</artifactId>
 		    <version>0.2.7</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.snu.ids</groupId>
+		    <artifactId>ha</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/org.snu.ids.ha.jar</systemPath>
+		</dependency>
+		
 	    
 	    <!-- lombok -->
 	    <dependency>
@@ -83,6 +93,7 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -400,6 +411,8 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.2.11</version>
 		</dependency>
+		
+		
 		
 		<!-- 
 		   jaxb-core

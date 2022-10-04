@@ -183,6 +183,19 @@ a:hover{
 }
 
 
+.loan{
+   display: block;
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
+  
+  text-decoration: none;
+}
+.loanActive {
+  background-color: #3b5d50;
+}
+
+
 div.content {
   margin-left: 200px;
   padding: 1px 16px;
@@ -263,9 +276,7 @@ div.content {
 				  <a href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>
 				  <a href="../book/categorysearch.do">주제별 도서</a>
-				  <c:if test="${sessionScope.id!=null }">
-				    <a href="../book/loan.do">예약 내역</a>
-				  </c:if>
+				  <span class="loanActive" style="padding: 16px !important;color: white;">예약 내역</span>
              </div>
         </div>
         

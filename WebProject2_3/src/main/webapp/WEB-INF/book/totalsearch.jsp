@@ -10,6 +10,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$('.loan').click(function () {
+			let id= '${sessionScope.id}';
+			if(id.trim()==''){
+				alert("로그인 후 확인 가능합니다");
+				return;
+			}
+			else{
+				location.href = "../book/loan.do";
+			}
+		})
+	})
+</script>
 <style type="text/css">
 *{
 	font-family: 'Noto Sans KR', sans-serif;
@@ -147,6 +162,19 @@ a:hover{
   color: white;
 }
 
+.loan{
+   display: block;
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 16px;
+  text-decoration: none;
+}
+.loan:hover:not(.active) {
+  background-color: #777;
+  color: white;
+}
+
 
 div.content {
   margin-left: 200px;
@@ -204,9 +232,7 @@ div.content {
 			                  <span><a href="../book/authorsearch.do">&nbsp;&nbsp;저자명 검색</a></span>
 						  <a href="../book/search.do">인기도서</a>
 						  <a href="../book/categorysearch.do">주제별 도서</a>
-						  <c:if test="${sessionScope.id!=null }">
-						    <a href="../book/loan.do">예약 내역</a>
-						  </c:if>
+						  <span class="loan">예약 내역</span>
 		             </div>
         
 

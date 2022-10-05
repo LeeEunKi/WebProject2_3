@@ -221,53 +221,52 @@ $(function(){
 			<div class="container">
 				<div class="row justify-content-between">
 					<div class="col-lg-6">
-						<h2 class="section-title">바로가기</h2>
-   						 <div class="row my-5">
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<a href="../book/search.do">
-											<img src="../img/book_find.png" style="width:50px;" alt="Image" class="imf-fluid">
+						<div class="testimonial-section">
+			<div class="container">
+				<div class="row mb-5 align-items-center">
+					<div class="col-md-6">
+						<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">오늘의 책</h2>
+					</div>
+					<div class="col-md-6 text-md-end">
+						<div id="testimonial-nav">
+							<span class="prev" data-controls="prev">Prev</span>
+							<span class="next" data-controls="next">Next</span>
+						</div>
+					</div>
+				</div>
+							<div class="testimonial-slider">
+								<c:forEach var="tvo" items="${tlist }">
+									<div class="item">
+								   	  <table class="table">
+					                      <tr>
+					                        <td rowspan="6">
+					                          <img src="${tvo.img }">
+					                        </td>
+					                        <td>
+					                        </td>
+					                      </tr>
+					                      <tr>
+					                        <td>오늘의 책 &gt;</td>
+					                      </tr>
+					                      <tr>
+					                        <td>${tvo.title }</td>
+					                      </tr>
+					                      <tr>
+					                        <td>${tvo.description }</td>
+					                      </tr>
+					                      <tr>
+					                        <td>${tvo.publisher }</td>
+					                      </tr>
+					                      <tr>
+					                        <td>${tvo.author }</td>
+					                      </tr>
+					                    </table>
 									</div>
-									<h3>도서검색</h3></a>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<a href="../study/room_list.do">
-											<img src="../img/room_reserve.png" style="width:50px;" alt="Image" class="imf-fluid">
-									</div>
-									<h3>열람실 예약</h3></a>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<a href="../shop/list.do">
-											<img src="../img/book_mall.png" style="width:50px;" alt="Image" class="imf-fluid">
-									</div>
-									<h3>중고서적 온라인몰</h3></a>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-									<a href="../board/list.do">
-										<img src="../img/community.png" style="width:50px;" alt="Image" class="imf-fluid">
-									</div>
-									<h3>커뮤니티</h3></a>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-								</div>
+								</c:forEach>
 							</div>
 
 						</div>
+					</div>
 					</div>
 
 					<div class="col-md-12 col-lg-5 mb-5 mb-lg-0 box1">
@@ -278,220 +277,16 @@ $(function(){
 				</div>
 			</div>
 		</div>
-		<!-- End Why Choose Us Section -->
-
-		<!-- Start We Help Section -->
-		<!-- <div class="we-help-section">
-			<div class="container">
-				<div class="row justify-content-between">
-					<div class="col-lg-7 mb-5 mb-lg-0">
-						<div class="imgs-grid">
-							<div class="grid grid-1"><img src="../images/img-grid-1.jpg" alt="Untree.co"></div>
-							<div class="grid grid-2"><img src="../images/img-grid-2.jpg" alt="Untree.co"></div>
-							<div class="grid grid-3"><img src="../images/img-grid-3.jpg" alt="Untree.co"></div>
-						</div>
-					</div>
-					<div class="col-lg-5 ps-lg-5">
-						<h2 class="section-title mb-4">We Help You Make Modern Interior Design</h2>
-						<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
-
-						<ul class="list-unstyled custom-list my-4">
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-						</ul>
-						<p><a herf="#" class="btn">Explore</a></p>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!-- End We Help Section -->
-
-		<!-- Start Popular Product -->
-		<!-- <div class="popular-product">
-			<div class="container">
-				<div class="row">
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex">
-							<div class="thumbnail">
-								<img src="../images/product-1.png" alt="Image" class="img-fluid">
-							</div>
-							<div class="pt-3">
-								<h3>Nordic Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex">
-							<div class="thumbnail">
-								<img src="../images/product-2.png" alt="Image" class="img-fluid">
-							</div>
-							<div class="pt-3">
-								<h3>Kruzo Aero Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-						<div class="product-item-sm d-flex">
-							<div class="thumbnail">
-								<img src="../images/product-3.png" alt="Image" class="img-fluid">
-							</div>
-							<div class="pt-3">
-								<h3>Ergonomic Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div> -->
-		<!-- End Popular Product -->
-
-		<!-- Start Testimonial Slider -->
-		<div class="testimonial-section">
-			<div class="container">
-				<div class="row mb-5 align-items-center">
-					<div class="col-md-6">
-						<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">오늘의 책</h2>
-						<p class="sub-title">The latest and best lifstyle articles selected by our editorial office.</p>
-					</div>
-					<div class="col-md-6 text-md-end">
-						<div id="testimonial-nav">
-							<span class="prev" data-controls="prev">Prev</span>
-							
-							<span class="next" data-controls="next">Next</span>
-						</div>
-					</div>
-				</div>
-
-							<div class="testimonial-slider">
-								
-								
-						
-								<div class="item">
-									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
-										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-										<div class="rate">
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-										</div>
-										<h3 class="h5 text-primary mb-4">James Smith</h3>
-										<blockquote>
-											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-										</blockquote>
-										<p class="text-black-50">Designer, Co-founder</p>
-									</div>
-									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
-										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-										<div class="rate">
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-										</div>
-										<h3 class="h5 text-primary mb-4">James Smith</h3>
-										<blockquote>
-											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-										</blockquote>
-										<p class="text-black-50">Designer, Co-founder</p>
-									</div>
-									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
-										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-										<div class="rate">
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-										</div>
-										<h3 class="h5 text-primary mb-4">James Smith</h3>
-										<blockquote>
-											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-										</blockquote>
-										<p class="text-black-50">Designer, Co-founder</p>
-									</div>
-								</div>
-
-								<div class="item">
-									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
-										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-										<div class="rate">
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-										</div>
-										<h3 class="h5 text-primary mb-4">James Smith</h3>
-										<blockquote>
-											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-										</blockquote>
-										<p class="text-black-50">Designer, Co-founder</p>
-									</div>
-									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
-										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-										<div class="rate">
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-										</div>
-										<h3 class="h5 text-primary mb-4">James Smith</h3>
-										<blockquote>
-											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-										</blockquote>
-										<p class="text-black-50">Designer, Co-founder</p>
-									</div>
-									<div class="testimonial col-12 col-sm-6 col-md-4 mb-4 mb-md-0" style="display: inline-block;">
-										<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-										<div class="rate">
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-											<span class="icon-star text-warning"></span>
-										</div>
-										<h3 class="h5 text-primary mb-4">James Smith</h3>
-										<blockquote>
-											<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-										</blockquote>
-										<p class="text-black-50">Designer, Co-founder</p>
-									</div>
-								</div>
-								
-								
-								
-								 
-								<!-- END item -->
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Testimonial Slider -->
-
+		
+		<div class="blog-section">
+			<jsp:include page="books.jsp"></jsp:include>
+		</div>	
+		
 		<!-- Start Blog Section -->
 		<div class="blog-section">
+		
 			
-			<jsp:include page="books.jsp"></jsp:include>
+			<jsp:include page="quickmenu2.jsp"></jsp:include>
 			
 		</div>
 		<!-- End Blog Section -->	

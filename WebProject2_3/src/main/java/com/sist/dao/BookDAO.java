@@ -69,4 +69,8 @@ public class BookDAO {
 	{
 		return mapper.CategoryTotalPage(type);
 	}
+	
+	public List<BookVO> TodayBooks(){
+		return mapper.TodayBooks();
+	}
 }

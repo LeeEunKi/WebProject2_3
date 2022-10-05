@@ -20,6 +20,7 @@ public class MainController {
 	public String main_main(Model model) {
 		List<RoomVO> rlist=dao.roomAllListData();
 		List<BookVO> blist=bdao.mainHitBookData();
+		List<BookVO> tlist=bdao.TodayBooks();
 		for(BookVO vo:blist)
 		{
 			String author=vo.getAuthor();
@@ -32,6 +33,7 @@ public class MainController {
 		}
 		model.addAttribute("bhlist",blist);
 		model.addAttribute("rlist", rlist);
+		model.addAttribute("tlist", tlist);
 		return "main";
 	}
 }

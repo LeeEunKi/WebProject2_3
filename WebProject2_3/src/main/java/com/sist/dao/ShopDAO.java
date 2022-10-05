@@ -80,4 +80,9 @@ public class ShopDAO {
 	public int getShopNo(int book_no) {
 		return mapper.getShopNo(book_no);
 	}
+	
+	//구매 전 중고책 판매여부 확인
+	public int getBookState(int no) {
+		return mapper.getBookState(no);
+	}
 }

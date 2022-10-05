@@ -59,4 +59,7 @@ public interface ShopMapper {
 	
 	@Select("SELECT no FROM used_book_3 WHERE book_no=#{book_no}")
 	public int getShopNo(int book_no);
+	
+	@Select("SELECT state FROM used_book_3 WHERE no=#{no}")
+	public int getBookState(int no);
 }

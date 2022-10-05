@@ -1,5 +1,9 @@
 package com.sist.web;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +60,15 @@ public class BoardController {
 	   
 	   @GetMapping("mypage/board_list.do")
 		//사용자에게 받은 주소가 board/list.do 라면 어떤 역할을 수행할건지??
-		public String mypageboard_list()
+		public String mypageboard_list(HttpSession session,Model model)
 		{
+		   	String name=(String)session.getAttribute("name");
+		   	
+		   	List<BoardVO> list=dao.mypageboardListData(name);
+		   	
+		   	
+		   	model.addAttribute("list", list);
+		   	
 			return "mypage/board_list";
 		}
 	   

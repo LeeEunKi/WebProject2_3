@@ -340,7 +340,7 @@ div.content {
 		            </tr>
 		            <tr>
 		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">저자명</td>
-		              <td style="width: 85%;background-color: #fff;border-bottom:1px solid #eff2f1">{{vo.author}}</td>
+		              <td style="width: 85%;background-color: #f9f9f9;border-bottom:1px solid #eff2f1">{{vo.author}}</td>
 		            </tr>
 		            <tr>
 		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판사</td>
@@ -348,7 +348,7 @@ div.content {
 		            </tr>
 		            <tr>
 		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판일자</td>
-		              <td style="width: 85%;background-color: #fff;border-bottom:1px solid #eff2f1">{{vo.dbday}}</td>
+		              <td style="width: 85%;background-color: #f9f9f9;border-bottom:1px solid #eff2f1">{{vo.dbday}}</td>
 		            </tr>
 		            <tr> 
 		            <td style="border-bottom: none"></td>

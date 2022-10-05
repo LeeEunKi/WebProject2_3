@@ -41,6 +41,7 @@
 								 </p>
 								</div>
 							  </div>
+							   <div style="margin-top: 10px"><p style="float: left"><a href="../study/room_list.do" class="btn">열람실 좌석 예약</a></p></div>
 						  </div>
 							<div class="col-lg-6 mb-6" style="display: inline-block;margin-left: 30px">
 							  <div class="feature">
@@ -55,7 +56,7 @@
 							 </div> 
 							</div>
 							  
-							 <div><p><a href="../study/room_list.do" class="btn">열람실 좌석 예약</a></p></div>
+							
 						     
 
 						  

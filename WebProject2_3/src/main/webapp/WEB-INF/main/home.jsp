@@ -221,7 +221,7 @@ td, tr{
 		<!-- End Product Section -->
 
 		<!-- Start Why Choose Us Section -->
-		<div class="why-choose-section" style="padding-bottom: 70px;">
+		<div class="why-choose-section" style="padding-bottom: 70px; background-color: #FAFAFA">
 			<div class="container">
 				<div class="row justify-content-between">
 					<div class="col-lg-6">
@@ -317,13 +317,19 @@ td, tr{
 					</div>
 					</div>
 
-					<div class="col-md-12 col-lg-6 mb-6 mb-lg-0 box1">
+					<div class="col-md-12 col-lg-6 mb-6 mb-lg-0">
 					  
 		      			 <jsp:include page="room_reserve.jsp"></jsp:include>
+		      		
 	    			 
 	    			 <div style="height: 40px"></div>
 	    			 <div style="margin-top: 45px">
-						<h2 class="section-title">바로가기</h2>
+						<div class="row" style="display: block;padding-bottom: 20px;padding-top: 65px;">
+						  <h2 class="mb-4 section-title" style="float: left;">바로가기</h2>
+						</div>
+
+
+
    						 <div class="row my-5">
 							<div class="col-lg-6 mb-6">
 								<div class="feature">
@@ -376,7 +382,7 @@ td, tr{
 				</div>
 			</div>
 		
-		<div class="blog-section" style="margin-top: 0px">
+		<div class="blog-section" style="margin-top: 40px">
 			<jsp:include page="books.jsp"></jsp:include>
 		</div>	
 		

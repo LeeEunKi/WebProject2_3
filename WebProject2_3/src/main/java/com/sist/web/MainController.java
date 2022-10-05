@@ -33,6 +33,38 @@ public class MainController {
 			}
 			vo.setAuthor(author);
 		}
+		for(BookVO vo:tlist)
+		{
+			String title=vo.getTitle();
+			String desc=vo.getDescription();
+			if(title.length()>16)
+			{
+				title=title.substring(0,16)+"...";
+				vo.setTitle(title);
+			}
+			if(desc.length()>120) {
+				desc=desc.substring(0, 120)+"...";
+				vo.setDescription(desc);
+			}
+			vo.setDescription(desc);
+			vo.setAuthor(title);
+		}
+		for(BookVO vo:tlist2)
+		{
+			String title=vo.getTitle();
+			String desc=vo.getDescription();
+			if(title.length()>16)
+			{
+				title=title.substring(0,16)+"...";
+				vo.setTitle(title);
+			}
+			if(desc.length()>120) {
+				desc=desc.substring(0, 120)+"...";
+				vo.setDescription(desc);
+			}
+			vo.setDescription(desc);
+			vo.setAuthor(title);
+		}
 		model.addAttribute("bhlist",blist);
 		model.addAttribute("rlist", rlist);
 		model.addAttribute("tlist", tlist);

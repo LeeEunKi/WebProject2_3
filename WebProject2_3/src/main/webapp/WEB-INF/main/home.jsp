@@ -244,7 +244,7 @@ td, tr{
 								   	  <table class="table">
 					                      <tr>
 					                        <td rowspan="3" style="vertical-align: top;">
-					                          <img src="${tvo.img }">
+					                          <img src="${tvo.img }" style="width: 200px; height: 300px;">
 					                        </td>
 					                        <td>
 					                        </td>
@@ -282,7 +282,7 @@ td, tr{
 								   	  <table class="table">
 					                      <tr>
 					                        <td rowspan="3" style="vertical-align: top;">
-					                          <img src="${tlist2[0].img }">
+					                          <img src="${tlist2[0].img }" style="width: 200px; height: 300px;">
 					                        </td>
 					                        <td>
 					                        </td>

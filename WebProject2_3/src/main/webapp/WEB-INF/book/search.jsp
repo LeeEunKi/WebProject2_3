@@ -263,9 +263,9 @@ div.content {
 				   
 			      <div style="height: 20px"></div>
 			        <div class="text-center">
-			          <button class="btn btn-sm btn-info pageBtn" v-on:click="prev()">이전</button>
+			          <button class="btn btn-sm btn-primary pageBtn" v-on:click="prev()">이전</button>
 			            {{curpage}} page / {{totalpage}} pages
-			          <button class="btn btn-sm btn-info pageBtn" v-on:click="next()">다음</button>
+			          <button class="btn btn-sm btn-primary pageBtn" v-on:click="next()">다음</button>
 			        </div>
 			   </div>
 			   
@@ -315,6 +315,7 @@ div.content {
                 </div>
                 
 		 </div>
+		 <div style="height: 20px"></div>
 	</div>
 		 
 

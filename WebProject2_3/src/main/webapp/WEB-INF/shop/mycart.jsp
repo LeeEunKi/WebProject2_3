@@ -106,7 +106,7 @@ font-family:'Pretendard-Regular';
           <form method="post" action="../shop/purchase.do">
 	          <c:forEach var="vo" items="${list }">
 	            <tr>
-	              <td width="10%" class="text-center"><input class="bookselect" type="checkbox" name="usedbooks" value="${vo.no }" data-checked="f" data-price="${vo.price }"></td>
+	              <td width="10%" class="text-center"><input class="bookselect" type="checkbox" name="usedbooks" value="${vo.no }" data-checked="f" data-price="${vo.discount }"></td>
 	              	<input type="hidden" value="${vo.no }">
 	              <td width="10%" class="text-center">
 	                <img src="${vo.poster }" style="width:40px;height:60px;"></td>

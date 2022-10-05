@@ -275,7 +275,7 @@ td, tr{
 					</div>
 						<div class="testimonial-section">
 			<div class="container">
-				<div class="row mb-5 align-items-center">
+				<div class="row mb-5 align-items-center"  style="margin-top: 10px; margin-bottom: 28px !important;">
 					<div class="col-md-6">
 						<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">입고된 책</h2>
 					</div>

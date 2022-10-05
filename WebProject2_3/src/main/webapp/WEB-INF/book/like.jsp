@@ -238,7 +238,7 @@ div.content {
 		margin-left: 0;
 	}
 }
-
+ 
 @media screen and (max-width: 400px) {
 	.sidebar{
 		display:flex;

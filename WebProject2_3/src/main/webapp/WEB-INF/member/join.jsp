@@ -32,8 +32,8 @@
        $('#idcheck').click(function(){
           $( "#dialog" ).dialog({
              autoOpen:false,
-             width:390,
-             height:250,
+             width:450,
+             height:300,
              modal:true
           }).dialog("open");
        })

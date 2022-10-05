@@ -244,13 +244,17 @@ td, tr{
 								   	  <table class="table">
 					                      <tr>
 					                        <td rowspan="3" style="vertical-align: top;">
+					                        <a href="../book/detail.do?no=${tvo.no }">
 					                          <img src="${tvo.img }" style="width: 200px; height: 300px;">
+					                        </a>
 					                        </td>
 					                        <td>
 					                        </td>
 					                      </tr>
 					                      <tr>
-					                        <td><h3 class="h4 text-primary mb-4">${tvo.title }</h3></td>
+					                        <td>
+					                           <h3 class="h4 text-primary mb-4">${tvo.title }</h3>
+					                        </td>
 					                      </tr>
 					                      <tr>
 					                        <td><p class="sub-title">${tvo.description }</p>
@@ -282,13 +286,17 @@ td, tr{
 								   	  <table class="table">
 					                      <tr>
 					                        <td rowspan="3" style="vertical-align: top;">
+					                         <a href="../book/detail.do?no=${tlist2[0].no }">
 					                          <img src="${tlist2[0].img }" style="width: 200px; height: 300px;">
+					                         </a>
 					                        </td>
 					                        <td>
 					                        </td>
 					                      </tr>
 					                      <tr>
-					                        <td><h3 class="h4 text-primary mb-4">${tlist2[0].title }</h3></td>
+					                        <td> 
+					                          <h3 class="h4 text-primary mb-4">${tlist2[0].title }</h3>
+					                        </td>
 					                      </tr>
 					                      <tr>
 					                        <td><p class="sub-title">${tlist2[0].description }</p>

@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	$(function () {
-		$('.loan').click(function () {
+		$('#loan').click(function () {
 			let id= '${sessionScope.id}';
 			if(id.trim()==''){
 				alert("로그인 후 확인 가능합니다");
@@ -21,6 +21,17 @@
 			}
 			else{
 				location.href = "../book/loan.do";
+			}
+		})
+		
+		$('#like').click(function () {
+			let id= '${sessionScope.id}';
+			if(id.trim()==''){
+				alert("로그인 후 확인 가능합니다");
+				return;
+			}
+			else{
+				location.href = "../book/like.do";
 			}
 		})
 	
@@ -250,8 +261,8 @@ div.content {
 				    <span v-on:click="cate('기술과학')">기술과학</span>
 				    <span v-on:click="cate('사회과학')">사회과학</span>
 				    
-				  <span class="loan" style="padding: 16px !important;font-size: 20px;">예약 내역</span>
-
+				  <span class="loan" style="padding: 16px !important;font-size: 20px;" id="loan">예약 내역</span>
+				  <span class="loan" style="padding: 16px !important;font-size: 20px;" id="like">관심도서 내역</span>
 				
              </div>
         

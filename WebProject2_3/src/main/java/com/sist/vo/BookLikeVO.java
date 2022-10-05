@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class BookLikeVO {
 	private int no,book_no;
-	private String member_id;
+	private String member_id,title,author,img,type;
 }

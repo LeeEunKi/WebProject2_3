@@ -178,6 +178,11 @@ td{
                               </table>
                             </li>
                         </ul>
+                        <div class="row">
+                          <div class="text-center">
+                            <button class="btn move-btn" v-on:click="prev()">이전</button> {{curPage}} page/ {{totalPage}} pages <button class="btn move-btn" v-on:click="next()">다음</button>
+                          </div>
+                        </div>
                     </div>
     
                     <div class="b-box" v-show="noCountShow">
@@ -240,6 +245,11 @@ td{
   <script  src="../css/search_script.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
   <script type="text/javascript">
+  $(function(){
+	  $('.move-btn').click(function(){
+		  $('html, body').scrollTop(300);
+	  })
+  })
   new Vue({
 	  el:'.row1',
 	  data:{
@@ -305,6 +315,14 @@ td{
 				  this.movie_list=result.data;
 				  console.log(this.movie_list);
 			  })
+		  },
+		  prev:function(){
+			  this.curPage=this.curPage>1?this.curPage-1:this.curPage;
+			  this.send(this.result_ss);
+		  },
+		  next:function(){
+			  this.curPage=this.curPage<this.totalPage?this.curPage+1:this.curPage;
+			  this.send(this.result_ss);
 		  }
 	  }
   })

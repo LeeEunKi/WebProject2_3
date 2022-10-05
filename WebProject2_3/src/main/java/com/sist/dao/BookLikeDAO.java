@@ -21,6 +21,17 @@ public class BookLikeDAO {
 		return mapper.likeCheck(map);
 	}
 	
+	//좋아요 리스트 데이타
+	public List<BookLikeVO> booklikeList(String member_id)
+	{
+		return mapper.booklikeList(member_id);
+	}
+	
+	public int likeCountCheck(String member_id)
+	{
+		return mapper.likeCountCheck(member_id);
+	}
+	
 	//좋아요
 	public void bookLikeInsert(int book_no,Map map)
 	{

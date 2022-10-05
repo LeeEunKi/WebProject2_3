@@ -270,6 +270,7 @@ div.content {
   background-color: #6a8b7f;
   color: white;
 }
+
 </style>
 </head>
 <body>
@@ -299,8 +300,8 @@ div.content {
 				  <a href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>
 				  <a href="../book/categorysearch.do">주제별 도서</a>
-				  <span class="loanActive" style="padding: 16px !important;color: white;" id="loan">예약 내역</span>
-				  <span class="loan" style="padding: 16px !important;" id="like">관심도서 내역</span>
+				  <span class="loan" style="padding: 16px !important" id="loan">예약 내역</span>
+				  <span class="loanActive" style="padding: 16px !important;color: white;" id="like">관심도서 내역</span>
              </div>
         </div>
         
@@ -313,33 +314,31 @@ div.content {
 
             <div style="height: 20px"></div>
           
-				<c:if test="${loanChk==0 }">
-					<h4 style="text-align:left; margin:50px auto;">대여 내역이 없습니다.</h4>    
+				<c:if test="${likeChk==0 }">
+					<h4 style="text-align:left; margin:50px auto;">관심 도서 내역이 없습니다.</h4>    
 				</c:if>
-				<c:if test="${loanChk!=0 }">
+				<c:if test="${likeChk!=0 }">
 				<table id="books">
 			          <tr class="warning">
-			            <th width="10%" class="text-center">예약번호</th>
-			            <th width="10%" class="text-center">이미지</th>
-			            <th width="15%" class="text-center">도서명</th>
-			            <th width="10%" class="text-center">저자명</th>
-			            <th width="20%" class="text-center">요청일</th>
-			            <th width="20%" class="text-center">만료일</th>
+			            <th width="15%" class="text-center">도서번호</th>
+			            <th width="20%" class="text-center">이미지</th>
+			            <th width="25%" class="text-center">도서명</th>
+			            <th width="15%" class="text-center">저자명</th>
+			            <th width="10%" class="text-center">종류</th>
 			            <th width="15%" class="text-center"></th>
 			          </tr>
 
 			          <c:forEach var="vo" items="${list }">
-			          <tr class="warning"> 
-			            <td width="10%" class="text-center">${vo.no }</td>
-			            <td width="10%" class="text-center">
+			          <tr class="warning">
+			            <td width="15%" class="text-center">${vo.no }</td>
+			            <td width="20%" class="text-center">
 			              <a href="../book/detail.do?no=${vo.book_no }"><img src="${vo.img }"style="width: 50px;height: 70px"></a>
 			            </td>
-			            <td width="15%" class="text-center"><a href="../book/detail.do?no=${vo.book_no }">${vo.title }</a></td>
-			            <td width="10%" class="text-center">${vo.author }</td>
-			            <td width="20%" class="text-center">${vo.dbday }</td>
-			            <td width="20%" class="text-center">${vo.dbday2 }</td>
-			            <td width="10%" class="text-center">
-			              <a href="../book/deleteLoan.do?no=${vo.book_no }" class="btn btn-sm btn-primary">대출 취소</a>
+			            <td width="25%" class="text-center"><a href="../book/detail.do?no=${vo.book_no }">${vo.title }</a></td>
+			            <td width="15%" class="text-center">${vo.author }</td>
+			            <td width="10%" class="text-center">${vo.type }</td>
+			            <td width="15%" class="text-center">
+			              <a href="../book/bookDisLikeInsert.do?no=${vo.book_no }" class="btn btn-sm btn-primary">관심도서 취소</a>
 			            </td>
 			          </tr>
 			          </c:forEach>
@@ -351,7 +350,6 @@ div.content {
 		</div>
 		<div style="height: 100px"></div>
 	</div>
-</div> 
-		
+</div>
 </body>
 </html>

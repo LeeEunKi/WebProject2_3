@@ -14,7 +14,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 	$(function () {
-		$('.loan').click(function () {
+		$('#loan').click(function () {
 			let id= '${sessionScope.id}';
 			if(id.trim()==''){
 				alert("로그인 후 확인 가능합니다");
@@ -24,7 +24,23 @@
 				location.href = "../book/loan.do";
 			}
 		})
+		$('#like').click(function () {
+			let id= '${sessionScope.id}';
+			if(id.trim()==''){
+				alert("로그인 후 확인 가능합니다");
+				return;
+			}
+			else{
+				location.href = "../book/like.do";
+			}
+		})
 	})
+</script>
+<script type="text/javascript">
+function submit() {
+	let form=document.likedata;
+	form.sumbit();
+}
 </script>
 <style type="text/css">
 *{
@@ -271,14 +287,15 @@ div.content {
 				  <a class="active" href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>
 				  <a href="../book/categorysearch.do">주제별 도서</a>
-				  <span class="loan">예약 내역</span>
+				  <span class="loan" id="loan" style="padding: 16px !important;">예약 내역</span>
+				  <span class="loan" id="like" style="padding: 16px !important;">관심도서 내역</span>
              </div>
         </div>
         
         
 
       <div class="col-lg-10 col-md-10 col-sm-12 content">
-        <h3 style="margin-bottom: 0px">상세보기</h3>
+        <h3 style="margin-bottom: 0px;padding-left: 10px;">상세보기</h3>
         <hr style="margin-bottom: 0px">
         
 
@@ -301,7 +318,14 @@ div.content {
 		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like unlogin">
 		                 </c:if>
 		                 <c:if test="${sessionScope.id!=null && lcheck==0 }">
-			                <a :href="'../book/bookLikeInsert.do?no='+vo.no"><img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like"></a>
+		                 <form method="post" action="../book/insertLike.do" style="display: inline-block; float: right;" name="likedata">
+				              	<input type="hidden" :value="vo.no" name="book_no">
+				              	<input type="hidden" :value="vo.title" name="title">
+				              	<input type="hidden" :value="vo.img" name="img">
+				              	<input type="hidden" :value="vo.author" name="author">
+				              	<input type="hidden" :value="vo.type" name="type">
+			                <img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like" onClick="submit()">
+			             </form>
 			             </c:if>
 			             <c:if test="${sessionScope.id!=null && lcheck!=0 }">
 			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no"><img src="../img/heart.png" style="float: right;width: 30px;height: 30px" class="like"></a>
@@ -345,10 +369,17 @@ div.content {
 			              </c:if>
 	
 			              <c:if test="${sessionScope.id!=null && lcheck==0 }">
-			                 
-			                <a :href="'../book/bookLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 추가</a>
+			                <form method="post" action="../book/insertLike.do" style="display: inline-block;">
+				              	<input type="hidden" :value="vo.no" name="book_no">
+				              	<input type="hidden" :value="vo.title" name="title">
+				              	<input type="hidden" :value="vo.img" name="img">
+				              	<input type="hidden" :value="vo.author" name="author">
+				              	<input type="hidden" :value="vo.type" name="type">
+			                    <input type="submit" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;" value="관심도서추가"/>
+			               </form>
 			              </c:if>
 			              <c:if test="${sessionScope.id!=null && lcheck!=0 }">
+			              
 			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 삭제</a>
 			              </c:if>
 			                <a href="../book/search.do" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;" >목록으로</a>

@@ -82,4 +82,12 @@ public interface BookMapper {
 	//관심도서 목록 출력
 	//@Select("SELECT * FROM booklike_3 WHERE member_id=#{member_id}")
 	//public 
+	
+	//오늘의 책 (랜덤 3개 불러오기)
+	@Select("SELECT S.* "
+			+ "FROM (SELECT * "
+			+ "FROM book_3 "
+			+ "ORDER BY SYS.dbms_random.value) S "
+			+ "WHERE ROWNUM <=3")
+	public List<BookVO> TodayBooks();
 }

@@ -472,7 +472,9 @@ a {
   .feature .icon {
     display: inline-block;
     position: relative;
-    margin-bottom: 20px; }
+    margin-bottom: 20px; 
+    margin-right: 110px;
+    }
     .feature .icon:before {
       content: "";
       width: 33px;
@@ -483,7 +485,7 @@ a {
       right: -8px;
       bottom: 0; }
   .feature h3 {
-    font-size: 14px;
+    font-size: 23px;
     color: #2f2f2f; }
   .feature p {
     font-size: 14px;
@@ -601,7 +603,9 @@ a {
   padding: 7rem 0 12rem 0 !important; }
 
 .blog-section {
-  padding: 7rem 0 12rem 0; }
+  	margin-top: 100px;
+    margin-bottom: 100px;
+   }
   .blog-section .post-entry a {
     text-decoration: none; }
   .blog-section .post-entry .post-thumbnail {

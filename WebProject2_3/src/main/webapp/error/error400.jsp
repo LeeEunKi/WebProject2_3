@@ -8,6 +8,9 @@
 <style type="text/css">
 @import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700);
 
+*{
+font-family:'Pretendard-Regular' !important;
+}
 body, html {
   height: 100%;
 }
@@ -15,7 +18,7 @@ body, html {
 body {
   margin: 0;
   padding: 2rem;
-  background-color: saddlebrown;
+  background-color: #3b5d50;
   font-family: monospace;
   color: white;
   overflow: hidden;

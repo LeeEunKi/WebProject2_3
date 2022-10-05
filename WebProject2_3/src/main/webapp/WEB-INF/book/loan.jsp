@@ -351,7 +351,7 @@ div.content {
 		</div>
 		<div style="height: 100px"></div>
 	</div>
-</div>
+</div> 
 		
 </body>
 </html>

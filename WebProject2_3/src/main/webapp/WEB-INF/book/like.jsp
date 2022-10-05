@@ -308,7 +308,7 @@ div.content {
         
 
       <div class="col-lg-10 col-md-10 col-sm-12 content">
-        <h3 style="margin-bottom: 0px">예약 내역</h3>
+        <h3 style="margin-bottom: 0px">관심도서 내역</h3>
         <hr style="margin-bottom: 0px">
         
 

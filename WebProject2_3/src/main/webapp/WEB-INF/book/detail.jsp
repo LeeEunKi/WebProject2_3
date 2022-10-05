@@ -316,7 +316,7 @@ div.content {
 		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">
 		             	도서명
 		              </td>
-		              <td style="width: 85%">
+		              <td style="width: 85%;background-color: #fff;border-bottom:1px solid #eff2f1">
 		                <h3>{{vo.title}}&nbsp;&nbsp; 
 		                <c:if test="${sessionScope.id==null }">
 		                	<img src="../img/lineheart.png" style="float: right;width: 30px;height: 30px" class="like unlogin">
@@ -340,15 +340,15 @@ div.content {
 		            </tr>
 		            <tr>
 		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">저자명</td>
-		              <td style="width: 85%">{{vo.author}}</td>
+		              <td style="width: 85%;background-color: #fff;border-bottom:1px solid #eff2f1">{{vo.author}}</td>
 		            </tr>
 		            <tr>
 		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판사</td>
-		              <td style="width: 85%">{{vo.publisher}}</td>
+		              <td style="width: 85%;background-color: #fff;border-bottom:1px solid #eff2f1">{{vo.publisher}}</td>
 		            </tr>
 		            <tr>
 		              <td style="width: 15%;font-size: 18px;font-weight: 400;color: #F9F9F9;background-color: #3b5d50;border-bottom:1px solid #eff2f1;vertical-align: middle;" class="text-center">출판일자</td>
-		              <td style="width: 85%">{{vo.dbday}}</td>
+		              <td style="width: 85%;background-color: #fff;border-bottom:1px solid #eff2f1">{{vo.dbday}}</td>
 		            </tr>
 		            <tr> 
 		            <td style="border-bottom: none"></td>

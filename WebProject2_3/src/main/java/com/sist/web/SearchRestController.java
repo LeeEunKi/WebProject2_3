@@ -35,7 +35,9 @@ public class SearchRestController {
    
    @GetMapping(value = "search/search_vue.do", produces = "text/plain;charset=utf-8")
    public String search_vue(String page,String ss,String str) {
-	   	int curPage=Integer.parseInt(page);
+	   	System.out.println(page);
+	    int curPage=Integer.parseInt(page);
+	   	System.out.println(curPage);
 	   	
 	    String[] fsArr=str.split(",");
 	    
@@ -49,7 +51,7 @@ public class SearchRestController {
 		map.put("end",end);
 		
 		int count=dao.findDataCount(map);
-		System.out.println(count);
+		
 		if(count==0) {
 			JSONArray arr=new JSONArray();
 			JSONObject obj=new JSONObject();

@@ -34,6 +34,10 @@
 				location.href = "../book/like.do";
 			}
 		})
+		
+		$('#rvBtn').click(function () {
+			alert("로그인 후 작성 가능합니다");
+		})
 	})
 </script>
 <script type="text/javascript">
@@ -380,7 +384,7 @@ div.content {
 			              </c:if>
 			              <c:if test="${sessionScope.id!=null && lcheck!=0 }">
 			              
-			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 삭제</a>
+			                <a :href="'../book/bookDisLikeInsert.do?no='+vo.no" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;">관심도서 제거</a>
 			              </c:if>
 			                <a href="../book/search.do" class="btn btn-sm btn-primary"style="margin-right: 10px;margin-bottom: 7px;padding: 10px 20px;display: inline-block;" >목록으로</a>
 		              </td>
@@ -450,7 +454,7 @@ div.content {
 		  <div class="col-lg-10">
 		    <section class="content" id="reply">
 						    <br>
-							<h2>리뷰 쓰기</h2>
+							<h2>한줄평 쓰기</h2>
 								 <div class="input-group mb-3" style="position: relative;left: -5px;">
 								
 								 <div class="input-group">
@@ -461,7 +465,7 @@ div.content {
 									    <input class="btn btn-primary" type="button" value="리뷰 작성" @click="replyWrite()">
 									  </c:if>
 									  <c:if test="${sessionScope.id==null }">
-									    <button class="btn btn-primary" type="button">리뷰 작성</button>
+									    <button class="btn btn-primary" type="button" id="rvBtn">리뷰 작성</button>
 									  </c:if>
 								 	  
 								 </div>

@@ -111,6 +111,10 @@ $(function(){
     background-color: white;
 }
 
+td, tr{
+ border-bottom: none;
+ border-top: none;
+}
 
 </style>
 
@@ -239,57 +243,135 @@ $(function(){
 									<div class="item">
 								   	  <table class="table">
 					                      <tr>
-					                        <td rowspan="6">
+					                        <td rowspan="3" style="vertical-align: top;">
 					                          <img src="${tvo.img }">
 					                        </td>
 					                        <td>
 					                        </td>
 					                      </tr>
 					                      <tr>
-					                        <td>오늘의 책 &gt;</td>
+					                        <td><h3 class="h4 text-primary mb-4">${tvo.title }</h3></td>
 					                      </tr>
 					                      <tr>
-					                        <td>${tvo.title }</td>
-					                      </tr>
-					                      <tr>
-					                        <td>${tvo.description }</td>
-					                      </tr>
-					                      <tr>
-					                        <td>${tvo.publisher }</td>
-					                      </tr>
-					                      <tr>
-					                        <td>${tvo.author }</td>
+					                        <td><p class="sub-title">${tvo.description }</p>
+					                        
+					                        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
+					                          <li><p style="font-size: 14px;font-weight: 600;">${tvo.publisher }</p></li>
+					                          <li><p style="font-size: 14px;font-weight: 600;">${tvo.author }</p></li>
+					                        </ul>
+					                        </td>
 					                      </tr>
 					                    </table>
-									</div>
-								</c:forEach>
+					                   </div>
+								   	  </c:forEach>
+								
+							</div>
+
+						</div>
+					</div>
+						<div class="testimonial-section">
+			<div class="container">
+				<div class="row mb-5 align-items-center">
+					<div class="col-md-6">
+						<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">입고된 책</h2>
+					</div>
+					
+				</div>
+							<div class="testimonial-slider">
+									<div class="item">
+								   	  <table class="table">
+					                      <tr>
+					                        <td rowspan="3" style="vertical-align: top;">
+					                          <img src="${tlist2[0].img }">
+					                        </td>
+					                        <td>
+					                        </td>
+					                      </tr>
+					                      <tr>
+					                        <td><h3 class="h4 text-primary mb-4">${tlist2[0].title }</h3></td>
+					                      </tr>
+					                      <tr>
+					                        <td><p class="sub-title">${tlist2[0].description }</p>
+					                        
+					                        <ul style="list-style: none; padding-left: 0px;margin-left: 0px;">
+					                          <li><p style="font-size: 14px;font-weight: 600;">${tlist2[0].publisher }</p></li>
+					                          <li><p style="font-size: 14px;font-weight: 600;">${tlist2[0].author }</p></li>
+					                        </ul>
+					                        </td>
+					                      </tr>
+					                    </table>
+					                   </div>
+								   	
+								
 							</div>
 
 						</div>
 					</div>
 					</div>
 
-					<div class="col-md-12 col-lg-5 mb-5 mb-lg-0 box1">
+					<div class="col-md-12 col-lg-6 mb-6 mb-lg-0 box1">
 					  
 		      			 <jsp:include page="room_reserve.jsp"></jsp:include>
 	    			 
+	    			 <div style="height: 40px"></div>
+	    			 <div style="margin-top: 45px">
+						<h2 class="section-title">바로가기</h2>
+   						 <div class="row my-5">
+							<div class="col-lg-6 mb-6">
+								<div class="feature">
+									<div class="icon">
+										<a href="../book/search.do">
+											<img src="../img/book_find.png" style="width:50px;" alt="Image" class="imf-fluid">
+									</div>
+									<h3>도서검색</h3></a>
+									<p>도서관 보유 도서 리스트</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<a href="../study/room_list.do">
+											<img src="../img/room_reserve.png" style="width:50px;" alt="Image" class="imf-fluid">
+									</div>
+									<h3>열람실 예약</h3></a>
+									<p>열람실 운영시간을 참고해주세요</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<a href="../shop/list.do">
+											<img src="../img/book_mall.png" style="width:50px;" alt="Image" class="imf-fluid">
+									</div>
+									<h3>중고서적 온라인몰</h3></a>
+									<p>다양한 도서를 저렴한 가격으로</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+									<a href="../board/list.do">
+										<img src="../img/community.png" style="width:50px;" alt="Image" class="imf-fluid">
+									</div>
+									<h3>커뮤니티</h3></a>
+									<p>다독다독 커뮤니티</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		
-		<div class="blog-section">
+		<div class="blog-section" style="margin-top: 0px">
 			<jsp:include page="books.jsp"></jsp:include>
 		</div>	
 		
-		<!-- Start Blog Section -->
-		<div class="blog-section">
-		
-			
-			<jsp:include page="quickmenu2.jsp"></jsp:include>
-			
-		</div>
-		<!-- End Blog Section -->	
 	
 		<!-- 슬라이더 자바스크립트 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">

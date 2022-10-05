@@ -192,6 +192,8 @@ div.content {
 		text-align:center;
 	}
 }
+
+
 </style>
 </head>
 <body>

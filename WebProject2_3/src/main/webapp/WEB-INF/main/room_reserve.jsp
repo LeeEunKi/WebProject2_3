@@ -42,7 +42,7 @@
 								</div>
 							  </div>
 						  </div>
-							<div class="col-lg-4 mb-4" style="display: inline-block;margin-left: 30px">
+							<div class="col-lg-6 mb-6" style="display: inline-block;margin-left: 30px">
 							  <div class="feature">
 								<div class="icon">
 									<img src="../img/on-time.png" alt="Image" class="imf-fluid" style="width: 35px;height: 35px">

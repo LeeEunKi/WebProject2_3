@@ -221,7 +221,7 @@ td, tr{
 		<!-- End Product Section -->
 
 		<!-- Start Why Choose Us Section -->
-		<div class="why-choose-section">
+		<div class="why-choose-section" style="padding-bottom: 70px;">
 			<div class="container">
 				<div class="row justify-content-between">
 					<div class="col-lg-6">

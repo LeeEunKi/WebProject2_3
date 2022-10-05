@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
     
 <div class="container">
-				<div class="row mb-5">
+				<div class="row mb-5" style="padding-left: 24px;margin-bottom: 28px !important;">
 					<div class="col-md-6">
 						<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">히트 도서</h2>
 						<p class="sub-title">회원분들이 가장 많이 빌려간 바로 그 책</p>

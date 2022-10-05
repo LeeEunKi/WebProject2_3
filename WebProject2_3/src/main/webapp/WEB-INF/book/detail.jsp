@@ -287,8 +287,8 @@ div.content {
 				  <a class="active" href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>
 				  <a href="../book/categorysearch.do">주제별 도서</a>
-				  <span class="loan" id="loan">예약 내역</span>
-				  <span class="loan" id="like">관심도서 내역</span>
+				  <span class="loan" id="loan" style="padding: 16px !important;">예약 내역</span>
+				  <span class="loan" id="like" style="padding: 16px !important;">관심도서 내역</span>
              </div>
         </div>
         

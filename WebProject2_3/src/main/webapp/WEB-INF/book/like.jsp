@@ -320,7 +320,7 @@ div.content {
 				<c:if test="${likeChk!=0 }">
 				<table id="books">
 			          <tr class="warning">
-			            <th width="15%" class="text-center">도서번호</th>
+			            <th width="15%" class="text-center">고유번호</th>
 			            <th width="20%" class="text-center">이미지</th>
 			            <th width="25%" class="text-center">도서명</th>
 			            <th width="15%" class="text-center">저자명</th>

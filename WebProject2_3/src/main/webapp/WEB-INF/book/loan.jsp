@@ -329,7 +329,7 @@ div.content {
 			          </tr>
 
 			          <c:forEach var="vo" items="${list }">
-			          <tr class="warning">
+			          <tr class="warning"> 
 			            <td width="10%" class="text-center">${vo.no }</td>
 			            <td width="10%" class="text-center">
 			              <a href="../book/detail.do?no=${vo.book_no }"><img src="${vo.img }"style="width: 50px;height: 70px"></a>

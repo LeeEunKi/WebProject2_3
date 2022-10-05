@@ -12,6 +12,30 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$('#loan').click(function () {
+			let id= '${sessionScope.id}';
+			if(id.trim()==''){
+				alert("로그인 후 확인 가능합니다");
+				return;
+			}
+			else{
+				location.href = "../book/loan.do";
+			}
+		})
+		$('#like').click(function () {
+			let id= '${sessionScope.id}';
+			if(id.trim()==''){
+				alert("로그인 후 확인 가능합니다");
+				return;
+			}
+			else{
+				location.href = "../book/like.do";
+			}
+		})
+	})
+</script>
 <style type="text/css">
 *{
 	font-family: 'Noto Sans KR', sans-serif;
@@ -246,7 +270,6 @@ div.content {
   background-color: #6a8b7f;
   color: white;
 }
-
 </style>
 </head>
 <body>
@@ -276,7 +299,8 @@ div.content {
 				  <a href="../book/totalsearch.do">도서검색</a>
 				  <a href="../book/search.do">인기도서</a>
 				  <a href="../book/categorysearch.do">주제별 도서</a>
-				  <span class="loanActive" style="padding: 16px !important;color: white;">예약 내역</span>
+				  <span class="loanActive" style="padding: 16px !important;color: white;" id="loan">예약 내역</span>
+				  <span class="loan" style="padding: 16px !important;" id="like">관심도서 내역</span>
              </div>
         </div>
         
@@ -290,7 +314,7 @@ div.content {
             <div style="height: 20px"></div>
           
 				<c:if test="${loanChk==0 }">
-					<h4 style="text-align:left; margin:50px auto;">구매 내역이 없습니다.</h4>    
+					<h4 style="text-align:left; margin:50px auto;">대여 내역이 없습니다.</h4>    
 				</c:if>
 				<c:if test="${loanChk!=0 }">
 				<table id="books">
@@ -325,6 +349,9 @@ div.content {
 		        
 		        
 		</div>
-		<div style="height: 40px"></div>
+		<div style="height: 100px"></div>
+	</div>
+</div>
+		
 </body>
 </html>

@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 	$(function () {
-		$('.loan').click(function () {
+		$('#loan').click(function () {
 			let id= '${sessionScope.id}';
 			if(id.trim()==''){
 				alert("로그인 후 확인 가능합니다");
@@ -21,6 +21,17 @@
 			}
 			else{
 				location.href = "../book/loan.do";
+			}
+		})
+		
+		$('#like').click(function () {
+			let id= '${sessionScope.id}';
+			if(id.trim()==''){
+				alert("로그인 후 확인 가능합니다");
+				return;
+			}
+			else{
+				location.href = "../book/like.do";
 			}
 		})
 		
@@ -215,7 +226,8 @@ div.content {
 		
 						  <a href="../book/categorysearch.do">주제별 도서</a>
 
-						  <span class="loan">예약 내역</span>
+						  <span class="loan" id="loan">예약 내역</span>
+						  <span class="loan" id="like">관심도서 내역</span>
 		             </div>
 		         </div>
 			    

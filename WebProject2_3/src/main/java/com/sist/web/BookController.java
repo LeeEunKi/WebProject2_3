@@ -65,18 +65,70 @@ public class BookController {
 		return "book/detail";
 	}
 	
-	@GetMapping("book/bookLikeInsert.do")
-	public String book_like_insert(int no,HttpSession session)
+	@PostMapping("book/insertLike.do")
+	public String book_like_insert(HttpServletRequest request, HttpSession session)
 	{
+//		<input type="hidden" :value="vo.no" name="book_no">
+//      	<input type="hidden" :value="vo.title" name="title">
+//      	<input type="hidden" :value="vo.img" name="img">
+//      	<input type="hidden" :value="vo.author" name="author">
+//      	<input type="hidden" :value="vo.type" name="type">
 		String id=(String)session.getAttribute("id");
-		Map map=new HashMap();
-		map.put("book_no", no);
-		map.put("member_id", id);
-		ldao.bookLikeInsert(no,map);
 		
-		return "redirect:../book/detail.do?no="+no; 
+		String book_no=request.getParameter("book_no");
+		String title=request.getParameter("title");
+		String img=request.getParameter("img");
+		String author=request.getParameter("author");
+		String type=request.getParameter("type");
+		
+		Map map=new HashMap();
+		map.put("book_no", Integer.parseInt(book_no));
+		map.put("member_id", id);
+		map.put("title", title);
+		map.put("img", img);
+		map.put("author", author);
+		map.put("type", type);	
+		
+		ldao.bookLikeInsert(Integer.parseInt(book_no),map);
+		
+		return "redirect:../book/detail.do?no="+book_no; 
 		
 	}
+	
+	@GetMapping("book/like.do")
+	public String book_like(HttpSession session,Model model)
+	{
+		String id=(String)session.getAttribute("id");
+		//WHERE book_no=#{no} AND member_id=#{member_id}
+		//public BookVO loanBookInfoData(Map map);
+		
+		List<BookLikeVO> list=ldao.booklikeList(id);
+		for(BookLikeVO vo:list)
+		{
+			String title1=vo.getTitle();
+			if(title1.length()>18)
+			{
+				title1=title1.substring(0,18)+"...";
+				vo.setTitle(title1);
+			}
+			vo.setTitle(title1);
+			
+			String author=vo.getAuthor();
+			if(author.length()>7)
+			{
+				author=author.substring(0,7)+"...";
+				vo.setAuthor(author);
+			}
+			vo.setAuthor(author);
+		}
+		
+		int likeChk=ldao.likeCountCheck(id);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("likeChk",likeChk);
+		return "book/like";
+	}
+	
 	@GetMapping("book/bookDisLikeInsert.do")
 	public String book_dislike_insert(int no,HttpSession session)
 	{
